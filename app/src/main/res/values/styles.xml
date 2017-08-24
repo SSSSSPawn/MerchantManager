@@ -8,6 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="AppTheme.LoginView">
+        <item name="android:windowBackground">@color/gray_tr</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="AppBar" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="android:id">@id/app_bar</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+
     <style name="Text_AppBar">
         <item name="android:id">@id/tv_title</item>
         <item name="android:gravity">center</item>
@@ -15,6 +28,16 @@
         <item name="android:textSize">20sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Text_AppBar_title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">20sp</item>
+
     </style>
 
     <style name="backView">

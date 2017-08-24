@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
    <com.iotek.merchantmanager.view.AppBar
-       android:layout_width="match_parent"
-       android:layout_height="48dp"
-       android:title="用户管理"
+       android:id="@+id/appBar"
+       style="@style/AppBar"
        android:background="@color/btn_bg">
+
+      <TextView
+          style="@style/Text_AppBar_title"
+          android:text="用户管理"/>
+
    </com.iotek.merchantmanager.view.AppBar>
 
 </LinearLayout>

@@ -12,7 +12,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.iotek.merchantmanager.activity.LoginActivity"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.LoginView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
