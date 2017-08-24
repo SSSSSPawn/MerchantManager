@@ -3,14 +3,14 @@
           package="iotek.com.merchantmanager">
 
     <application
-        android:name="app.MyApplication"
+        android:name="com.iotek.merchantmanager.app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="activity.LoginActivity">
+        <activity android:name="com.iotek.merchantmanager.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="activity.MainActivity"/>
+        <activity android:name="com.iotek.merchantmanager.activity.MainActivity"/>
     </application>
 
 </manifest>

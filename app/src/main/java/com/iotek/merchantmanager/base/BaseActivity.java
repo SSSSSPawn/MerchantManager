@@ -1,4 +1,4 @@
-package base;
+package com.iotek.merchantmanager.base;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import Utils.AppUtils;
+import com.iotek.merchantmanager.Utils.AppUtils;
+
 import butterknife.ButterKnife;
 import iotek.com.merchantmanager.R;
 

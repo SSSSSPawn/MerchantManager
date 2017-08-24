@@ -1,4 +1,4 @@
-package activity;
+package com.iotek.merchantmanager.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -7,16 +7,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import Presenter.MainPresenter;
-import base.BaseActivity;
-import base.BaseFragment;
-import bean.TabMenus;
+import com.iotek.merchantmanager.Presenter.MainPresenter;
+import com.iotek.merchantmanager.base.BaseActivity;
+import com.iotek.merchantmanager.base.BaseFragment;
+import com.iotek.merchantmanager.bean.TabMenus;
+import com.iotek.merchantmanager.fragment.FormsMangerFragment;
+import com.iotek.merchantmanager.fragment.MemberManagerFragment;
+import com.iotek.merchantmanager.fragment.SHManagerFragment;
+import com.iotek.merchantmanager.fragment.SWMangerFragment;
+import com.iotek.merchantmanager.fragment.UserOperateManagerFragment;
+
 import butterknife.Bind;
-import fragment.FormsMangerFragment;
-import fragment.MemberManagerFragment;
-import fragment.SHManagerFragment;
-import fragment.SWMangerFragment;
-import fragment.UserOperateManagerFragment;
 import iotek.com.merchantmanager.R;
 
 public class MainActivity extends BaseActivity implements MainPresenter.MvpView, TabLayout.OnTabSelectedListener {

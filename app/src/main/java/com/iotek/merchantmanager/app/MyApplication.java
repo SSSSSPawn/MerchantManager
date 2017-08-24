@@ -1,4 +1,4 @@
-package app;
+package com.iotek.merchantmanager.app;
 
 import android.app.Application;
 

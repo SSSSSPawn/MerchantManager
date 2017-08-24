@@ -1,4 +1,4 @@
-package Utils;
+package com.iotek.merchantmanager.Utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import app.MyApplication;
+import com.iotek.merchantmanager.app.MyApplication;
 
 /**
  * Created by admin on 2017/8/23.

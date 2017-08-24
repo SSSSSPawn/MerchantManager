@@ -1,4 +1,4 @@
-package base;
+package com.iotek.merchantmanager.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import butterknife.ButterKnife;
-import listener.OnFragmentCreatedListener;
+import com.iotek.merchantmanager.listener.OnFragmentCreatedListener;
 
 /**
  * Created by admin on 2017/8/23.

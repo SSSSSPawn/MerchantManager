@@ -1,7 +1,7 @@
-package Presenter;
+package com.iotek.merchantmanager.Presenter;
 
-import base.BasePresenter;
-import base.IMvpView;
+import com.iotek.merchantmanager.base.BasePresenter;
+import com.iotek.merchantmanager.base.IMvpView;
 
 /**
  * Created by admin on 2017/8/23.

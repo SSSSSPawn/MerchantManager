@@ -1,4 +1,4 @@
-package base;
+package com.iotek.merchantmanager.base;
 
 import android.content.Context;
 

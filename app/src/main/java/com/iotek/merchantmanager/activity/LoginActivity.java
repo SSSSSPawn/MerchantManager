@@ -1,11 +1,11 @@
-package activity;
+package com.iotek.merchantmanager.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Button;
 
-import Presenter.LoginPresenter;
-import base.BaseActivity;
+import com.iotek.merchantmanager.Presenter.LoginPresenter;
+import com.iotek.merchantmanager.base.BaseActivity;
 import butterknife.Bind;
 import butterknife.OnClick;
 import iotek.com.merchantmanager.R;

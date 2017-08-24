@@ -1,11 +1,11 @@
-package bean;
+package com.iotek.merchantmanager.bean;
 
 import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
 
-import Utils.AppUtils;
-import base.BaseFragment;
+import com.iotek.merchantmanager.Utils.AppUtils;
+import com.iotek.merchantmanager.base.BaseFragment;
 
 /**
  * Created by admin on 2017/8/23.
