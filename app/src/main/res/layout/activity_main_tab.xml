@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:gravity="center">
+              android:gravity="center"
+              android:focusable="true"
+              android:orientation="vertical"
+              android:padding="4dp">
 
 
     <ImageView
+        android:id="@+id/iv_icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/form_normal"/>
+        android:layout_height="24dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/select_tab_img"/>
+
     <TextView
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="报表管理"/>
+        android:text="报表"
+        android:textColor="@drawable/select_tab_txt_color"/>
 
 </LinearLayout>

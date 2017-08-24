@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#FF3798ED</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
@@ -8,6 +8,9 @@
     <color name="gray">#CFCFCF</color>
     <color name="white">#FFF</color>
     <color name="btn_bg">#FF3798ED</color>
+    <color name="statusBarColor">#FF3798ED</color>
+
+    <color name="tab_txt">#8a8a8a</color>
 
     <color name="line">#eaeaea</color>
 
