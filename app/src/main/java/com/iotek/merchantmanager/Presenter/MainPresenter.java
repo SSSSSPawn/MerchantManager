@@ -12,5 +12,4 @@ public class MainPresenter extends BasePresenter<MainPresenter.MvpView> {
     public interface MvpView extends IMvpView {
         void setSelectedTab(int position);
     }
-
 }

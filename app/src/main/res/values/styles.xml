@@ -49,4 +49,18 @@
         <item name="android:background">#00000000</item>
     </style>
 
+    <style name="Text_Name">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Text_Name.Text_Content">
+        <item name="android:layout_weight">2</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">right</item>
+    </style>
+
 </resources>

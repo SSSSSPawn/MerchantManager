@@ -16,4 +16,6 @@
 
     <color name="line">#eaeaea</color>
 
+    <color name="black">#000</color>
+
 </resources>
