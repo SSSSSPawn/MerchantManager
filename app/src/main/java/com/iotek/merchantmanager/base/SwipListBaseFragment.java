@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.yanzhenjie.recyclerview.swipe.SwipeItemClickListener;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
 import butterknife.Bind;
@@ -19,7 +18,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/28.
  */
 
-public abstract class SwipListBaseFragment extends BaseFragment implements SwipeItemClickListener {
+public abstract class SwipListBaseFragment extends BaseFragment{
 
     @Bind(R.id.recycler_view)
     SwipeMenuRecyclerView mRecyclerView;
@@ -43,8 +42,6 @@ public abstract class SwipListBaseFragment extends BaseFragment implements Swipe
         mRecyclerView.setLayoutManager(getLayoutManager());
 
         mRecyclerView.setAdapter(getAdapter());
-
-        mRecyclerView.setSwipeItemClickListener(this);
 
     }
 
