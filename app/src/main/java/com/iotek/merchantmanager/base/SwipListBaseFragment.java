@@ -56,10 +56,6 @@ public abstract class SwipListBaseFragment extends BaseFragment implements Swipe
         return R.layout.fragment_list;
     }
 
-    @Override
-    public void onItemClick(View itemView, int position) {
-
-    }
 
     protected abstract RecyclerView.Adapter getAdapter();
 

@@ -15,12 +15,4 @@
             android:text="用户管理"/>
     </com.iotek.merchantmanager.view.AppBar>
 
-    <com.iotek.merchantmanager.view.SwipeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-
-    </com.iotek.merchantmanager.view.SwipeLayout>
-
 </LinearLayout>
