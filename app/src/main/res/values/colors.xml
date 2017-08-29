@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="add_bg_color">#FF2ECC71</color>
+    <color name="add_selected_color">#51C332</color>
+
 
     <color name="gray">#CFCFCF</color>
     <color name="gray_tr">#F1F1F1</color>
@@ -17,5 +20,7 @@
     <color name="line">#eaeaea</color>
 
     <color name="black">#000</color>
+    <color name="red_normal">#FF0000</color>
+    <color name="red_pressed">#FF6666</color>
 
 </resources>

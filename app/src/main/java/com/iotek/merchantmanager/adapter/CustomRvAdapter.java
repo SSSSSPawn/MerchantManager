@@ -20,7 +20,7 @@ public abstract class CustomRvAdapter<T> extends RecyclerView.Adapter<RecyclerVi
     private OnItemClickListener mOnItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.mOnItemClickListener = onItemClickListener;
+        mOnItemClickListener = onItemClickListener;
     }
 
     public void setDataList(ArrayList<T> dataList) {
@@ -38,7 +38,7 @@ public abstract class CustomRvAdapter<T> extends RecyclerView.Adapter<RecyclerVi
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return getViewHolder(LayoutInflater.from(parent.getContext()).inflate(getLayout(), parent, false));
+        return getViewHolder(LayoutInflater.from(parent.getContext()).inflate(getLayoutID(), parent, false));
     }
 
     @Override
@@ -60,7 +60,7 @@ public abstract class CustomRvAdapter<T> extends RecyclerView.Adapter<RecyclerVi
         return mList == null ? 0 : mList.size();
     }
 
-    protected abstract int getLayout();
+    protected abstract int getLayoutID();
 
     protected abstract RecyclerViewHolder getViewHolder(View itemView);
 

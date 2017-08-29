@@ -2,6 +2,7 @@ package com.iotek.merchantmanager.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
+import com.yanzhenjie.recyclerview.swipe.widget.DefaultItemDecoration;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,17 +33,16 @@ public abstract class SwipListBaseFragment extends BaseFragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ButterKnife.bind(this, LayoutInflater.from(getContext()).inflate(getLayout(), container, false));
+        ButterKnife.bind(this, LayoutInflater.from(getContext()).inflate(getLayout(), container,false));
         return LayoutInflater.from(getContext()).inflate(getLayout(), container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         mRecyclerView.setLayoutManager(getLayoutManager());
-
         mRecyclerView.setAdapter(getAdapter());
+        mRecyclerView.addItemDecoration(getItemDecoration());
 
     }
 
@@ -49,10 +50,17 @@ public abstract class SwipListBaseFragment extends BaseFragment{
         return new LinearLayoutManager(getContext());
     }
 
+    protected RecyclerView.ItemDecoration getItemDecoration(){
+        return new DefaultItemDecoration(ContextCompat.getColor(getContext(),R.color.gray));
+    }
+
     protected int getLayout() {
         return R.layout.fragment_list;
     }
 
+    protected SwipeMenuRecyclerView getRecyclerView(){
+        return mRecyclerView;
+    }
 
     protected abstract RecyclerView.Adapter getAdapter();
 
