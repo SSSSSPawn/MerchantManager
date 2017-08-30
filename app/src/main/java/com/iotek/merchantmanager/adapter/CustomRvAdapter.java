@@ -10,7 +10,7 @@ import com.iotek.merchantmanager.listener.OnItemClickListener;
 import java.util.ArrayList;
 
 /**
- * Created by admin on 2017/8/28.
+ * Created by wei sun on 2017/8/28.
  */
 
 public abstract class CustomRvAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {

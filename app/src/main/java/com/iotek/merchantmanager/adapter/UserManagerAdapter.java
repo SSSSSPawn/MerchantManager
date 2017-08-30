@@ -1,7 +1,12 @@
 package com.iotek.merchantmanager.adapter;
 
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.iotek.merchantmanager.Utils.AppUtils;
+import com.iotek.merchantmanager.bean.UserManagerVO;
+import com.iotek.merchantmanager.listener.OnConfirmListener;
 
 import butterknife.Bind;
 import iotek.com.merchantmanager.R;
@@ -10,63 +15,55 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/28.
  */
 
-public class UserManagerAdapter extends CustomRvAdapter<String> {
+public class UserManagerAdapter extends SwipeListAdapter<UserManagerVO> {
 
-    @Override
-    protected int getLayoutID() {
-        return R.layout.test_list;
+
+    private OnConfirmListener mListener;
+
+
+    public void setOnSwipeViewClickListener(OnConfirmListener listener) {
+        mListener = listener;
     }
 
     @Override
-    protected RecyclerViewHolder getViewHolder(View itemView) {
+    protected void bindData(SwipeRecyclerViewHolder holder, UserManagerVO userManagerVO) {
+
+        ViewHolder h = (ViewHolder) holder;
+        if (userManagerVO == null) {
+            return;
+        }
+        h.mTvCode.setText("123");
+        h.mTvCustomName.setText("1234");
+        h.mTvFoundTime.setText("sf");
+        h.mTvLastLoginIp.setText("234234");
+        h.mTvLoginIp.setText("4852852852");
+        h.mTvName.setText("阿嘎");
+        h.mTvStatus.setText("呃呃呃");
+        h.mTvRole.setText("管理员");
+
+        h.mItemRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppUtils.showToast("TEST");
+            }
+        });
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.user_rv_swip_item;
+    }
+
+    @Override
+    protected SwipeRecyclerViewHolder getViewHolder(View itemView) {
         return new ViewHolder(itemView);
     }
 
-    @Override
-    protected void bindData(RecyclerViewHolder holder, String s) {
-        UserManagerAdapter.ViewHolder h = (ViewHolder) holder;
-        if (s == null){
-            return;
-        }
 
-        h.mTvTest.setText(s);
-    }
+    class ViewHolder extends SwipeRecyclerViewHolder {
 
-    class ViewHolder extends RecyclerViewHolder {
-
-        @Bind(R.id.tv_test)
-        TextView mTvTest;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-        }
-    }
-
-/*    @Override
-    protected int getLayoutID() {
-        return R.layout.user_rv_item;
-    }
-
-    @Override
-    protected RecyclerViewHolder getViewHolder(View itemView) {
-        return new ViewHolder(itemView);
-    }
-
-    @Override
-    protected void bindData(RecyclerViewHolder holder, UserManagerVO userManagerVO) {
-
-        UserManagerAdapter.ViewHolder h = (ViewHolder) holder;
-
-        if (userManagerVO == null){
-            return;
-        }
-
-        //TODO:逻辑处理
-
-    }
-
-    class ViewHolder extends RecyclerViewHolder {
-
+        @Bind(R.id.item_right)
+        RelativeLayout mItemRight;
         @Bind(R.id.tv_number)
         TextView mTvNumber;
         @Bind(R.id.tv_name)
@@ -95,5 +92,5 @@ public class UserManagerAdapter extends CustomRvAdapter<String> {
         public ViewHolder(View itemView) {
             super(itemView);
         }
-    }*/
+    }
 }

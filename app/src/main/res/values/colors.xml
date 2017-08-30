@@ -22,5 +22,7 @@
     <color name="black">#000</color>
     <color name="red_normal">#FF0000</color>
     <color name="red_pressed">#FF6666</color>
+    <color name="common_red">#f13f2f</color>
+    <color name="gray_holly_text">#808080</color>
 
 </resources>
