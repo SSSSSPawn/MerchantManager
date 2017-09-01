@@ -1,106 +1,43 @@
 package com.iotek.merchantmanager.bean;
 
 /**
- * Created by admin on 2017/8/28.
+ * Created by admin on 2017/9/1.
  */
 
-public class UserManagerVO {
+public class UserManagerVO extends BaseBean{
 
-    private String mTvCode;
-    private String mTvCustomName;
-    private String mTvFoundTime;
-    private String mTvLastLoginIp;
-    private String mTvLoginIp;
-    private String mTvName;
-    private String mTvStatus;
-    private String mTvRole;
+    private String tv_number;
+    private String tv_name;
+    private String tv_role;
 
-    public UserManagerVO(String tvCode, String tvCustomName, String tvFoundTime, String tvLastLoginIp, String tvLoginIp, String tvName, String tvStatus, String tvRole) {
-        mTvCode = tvCode;
-        mTvCustomName = tvCustomName;
-        mTvFoundTime = tvFoundTime;
-        mTvLastLoginIp = tvLastLoginIp;
-        mTvLoginIp = tvLoginIp;
-        mTvName = tvName;
-        mTvStatus = tvStatus;
-        mTvRole = tvRole;
+
+    public UserManagerVO(String tv_number, String tv_name, String tv_role) {
+        this.tv_number = tv_number;
+        this.tv_name = tv_name;
+        this.tv_role = tv_role;
     }
 
-    public String getTvCode() {
-        return mTvCode;
+    public String getTv_number() {
+        return tv_number;
     }
 
-    public void setTvCode(String tvCode) {
-        mTvCode = tvCode;
+    public void setTv_number(String tv_number) {
+        this.tv_number = tv_number;
     }
 
-    public String getTvCustomName() {
-        return mTvCustomName;
+    public String getTv_name() {
+        return tv_name;
     }
 
-    public void setTvCustomName(String tvCustomName) {
-        mTvCustomName = tvCustomName;
+    public void setTv_name(String tv_name) {
+        this.tv_name = tv_name;
     }
 
-    public String getTvFoundTime() {
-        return mTvFoundTime;
+    public String getTv_role() {
+        return tv_role;
     }
 
-    public void setTvFoundTime(String tvFoundTime) {
-        mTvFoundTime = tvFoundTime;
-    }
-
-    public String getTvLastLoginIp() {
-        return mTvLastLoginIp;
-    }
-
-    public void setTvLastLoginIp(String tvLastLoginIp) {
-        mTvLastLoginIp = tvLastLoginIp;
-    }
-
-    public String getTvLoginIp() {
-        return mTvLoginIp;
-    }
-
-    public void setTvLoginIp(String tvLoginIp) {
-        mTvLoginIp = tvLoginIp;
-    }
-
-    public String getTvName() {
-        return mTvName;
-    }
-
-    public void setTvName(String tvName) {
-        mTvName = tvName;
-    }
-
-    public String getTvStatus() {
-        return mTvStatus;
-    }
-
-    public void setTvStatus(String tvStatus) {
-        mTvStatus = tvStatus;
-    }
-
-    public String getTvRole() {
-        return mTvRole;
-    }
-
-    public void setTvRole(String tvRole) {
-        mTvRole = tvRole;
-    }
-
-    @Override
-    public String toString() {
-        return "UserManagerVO{" +
-                "mTvCode='" + mTvCode + '\'' +
-                ", mTvCustomName='" + mTvCustomName + '\'' +
-                ", mTvFoundTime='" + mTvFoundTime + '\'' +
-                ", mTvLastLoginIp='" + mTvLastLoginIp + '\'' +
-                ", mTvLoginIp='" + mTvLoginIp + '\'' +
-                ", mTvName='" + mTvName + '\'' +
-                ", mTvStatus='" + mTvStatus + '\'' +
-                ", mTvRole='" + mTvRole + '\'' +
-                '}';
+    public void setTv_role(String tv_role) {
+        this.tv_role = tv_role;
     }
 }

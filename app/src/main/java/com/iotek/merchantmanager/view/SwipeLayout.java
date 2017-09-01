@@ -102,15 +102,7 @@ public class SwipeLayout extends FrameLayout {
     }
 
     public interface SwipeDenier {
-        /*
-         * Called in onInterceptTouchEvent
-         * Determines if this swipe event should be denied
-         * Implement this interface if you are using views with swipe gestures
-         * As a child of SwipeLayout
-         *
-         * @return true deny
-         *         false allow
-         */
+
         boolean shouldDenySwipe(MotionEvent ev);
     }
 

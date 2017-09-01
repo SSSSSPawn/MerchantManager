@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import android.widget.Button;
 
 import com.iotek.merchantmanager.Presenter.LoginPresenter;
+import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.base.BaseActivity;
+
 import butterknife.Bind;
 import butterknife.OnClick;
 import iotek.com.merchantmanager.R;
@@ -48,5 +50,19 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
     @OnClick(R.id.btn_login)
     public void onViewClicked() {
         launch(MainActivity.class);
+    }
+
+
+    private long exitTime = 0;
+
+    @Override
+    public void onBackPressed() {
+
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            AppUtils.showToast("再按一次返回键退出程序");
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
     }
 }

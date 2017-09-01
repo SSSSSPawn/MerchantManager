@@ -1,227 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="8dp"
-                                    android:orientation="vertical"
-                                    app:cardBackgroundColor="@color/white"
-                                    app:cardCornerRadius="8dp"
-                                    app:cardElevation="8dp"
-                                    app:contentPadding="8dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:layout_marginTop="4dp">
 
-
-    <LinearLayout
+    <com.iotek.merchantmanager.view.SwipeLayout
+        android:id="@+id/recyclerview_swipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/item_right"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_red">
+
+            <TextView
+                android:id="@+id/item_right_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/del_icon_normal"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="#FFFAF0"/>
+        </RelativeLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-            <TextView
-                style="@style/Text_Name"
-                android:text="操作员账号"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_number"
-                style="@style/Text_Name.Text_Content"
-                android:text="123456789"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/Text_Name.Text_Content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="张三"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_number"
+                    style="@style/Text_Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="123456789"/>
+            </LinearLayout>
 
-            <TextView
-                style="@style/Text_Name"
-                android:text="操作员名称"/>
-
-            <TextView
-                android:id="@+id/tv_name"
-                style="@style/Text_Name.Text_Content"
-                android:text="xxxxxx"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Text_Name"
-                android:text="状态"/>
-
-            <TextView
-                android:id="@+id/tv_status"
-                style="@style/Text_Name.Text_Content"
-                android:text="正常"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Text_Name"
-                android:text="角色名称"/>
 
             <TextView
                 android:id="@+id/tv_role"
                 style="@style/Text_Name.Text_Content"
-                android:text="商户管理员"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/tab_txt"
+                android:textSize="16sp"
+                android:text="管理员"
+                android:layout_gravity="center"/>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Text_Name"
-                android:text="客户账号"/>
-
-            <TextView
-                android:id="@+id/tv_custom_number"
-                style="@style/Text_Name.Text_Content"
-                android:text="123466789"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Text_Name"
-                android:text="客户简称"/>
-
-            <TextView
-                android:id="@+id/tv_custom_name"
-                style="@style/Text_Name.Text_Content"
-                android:text="亚青"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Text_Name"
-                android:text="身份证号"/>
-
-            <TextView
-                android:id="@+id/tv_code"
-                style="@style/Text_Name.Text_Content"
-                android:text="332526197709220039"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Text_Name"
-                android:text="创建时间"/>
-
-            <TextView
-                android:id="@+id/tv_found_time"
-                style="@style/Text_Name.Text_Content"
-                android:text="2015-08-08 15:25:34"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Text_Name"
-                android:text="上次登录时间"/>
-
-            <TextView
-                android:id="@+id/tv_login_time"
-                style="@style/Text_Name.Text_Content"
-                android:text="2015-08-08 15:29:24"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Text_Name"
-                android:text="最近登录时间"/>
-
-            <TextView
-                android:id="@+id/tv_last_login_time"
-                style="@style/Text_Name.Text_Content"
-                android:text="2015-08-08 15:30:23"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Text_Name"
-                android:text="上次登录地址"/>
-
-            <TextView
-                android:id="@+id/tv_login_ip"
-                style="@style/Text_Name.Text_Content"
-                android:text="192.168.02.25"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Text_Name"
-                android:text="最后登录地址"/>
-
-            <TextView
-                android:id="@+id/tv_last_login_ip"
-                style="@style/Text_Name.Text_Content"
-                android:text="192.168.02.25"/>
-        </LinearLayout>
+    </com.iotek.merchantmanager.view.SwipeLayout>
 
 
-    </LinearLayout>
 
-
-</android.support.v7.widget.CardView>
+</LinearLayout>

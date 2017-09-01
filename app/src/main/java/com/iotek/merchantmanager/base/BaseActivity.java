@@ -55,16 +55,4 @@ public class BaseActivity extends AppCompatActivity {
         AppUtils.startActivity(this,clazz,bundle);
     }
 
-    private long exitTime = 0;
-
-    @Override
-    public void onBackPressed() {
-
-        if ((System.currentTimeMillis() - exitTime) > 2000) {
-            AppUtils.showToast("再按一次返回键退出程序");
-            exitTime = System.currentTimeMillis();
-        } else {
-            finish();
-        }
-    }
 }

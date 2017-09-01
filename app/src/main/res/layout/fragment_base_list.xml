@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:superrecyclerview="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
 
 
-    <com.iotek.merchantmanager.view.SuperRecyclerView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/super_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        superrecyclerview:layout_empty="@layout/empty"/>
-
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

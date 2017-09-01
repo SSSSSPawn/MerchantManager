@@ -13,4 +13,6 @@
             android:text="会员管理"/>
     </com.iotek.merchantmanager.view.AppBar>
 
+    <include layout="@layout/fragment_base_list"/>
+
 </LinearLayout>

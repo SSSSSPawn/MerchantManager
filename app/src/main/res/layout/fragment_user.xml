@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/white"
+              android:background="@color/gray_tr"
               android:orientation="vertical">
 
     <com.iotek.merchantmanager.view.AppBar
@@ -15,9 +15,6 @@
             android:text="操作员管理"/>
     </com.iotek.merchantmanager.view.AppBar>
 
-    <include
-        layout="@layout/fragment_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <include layout="@layout/fragment_base_list"/>
 
 </LinearLayout>

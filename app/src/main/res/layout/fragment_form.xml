@@ -14,5 +14,7 @@
 
     </com.iotek.merchantmanager.view.AppBar>
 
+    <include layout="@layout/fragment_base_list"/>
+
 
 </LinearLayout>
