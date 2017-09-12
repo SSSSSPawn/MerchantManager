@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="iotek.com.merchantmanager">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <application
         android:name="com.iotek.merchantmanager.app.MyApplication"
         android:allowBackup="true"
