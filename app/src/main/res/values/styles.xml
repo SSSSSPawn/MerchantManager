@@ -9,6 +9,17 @@
     </style>
 
 
+    <style name="Dialog" parent="Theme.AppCompat.Dialog"></style>
+
+    <style name="Text">
+
+    </style>
+
+    <style name="Dialog.NullBackground">
+        <item name="android:windowBackground">@drawable/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
     <style name="AppTheme.LoginView">
         <item name="android:windowBackground">@color/gray_tr</item>
         <item name="android:windowFullscreen">true</item>
@@ -38,6 +49,30 @@
         <item name="android:singleLine">true</item>
         <item name="android:textSize">20sp</item>
 
+    </style>
+
+    <style name="Text.Normal">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColorHint">@color/secondTextColor</item>
+    </style>
+
+    <style name="Text.Hint">
+        <item name="android:textColor">@color/txtSecondColor</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="Text.Hint.18sp">
+        <item name="textSize">18sp</item>
+    </style>
+
+    <style name="Text.Normal.Blue">
+        <item name="android:textColor">@color/becPrimaryBlue</item>
     </style>
 
     <style name="backView">

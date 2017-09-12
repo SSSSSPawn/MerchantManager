@@ -48,6 +48,7 @@ public class UserOperateManagerFragment extends BaseFragment implements OnItemCl
 
     private void initView(View view) {
         mSuperRecyclerView = (XRecyclerView) view.findViewById(R.id.super_recycler_view);
+
         mAdapter = new UserManagerAdapter();
         mUserManagerVOs = new ArrayList<>();
 

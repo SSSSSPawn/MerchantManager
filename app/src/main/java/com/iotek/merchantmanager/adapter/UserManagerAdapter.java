@@ -1,6 +1,7 @@
 package com.iotek.merchantmanager.adapter;
 
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.iotek.merchantmanager.bean.UserManagerVO;
@@ -21,17 +22,25 @@ public class UserManagerAdapter extends CustomRvAdapter<UserManagerVO> {
 
     @Override
     protected RecyclerViewHolder getViewHolder(View itemView) {
-        return new UserManagerAdapter.ViewHolder(itemView);
+        return new ViewHolder(itemView);
     }
 
     @Override
     protected void bindData(RecyclerViewHolder holder, UserManagerVO userManagerVO) {
 
-        UserManagerAdapter.ViewHolder h = (ViewHolder) holder;
+        ViewHolder h = (ViewHolder) holder;
 
         h.mTvName.setText(userManagerVO.getTv_number());
         h.mTvNumber.setText(userManagerVO.getTv_name());
         h.mTvRole.setText(userManagerVO.getTv_role());
+
+        h.mItemRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     class ViewHolder extends RecyclerViewHolder {
@@ -42,6 +51,9 @@ public class UserManagerAdapter extends CustomRvAdapter<UserManagerVO> {
         TextView mTvNumber;
         @Bind(R.id.tv_role)
         TextView mTvRole;
+        @Bind(R.id.item_right)
+        RelativeLayout mItemRight;
+
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -7,6 +7,11 @@
     <color name="add_bg_color">#FF2ECC71</color>
     <color name="add_selected_color">#51C332</color>
 
+    <color name="primaryTextColor">#32374a</color>
+    <color name="secondTextColor">#4c4c4c</color>
+
+    <color name="txtSecondColor">#999999</color>
+
 
     <color name="gray">#CFCFCF</color>
     <color name="gray_tr">#F1F1F1</color>
@@ -14,10 +19,13 @@
     <color name="tr">#00000000</color>
     <color name="btn_bg">#FF3798ED</color>
     <color name="statusBarColor">#FF3798ED</color>
+    <color name="becPrimaryBlue">#FF3798ED</color>
+
 
     <color name="tab_txt">#8a8a8a</color>
 
     <color name="line">#eaeaea</color>
+    <color name="lineColor">#dcdee5</color>
 
     <color name="black">#000</color>
     <color name="red_normal">#FF0000</color>
