@@ -15,7 +15,6 @@ import iotek.com.merchantmanager.R;
 /**
  * Created by admin on 2017/8/23.
  */
-
 public class LoginActivity extends BaseActivity implements LoginPresenter.MvpView {
 
     private LoginPresenter mPresenter = new LoginPresenter();

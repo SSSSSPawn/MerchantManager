@@ -1,10 +1,13 @@
 package com.iotek.merchantmanager.adapter;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.bean.UserManagerVO;
+import com.iotek.merchantmanager.view.CustomDialog;
 
 import butterknife.Bind;
 import iotek.com.merchantmanager.R;
@@ -30,6 +33,8 @@ public class UserManagerAdapter extends CustomRvAdapter<UserManagerVO> {
 
         ViewHolder h = (ViewHolder) holder;
 
+        final Context context = h.itemView.getContext();
+
         h.mTvName.setText(userManagerVO.getTv_number());
         h.mTvNumber.setText(userManagerVO.getTv_name());
         h.mTvRole.setText(userManagerVO.getTv_role());
@@ -37,10 +42,17 @@ public class UserManagerAdapter extends CustomRvAdapter<UserManagerVO> {
         h.mItemRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                final CustomDialog dialog = new CustomDialog(context);
+                dialog.setOkButton(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        AppUtils.showToast("******");
+                    }
+                });
+                dialog.show("确定删除该条目?");
             }
         });
-
     }
 
     class ViewHolder extends RecyclerViewHolder {
@@ -53,7 +65,6 @@ public class UserManagerAdapter extends CustomRvAdapter<UserManagerVO> {
         TextView mTvRole;
         @Bind(R.id.item_right)
         RelativeLayout mItemRight;
-
 
         public ViewHolder(View itemView) {
             super(itemView);

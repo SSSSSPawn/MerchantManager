@@ -5,4 +5,6 @@
     <item name="back" type="id"/>
     <item name="tv_title" type="id"/>
 
+    <item name="recyclerview_swipe" type="id"/>
+
 </resources>

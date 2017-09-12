@@ -41,5 +41,4 @@ public class AppUtils {
         drawable.addState(new int[]{}, MyApplication.getInstance().getResources().getDrawable(normal));
         return drawable;
     }
-
 }

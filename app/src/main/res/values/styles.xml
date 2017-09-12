@@ -68,7 +68,7 @@
     </style>
 
     <style name="Text.Hint.18sp">
-        <item name="textSize">18sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="Text.Normal.Blue">
