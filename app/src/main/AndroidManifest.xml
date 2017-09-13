@@ -3,6 +3,7 @@
           package="iotek.com.merchantmanager">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name="com.iotek.merchantmanager.app.MyApplication"

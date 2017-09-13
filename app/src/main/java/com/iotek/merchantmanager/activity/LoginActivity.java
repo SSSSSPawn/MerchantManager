@@ -36,9 +36,25 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
     }
 
     @Override
-    public void loginError(String msg) {
+    public void showPasswordError(String msg) {
 
     }
+
+    @Override
+    public void showParamsError(String msg) {
+
+    }
+
+    @Override
+    public void onError(String msg) {
+
+    }
+
+    @Override
+    public void startHomeActivity() {
+
+    }
+
 
     @Override
     protected void onDestroy() {

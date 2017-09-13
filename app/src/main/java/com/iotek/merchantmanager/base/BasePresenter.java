@@ -2,6 +2,9 @@ package com.iotek.merchantmanager.base;
 
 import android.content.Context;
 
+import com.iotek.merchantmanager.net.ApiService;
+import com.iotek.merchantmanager.net.HttpExecutor;
+
 /**
  * Created by admin on 2017/8/23.
  */
@@ -9,6 +12,8 @@ import android.content.Context;
 public abstract class BasePresenter<V extends IMvpView> implements  Presenter<V>  {
 
     protected V mvpView;
+
+    protected ApiService mApiService = HttpExecutor.getInstance().getApiService();
 
     @Override
     public void attachView(V view) {
