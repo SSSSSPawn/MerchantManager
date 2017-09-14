@@ -34,10 +34,12 @@ public class HttpExecutor {
                     .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
                     .addNetworkInterceptor(new StethoInterceptor())
                     .addInterceptor(new HttpLoggingInterceptor())
+                    //TODO:拦截器
                     .build();
         } else {
             mClient = mClient.newBuilder()
                     .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
+                    //TODO:拦截器
                     .build();
         }
 
