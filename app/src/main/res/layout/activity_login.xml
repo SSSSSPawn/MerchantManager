@@ -35,6 +35,7 @@
                     android:src="@mipmap/account"/>
 
                 <EditText
+                    android:id="@+id/et_login_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -62,6 +63,7 @@
                     android:src="@mipmap/password"/>
 
                 <EditText
+                    android:id="@+id/et_login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"

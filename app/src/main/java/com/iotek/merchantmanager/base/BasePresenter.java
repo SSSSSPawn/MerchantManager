@@ -27,7 +27,7 @@ public abstract class BasePresenter<V extends IMvpView> implements  Presenter<V>
 
     protected Context getContext(){
 
-        if (mvpView == null){
+        if (mvpView != null){
             return mvpView.getContext();
         }
 

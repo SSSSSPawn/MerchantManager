@@ -19,7 +19,7 @@ public class HttpExecutor {
 
     private static HttpExecutor instance = new HttpExecutor();
 
-    public static final String API_URL = BuildConfig.API_URL;
+    public static final String DEV_API_URL = BuildConfig.API_URL;
 
     private static final int DEFAULT_TIME_OUT = 5;//超时时间 5s
 
@@ -42,7 +42,7 @@ public class HttpExecutor {
         }
 
 
-        mApiService = new Retrofit.Builder().baseUrl(API_URL)
+        mApiService = new Retrofit.Builder().baseUrl(DEV_API_URL)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(mClient)

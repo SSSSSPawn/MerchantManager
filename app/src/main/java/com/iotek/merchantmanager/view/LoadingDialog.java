@@ -20,6 +20,13 @@ public class LoadingDialog extends BECDialog {
         super(context);
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.view_loading);
+    }
+
     public static LoadingDialog show(Context context) {
         LoadingDialog dialog = new LoadingDialog(context);
 
@@ -29,12 +36,5 @@ public class LoadingDialog extends BECDialog {
             e.printStackTrace();
         }
         return dialog;
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_loading);
     }
 }
