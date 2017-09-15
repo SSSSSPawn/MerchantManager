@@ -3,10 +3,14 @@ package com.iotek.merchantmanager.net;
 import com.google.gson.JsonObject;
 import com.iotek.merchantmanager.bean.LoginVO;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -17,7 +21,7 @@ public interface ApiService {
 
 
     /**
-     * 登录
+     * 登录  表单形式提交
      *
      * @param onsiteTime
      * @param mac
@@ -26,16 +30,29 @@ public interface ApiService {
      * @param appversion
      * @return
      */
+    @FormUrlEncoded
     @POST("app/inter/dologin.json")
-    Observable<LoginVO> login(@Query("onsitetime") String onsiteTime,
-                              @Query("mac") String mac,
-                              @Query("userName") String userName,
-                              @Query("userPasswd") String userPassword,
-                              @Query("appversion") String appversion);
+    Call<LoginVO> login(@Field("onsitetime") String onsiteTime,
+                        @Field("mac") String mac,
+                        @Field("userName") String userName,
+                        @Field("userPasswd") String userPassword,
+                        @Field("appversion") String appversion);
+
+
+    /**
+     * 登陆  JSON格式提交
+     *
+     * @param params
+     * @return
+     */
+    @Headers({"Content-type:application/json;charset=UTF-8"})
+    @POST("app/inter/dologin.json")
+    Observable<LoginVO> login(@Body RequestBody params);
 
 
     /**
      * 获取系统时间
+     *
      * @return
      */
     @GET("app/getSysTime.json")

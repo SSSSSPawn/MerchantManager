@@ -8,10 +8,9 @@ import java.util.List;
 
 public class LoginVO extends BaseBean {
 
-
     /**
-     * obj : {"custId":38,"rootId":47,"uuid":"48142d28-722b-4a45-bef2-f665294054df"}
-     * rows : [{"legalName":"小二","realName":"不二家","custNo":"888301054410001","custLname":"不二家零食店","custName":"不二家零食店","custCompanyName":"不二家糖果有限公司"}]
+     * obj : {"custId":21,"rootId":83,"uuid":"372ba32a-7154-46ba-841b-53082feb074d"}
+     * rows : [{"legalName":"宋广荣","realName":"张月仙","custNo":"888301079410001","custLname":"南京亚青体育产业发展有限公司","custName":"亚青","custCompanyName":"南京亚青体育产业发展有限公司"}]
      * rspcod : 200
      * rspmsg : 登录成功
      */
@@ -55,9 +54,9 @@ public class LoginVO extends BaseBean {
 
     public static class ObjBean {
         /**
-         * custId : 38
-         * rootId : 47
-         * uuid : 48142d28-722b-4a45-bef2-f665294054df
+         * custId : 21
+         * rootId : 83
+         * uuid : 372ba32a-7154-46ba-841b-53082feb074d
          */
 
         private int custId;
@@ -87,16 +86,25 @@ public class LoginVO extends BaseBean {
         public void setUuid(String uuid) {
             this.uuid = uuid;
         }
+
+        @Override
+        public String toString() {
+            return "ObjBean{" +
+                    "custId=" + custId +
+                    ", rootId=" + rootId +
+                    ", uuid='" + uuid + '\'' +
+                    '}';
+        }
     }
 
     public static class RowsBean {
         /**
-         * legalName : 小二
-         * realName : 不二家
-         * custNo : 888301054410001
-         * custLname : 不二家零食店
-         * custName : 不二家零食店
-         * custCompanyName : 不二家糖果有限公司
+         * legalName : 宋广荣
+         * realName : 张月仙
+         * custNo : 888301079410001
+         * custLname : 南京亚青体育产业发展有限公司
+         * custName : 亚青
+         * custCompanyName : 南京亚青体育产业发展有限公司
          */
 
         private String legalName;

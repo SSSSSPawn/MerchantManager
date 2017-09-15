@@ -1,14 +1,19 @@
 package com.iotek.merchantmanager.Presenter;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.SysUtil;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.LoginVO;
-import com.iotek.merchantmanager.net.exception.AppException;
 import com.iotek.merchantmanager.view.LoadingDialog;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,8 +27,6 @@ import rx.schedulers.Schedulers;
 
 public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
 
-
-
     public void login(String onsiteTime, String mac, String userName, String userPassword, String appverSion, boolean showDialog) {
 
         final LoadingDialog dialog = new LoadingDialog(getContext());
@@ -31,8 +34,18 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
         if (showDialog) {
             dialog.show();
         }
+        Gson gson = new Gson();
+        Map<String, String> paramsMap = new HashMap<>();
+        paramsMap.put("onsitetime", onsiteTime);
+        paramsMap.put("mac", mac);
+        paramsMap.put("userName", userName);
+        paramsMap.put("userPasswd", userPassword);
+        paramsMap.put("appversion", appverSion);
+        String paramsJson = gson.toJson(paramsMap);
 
-        mApiService.login(onsiteTime, mac, userName, userPassword, appverSion)
+        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), paramsJson);
+
+        mApiService.login(body)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<LoginVO>() {
@@ -45,17 +58,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                     public void onError(Throwable e) {
                         dialog.dismiss();
                         if (mvpView != null) {
-                            if (e instanceof AppException) {
-                                if ("205".equals(((AppException) e).getCode())) {
-                                    mvpView.showPasswordError(e.getMessage());
-                                } else if ("400".equals(((AppException) e).getCode())) {
-                                    mvpView.showParamsError(e.getMessage());
-                                } else {
-                                    mvpView.onError("系统异常 " + e.getMessage());
-                                }
-                            }
-                        } else {
-                            mvpView.onError("系统异常 " + e.getMessage());
+                            mvpView.showNetError("网络错误...");
                         }
                     }
 
@@ -63,6 +66,9 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                     public void onNext(LoginVO loginVO) {
                         if (mvpView != null) {
                             mvpView.loginSuccess(loginVO.getRspmsg());
+                            if (200 == loginVO.getRspcod()) {
+                                LogUtil.e(loginVO.getObj().toString());
+                            }
                         }
                     }
                 });
@@ -76,8 +82,6 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                 if (response.isSuccessful()) {
                     if (mvpView != null) {
                         mvpView.showSysTime(response.body().get("rspmsg") + "");
-                    } else {
-                        mvpView.showSysTime(SysUtil.getDateTime());
                     }
                 } else {
                     mvpView.showSysTime(SysUtil.getDateTime());
@@ -86,7 +90,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                LogUtil.e("连接服务器失败" + t.getMessage());
+                LogUtil.e("连接失败  " + t.getMessage());
                 if (mvpView != null) {
                     mvpView.showSysTime(SysUtil.getDateTime());
                 }
@@ -99,11 +103,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
 
         void loginSuccess(String msg);
 
-        void showPasswordError(String msg);
-
-        void showParamsError(String msg);
-
-        void onError(String msg);
+        void showNetError(String msg);
 
         String showSysTime(String time);
     }

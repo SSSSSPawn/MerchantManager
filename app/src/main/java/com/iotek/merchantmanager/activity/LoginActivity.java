@@ -46,17 +46,7 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
     }
 
     @Override
-    public void showPasswordError(String msg) {
-        AppUtils.showToast(msg);
-    }
-
-    @Override
-    public void showParamsError(String msg) {
-        AppUtils.showToast(msg);
-    }
-
-    @Override
-    public void onError(String msg) {
+    public void showNetError(String msg) {
         AppUtils.showToast(msg);
     }
 
@@ -95,7 +85,9 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
 
         int versionCode = SysUtil.getVersionCode(this);
 
-        mPresenter.login(sysTime, md5Mac, loginName, loginPassword, versionCode + "", true);
+        LogUtil.e("sysTime:" + sysTime + "\nmd5Mac:" + md5Mac + "\nloginName:" + loginName + "\nloginPassword:" + loginPassword + "\nversionCode:" + versionCode);
+
+        mPresenter.login(sysTime, md5Mac, loginName, loginPassword, "8", true);
 
         launch(MainActivity.class);
 
