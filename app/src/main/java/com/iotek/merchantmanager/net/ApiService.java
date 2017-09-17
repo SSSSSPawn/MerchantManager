@@ -1,7 +1,8 @@
 package com.iotek.merchantmanager.net;
 
-import com.google.gson.JsonObject;
 import com.iotek.merchantmanager.bean.LoginVO;
+
+import org.json.JSONObject;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -56,7 +57,7 @@ public interface ApiService {
      * @return
      */
     @GET("app/getSysTime.json")
-    Call<JsonObject> getSysTime();
+    Call<JSONObject> getSysTime();
 
 
 }

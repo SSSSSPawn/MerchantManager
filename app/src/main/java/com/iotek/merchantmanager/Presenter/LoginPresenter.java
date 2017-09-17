@@ -1,13 +1,16 @@
 package com.iotek.merchantmanager.Presenter;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.SysUtil;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.LoginVO;
+import com.iotek.merchantmanager.net.OnResponseListener;
 import com.iotek.merchantmanager.view.LoadingDialog;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +18,6 @@ import java.util.Map;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -74,25 +75,46 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                 });
     }
 
-    public void getSysTime() {
-        Call<JsonObject> call = mApiService.getSysTime();
-        call.enqueue(new Callback<JsonObject>() {
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if (response.isSuccessful()) {
-                    if (mvpView != null) {
-                        mvpView.showSysTime(response.body().get("rspmsg") + "");
-                    }
-                } else {
-                    mvpView.showSysTime(SysUtil.getDateTime());
-                }
-            }
+//    public void login(String onsiteTime, String mac, String userName, String userPassword, String appverSion, boolean showDialog) {
+//
+//        final LoadingDialog dialog = new LoadingDialog(getContext());
+//
+//        if (showDialog) {
+//            dialog.show();
+//        }
+//        Gson gson = new Gson();
+//        Map<String, String> paramsMap = new HashMap<>();
+//        paramsMap.put("onsitetime", onsiteTime);
+//        paramsMap.put("mac", mac);
+//        paramsMap.put("userName", userName);
+//        paramsMap.put("userPasswd", userPassword);
+//        paramsMap.put("appversion", appverSion);
+//        String paramsJson = gson.toJson(paramsMap);
+//
+//        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), paramsJson);
+//        Call<LoginVO> call = mApiService.login(body);
+//        call.enqueue(new OnResponseListener<LoginVO>(getContext(), false) {
+//            @Override
+//            public void onSuccess(LoginVO loginVO) {
+//                LoginVO.ObjBean obj = loginVO.getObj();
+//                LogUtil.e(obj + "");
+//            }
+//        });
+//
+//    }
 
+    public void getSysTime() {
+        Call<JSONObject> call = mApiService.getSysTime();
+        call.enqueue(new OnResponseListener<JSONObject>(getContext(), false) {
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-                LogUtil.e("连接失败  " + t.getMessage());
+            public void onSuccess(JSONObject jsonObject) {
                 if (mvpView != null) {
-                    mvpView.showSysTime(SysUtil.getDateTime());
+                    try {
+                        mvpView.showSysTime(jsonObject.getString("rspmsg"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        mvpView.showSysTime(SysUtil.getDateTime());
+                    }
                 }
             }
         });
