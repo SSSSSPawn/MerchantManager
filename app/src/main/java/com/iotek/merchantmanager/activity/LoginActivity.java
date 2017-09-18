@@ -51,6 +51,16 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
     }
 
     @Override
+    public void loginError(String msg) {
+        AppUtils.showToast(msg);
+    }
+
+    @Override
+    public void startHomeActivity() {
+        launch(MainActivity.class);
+    }
+
+    @Override
     public String showSysTime(String time) {
         sysTime = time;
         return time;
@@ -88,8 +98,6 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
         LogUtil.e("sysTime:" + sysTime + "\nmd5Mac:" + md5Mac + "\nloginName:" + loginName + "\nloginPassword:" + loginPassword + "\nversionCode:" + versionCode);
 
         mPresenter.login(sysTime, md5Mac, loginName, loginPassword, "8", true);
-
-        launch(MainActivity.class);
 
     }
 

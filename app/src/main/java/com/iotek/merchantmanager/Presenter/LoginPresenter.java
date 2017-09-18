@@ -2,10 +2,12 @@ package com.iotek.merchantmanager.Presenter;
 
 import com.google.gson.Gson;
 import com.iotek.merchantmanager.Utils.LogUtil;
+import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.Utils.SysUtil;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.LoginVO;
+import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.net.OnResponseListener;
 import com.iotek.merchantmanager.view.LoadingDialog;
 
@@ -66,9 +68,24 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                     @Override
                     public void onNext(LoginVO loginVO) {
                         if (mvpView != null) {
-                            mvpView.loginSuccess(loginVO.getRspmsg());
                             if (200 == loginVO.getRspcod()) {
-                                LogUtil.e(loginVO.getObj().toString());
+
+                                mvpView.loginSuccess(loginVO.getRspmsg());
+
+                                int custId = loginVO.getObj().getCustId();
+                                int rootId = loginVO.getObj().getRootId();
+                                String uuid = loginVO.getObj().getUuid();
+
+                                LogUtil.e(custId + "---" + rootId + "--" + uuid);
+
+                                Preference.putInt(CacheKey.CUST_ID, custId);
+                                Preference.putInt(CacheKey.ROOT_ID, rootId);
+                                Preference.putString(CacheKey.UU_ID, uuid);
+
+                                mvpView.startHomeActivity();
+
+                            } else {
+                                mvpView.loginError(loginVO.getRspmsg());
                             }
                         }
                     }
@@ -126,6 +143,10 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
         void loginSuccess(String msg);
 
         void showNetError(String msg);
+
+        void loginError(String msg);
+
+        void startHomeActivity();
 
         String showSysTime(String time);
     }
