@@ -13,12 +13,13 @@ import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.BaseFragment;
-import com.iotek.merchantmanager.bean.UserManagerVO;
+import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import iotek.com.merchantmanager.R;
 
@@ -36,11 +37,11 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     private int times = 0;
 
-    private ArrayList<UserManagerVO> mUserManagerVOs;
-
     private UserManagerAdapter mAdapter;
 
     private int currentPage = 1;
+
+    private ArrayList<List<UserManagerDetailVO.RowsBean>> mBeanList;
 
     @Nullable
     @Override
@@ -56,11 +57,9 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
         mSuperRecyclerView = (XRecyclerView) view.findViewById(R.id.super_recycler_view);
 
-        mAdapter = new UserManagerAdapter();
-        mUserManagerVOs = new ArrayList<>();
+        mBeanList = new ArrayList<>();
 
-        mSuperRecyclerView.setLoadingListener(this);
-        mAdapter.setOnItemClickListener(this);
+        mAdapter = new UserManagerAdapter();
 
         long custID= Preference.getLong(CacheKey.CUST_ID);
         long rootID = Preference.getLong(CacheKey.ROOT_ID);
@@ -70,6 +69,11 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
         LogUtil.e("custID=" + custID + "\nrootID=" + rootID + "\nuuID=" + uuID + "\nmac=" +mac);
 
         mPresenter.queryUser(custID,rootID,uuID,mac,currentPage,true);
+
+        mSuperRecyclerView.setLoadingListener(this);
+        mAdapter.setOnItemClickListener(this);
+
+
     }
 
     @Override
@@ -90,5 +94,13 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     @Override
     public void OnItemClick(int position) {
         AppUtils.showToast("pos = " + position);
+    }
+
+    @Override
+    public void showUserList(ArrayList<UserManagerDetailVO.RowsBean> lists) {
+        if (!lists.isEmpty()){
+            mBeanList.clear();
+            mBeanList.add(lists);
+        }
     }
 }

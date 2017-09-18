@@ -1,6 +1,8 @@
 package com.iotek.merchantmanager.Presenter;
 
 import com.google.gson.Gson;
+import com.iotek.merchantmanager.Utils.ListUtil;
+import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
@@ -8,6 +10,7 @@ import com.iotek.merchantmanager.net.HttpExecutor;
 import com.iotek.merchantmanager.net.OnResponseListener;
 import com.iotek.merchantmanager.view.LoadingDialog;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +27,8 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
     private final int LIMIT_SIZE = 10;
 
     private int currentPage = 1;
+
+    private ArrayList<UserManagerDetailVO.RowsBean> mRowsBeen;
 
 
     public void queryUser(long custId, long rootId, String uuId,String mac, int page, boolean showDialog) {
@@ -48,6 +53,11 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
         call.enqueue(new OnResponseListener<UserManagerDetailVO>(getContext(),true) {
             @Override
             public void onSuccess(UserManagerDetailVO userManagerVO) {
+                mRowsBeen = (ArrayList<UserManagerDetailVO.RowsBean>) userManagerVO.getRows();
+                if (!ListUtil.isEmpty(mRowsBeen)){
+                    LogUtil.e(mRowsBeen.toString());
+                    mvpView.showUserList(mRowsBeen);
+                }
                 int totalPage = userManagerVO.getTotal();
             }
         });
@@ -56,5 +66,6 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
 
     public interface MvpView extends IMvpView {
 
+       void showUserList(ArrayList<UserManagerDetailVO.RowsBean> lists);
     }
 }
