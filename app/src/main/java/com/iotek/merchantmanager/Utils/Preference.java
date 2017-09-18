@@ -14,9 +14,15 @@ public class Preference {
     public static SharedPreferences sPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.getInstance());
 
     public static void putString(String key, String value) {
-        SharedPreferences.Editor edit = sPreferences.edit();
-        edit.putString(key, value);
-        edit.apply();
+        SharedPreferences.Editor editor = sPreferences.edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
+
+    public static void putInt(String key,int value){
+        SharedPreferences.Editor editor = sPreferences.edit();
+        editor.putInt(key,value);
+        editor.apply();
     }
 
     public static void getString(String key) {
@@ -25,5 +31,13 @@ public class Preference {
 
     public static void getString(String key, String defValue) {
         sPreferences.getString(key, defValue);
+    }
+
+    public static void getInt(String key){
+        sPreferences.getInt(key,-1);
+    }
+
+    public static void getInt(String key,int defValue){
+        sPreferences.getInt(key,defValue);
     }
 }
