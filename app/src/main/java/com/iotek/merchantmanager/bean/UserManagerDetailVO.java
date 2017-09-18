@@ -227,5 +227,39 @@ public class UserManagerDetailVO extends BaseBean{
         public void setUserStatus(int userStatus) {
             this.userStatus = userStatus;
         }
+
+        @Override
+        public String toString() {
+            return "RowsBean{" +
+                    "custId=" + custId +
+                    ", custName='" + custName + '\'' +
+                    ", custPhone='" + custPhone + '\'' +
+                    ", lastLoginIp='" + lastLoginIp + '\'' +
+                    ", lastLoginTime=" + lastLoginTime +
+                    ", loginIp='" + loginIp + '\'' +
+                    ", loginTime=" + loginTime +
+                    ", mystatus=" + mystatus +
+                    ", realName='" + realName + '\'' +
+                    ", recordTime=" + recordTime +
+                    ", roleId=" + roleId +
+                    ", rolePname='" + rolePname + '\'' +
+                    ", sysId=" + sysId +
+                    ", userId=" + userId +
+                    ", userIdentity='" + userIdentity + '\'' +
+                    ", userName='" + userName + '\'' +
+                    ", userStatus=" + userStatus +
+                    '}';
+        }
+    }
+
+
+    @Override
+    public String toString() {
+        return "UserManagerDetailVO{" +
+                "page=" + page +
+                ", records=" + records +
+                ", total=" + total +
+                ", rows=" + rows +
+                '}';
     }
 }

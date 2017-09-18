@@ -1,10 +1,9 @@
 package com.iotek.merchantmanager.Presenter;
 
 import com.google.gson.Gson;
-import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
-import com.iotek.merchantmanager.bean.UserManagerVO;
+import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.net.HttpExecutor;
 import com.iotek.merchantmanager.net.OnResponseListener;
 import com.iotek.merchantmanager.view.LoadingDialog;
@@ -27,7 +26,7 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
     private int currentPage = 1;
 
 
-    public void queryUser(long custId, long rootId, String uuId, int page, boolean showDialog) {
+    public void queryUser(long custId, long rootId, String uuId,String mac, int page, boolean showDialog) {
 
         LoadingDialog dialog = new LoadingDialog(getContext());
         if (showDialog) {
@@ -41,17 +40,17 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
         paramsMap.put("uuid", uuId);
         paramsMap.put("limit", LIMIT_SIZE + "");
         paramsMap.put("page", page + "");
+        paramsMap.put("mac",mac);
         String paramsJson = gson.toJson(paramsMap);
 
         RequestBody body = RequestBody.create(HttpExecutor.MEDIA_TYPE, paramsJson);
-        Call<UserManagerVO> call = mApiService.queryUser(body);
-        call.enqueue(new OnResponseListener<UserManagerVO>(getContext(),true) {
+        Call<UserManagerDetailVO> call = mApiService.queryUser(body);
+        call.enqueue(new OnResponseListener<UserManagerDetailVO>(getContext(),true) {
             @Override
-            public void onSuccess(UserManagerVO userManagerVO) {
-                LogUtil.e("=====>>>>" + userManagerVO.toString());
+            public void onSuccess(UserManagerDetailVO userManagerVO) {
+                int totalPage = userManagerVO.getTotal();
             }
         });
-
     }
 
 

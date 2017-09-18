@@ -2,10 +2,15 @@ package com.iotek.merchantmanager.net;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import iotek.com.merchantmanager.BuildConfig;
+import okhttp3.Interceptor;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -19,6 +24,8 @@ public class HttpExecutor {
 
     private static HttpExecutor instance = new HttpExecutor();
 
+    public static final MediaType MEDIA_TYPE = MediaType.parse("application/json;charset=UTF-8");
+
     public static final String API_URL = BuildConfig.API_URL;
 
     private static final int DEFAULT_TIME_OUT = 5;//超时时间 5s
@@ -28,18 +35,17 @@ public class HttpExecutor {
     private OkHttpClient mClient = new OkHttpClient();
 
     private HttpExecutor() {
-
         if (BuildConfig.DEBUG) {
             mClient = mClient.newBuilder()
                     .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
                     .addNetworkInterceptor(new StethoInterceptor())
                     .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                    //TODO:拦截器
+                    .addInterceptor(new CustomInterceptor())
                     .build();
         } else {
             mClient = mClient.newBuilder()
                     .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
-                    //TODO:拦截器
+                    .addInterceptor(new CustomInterceptor())
                     .build();
         }
 
@@ -58,6 +64,23 @@ public class HttpExecutor {
 
     public ApiService getApiService() {
         return mApiService;
+    }
+
+    class CustomInterceptor implements Interceptor {
+
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+
+            Request request = chain.request();
+
+            request = request.newBuilder()
+                    .addHeader("Content-type", "application/json;charset=UTF-8")
+                    .build();
+
+            Response response = chain.proceed(request);
+
+            return response;
+        }
     }
 
 }

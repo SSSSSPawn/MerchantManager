@@ -19,25 +19,39 @@ public class Preference {
         editor.apply();
     }
 
-    public static void putInt(String key,int value){
+    public static void putInt(String key, int value) {
         SharedPreferences.Editor editor = sPreferences.edit();
-        editor.putInt(key,value);
+        editor.putInt(key, value);
         editor.apply();
     }
 
-    public static void getString(String key) {
-        sPreferences.getString(key, "");
+    public static void putLong(String key, long value) {
+        SharedPreferences.Editor editor = sPreferences.edit();
+        editor.putLong(key, value);
+        editor.apply();
     }
 
-    public static void getString(String key, String defValue) {
-        sPreferences.getString(key, defValue);
+    public static String getString(String key) {
+        return sPreferences.getString(key, "");
     }
 
-    public static void getInt(String key){
-        sPreferences.getInt(key,-1);
+    public static String getString(String key, String defValue) {
+        return sPreferences.getString(key, defValue);
     }
 
-    public static void getInt(String key,int defValue){
-        sPreferences.getInt(key,defValue);
+    public static int getInt(String key) {
+        return sPreferences.getInt(key, -1);
+    }
+
+    public static int getInt(String key, int defValue) {
+        return sPreferences.getInt(key, defValue);
+    }
+
+    public static long getLong(String key) {
+        return sPreferences.getLong(key, -1);
+    }
+
+    public static long getLong(String key, long defValue) {
+        return sPreferences.getLong(key, defValue);
     }
 }

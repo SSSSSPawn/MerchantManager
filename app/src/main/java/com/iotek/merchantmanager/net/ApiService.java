@@ -1,6 +1,7 @@
 package com.iotek.merchantmanager.net;
 
 import com.iotek.merchantmanager.bean.LoginVO;
+import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 
 import org.json.JSONObject;
 
@@ -9,8 +10,6 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import rx.Observable;
 
@@ -46,9 +45,17 @@ public interface ApiService {
      * @param params
      * @return
      */
-    @Headers({"Content-type:application/json;charset=UTF-8"})
     @POST("app/inter/dologin.json")
     Observable<LoginVO> login(@Body RequestBody params);
+
+    /**
+     * 查询 操作员列表
+     *
+     * @param params
+     * @return
+     */
+    @POST("app/inter/userQuery.json")
+    Call<UserManagerDetailVO> queryUser(@Body RequestBody params);
 
 
     /**
@@ -56,8 +63,7 @@ public interface ApiService {
      *
      * @return
      */
-    @GET("app/getSysTime.json")
+    @POST("app/getSysTime.json")
     Call<JSONObject> getSysTime();
-
 
 }

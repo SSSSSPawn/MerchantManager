@@ -9,8 +9,10 @@ import android.widget.EditText;
 import com.iotek.merchantmanager.Presenter.LoginPresenter;
 import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.Utils.LogUtil;
+import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.Utils.SysUtil;
 import com.iotek.merchantmanager.base.BaseActivity;
+import com.iotek.merchantmanager.constant.CacheKey;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -91,13 +93,13 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
 
         String md5Mac = SysUtil.md5(mac);
 
+        Preference.putString(CacheKey.MAC,md5Mac);
+
         LogUtil.i("====>>>" + md5Mac);
 
         int versionCode = SysUtil.getVersionCode(this);
 
-        LogUtil.e("sysTime:" + sysTime + "\nmd5Mac:" + md5Mac + "\nloginName:" + loginName + "\nloginPassword:" + loginPassword + "\nversionCode:" + versionCode);
-
-        mPresenter.login(sysTime, md5Mac, loginName, loginPassword, "8", true);
+        mPresenter.login(sysTime, md5Mac, loginName, loginPassword, versionCode + "", true);
 
     }
 

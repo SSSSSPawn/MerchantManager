@@ -11,4 +11,6 @@ public interface CacheKey {
     String CUST_ID = "cust_id";
 
     String UU_ID = "uu_id";
+
+    String  MAC = "mac";
 }

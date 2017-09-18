@@ -1,7 +1,6 @@
 package com.iotek.merchantmanager.fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,9 +9,12 @@ import android.view.ViewGroup;
 
 import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
 import com.iotek.merchantmanager.Utils.AppUtils;
+import com.iotek.merchantmanager.Utils.LogUtil;
+import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.BaseFragment;
 import com.iotek.merchantmanager.bean.UserManagerVO;
+import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -24,7 +26,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/23.
  */
 
-public class UserOperateManagerFragment extends BaseFragment implements OnItemClickListener {
+public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView,OnItemClickListener {
 
     public static final String TAG = "用户";
 
@@ -38,6 +40,8 @@ public class UserOperateManagerFragment extends BaseFragment implements OnItemCl
 
     private UserManagerAdapter mAdapter;
 
+    private int currentPage = 1;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,6 +51,9 @@ public class UserOperateManagerFragment extends BaseFragment implements OnItemCl
     }
 
     private void initView(View view) {
+
+        mPresenter.attachView(this);
+
         mSuperRecyclerView = (XRecyclerView) view.findViewById(R.id.super_recycler_view);
 
         mAdapter = new UserManagerAdapter();
@@ -55,48 +62,24 @@ public class UserOperateManagerFragment extends BaseFragment implements OnItemCl
         mSuperRecyclerView.setLoadingListener(this);
         mAdapter.setOnItemClickListener(this);
 
+        long custID= Preference.getLong(CacheKey.CUST_ID);
+        long rootID = Preference.getLong(CacheKey.ROOT_ID);
+        String uuID = Preference.getString(CacheKey.UU_ID);
+        String mac = Preference.getString(CacheKey.MAC);
+
+        LogUtil.e("custID=" + custID + "\nrootID=" + rootID + "\nuuID=" + uuID + "\nmac=" +mac);
+
+        mPresenter.queryUser(custID,rootID,uuID,mac,currentPage,true);
     }
 
     @Override
     public void onRefresh() {
-        times = 0;
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                mUserManagerVOs.clear();
-                for (int i = 0; i < 15; i++) {
-                    mUserManagerVOs.add(new UserManagerVO("0x001" + i, "菜10" + i, "管理员" + i + "号1"));
-                }
-                mAdapter.setDataList(mUserManagerVOs);
-                mSuperRecyclerView.refreshComplete();
-            }
 
-        }, 1000);
     }
 
     @Override
     public void onLoadMore() {
-        if (times < 2) {
-            new Handler().postDelayed(new Runnable() {
-                public void run() {
-                    for (int i = 16; i < 25; i++) {
-                        mUserManagerVOs.add(new UserManagerVO("0x002" + i, "菜10" + i, "管理员" + i + "号2"));
-                    }
-                    mSuperRecyclerView.loadMoreComplete();
-                    mAdapter.notifyDataSetChanged();
-                }
-            }, 1000);
-        } else {
-            new Handler().postDelayed(new Runnable() {
-                public void run() {
-                    for (int i = 25; i < 40; i++) {
-                        mUserManagerVOs.add(new UserManagerVO("0x003" + i, "菜10" + i, "管理员" + i + "号3"));
-                    }
-                    mSuperRecyclerView.setNoMore(true);
-                    mAdapter.notifyDataSetChanged();
-                }
-            }, 1000);
-        }
-        times++;
+
     }
 
     @Override
