@@ -74,6 +74,11 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
         super.onDestroy();
     }
 
+    @Override
+    protected boolean isBindEventBus() {
+        return false;
+    }
+
     @OnClick(R.id.btn_login)
     public void onViewClicked() {
         String loginName = mEtLoginName.getText().toString();

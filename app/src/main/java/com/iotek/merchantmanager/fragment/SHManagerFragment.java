@@ -37,4 +37,9 @@ public class SHManagerFragment extends BaseFragment {
     protected RecyclerView.Adapter getAdapter() {
         return mAdapter;
     }
+
+    @Override
+    protected boolean isBindEventBus() {
+        return false;
+    }
 }

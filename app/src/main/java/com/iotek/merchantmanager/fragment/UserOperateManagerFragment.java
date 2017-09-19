@@ -8,12 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
-import com.iotek.merchantmanager.Utils.AppUtils;
+import com.iotek.merchantmanager.activity.UserManagerDetailActivity;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.BaseFragment;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
+import com.iotek.merchantmanager.event.UserDetailEvent;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -77,8 +80,14 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     }
 
     @Override
+    protected boolean isBindEventBus() {
+        return false;
+    }
+
+    @Override
     public void OnItemClick(int position) {
-        AppUtils.showToast("pos = " + position);
+        EventBus.getDefault().post(new UserDetailEvent(mAdapter.getDataList().get(position)));
+        launch(UserManagerDetailActivity.class);
     }
 
     @Override

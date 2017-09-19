@@ -49,6 +49,11 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
         setSelectedTab(mCurrentPosition);
     }
 
+    @Override
+    protected boolean isBindEventBus() {
+        return false;
+    }
+
     private void initMenu() {
         TAB_MENUS = new TabMenus[]{
                 new TabMenus(UserOperateManagerFragment.TAG, R.drawable.user_normal, R.drawable.user_selected, findFragment(UserOperateManagerFragment.class, UserOperateManagerFragment.TAG)),
