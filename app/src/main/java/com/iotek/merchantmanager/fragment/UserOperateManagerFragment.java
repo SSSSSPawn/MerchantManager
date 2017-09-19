@@ -1,5 +1,6 @@
 package com.iotek.merchantmanager.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -36,7 +37,11 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     private UserManagerAdapter mAdapter;
 
-    private ArrayList<UserManagerDetailVO.RowsBean> mBeanList;
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        EventBus.getDefault().register(new UserManagerDetailActivity());
+    }
 
     @Nullable
     @Override
@@ -52,14 +57,10 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
         mSuperRecyclerView = (XRecyclerView) view.findViewById(R.id.super_recycler_view);
 
-        mBeanList = new ArrayList<>();
-
         mAdapter = new UserManagerAdapter();
 
         mSuperRecyclerView.setLoadingListener(this);
         mAdapter.setOnItemClickListener(this);
-
-
     }
 
     @Override
@@ -86,7 +87,7 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     @Override
     public void OnItemClick(int position) {
-        EventBus.getDefault().post(new UserDetailEvent(mAdapter.getDataList().get(position)));
+        EventBus.getDefault().post(new UserDetailEvent(mAdapter.getItem(position)));
         launch(UserManagerDetailActivity.class);
     }
 

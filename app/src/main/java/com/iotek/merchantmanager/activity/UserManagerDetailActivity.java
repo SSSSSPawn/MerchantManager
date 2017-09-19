@@ -59,7 +59,7 @@ public class UserManagerDetailActivity extends BaseActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void showUserDetail(UserDetailEvent event) {
 
-        LogUtil.e("==========>>>>" + event.mRowsBean.toString());
+        LogUtil.e("==========>>>>" + event.mRowsBean.toString() + "\nmTvNumber = " + mTvNumber);
 
         if (event != null && event.mRowsBean != null) {
             mTvNumber.setText(event.mRowsBean.getUserName());
@@ -77,26 +77,4 @@ public class UserManagerDetailActivity extends BaseActivity {
         }
     }
 
-    /**
-     *
-     * {
-     "custId": 21,
-     "custName": "亚青",
-     "custPhone": "13605154259",
-     "lastLoginIp": "121.237.61.160",
-     "lastLoginTime": 1505801368450,
-     "loginIp": "121.237.61.160",
-     "loginTime": 1505803954093,
-     "mystatus": 1,
-     "realName": "张月仙",
-     "recordTime": 1504163353038,
-     "roleId": 7,
-     "rolePname": "商户管理员",
-     "sysId": 3,
-     "userId": 83,
-     "userIdentity": "320589636987541210",
-     "userName": "13814689521",
-     "userStatus": 1
-     },
-     */
 }
