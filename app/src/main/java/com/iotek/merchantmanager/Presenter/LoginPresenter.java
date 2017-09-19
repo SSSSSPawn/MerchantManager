@@ -2,7 +2,6 @@ package com.iotek.merchantmanager.Presenter;
 
 import android.text.TextUtils;
 
-import com.google.gson.Gson;
 import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.Utils.SysUtil;
@@ -39,7 +38,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
         if (showDialog) {
             dialog.show();
         }
-        Gson gson = new Gson();
+
         Map<String, String> paramsMap = new HashMap<>();
         paramsMap.put("onsitetime", onsiteTime);
         paramsMap.put("mac", mac);
@@ -94,7 +93,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
 
     public void getSysTime() {
         Call<JSONObject> call = mApiService.getSysTime();
-        call.enqueue(new OnResponseListener<JSONObject>(getContext(), true) {
+        call.enqueue(new OnResponseListener<JSONObject>(getContext(), false) {
             @Override
             public void onSuccess(JSONObject jsonObject) {
                 if (mvpView != null) {

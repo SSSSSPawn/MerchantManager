@@ -6,7 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.iotek.merchantmanager.Utils.AppUtils;
-import com.iotek.merchantmanager.bean.UserManagerVO;
+import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.view.CustomDialog;
 
 import butterknife.Bind;
@@ -16,7 +16,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/9/1.
  */
 
-public class UserManagerAdapter extends CustomRvAdapter<UserManagerVO> {
+public class UserManagerAdapter extends CustomRvAdapter<UserManagerDetailVO.RowsBean> {
 
     @Override
     protected int getLayoutID() {
@@ -29,15 +29,15 @@ public class UserManagerAdapter extends CustomRvAdapter<UserManagerVO> {
     }
 
     @Override
-    protected void bindData(RecyclerViewHolder holder, UserManagerVO userManagerVO) {
+    protected void bindData(RecyclerViewHolder holder, UserManagerDetailVO.RowsBean rowsBean) {
 
         ViewHolder h = (ViewHolder) holder;
 
         final Context context = h.itemView.getContext();
 
-        h.mTvName.setText(userManagerVO.getTv_number());
-        h.mTvNumber.setText(userManagerVO.getTv_name());
-        h.mTvRole.setText(userManagerVO.getTv_role());
+        h.mTvName.setText(rowsBean.getRealName());
+        h.mTvNumber.setText(rowsBean.getUserName());
+        h.mTvRole.setText(rowsBean.getRolePname());
 
         h.mItemRight.setOnClickListener(new View.OnClickListener() {
             @Override

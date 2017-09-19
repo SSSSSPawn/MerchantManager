@@ -9,17 +9,13 @@ import android.view.ViewGroup;
 
 import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
 import com.iotek.merchantmanager.Utils.AppUtils;
-import com.iotek.merchantmanager.Utils.LogUtil;
-import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.BaseFragment;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
-import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import iotek.com.merchantmanager.R;
 
@@ -27,7 +23,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/23.
  */
 
-public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView,OnItemClickListener {
+public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView, OnItemClickListener {
 
     public static final String TAG = "用户";
 
@@ -35,13 +31,9 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     private XRecyclerView mSuperRecyclerView;
 
-    private int times = 0;
-
     private UserManagerAdapter mAdapter;
 
-    private int currentPage = 1;
-
-    private ArrayList<List<UserManagerDetailVO.RowsBean>> mBeanList;
+    private ArrayList<UserManagerDetailVO.RowsBean> mBeanList;
 
     @Nullable
     @Override
@@ -61,15 +53,6 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
         mAdapter = new UserManagerAdapter();
 
-        long custID= Preference.getLong(CacheKey.CUST_ID);
-        long rootID = Preference.getLong(CacheKey.ROOT_ID);
-        String uuID = Preference.getString(CacheKey.UU_ID);
-        String mac = Preference.getString(CacheKey.MAC);
-
-        LogUtil.e("custID=" + custID + "\nrootID=" + rootID + "\nuuID=" + uuID + "\nmac=" +mac);
-
-        mPresenter.queryUser(custID,rootID,uuID,mac,currentPage,true);
-
         mSuperRecyclerView.setLoadingListener(this);
         mAdapter.setOnItemClickListener(this);
 
@@ -78,12 +61,14 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     @Override
     public void onRefresh() {
-
+        mPresenter.getFirstData(1);
+        mSuperRecyclerView.refreshComplete();
     }
 
     @Override
     public void onLoadMore() {
-
+        mPresenter.getNextData();
+        mSuperRecyclerView.loadMoreComplete();
     }
 
     @Override
@@ -97,10 +82,12 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     }
 
     @Override
-    public void showUserList(ArrayList<UserManagerDetailVO.RowsBean> lists) {
-        if (!lists.isEmpty()){
-            mBeanList.clear();
-            mBeanList.add(lists);
-        }
+    public void updateUserList(ArrayList<UserManagerDetailVO.RowsBean> lists) {
+        mAdapter.setDataList(lists);
+    }
+
+    @Override
+    public void stopLoadMore() {
+        mSuperRecyclerView.setNoMore(true);
     }
 }

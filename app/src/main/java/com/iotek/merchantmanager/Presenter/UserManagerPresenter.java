@@ -1,11 +1,10 @@
 package com.iotek.merchantmanager.Presenter;
 
-import com.google.gson.Gson;
-import com.iotek.merchantmanager.Utils.ListUtil;
-import com.iotek.merchantmanager.Utils.LogUtil;
+import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
+import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.net.HttpExecutor;
 import com.iotek.merchantmanager.net.OnResponseListener;
 import com.iotek.merchantmanager.view.LoadingDialog;
@@ -26,39 +25,64 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
 
     private final int LIMIT_SIZE = 10;
 
-    private int currentPage = 1;
+    private int currentPage, totalPage;
 
-    private ArrayList<UserManagerDetailVO.RowsBean> mRowsBeen;
+    private ArrayList<UserManagerDetailVO.RowsBean> mRowsBeen = new ArrayList<>();
+
+    public void getFirstData(int page) {
+
+        long custID = Preference.getLong(CacheKey.CUST_ID);
+        long rootID = Preference.getLong(CacheKey.ROOT_ID);
+        String uuID = Preference.getString(CacheKey.UU_ID);
+        String mac = Preference.getString(CacheKey.MAC);
+
+        queryUser(custID, rootID, uuID, mac, page, false);
+    }
+
+    public void getNextData() {
+        if (currentPage <= totalPage) {
+            getFirstData(++currentPage);
+        } else {
+            mvpView.stopLoadMore();
+        }
+    }
 
 
-    public void queryUser(long custId, long rootId, String uuId,String mac, int page, boolean showDialog) {
+    public void queryUser(long custId, long rootId, String uuId, String mac, final int page, boolean showDialog) {
 
         LoadingDialog dialog = new LoadingDialog(getContext());
         if (showDialog) {
             dialog.show();
         }
 
-        Gson gson = new Gson();
         Map<String, String> paramsMap = new HashMap<>();
         paramsMap.put("custId", custId + "");
         paramsMap.put("rootId", rootId + "");
         paramsMap.put("uuid", uuId);
         paramsMap.put("limit", LIMIT_SIZE + "");
         paramsMap.put("page", page + "");
-        paramsMap.put("mac",mac);
+        paramsMap.put("mac", mac);
         String paramsJson = gson.toJson(paramsMap);
 
         RequestBody body = RequestBody.create(HttpExecutor.MEDIA_TYPE, paramsJson);
+
         Call<UserManagerDetailVO> call = mApiService.queryUser(body);
-        call.enqueue(new OnResponseListener<UserManagerDetailVO>(getContext(),true) {
+        call.enqueue(new OnResponseListener<UserManagerDetailVO>(getContext(), false) {
             @Override
             public void onSuccess(UserManagerDetailVO userManagerVO) {
-                mRowsBeen = (ArrayList<UserManagerDetailVO.RowsBean>) userManagerVO.getRows();
-                if (!ListUtil.isEmpty(mRowsBeen)){
-                    LogUtil.e(mRowsBeen.toString());
-                    mvpView.showUserList(mRowsBeen);
+
+                if (userManagerVO == null || userManagerVO.getRows() == null) {
+                    return;
                 }
-                int totalPage = userManagerVO.getTotal();
+
+                if (page == 1) {
+                    mRowsBeen.clear();
+                }
+
+                mRowsBeen.addAll(userManagerVO.getRows());
+                mvpView.updateUserList(mRowsBeen);
+                currentPage = page;
+                totalPage = userManagerVO.getTotal();
             }
         });
     }
@@ -66,6 +90,8 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
 
     public interface MvpView extends IMvpView {
 
-       void showUserList(ArrayList<UserManagerDetailVO.RowsBean> lists);
+        void updateUserList(ArrayList<UserManagerDetailVO.RowsBean> lists);
+
+        void stopLoadMore();
     }
 }
