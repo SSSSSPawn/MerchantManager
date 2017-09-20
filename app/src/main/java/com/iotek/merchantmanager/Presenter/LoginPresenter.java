@@ -2,9 +2,9 @@ package com.iotek.merchantmanager.Presenter;
 
 import android.text.TextUtils;
 
+import com.iotek.merchantmanager.Utils.DateUtils;
 import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.Preference;
-import com.iotek.merchantmanager.Utils.SysUtil;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.LoginVO;
@@ -102,11 +102,11 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                         if (!TextUtils.isEmpty(stTime)) {
                             mvpView.showSysTime(stTime);
                         } else {
-                            mvpView.showSysTime(SysUtil.getDateTime());
+                            mvpView.showSysTime(DateUtils.getSysDateTime());
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        mvpView.showSysTime(SysUtil.getDateTime());
+                        mvpView.showSysTime(DateUtils.getSysDateTime());
                     }
                 }
             }

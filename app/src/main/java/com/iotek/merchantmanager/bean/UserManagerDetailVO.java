@@ -1,5 +1,6 @@
 package com.iotek.merchantmanager.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -53,7 +54,7 @@ public class UserManagerDetailVO extends BaseBean{
         this.rows = rows;
     }
 
-    public static class RowsBean {
+    public static class RowsBean implements Serializable{
         /**
          * custId : 21
          * custName : 亚青
@@ -81,7 +82,7 @@ public class UserManagerDetailVO extends BaseBean{
         private long lastLoginTime;
         private String loginIp;
         private long loginTime;
-        private int mystatus;
+        private String mystatus;
         private String realName;
         private long recordTime;
         private int roleId;
@@ -148,11 +149,11 @@ public class UserManagerDetailVO extends BaseBean{
             this.loginTime = loginTime;
         }
 
-        public int getMystatus() {
+        public String getMystatus() {
             return mystatus;
         }
 
-        public void setMystatus(int mystatus) {
+        public void setMystatus(String mystatus) {
             this.mystatus = mystatus;
         }
 

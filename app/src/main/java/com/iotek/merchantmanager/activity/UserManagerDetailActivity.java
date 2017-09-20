@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
+import com.iotek.merchantmanager.Utils.DateUtils;
 import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.base.BaseActivity;
-import com.iotek.merchantmanager.event.UserDetailEvent;
-
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
+import com.iotek.merchantmanager.bean.UserManagerDetailVO;
+import com.iotek.merchantmanager.constant.Intentkey;
+import com.iotek.merchantmanager.constant.StatusKey;
 
 import butterknife.Bind;
 import iotek.com.merchantmanager.R;
@@ -49,32 +49,57 @@ public class UserManagerDetailActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_detail);
+        showUserDetail();
     }
 
     @Override
     protected boolean isBindEventBus() {
-        return true;
+        return false;
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void showUserDetail(UserDetailEvent event) {
+    private void showUserDetail() {
+        UserManagerDetailVO.RowsBean rowsBean = (UserManagerDetailVO.RowsBean) getIntent().getSerializableExtra(Intentkey.USER_DETAIL);
 
-        LogUtil.e("==========>>>>" + event.mRowsBean.toString() + "\nmTvNumber = " + mTvNumber);
+        LogUtil.e("==========>>>>" + rowsBean.toString());
 
-        if (event != null && event.mRowsBean != null) {
-            mTvNumber.setText(event.mRowsBean.getUserName());
-            mTvName.setText(event.mRowsBean.getRealName());
-            mTvStatus.setText(event.mRowsBean.getMystatus());
-            mTvRole.setText(event.mRowsBean.getRolePname());
-            mTvCustomNumber.setText(event.mRowsBean.getCustPhone());
-            mTvCustomName.setText(event.mRowsBean.getCustName());
-            mTvCode.setText(event.mRowsBean.getUserIdentity());
-            mTvFoundTime.setText(event.mRowsBean.getRecordTime() + "");
-            mTvLoginTime.setText(event.mRowsBean.getLoginTime() + "");
-            mTvLastLoginTime.setText(event.mRowsBean.getLastLoginTime() + "");
-            mTvLoginIp.setText(event.mRowsBean.getLoginIp());
-            mTvLastLoginIp.setText(event.mRowsBean.getLastLoginIp());
+        if (rowsBean != null) {
+            mTvNumber.setText(rowsBean.getUserName());
+            mTvName.setText(rowsBean.getRealName());
+            if (StatusKey.NORMAL_CODE.equals(rowsBean.getMystatus())){
+                mTvStatus.setText(StatusKey.NORMAL);
+            }
+            mTvRole.setText(rowsBean.getRolePname());
+            mTvCustomNumber.setText(rowsBean.getCustPhone());
+            mTvCustomName.setText(rowsBean.getCustName());
+            mTvCode.setText(rowsBean.getUserIdentity());
+            mTvFoundTime.setText(DateUtils.dateFormat(rowsBean.getRecordTime()));
+            mTvLoginTime.setText(DateUtils.dateFormat(rowsBean.getLastLoginTime()));
+            mTvLastLoginTime.setText(DateUtils.dateFormat(rowsBean.getLoginTime()));
+            mTvLoginIp.setText(rowsBean.getLoginIp());
+            mTvLastLoginIp.setText(rowsBean.getLastLoginIp());
         }
     }
+
+    /**
+     * {
+     "custId": 21,
+     "custName": "亚青",
+     "custPhone": "13605154259",
+     "lastLoginIp": "222.95.167.98",
+     "lastLoginTime": 1505871339959,
+     "loginIp": "222.95.167.98",
+     "loginTime": 1505872208510,
+     "mystatus": 1,
+     "realName": "张月仙",
+     "recordTime": 1504163353038,
+     "roleId": 7,
+     "rolePname": "商户管理员",
+     "sysId": 3,
+     "userId": 83,
+     "userIdentity": "320589636987541210",
+     "userName": "13814689521",
+     "userStatus": 1
+     */
+
 
 }

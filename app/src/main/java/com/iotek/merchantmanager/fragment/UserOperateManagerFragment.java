@@ -1,6 +1,6 @@
 package com.iotek.merchantmanager.fragment;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -13,11 +13,9 @@ import com.iotek.merchantmanager.activity.UserManagerDetailActivity;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.BaseFragment;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
-import com.iotek.merchantmanager.event.UserDetailEvent;
+import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -36,12 +34,6 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     private XRecyclerView mSuperRecyclerView;
 
     private UserManagerAdapter mAdapter;
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        EventBus.getDefault().register(new UserManagerDetailActivity());
-    }
 
     @Nullable
     @Override
@@ -87,8 +79,10 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     @Override
     public void OnItemClick(int position) {
-        EventBus.getDefault().post(new UserDetailEvent(mAdapter.getItem(position)));
-        launch(UserManagerDetailActivity.class);
+        //launch(UserManagerDetailActivity.class);
+        Intent intent = new Intent(getActivity(), UserManagerDetailActivity.class);
+        intent.putExtra(Intentkey.USER_DETAIL,mAdapter.getDataList().get(position));
+        startActivity(intent);
     }
 
     @Override

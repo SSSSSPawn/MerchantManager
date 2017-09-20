@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by admin on 2017/9/12.
@@ -121,14 +119,6 @@ public class SysUtil {
 
         return pi;
     }
-
-    public static String getDateTime() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date curDate = new Date(System.currentTimeMillis());
-        String str = formatter.format(curDate);
-        return str;
-    }
-
 
     public static String md5(String string) {
         if (TextUtils.isEmpty(string)) {
