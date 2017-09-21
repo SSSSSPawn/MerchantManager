@@ -2,6 +2,7 @@ package com.iotek.merchantmanager.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.iotek.merchantmanager.Utils.DateUtils;
@@ -62,10 +63,10 @@ public class UserManagerDetailActivity extends BaseActivity {
 
         LogUtil.e("==========>>>>" + rowsBean.toString());
 
-        if (rowsBean != null) {
+        if (!TextUtils.isEmpty(rowsBean.toString())) {
             mTvNumber.setText(rowsBean.getUserName());
             mTvName.setText(rowsBean.getRealName());
-            if (StatusKey.NORMAL_CODE.equals(rowsBean.getMystatus())){
+            if (StatusKey.NORMAL_CODE.equals(rowsBean.getMystatus())) {
                 mTvStatus.setText(StatusKey.NORMAL);
             }
             mTvRole.setText(rowsBean.getRolePname());
@@ -81,7 +82,7 @@ public class UserManagerDetailActivity extends BaseActivity {
     }
 
     /**
-     * {
+     *
      "custId": 21,
      "custName": "亚青",
      "custPhone": "13605154259",

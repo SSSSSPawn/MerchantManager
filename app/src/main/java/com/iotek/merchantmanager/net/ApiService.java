@@ -2,6 +2,7 @@ package com.iotek.merchantmanager.net;
 
 import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.bean.LoginVO;
+import com.iotek.merchantmanager.bean.QueryUserVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 
 import org.json.JSONObject;
@@ -54,7 +55,6 @@ public interface ApiService {
     @POST("app/inter/userQuery.json")
     Call<UserManagerDetailVO> queryUser(@Body RequestBody params);
 
-
     /**
      * 重置密码
      *
@@ -63,6 +63,9 @@ public interface ApiService {
      */
     @POST("/app/inter/userResetPasswd.json")
     Call<CodeMessageVO> resetPasswd(@Body RequestBody params);
+
+    @POST("/app/inter/userResetPasswd.json")
+    Call<CodeMessageVO> resetPasswds(@Body QueryUserVO params);
 
 
     /**

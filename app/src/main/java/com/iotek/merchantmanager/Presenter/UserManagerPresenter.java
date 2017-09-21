@@ -3,15 +3,15 @@ package com.iotek.merchantmanager.Presenter;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
+import com.iotek.merchantmanager.bean.CodeMessageVO;
+import com.iotek.merchantmanager.bean.QueryUserVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.net.HttpExecutor;
 import com.iotek.merchantmanager.net.OnResponseListener;
-import com.iotek.merchantmanager.view.LoadingDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -29,40 +29,31 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
 
     private ArrayList<UserManagerDetailVO.RowsBean> mRowsBeen = new ArrayList<>();
 
-    public void getFirstData(int page) {
+    private HashMap<String, String> initParams() {
+
+        HashMap<String, String> paramsMap = new HashMap<>();
 
         long custID = Preference.getLong(CacheKey.CUST_ID);
         long rootID = Preference.getLong(CacheKey.ROOT_ID);
         String uuID = Preference.getString(CacheKey.UU_ID);
         String mac = Preference.getString(CacheKey.MAC);
 
-        queryUser(custID, rootID, uuID, mac, page, false);
-    }
-
-    public void getNextData() {
-        if (currentPage <= totalPage) {
-            getFirstData(++currentPage);
-        } else {
-            mvpView.stopLoadMore();
-        }
-    }
-
-
-    public void queryUser(long custId, long rootId, String uuId, String mac, final int page, boolean showDialog) {
-
-        LoadingDialog dialog = new LoadingDialog(getContext());
-        if (showDialog) {
-            dialog.show();
-        }
-
-        Map<String, String> paramsMap = new HashMap<>();
-        paramsMap.put("custId", custId + "");
-        paramsMap.put("rootId", rootId + "");
-        paramsMap.put("uuid", uuId);
+        paramsMap.put("custId", custID + "");
+        paramsMap.put("rootId", rootID + "");
+        paramsMap.put("uuid", uuID);
         paramsMap.put("mac", mac);
-        paramsMap.put("limit", LIMIT_SIZE + "");
-        paramsMap.put("page", page + "");
-        String paramsJson = gson.toJson(paramsMap);
+
+        return paramsMap;
+
+    }
+
+    public void getFirstData(final int page) {
+
+        HashMap<String, String> paramsData = initParams();
+
+        paramsData.put("limit", LIMIT_SIZE + "");
+        paramsData.put("page", page + "");
+        String paramsJson = gson.toJson(paramsData);
 
         RequestBody body = RequestBody.create(HttpExecutor.MEDIA_TYPE, paramsJson);
 
@@ -84,6 +75,40 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
                 totalPage = userManagerVO.getTotal();
             }
         });
+    }
+
+    public void getNextData() {
+        if (currentPage <= totalPage) {
+            getFirstData(++currentPage);
+        } else {
+            mvpView.stopLoadMore();
+        }
+    }
+
+    public void userResetPasswd(QueryUserVO queryUserVO) {
+
+        Call<CodeMessageVO> call = mApiService.resetPasswds(queryUserVO);
+        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(),false) {
+            @Override
+            public void onSuccess(CodeMessageVO codeMessageVO) {
+
+            }
+        });
+
+//        HashMap<String, String> paramsData = initParams();
+//
+//        paramsData.put("userID",userID + "");
+//
+//        RequestBody body = RequestBody.create(HttpExecutor.MEDIA_TYPE, "");
+//
+//        Call<CodeMessageVO> call = mApiService.resetPasswd(body);
+//
+//        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
+//            @Override
+//            public void onSuccess(CodeMessageVO codeMessageVO) {
+//
+//            }
+//        });
     }
 
 

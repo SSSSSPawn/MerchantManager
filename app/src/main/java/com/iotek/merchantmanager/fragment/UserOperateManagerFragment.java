@@ -2,6 +2,7 @@ package com.iotek.merchantmanager.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
+import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.activity.UserManagerDetailActivity;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.BaseFragment;
+import com.iotek.merchantmanager.bean.QueryUserVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
@@ -57,8 +60,20 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     @Override
     public void onRefresh() {
-        mPresenter.getFirstData(1);
-        mSuperRecyclerView.refreshComplete();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPresenter.getFirstData(1);
+                mSuperRecyclerView.refreshComplete();
+            }
+        }, 1000);
+
+        ArrayList<UserManagerDetailVO.RowsBean> dataList = mAdapter.getDataList();
+        for (int i = 0;i<dataList.size();i++){
+            int id = dataList.get(i).getUserId();
+            mPresenter.userResetPasswd();
+        }
     }
 
     @Override
@@ -81,7 +96,7 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     public void OnItemClick(int position) {
         //launch(UserManagerDetailActivity.class);
         Intent intent = new Intent(getActivity(), UserManagerDetailActivity.class);
-        intent.putExtra(Intentkey.USER_DETAIL,mAdapter.getDataList().get(position));
+        intent.putExtra(Intentkey.USER_DETAIL, mAdapter.getDataList().get(position));
         startActivity(intent);
     }
 
