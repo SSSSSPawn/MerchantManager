@@ -18,6 +18,23 @@
             android:orientation="horizontal">
 
             <RelativeLayout
+                android:id="@+id/item_right_update"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@color/btn_bg">
+
+                <TextView
+                    android:id="@+id/item_right_txt_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/update_password_icon"
+                    android:gravity="center"
+                    android:text="重置密码 "
+                    android:textColor="#FFFAF0"/>
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/item_right"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
@@ -31,23 +48,6 @@
                     android:drawableLeft="@drawable/del_icon_normal"
                     android:gravity="center"
                     android:text="删除"
-                    android:textColor="#FFFAF0"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/item_right_update"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:background="@color/btn_bg">
-
-                <TextView
-                    android:id="@+id/item_right_txt_update"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:drawableLeft="@drawable/update_icon"
-                    android:gravity="center"
-                    android:text="修改"
                     android:textColor="#FFFAF0"/>
             </RelativeLayout>
 
