@@ -54,21 +54,22 @@
             style="@style/Text.Normal.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="18sp"
-            android:background="@drawable/shape_btn_left_bottom"
             android:layout_marginRight="1dp"
-            android:text="确定"/>
+            android:layout_weight="1"
+            android:background="@drawable/shape_btn_left_bottom"
+            android:text="确定"
+            android:textSize="18sp"/>
+
         <Button
             android:id="@+id/btn_cancel"
-            style="@style/Text.Hint.18sp"
+            style="@style/Text.Normal.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="@drawable/shape_btn_right_bottom"
             android:layout_marginLeft="1dp"
-            android:text="取消"/>
+            android:layout_weight="1"
+            android:background="@drawable/shape_btn_right_bottom"
+            android:text="取消"
+            android:textSize="18sp"/>
     </LinearLayout>
 
 

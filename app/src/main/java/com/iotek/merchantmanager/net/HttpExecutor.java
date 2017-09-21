@@ -79,6 +79,23 @@ public class HttpExecutor {
 
             Response response = chain.proceed(request);
 
+//            Request request = chain.request();
+//            Request.Builder requestBuilder = request.newBuilder();
+//            RequestBody formBody = new FormBody.Builder()
+//                    .add("custId", CacheKey.CUST_ID)
+//                    .add("rootId",CacheKey.ROOT_ID)
+//                    .add("uuid",CacheKey.UU_ID)
+//                    .add("mac",CacheKey.MAC)
+//                    .build();
+//            Gson gson = new Gson();
+//            String paramsJson = gson.toJson(request.body());
+//
+//            request = requestBuilder
+//                    .post(RequestBody.create(MEDIA_TYPE,paramsJson))
+//                    .build();
+//
+//            Response response = chain.proceed(request);
+
             return response;
         }
     }

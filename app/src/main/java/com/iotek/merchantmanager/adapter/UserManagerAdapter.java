@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.view.CustomDialog;
-import com.iotek.merchantmanager.view.SwipeLayout;
 
 import butterknife.Bind;
 import iotek.com.merchantmanager.R;
@@ -19,8 +18,9 @@ import iotek.com.merchantmanager.R;
 
 public class UserManagerAdapter extends CustomRvSwipeAdapter<UserManagerDetailVO.RowsBean> {
 
+
     @Override
-    protected void bindData(RecyclerViewHolder holder, UserManagerDetailVO.RowsBean rowsBean,int position) {
+    protected void bindData(RecyclerViewHolder holder, UserManagerDetailVO.RowsBean rowsBean, int position) {
         ViewHolder h = (ViewHolder) holder;
 
         final Context context = h.itemView.getContext();
@@ -39,10 +39,27 @@ public class UserManagerAdapter extends CustomRvSwipeAdapter<UserManagerDetailVO
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        AppUtils.showToast("******");
+                        AppUtils.showToast("删除成功 ");
                     }
                 });
-                dialog.show("确定删除该条目?");
+                dialog.setMessageSize(18);
+                dialog.show("确定删除该用户?");
+            }
+        });
+
+        h.mItemRightUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final CustomDialog dialog = new CustomDialog(context);
+                dialog.setOkButton(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        AppUtils.showToast("重置密码成功,新密码为账号后八位");
+                    }
+                });
+                dialog.setMessageSize(18);
+                dialog.show("确定重置密码吗?");
             }
         });
 
@@ -68,8 +85,8 @@ public class UserManagerAdapter extends CustomRvSwipeAdapter<UserManagerDetailVO
         TextView mTvRole;
         @Bind(R.id.item_right)
         RelativeLayout mItemRight;
-        @Bind(R.id.recyclerview_swipe)
-        SwipeLayout mSwipeLayout;
+        @Bind(R.id.item_right_update)
+        RelativeLayout mItemRightUpdate;
 
         public ViewHolder(View itemView) {
             super(itemView);

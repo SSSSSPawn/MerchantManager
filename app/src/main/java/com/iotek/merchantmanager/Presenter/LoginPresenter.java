@@ -63,6 +63,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                         dialog.dismiss();
                         if (mvpView != null) {
                             mvpView.showNetError("网络错误...");
+                            LogUtil.e("eeeeee====>>>" + e.toString());
                         }
                     }
 

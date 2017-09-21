@@ -59,9 +59,9 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
         paramsMap.put("custId", custId + "");
         paramsMap.put("rootId", rootId + "");
         paramsMap.put("uuid", uuId);
+        paramsMap.put("mac", mac);
         paramsMap.put("limit", LIMIT_SIZE + "");
         paramsMap.put("page", page + "");
-        paramsMap.put("mac", mac);
         String paramsJson = gson.toJson(paramsMap);
 
         RequestBody body = RequestBody.create(HttpExecutor.MEDIA_TYPE, paramsJson);
@@ -78,7 +78,6 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
                 if (page == 1) {
                     mRowsBeen.clear();
                 }
-
                 mRowsBeen.addAll(userManagerVO.getRows());
                 mvpView.updateUserList(mRowsBeen);
                 currentPage = page;

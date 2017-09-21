@@ -98,14 +98,13 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
 
         String md5Mac = SysUtil.md5(mac);
 
-        Preference.putString(CacheKey.MAC,md5Mac);
+        Preference.putString(CacheKey.MAC, md5Mac);
 
         LogUtil.i("====>>>" + md5Mac);
 
         int versionCode = SysUtil.getVersionCode(this);
 
         mPresenter.login(sysTime, md5Mac, loginName, loginPassword, versionCode + "", true);
-
     }
 
 

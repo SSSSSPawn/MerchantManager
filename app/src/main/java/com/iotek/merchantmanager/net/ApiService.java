@@ -1,5 +1,6 @@
 package com.iotek.merchantmanager.net;
 
+import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.bean.LoginVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 
@@ -32,11 +33,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("app/inter/dologin.json")
-    Call<LoginVO> login(@Field("onsitetime") String onsiteTime,
-                        @Field("mac") String mac,
-                        @Field("userName") String userName,
-                        @Field("userPasswd") String userPassword,
-                        @Field("appversion") String appversion);
+    Call<LoginVO> login(@Field("onsitetime") String onsiteTime, @Field("mac") String mac, @Field("userName") String userName, @Field("userPasswd") String userPassword, @Field("appversion") String appversion);
 
 
     /**
@@ -56,6 +53,16 @@ public interface ApiService {
      */
     @POST("app/inter/userQuery.json")
     Call<UserManagerDetailVO> queryUser(@Body RequestBody params);
+
+
+    /**
+     * 重置密码
+     *
+     * @param params
+     * @return
+     */
+    @POST("/app/inter/userResetPasswd.json")
+    Call<CodeMessageVO> resetPasswd(@Body RequestBody params);
 
 
     /**
