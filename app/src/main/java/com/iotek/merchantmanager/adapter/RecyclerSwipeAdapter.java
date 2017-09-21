@@ -1,17 +1,17 @@
-package com.iotek.merchantmanager.ooo;
+package com.iotek.merchantmanager.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.ViewGroup;
 
+import com.iotek.merchantmanager.bean.Attributes;
+import com.iotek.merchantmanager.listener.SwipeAdapterInterface;
+import com.iotek.merchantmanager.listener.SwipeItemMangerImpl;
+import com.iotek.merchantmanager.listener.SwipeItemMangerInterface;
 import com.iotek.merchantmanager.view.SwipeLayout;
 
 import java.util.List;
 
-import iotek.com.merchantmanager.R;
-
-public abstract class RecyclerSwipeAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH>
-        implements SwipeItemMangerInterface, SwipeAdapterInterface {
+public abstract class RecyclerSwipeAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> implements SwipeItemMangerInterface, SwipeAdapterInterface {
 
     public SwipeItemMangerImpl mItemManger = new SwipeItemMangerImpl(this);
 
@@ -20,6 +20,11 @@ public abstract class RecyclerSwipeAdapter<VH extends RecyclerView.ViewHolder> e
 
     @Override
     public abstract void onBindViewHolder(VH viewHolder, final int position);
+
+    @Override
+    public void notifyDatasetChanged() {
+        super.notifyDataSetChanged();
+    }
 
     @Override
     public void openItem(int position) {
@@ -69,20 +74,5 @@ public abstract class RecyclerSwipeAdapter<VH extends RecyclerView.ViewHolder> e
     @Override
     public void setMode(Attributes.Mode mode) {
         mItemManger.setMode(mode);
-    }
-
-
-    public static class BaseSwipeableViewHolder extends RecyclerView.ViewHolder {
-
-        public SwipeLayout               swipeLayout      = null;
-        public SwipeLayout.OnLayout      onLayoutListener = null;
-        public SwipeLayout.SwipeListener swipeMemory      = null;
-        public int                       position         = -1;
-
-        public BaseSwipeableViewHolder(View itemView) {
-            super(itemView);
-
-            swipeLayout = (SwipeLayout) itemView.findViewById(R.id.recyclerview_swipe);
-        }
     }
 }

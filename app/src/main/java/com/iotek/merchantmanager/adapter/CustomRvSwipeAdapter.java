@@ -1,4 +1,5 @@
-package com.iotek.merchantmanager.iii;
+package com.iotek.merchantmanager.adapter;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +9,14 @@ import com.iotek.merchantmanager.listener.OnItemClickListener;
 
 import java.util.ArrayList;
 
+import iotek.com.merchantmanager.R;
 
 /**
- *
- * Created by admin on 2017/8/28.
+ * Created by admin on 2017/9/21.
  */
-public abstract class SwipeListAdapter<T> extends BaseSwipeAdapter<SwipeRecyclerViewHolder> {
+
+public abstract class CustomRvSwipeAdapter<T> extends RecyclerSwipeAdapter<RecyclerViewHolder> {
+
     protected ArrayList<T> mList;
 
     private OnItemClickListener mOnItemClickListener;
@@ -27,6 +30,7 @@ public abstract class SwipeListAdapter<T> extends BaseSwipeAdapter<SwipeRecycler
         return mList == null ? new ArrayList<T>() : mList;
     }
 
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         mOnItemClickListener = listener;
     }
@@ -35,16 +39,18 @@ public abstract class SwipeListAdapter<T> extends BaseSwipeAdapter<SwipeRecycler
         return mList == null ? null : mList.get(position);
     }
 
+
     @Override
-    public SwipeRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return getViewHolder(LayoutInflater.from(parent.getContext()).inflate(getLayoutId(), parent, false));
+    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+          return getViewHolder(LayoutInflater.from(parent.getContext()).inflate(getLayoutId(), parent, false));
     }
 
     @Override
-    public void onBindViewHolder(SwipeRecyclerViewHolder holder, final int position) {
-        bindData(holder, mList.get(position));
+    public void onBindViewHolder(RecyclerViewHolder viewHolder, final int position) {
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        bindData(viewHolder, mList.get(position),position);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnItemClickListener != null) {
@@ -52,9 +58,15 @@ public abstract class SwipeListAdapter<T> extends BaseSwipeAdapter<SwipeRecycler
                 }
             }
         });
+
     }
 
-    protected abstract void bindData(SwipeRecyclerViewHolder holder, T t);
+    @Override
+    public int getSwipeLayoutResourceId(int position) {
+        return R.id.recyclerview_swipe;
+    }
+
+    protected abstract void bindData(RecyclerViewHolder holder, T t, int position);
 
     @Override
     public int getItemCount() {
@@ -63,7 +75,5 @@ public abstract class SwipeListAdapter<T> extends BaseSwipeAdapter<SwipeRecycler
 
     protected abstract int getLayoutId();
 
-    protected abstract SwipeRecyclerViewHolder getViewHolder(View itemView);
-
-
+    protected abstract RecyclerViewHolder getViewHolder(View itemView);
 }

@@ -1,4 +1,4 @@
-package com.iotek.merchantmanager.ooo;
+package com.iotek.merchantmanager.listener;
 
 public interface SwipeAdapterInterface {
 

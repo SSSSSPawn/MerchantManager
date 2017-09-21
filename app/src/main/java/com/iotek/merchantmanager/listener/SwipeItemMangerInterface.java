@@ -1,6 +1,6 @@
-package com.iotek.merchantmanager.ooo;
+package com.iotek.merchantmanager.listener;
 
-
+import com.iotek.merchantmanager.bean.Attributes;
 import com.iotek.merchantmanager.view.SwipeLayout;
 
 import java.util.List;

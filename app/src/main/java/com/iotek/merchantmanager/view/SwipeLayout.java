@@ -70,8 +70,8 @@ public class SwipeLayout extends FrameLayout {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SwipeLayout);
         int ordinal = a.getInt(R.styleable.SwipeLayout_drag_edge, DragEdge.Right.ordinal());
-        mHorizontalSwipeOffset = a.getDimension(R.styleable.SwipeLayout_horizontalSwipeOffset, 0);
-        mVerticalSwipeOffset = a.getDimension(R.styleable.SwipeLayout_verticalSwipeOffset, 0);
+//        mHorizontalSwipeOffset = a.getDimension(R.styleable.SwipeLayout_horizontalSwipeOffset, 0);
+//        mVerticalSwipeOffset = a.getDimension(R.styleable.SwipeLayout_verticalSwipeOffset, 0);
         mDragEdge = DragEdge.values()[ordinal];
         ordinal = a.getInt(R.styleable.SwipeLayout_show_mode, ShowMode.PullOut.ordinal());
         mShowMode = ShowMode.values()[ordinal];
@@ -123,10 +123,10 @@ public class SwipeLayout extends FrameLayout {
     }
 
     /**
-     * bind a view with a specific {@link SwipeLayout.OnRevealListener}
+     * bind a view with a specific {@link OnRevealListener}
      *
      * @param childId the view id.
-     * @param l       the target {@link SwipeLayout.OnRevealListener}
+     * @param l       the target {@link OnRevealListener}
      */
     public void addRevealListener(int childId, OnRevealListener l) {
         View child = findViewById(childId);
@@ -144,10 +144,10 @@ public class SwipeLayout extends FrameLayout {
     }
 
     /**
-     * bind multiple views with an {@link SwipeLayout.OnRevealListener}.
+     * bind multiple views with an {@link OnRevealListener}.
      *
      * @param childIds the view id.
-     * @param l        the {@link SwipeLayout.OnRevealListener}
+     * @param l        the {@link OnRevealListener}
      */
     public void addRevealListener(int[] childIds, OnRevealListener l) {
         for (int i : childIds)
@@ -592,7 +592,7 @@ public class SwipeLayout extends FrameLayout {
     }
 
     /**
-     * {@link android.view.View.OnLayoutChangeListener} added in API 11.
+     * {@link OnLayoutChangeListener} added in API 11.
      * I need to support it from API 8.
      */
     public interface OnLayout {
@@ -879,7 +879,7 @@ public class SwipeLayout extends FrameLayout {
 
 
     /**
-     * if working in {@link android.widget.AdapterView}, we should response {@link android.widget.Adapter}
+     * if working in {@link AdapterView}, we should response {@link Adapter}
      * isEnable(int position).
      *
      * @return true when item is enabled, else disabled.
@@ -950,9 +950,9 @@ public class SwipeLayout extends FrameLayout {
         }
 
         /**
-         * Simulate the touch event lifecycle. If you use SwipeLayout in {@link android.widget.AdapterView}
+         * Simulate the touch event lifecycle. If you use SwipeLayout in {@link AdapterView}
          * ({@link android.widget.ListView}, {@link android.widget.GridView} etc.) It will manually call
-         * {@link android.widget.AdapterView}.performItemClick, performItemLongClick.
+         * {@link AdapterView}.performItemClick, performItemLongClick.
          */
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
@@ -1010,7 +1010,7 @@ public class SwipeLayout extends FrameLayout {
 
     /**
      * There are 2 diffirent show mode.
-     * {@link SwipeLayout.ShowMode}.PullOut and {@link SwipeLayout.ShowMode}.LayDown.
+     * {@link ShowMode}.PullOut and {@link ShowMode}.LayDown.
      */
     public void setShowMode(ShowMode mode) {
         mShowMode = mode;
@@ -1044,7 +1044,7 @@ public class SwipeLayout extends FrameLayout {
     /**
      * get the open status.
      *
-     * @return {@link SwipeLayout.Status}
+     * @return {@link Status}
      * Open , Close or Middle.
      */
     public Status getOpenStatus() {

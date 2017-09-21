@@ -1,32 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@color/white"
-              android:layout_marginTop="4dp">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:background="@color/white"
+    android:orientation="horizontal">
 
     <com.iotek.merchantmanager.view.SwipeLayout
         android:id="@+id/recyclerview_swipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/item_right"
-            android:layout_width="80dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/common_red">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/item_right_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:drawableLeft="@drawable/del_icon_normal"
-                android:gravity="center"
-                android:text="删除"
-                android:textColor="#FFFAF0"/>
-        </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/item_right"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@color/common_red">
+
+                <TextView
+                    android:id="@+id/item_right_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/del_icon_normal"
+                    android:gravity="center"
+                    android:text="删除"
+                    android:textColor="#FFFAF0"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/item_right_update"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@color/btn_bg">
+
+                <TextView
+                    android:id="@+id/item_right_txt_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/update_icon"
+                    android:gravity="center"
+                    android:text="修改"
+                    android:textColor="#FFFAF0"/>
+            </RelativeLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,7 +80,6 @@
                     android:text="123456789"/>
             </LinearLayout>
 
-
             <TextView
                 android:id="@+id/tv_role"
                 style="@style/Text_Name.Text_Content"
@@ -66,8 +90,6 @@
                 android:textColor="@color/tab_txt"
                 android:textSize="16sp"/>
         </LinearLayout>
-
     </com.iotek.merchantmanager.view.SwipeLayout>
-
 
 </LinearLayout>
