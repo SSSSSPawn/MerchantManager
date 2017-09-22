@@ -4,15 +4,16 @@ package com.iotek.merchantmanager.bean;
  * Created by Administrator on 2017/9/21.
  */
 
-public class QueryUserVO {
+public class UserParamsVO extends BaseBean{
     
     private long custId;
     private long rootId;
     private String uuID;
     private String mac;
-    private int userID;
+    private long userID;
+    private  long roleId;
 
-    public QueryUserVO(long custId, long rootId, String uuID, String mac, int userID) {
+    public UserParamsVO(long custId, long rootId, String uuID, String mac, long userID) {
         this.custId = custId;
         this.rootId = rootId;
         this.uuID = uuID;
@@ -20,7 +21,24 @@ public class QueryUserVO {
         this.userID = userID;
     }
 
-    public int getUserID() {
+    public UserParamsVO(long custId, long rootId, String uuID, String mac, long userID, long roleId) {
+        this.custId = custId;
+        this.rootId = rootId;
+        this.uuID = uuID;
+        this.mac = mac;
+        this.userID = userID;
+        this.roleId = roleId;
+    }
+
+    public long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public long getUserID() {
         return userID;
     }
 
@@ -58,5 +76,17 @@ public class QueryUserVO {
 
     public void setMac(String mac) {
         this.mac = mac;
+    }
+
+    @Override
+    public String toString() {
+        return "QueryUserVO{" +
+                "custId=" + custId +
+                ", rootId=" + rootId +
+                ", uuID='" + uuID + '\'' +
+                ", mac='" + mac + '\'' +
+                ", userID=" + userID +
+                ", roleId=" + roleId +
+                '}';
     }
 }

@@ -5,8 +5,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.iotek.merchantmanager.Utils.AppUtils;
+import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
+import com.iotek.merchantmanager.listener.OnConfirmListener;
 import com.iotek.merchantmanager.view.CustomDialog;
 
 import butterknife.Bind;
@@ -18,9 +19,14 @@ import iotek.com.merchantmanager.R;
 
 public class UserManagerAdapter extends CustomRvSwipeAdapter<UserManagerDetailVO.RowsBean> {
 
+    private OnConfirmListener mListener;
+
+    public void setOnConfirmListener(OnConfirmListener listener){
+        mListener = listener;
+    }
 
     @Override
-    protected void bindData(RecyclerViewHolder holder, UserManagerDetailVO.RowsBean rowsBean, int position) {
+    protected void bindData(RecyclerViewHolder holder, final UserManagerDetailVO.RowsBean rowsBean, int position) {
         ViewHolder h = (ViewHolder) holder;
 
         final Context context = h.itemView.getContext();
@@ -39,7 +45,9 @@ public class UserManagerAdapter extends CustomRvSwipeAdapter<UserManagerDetailVO
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        AppUtils.showToast("删除成功 ");
+                        if (mListener != null){
+                            mListener.onConfirmDel(rowsBean.getUserId());
+                        }
                     }
                 });
                 dialog.setMessageSize(18);
@@ -55,7 +63,10 @@ public class UserManagerAdapter extends CustomRvSwipeAdapter<UserManagerDetailVO
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        AppUtils.showToast("重置密码成功,新密码为账号后八位");
+                        if (mListener!= null){
+                            LogUtil.e("rowsBean.getUserId()=====>>" + rowsBean.getUserId() + "=====" + rowsBean.getRoleId());
+                            mListener.onConfirmReset(rowsBean.getUserId(),rowsBean.getRoleId());
+                        }
                     }
                 });
                 dialog.setMessageSize(18);

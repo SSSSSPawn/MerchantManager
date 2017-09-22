@@ -32,7 +32,7 @@ public class SwipeLayout extends FrameLayout {
     private int mDragDistance = 0;
     private DragEdge mDragEdge;
     private ShowMode mShowMode;
-
+    private boolean mClickToClose = false;
     private float mHorizontalSwipeOffset;
     private float mVerticalSwipeOffset;
 
@@ -72,6 +72,8 @@ public class SwipeLayout extends FrameLayout {
         int ordinal = a.getInt(R.styleable.SwipeLayout_drag_edge, DragEdge.Right.ordinal());
 //        mHorizontalSwipeOffset = a.getDimension(R.styleable.SwipeLayout_horizontalSwipeOffset, 0);
 //        mVerticalSwipeOffset = a.getDimension(R.styleable.SwipeLayout_verticalSwipeOffset, 0);
+
+        setClickToClose(a.getBoolean(R.styleable.SwipeLayout_clickToClose, mClickToClose));
         mDragEdge = DragEdge.values()[ordinal];
         ordinal = a.getInt(R.styleable.SwipeLayout_show_mode, ShowMode.PullOut.ordinal());
         mShowMode = ShowMode.values()[ordinal];
@@ -102,7 +104,15 @@ public class SwipeLayout extends FrameLayout {
     }
 
     public interface SwipeDenier {
-
+        /*
+         * Called in onInterceptTouchEvent
+         * Determines if this swipe event should be denied
+         * Implement this interface if you are using views with swipe gestures
+         * As a child of SwipeLayout
+         *
+         * @return true deny
+         *         false allow
+         */
         boolean shouldDenySwipe(MotionEvent ev);
     }
 
@@ -123,10 +133,10 @@ public class SwipeLayout extends FrameLayout {
     }
 
     /**
-     * bind a view with a specific {@link OnRevealListener}
+     * bind a view with a specific {@link SwipeLayout.OnRevealListener}
      *
      * @param childId the view id.
-     * @param l       the target {@link OnRevealListener}
+     * @param l       the target {@link SwipeLayout.OnRevealListener}
      */
     public void addRevealListener(int childId, OnRevealListener l) {
         View child = findViewById(childId);
@@ -144,10 +154,10 @@ public class SwipeLayout extends FrameLayout {
     }
 
     /**
-     * bind multiple views with an {@link OnRevealListener}.
+     * bind multiple views with an {@link SwipeLayout.OnRevealListener}.
      *
      * @param childIds the view id.
-     * @param l        the {@link OnRevealListener}
+     * @param l        the {@link SwipeLayout.OnRevealListener}
      */
     public void addRevealListener(int[] childIds, OnRevealListener l) {
         for (int i : childIds)
@@ -665,8 +675,33 @@ public class SwipeLayout extends FrameLayout {
 
     private boolean mTouchConsumedByChild = false;
 
+    private Rect hitSurfaceRect;
+    private boolean isTouchOnSurface(MotionEvent ev) {
+        View surfaceView = getSurfaceView();
+        if (surfaceView == null) {
+            return false;
+        }
+        if (hitSurfaceRect == null) {
+            hitSurfaceRect = new Rect();
+        }
+        surfaceView.getHitRect(hitSurfaceRect);
+        return hitSurfaceRect.contains((int) ev.getX(), (int) ev.getY());
+    }
+
+    public boolean isClickToClose() {
+        return mClickToClose;
+    }
+
+    public void setClickToClose(boolean mClickToClose) {
+        this.mClickToClose = mClickToClose;
+    }
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+
+        if (mClickToClose && getOpenStatus() == Status.Open && isTouchOnSurface(ev)) {
+            return true;
+        }
 
         if (!isEnabled() || isDisabledInAdapterView()) {
             return true;
@@ -956,10 +991,15 @@ public class SwipeLayout extends FrameLayout {
          */
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
+
+            if (mClickToClose && isTouchOnSurface(e)) {
+                close();
+            }
             if (mDoubleClickListener == null) {
                 performAdapterViewItemClick(e);
             }
-            return true;
+           // return true;
+            return super.onSingleTapUp(e);
         }
 
         @Override
@@ -1010,7 +1050,7 @@ public class SwipeLayout extends FrameLayout {
 
     /**
      * There are 2 diffirent show mode.
-     * {@link ShowMode}.PullOut and {@link ShowMode}.LayDown.
+     * {@link SwipeLayout.ShowMode}.PullOut and {@link SwipeLayout.ShowMode}.LayDown.
      */
     public void setShowMode(ShowMode mode) {
         mShowMode = mode;
@@ -1044,7 +1084,7 @@ public class SwipeLayout extends FrameLayout {
     /**
      * get the open status.
      *
-     * @return {@link Status}
+     * @return {@link SwipeLayout.Status}
      * Open , Close or Middle.
      */
     public Status getOpenStatus() {

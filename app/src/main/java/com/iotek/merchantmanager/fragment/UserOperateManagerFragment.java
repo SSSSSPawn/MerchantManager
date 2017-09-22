@@ -10,13 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
+import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.activity.UserManagerDetailActivity;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.BaseFragment;
-import com.iotek.merchantmanager.bean.QueryUserVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
+import com.iotek.merchantmanager.bean.UserParamsVO;
+import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.constant.Intentkey;
+import com.iotek.merchantmanager.listener.OnConfirmListener;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -48,6 +51,11 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     private void initView(View view) {
 
+        final long custID = Preference.getLong(CacheKey.CUST_ID);
+        final long rootID = Preference.getLong(CacheKey.ROOT_ID);
+        final String uuID = Preference.getString(CacheKey.UU_ID);
+        final String mac = Preference.getString(CacheKey.MAC);
+
         mPresenter.attachView(this);
 
         mSuperRecyclerView = (XRecyclerView) view.findViewById(R.id.super_recycler_view);
@@ -56,6 +64,18 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
         mSuperRecyclerView.setLoadingListener(this);
         mAdapter.setOnItemClickListener(this);
+
+        mAdapter.setOnConfirmListener(new OnConfirmListener() {
+            @Override
+            public void onConfirmDel(long id) {
+                mPresenter.userDelete(new UserParamsVO(custID, rootID, uuID, mac, id));
+            }
+
+            @Override
+            public void onConfirmReset(long id, long roleId) {
+                mPresenter.userResetPassword(id,roleId);
+            }
+        });
     }
 
     @Override
@@ -68,12 +88,6 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
                 mSuperRecyclerView.refreshComplete();
             }
         }, 1000);
-
-        ArrayList<UserManagerDetailVO.RowsBean> dataList = mAdapter.getDataList();
-        for (int i = 0;i<dataList.size();i++){
-            int id = dataList.get(i).getUserId();
-            mPresenter.userResetPasswd();
-        }
     }
 
     @Override
@@ -94,7 +108,6 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     @Override
     public void OnItemClick(int position) {
-        //launch(UserManagerDetailActivity.class);
         Intent intent = new Intent(getActivity(), UserManagerDetailActivity.class);
         intent.putExtra(Intentkey.USER_DETAIL, mAdapter.getDataList().get(position));
         startActivity(intent);
@@ -108,5 +121,15 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     @Override
     public void stopLoadMore() {
         mSuperRecyclerView.setNoMore(true);
+    }
+
+    @Override
+    public void showSuccess(String msg) {
+        AppUtils.showToast(msg);
+    }
+
+    @Override
+    public void showError(String msg) {
+        AppUtils.showToast(msg);
     }
 }

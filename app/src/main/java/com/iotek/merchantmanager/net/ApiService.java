@@ -2,7 +2,7 @@ package com.iotek.merchantmanager.net;
 
 import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.bean.LoginVO;
-import com.iotek.merchantmanager.bean.QueryUserVO;
+import com.iotek.merchantmanager.bean.UserParamsVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 
 import org.json.JSONObject;
@@ -23,7 +23,7 @@ public interface ApiService {
 
 
     /**
-     * 登录  表单形式提交
+     * 登录
      *
      * @param onsiteTime
      * @param mac
@@ -38,7 +38,7 @@ public interface ApiService {
 
 
     /**
-     * 登陆  JSON格式提交
+     * 登陆
      *
      * @param params
      * @return
@@ -61,12 +61,18 @@ public interface ApiService {
      * @param params
      * @return
      */
-    @POST("/app/inter/userResetPasswd.json")
-    Call<CodeMessageVO> resetPasswd(@Body RequestBody params);
+    @POST("app/inter/userResetPasswd.json")
+    Observable<CodeMessageVO> resetPasswds(@Body RequestBody params);
 
-    @POST("/app/inter/userResetPasswd.json")
-    Call<CodeMessageVO> resetPasswds(@Body QueryUserVO params);
 
+    /**
+     * 删除用户
+     *
+     * @param params
+     * @return
+     */
+    @POST("app/inter/userDelete.json")
+    Call<CodeMessageVO> userDelete(@Body UserParamsVO params);
 
     /**
      * 获取系统时间
