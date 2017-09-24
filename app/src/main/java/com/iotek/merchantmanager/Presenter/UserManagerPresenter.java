@@ -17,9 +17,6 @@ import java.util.Map;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 import static com.iotek.merchantmanager.constant.CacheKey.CUST_ID;
 
@@ -87,75 +84,27 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
         }
     }
 
-    public void userResetPassword(long userId,long roleId) {
+    public void userResetPassword(UserParamsVO  userParamsVO) {
 
-        Map<String, String> paramsMap = new HashMap<>();
+        Call<CodeMessageVO> call = mApiService.resetPasswds(userParamsVO);
+        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
+            @Override
+            public void onSuccess(CodeMessageVO codeMessageVO) {
 
-        long custID = Preference.getLong(CUST_ID);
-        long rootID = Preference.getLong(CacheKey.ROOT_ID);
-        String uuID = Preference.getString(CacheKey.UU_ID);
-        String mac = Preference.getString(CacheKey.MAC);
+                LogUtil.e("codeMessageVO---------->>> -->>" + codeMessageVO.toString());
 
-        paramsMap.put("custId", custID + "");
-        paramsMap.put("rootId", rootID + "");
-        paramsMap.put("uuid", uuID);
-        paramsMap.put("mac", mac);
-        paramsMap.put("userId", userId + "");
-        paramsMap.put("roleId", roleId + "");
+                if (codeMessageVO == null) {
+                    return;
+                }
 
-        String paramsJson = gson.toJson(paramsMap);
+                if ("200".equals(codeMessageVO.getCode())) {
+                    mvpView.showSuccess(codeMessageVO.getMessage());
+                } else {
+                    mvpView.showError(codeMessageVO.getMessage());
+                }
 
-        RequestBody body = RequestBody.create(HttpExecutor.MEDIA_TYPE, paramsJson);
-
-        mApiService.resetPasswds(body)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<CodeMessageVO>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(CodeMessageVO codeMessageVO) {
-                        LogUtil.e("codeMessageVO---------->>> -->>" + codeMessageVO.toString());
-
-                        if (codeMessageVO == null) {
-                            return;
-                        }
-
-                        if ("200".equals(codeMessageVO.getCode())) {
-                            mvpView.showSuccess(codeMessageVO.getMessage());
-                        } else {
-                            mvpView.showError(codeMessageVO.getMessage());
-                        }
-                    }
-                });
-
-//        Call<CodeMessageVO> call = mApiService.resetPasswds(userParamsVO);
-//        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
-//            @Override
-//            public void onSuccess(CodeMessageVO codeMessageVO) {
-//
-//                LogUtil.e("codeMessageVO---------->>> -->>" + codeMessageVO.toString());
-//
-//                if (codeMessageVO == null) {
-//                    return;
-//                }
-//
-//                if ("200".equals(codeMessageVO.getCode())) {
-//                    mvpView.showSuccess(codeMessageVO.getMessage());
-//                } else {
-//                    mvpView.showError(codeMessageVO.getMessage());
-//                }
-//
-//            }
-//        });
+            }
+        });
     }
 
     public void userDelete(UserParamsVO queryUserVO) {

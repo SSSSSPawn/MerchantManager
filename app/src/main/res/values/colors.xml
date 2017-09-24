@@ -28,9 +28,13 @@
     <color name="lineColor">#dcdee5</color>
 
     <color name="black">#000</color>
+    <color name="text_black_87">#8a8a8a</color>
     <color name="red_normal">#FF0000</color>
     <color name="red_pressed">#FF6666</color>
     <color name="common_red">#f13f2f</color>
     <color name="gray_holly_text">#808080</color>
+
+    <color name="fb_button">#009787</color>
+    <color name="background_snackbar">#323232</color>
 
 </resources>

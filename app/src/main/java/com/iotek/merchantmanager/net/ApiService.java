@@ -62,7 +62,7 @@ public interface ApiService {
      * @return
      */
     @POST("app/inter/userResetPasswd.json")
-    Observable<CodeMessageVO> resetPasswds(@Body RequestBody params);
+    Call<CodeMessageVO> resetPasswds(@Body UserParamsVO params);
 
 
     /**

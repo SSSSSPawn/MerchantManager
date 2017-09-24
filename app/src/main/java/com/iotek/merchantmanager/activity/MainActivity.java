@@ -29,6 +29,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
 
     private int mCurrentPosition = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,4 +127,5 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
+
 }

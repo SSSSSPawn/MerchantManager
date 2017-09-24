@@ -100,6 +100,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                 if (mvpView != null) {
                     try {
                         String stTime = jsonObject.getString("rspmsg");
+                        LogUtil.e("time time time--->>" + stTime);
                         if (!TextUtils.isEmpty(stTime)) {
                             mvpView.showSysTime(stTime);
                         } else {

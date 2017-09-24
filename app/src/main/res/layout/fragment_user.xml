@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/gray_tr"
-              android:orientation="vertical">
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_tr">
 
-    <com.iotek.merchantmanager.view.AppBar
-        android:id="@+id/appBar"
-        style="@style/AppBar"
-        android:background="@color/btn_bg">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            style="@style/Text_AppBar_title"
-            android:text="操作员管理"/>
-    </com.iotek.merchantmanager.view.AppBar>
+        <com.iotek.merchantmanager.view.AppBar
+            android:id="@+id/appBar"
+            style="@style/AppBar"
+            android:background="@color/btn_bg">
 
-    <include layout="@layout/fragment_base_list"/>
+            <TextView
+                style="@style/Text_AppBar_title"
+                android:text="操作员管理"/>
+        </com.iotek.merchantmanager.view.AppBar>
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"/>
+        <include layout="@layout/fragment_base_list"/>
 
-</LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/layout_fab_button"/>
+
+</android.support.design.widget.CoordinatorLayout>

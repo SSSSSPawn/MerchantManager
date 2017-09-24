@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
 import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.Utils.Preference;
@@ -21,6 +22,7 @@ import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.listener.OnConfirmListener;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
+import com.iotek.merchantmanager.view.FloatingButton;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/23.
  */
 
-public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView, OnItemClickListener {
+public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView, OnItemClickListener, View.OnClickListener {
 
     public static final String TAG = "用户";
 
@@ -41,11 +43,14 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     private UserManagerAdapter mAdapter;
 
+    private MaterialSheetFab materialSheetFab;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         initView(view);
+        initFab(view);
         return view;
     }
 
@@ -73,9 +78,23 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
             @Override
             public void onConfirmReset(long id, long roleId) {
-                mPresenter.userResetPassword(id,roleId);
+                mPresenter.userResetPassword(new UserParamsVO(custID, rootID, uuID, mac, id, roleId));
             }
         });
+    }
+
+
+    private void initFab(View view) {
+
+        FloatingButton fab = (FloatingButton) view.findViewById(R.id.fab);
+        View sheetView = view.findViewById(R.id.fab_sheet);
+        View overlay = view.findViewById(R.id.overlay);
+        int sheetColor = getResources().getColor(R.color.white);
+        int fabColor = getResources().getColor(R.color.white);
+
+        materialSheetFab = new MaterialSheetFab<>(fab, sheetView, overlay, sheetColor, fabColor);
+
+        view.findViewById(R.id.fab_sheet_item_add_user).setOnClickListener(this);
     }
 
     @Override
@@ -131,5 +150,14 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     @Override
     public void showError(String msg) {
         AppUtils.showToast(msg);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fab_sheet_item_add_user:
+                materialSheetFab.hideSheet();
+                break;
+        }
     }
 }

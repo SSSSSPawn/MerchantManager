@@ -49,6 +49,9 @@ public abstract class OnResponseListener<T> implements retrofit2.Callback<T> {
         LogUtil.w("<======>" + response.code());
         if (response.code() == 200) {
             onSuccess(response.body());
+        } else if (response.code() == 404) {
+            AppUtils.showToast("接口返回 404 数据格式异常 ");
+            return;
         } else {
             try {
                 String jsonStr = response.errorBody().string();
@@ -65,7 +68,6 @@ public abstract class OnResponseListener<T> implements retrofit2.Callback<T> {
                 LogUtil.w(response.code() + "");
                 AppUtils.showToast("数据格式异常  ");
             }
-
         }
         mContext = null;
     }
@@ -73,7 +75,7 @@ public abstract class OnResponseListener<T> implements retrofit2.Callback<T> {
     @Override
     public void onFailure(Call<T> call, Throwable t) {
         dismissDialog();
-        LogUtil.e("未知错误-" + call.request().url().toString());
+        LogUtil.e("未知错误-" + call.request().toString());
         mContext = null;
     }
 
