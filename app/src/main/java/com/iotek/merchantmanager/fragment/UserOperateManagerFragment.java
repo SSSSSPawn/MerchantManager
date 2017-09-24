@@ -22,7 +22,7 @@ import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.listener.OnConfirmListener;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
-import com.iotek.merchantmanager.view.FloatingButton;
+import com.iotek.merchantmanager.view.CusFloatingButton;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     private void initFab(View view) {
 
-        FloatingButton fab = (FloatingButton) view.findViewById(R.id.fab);
+        CusFloatingButton fab = (CusFloatingButton) view.findViewById(R.id.fab);
         View sheetView = view.findViewById(R.id.fab_sheet);
         View overlay = view.findViewById(R.id.overlay);
         int sheetColor = getResources().getColor(R.color.white);

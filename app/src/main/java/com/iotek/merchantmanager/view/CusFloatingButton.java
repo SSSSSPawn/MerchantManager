@@ -17,19 +17,19 @@ import iotek.com.merchantmanager.R;
  * Created by Administrator on 2017/9/23.
  */
 
-public class FloatingButton extends FloatingActionButton implements AnimatedFab {
+public class CusFloatingButton extends FloatingActionButton implements AnimatedFab {
 
     private static final int FAB_ANIM_DURATION = 200;
 
-    public FloatingButton(Context context) {
+    public CusFloatingButton(Context context) {
         super(context);
     }
 
-    public FloatingButton(Context context, AttributeSet attrs) {
+    public CusFloatingButton(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public FloatingButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CusFloatingButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
