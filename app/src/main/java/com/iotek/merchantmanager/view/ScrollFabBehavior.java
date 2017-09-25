@@ -12,12 +12,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
 import iotek.com.merchantmanager.R;
 
 /**
  * Created by Administrator on 2017/9/24.
  */
-public class ScrollFabBehavior extends CoordinatorLayout.Behavior<CusFloatingButton> {
+public class ScrollFabBehavior extends CoordinatorLayout.Behavior<FloatingActionsMenu> {
 
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
     private boolean mIsAnimatingOut = false;
@@ -27,22 +29,25 @@ public class ScrollFabBehavior extends CoordinatorLayout.Behavior<CusFloatingBut
     }
 
     @Override
-    public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, CusFloatingButton child, View directTargetChild, View target, int nestedScrollAxes) {
+    public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionsMenu child, View directTargetChild, View target, int nestedScrollAxes) {
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL
                 || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes);
     }
 
     @Override
-    public void onNestedScroll(CoordinatorLayout coordinatorLayout, CusFloatingButton child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
+    public void onNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionsMenu child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
         if (dyConsumed > 0 && !this.mIsAnimatingOut && child.getVisibility() == View.VISIBLE) {
+            if (child.isExpanded()) {
+                child.collapse();
+            }
             animateOut(child);
         } else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {
             animateIn(child);
         }
     }
 
-    private void animateOut(final CusFloatingButton button) {
+    private void animateOut(final FloatingActionsMenu button) {
         if (Build.VERSION.SDK_INT >= 15) {
             ViewCompat.animate(button).scaleX(0.0F).scaleY(0.0F).alpha(0.0F).setInterpolator(INTERPOLATOR).withLayer()
                     .setListener(new ViewPropertyAnimatorListener() {
@@ -81,7 +86,7 @@ public class ScrollFabBehavior extends CoordinatorLayout.Behavior<CusFloatingBut
         }
     }
 
-    private void animateIn(CusFloatingButton button) {
+    private void animateIn(FloatingActionsMenu button) {
         button.setVisibility(View.VISIBLE);
         if (Build.VERSION.SDK_INT >= 15) {
             ViewCompat.animate(button).scaleX(1.0F).scaleY(1.0F).alpha(1.0F)
