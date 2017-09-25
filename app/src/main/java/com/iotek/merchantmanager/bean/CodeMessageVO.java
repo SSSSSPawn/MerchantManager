@@ -6,38 +6,38 @@ package com.iotek.merchantmanager.bean;
 
 public class CodeMessageVO extends BaseBean {
 
-    private String code;
-    private String message;
+    private int rspcod;
+    private String rspmsg;
 
     public CodeMessageVO() {
     }
 
-    public CodeMessageVO(String code, String message) {
-        this.code = code;
-        this.message = message;
+    public CodeMessageVO(int rspcod, String rspmsg) {
+        this.rspcod = rspcod;
+        this.rspmsg = rspmsg;
     }
 
-    public String getCode() {
-        return code;
+    public int getRspcod() {
+        return rspcod;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setRspcod(int rspcod) {
+        this.rspcod = rspcod;
     }
 
-    public String getMessage() {
-        return message;
+    public String getRspmsg() {
+        return rspmsg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setRspmsg(String rspmsg) {
+        this.rspmsg = rspmsg;
     }
 
     @Override
     public String toString() {
         return "CodeMessageVO{" +
-                "code='" + code + '\'' +
-                ", message='" + message + '\'' +
+                "rspcod=" + rspcod +
+                ", rspmsg='" + rspmsg + '\'' +
                 '}';
     }
 }

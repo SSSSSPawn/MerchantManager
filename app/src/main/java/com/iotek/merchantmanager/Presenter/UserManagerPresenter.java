@@ -27,12 +27,11 @@ import static com.iotek.merchantmanager.constant.CacheKey.CUST_ID;
 public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.MvpView> {
 
 
-    private final int LIMIT_SIZE = 10;
+    private final int LIMIT_SIZE = 20;
 
     private int currentPage, totalPage;
 
     private ArrayList<UserManagerDetailVO.RowsBean> mRowsBeen = new ArrayList<>();
-
 
     public void getFirstData(final int page) {
 
@@ -84,8 +83,7 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
         }
     }
 
-    public void userResetPassword(UserParamsVO  userParamsVO) {
-
+    public void userResetPassword(UserParamsVO userParamsVO) {
         Call<CodeMessageVO> call = mApiService.resetPasswds(userParamsVO);
         call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
             @Override
@@ -93,14 +91,10 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
 
                 LogUtil.e("codeMessageVO---------->>> -->>" + codeMessageVO.toString());
 
-                if (codeMessageVO == null) {
-                    return;
-                }
-
-                if ("200".equals(codeMessageVO.getCode())) {
-                    mvpView.showSuccess(codeMessageVO.getMessage());
+                if (200 == codeMessageVO.getRspcod()) {
+                    mvpView.showSuccess(codeMessageVO.getRspmsg());
                 } else {
-                    mvpView.showError(codeMessageVO.getMessage());
+                    mvpView.showError(codeMessageVO.getRspmsg());
                 }
 
             }
@@ -115,14 +109,10 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
 
                 LogUtil.e("codeMessageVO---------->>>" + codeMessageVO.toString());
 
-                if (codeMessageVO == null) {
-                    return;
-                }
-
-                if ("200".equals(codeMessageVO.getCode())) {
-                    mvpView.showSuccess(codeMessageVO.getMessage());
+                if (200 == codeMessageVO.getRspcod()) {
+                    mvpView.showSuccess(codeMessageVO.getRspmsg());
                 } else {
-                    mvpView.showError(codeMessageVO.getMessage());
+                    mvpView.showError(codeMessageVO.getRspmsg());
                 }
             }
         });

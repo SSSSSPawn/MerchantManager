@@ -58,7 +58,7 @@ public abstract class OnResponseListener<T> implements retrofit2.Callback<T> {
                 LogUtil.w("<----->" + jsonStr);
                 if (!TextUtils.isEmpty(jsonStr)) {
                     CodeMessageVO codeMessage = new Gson().fromJson(jsonStr, CodeMessageVO.class);
-                    AppUtils.showToast(codeMessage.getMessage());
+                    AppUtils.showToast(codeMessage.getRspmsg());
                 } else {
                     LogUtil.w(response.code() + "------" + jsonStr);
                     AppUtils.showToast("数据为空  ");

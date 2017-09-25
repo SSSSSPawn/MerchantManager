@@ -1,11 +1,10 @@
 package com.iotek.merchantmanager.net;
 
 import com.iotek.merchantmanager.bean.CodeMessageVO;
+import com.iotek.merchantmanager.bean.LoginParamsVO;
 import com.iotek.merchantmanager.bean.LoginVO;
-import com.iotek.merchantmanager.bean.UserParamsVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
-
-import org.json.JSONObject;
+import com.iotek.merchantmanager.bean.UserParamsVO;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -44,7 +43,7 @@ public interface ApiService {
      * @return
      */
     @POST("app/inter/dologin.json")
-    Observable<LoginVO> login(@Body RequestBody params);
+    Observable<LoginVO> login(@Body LoginParamsVO params);
 
     /**
      * 查询 操作员列表
@@ -80,6 +79,6 @@ public interface ApiService {
      * @return
      */
     @POST("app/getSysTime.json")
-    Call<JSONObject> getSysTime();
+    Call<CodeMessageVO> getSysTime();
 
 }

@@ -99,6 +99,11 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="Theme.MaterialSheetFab.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/fb_button</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -114,7 +119,7 @@
         <item name="android:layout_marginLeft">@dimen/fab_spacing</item>
         <item name="android:layout_marginRight">@dimen/fab_spacing</item>
         <item name="elevation">@dimen/fab_elevation</item>
-        <item name="backgroundTint">@color/fb_button</item>
+        <item name="backgroundTint">@color/becPrimaryBlue</item>
         <item name="rippleColor">#33728dff</item>
         <item name="android:src">@drawable/ic_add_</item>
         <item name="fabSize">normal</item>

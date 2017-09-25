@@ -7,19 +7,13 @@ import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
+import com.iotek.merchantmanager.bean.CodeMessageVO;
+import com.iotek.merchantmanager.bean.LoginParamsVO;
 import com.iotek.merchantmanager.bean.LoginVO;
 import com.iotek.merchantmanager.constant.CacheKey;
-import com.iotek.merchantmanager.net.HttpExecutor;
 import com.iotek.merchantmanager.net.OnResponseListener;
 import com.iotek.merchantmanager.view.LoadingDialog;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -31,7 +25,8 @@ import rx.schedulers.Schedulers;
 
 public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
 
-    public void login(String onsiteTime, String mac, String userName, String userPassword, String appverSion, boolean showDialog) {
+
+    public void login(LoginParamsVO paramsVO, boolean showDialog) {
 
         final LoadingDialog dialog = new LoadingDialog(getContext());
 
@@ -39,17 +34,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
             dialog.show();
         }
 
-        Map<String, String> paramsMap = new HashMap<>();
-        paramsMap.put("onsitetime", onsiteTime);
-        paramsMap.put("mac", mac);
-        paramsMap.put("userName", userName);
-        paramsMap.put("userPasswd", userPassword);
-        paramsMap.put("appversion", appverSion);
-        String paramsJson = gson.toJson(paramsMap);
-
-        RequestBody body = RequestBody.create(HttpExecutor.MEDIA_TYPE, paramsJson);
-
-        mApiService.login(body)
+        mApiService.login(paramsVO)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<LoginVO>() {
@@ -63,7 +48,6 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                         dialog.dismiss();
                         if (mvpView != null) {
                             mvpView.showNetError("网络错误...");
-                            LogUtil.e("eeeeee====>>>" + e.toString());
                         }
                     }
 
@@ -92,21 +76,76 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                 });
     }
 
+//    public void login(String onsiteTime, String mac, String userName, String userPassword, String appverSion, boolean showDialog) {
+//
+//        final LoadingDialog dialog = new LoadingDialog(getContext());
+//
+//        if (showDialog) {
+//            dialog.show();
+//        }
+//
+//        LoginParamsVO loginParamsVO = new LoginParamsVO(onsiteTime, mac, userName, userPassword, appverSion);
+//        Gson gson = new Gson();
+//        String paramsJson = gson.toJson(loginParamsVO);
+//        RequestBody body = RequestBody.create(HttpExecutor.MEDIA_TYPE, paramsJson);
+//
+//        mApiService.login(body)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<LoginVO>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        dialog.dismiss();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        dialog.dismiss();
+//                        if (mvpView != null) {
+//                            mvpView.showNetError("网络错误...");
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onNext(LoginVO loginVO) {
+//                        if (mvpView != null) {
+//                            if (200 == loginVO.getRspcod()) {
+//                                int custId = loginVO.getObj().getCustId();
+//                                int rootId = loginVO.getObj().getRootId();
+//                                String uuid = loginVO.getObj().getUuid();
+//
+//                                LogUtil.e(custId + "---" + rootId + "---" + uuid);
+//
+//                                Preference.putLong(CacheKey.CUST_ID, custId);
+//                                Preference.putLong(CacheKey.ROOT_ID, rootId);
+//                                Preference.putString(CacheKey.UU_ID, uuid);
+//
+//                                mvpView.loginSuccess(loginVO.getRspmsg());
+//                                mvpView.startHomeActivity();
+//
+//                            } else {
+//                                mvpView.loginError(loginVO.getRspmsg());
+//                            }
+//                        }
+//                    }
+//                });
+//    }
+
     public void getSysTime() {
-        Call<JSONObject> call = mApiService.getSysTime();
-        call.enqueue(new OnResponseListener<JSONObject>(getContext(), false) {
+        Call<CodeMessageVO> call = mApiService.getSysTime();
+        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
             @Override
-            public void onSuccess(JSONObject jsonObject) {
+            public void onSuccess(CodeMessageVO codeMessageVO) {
                 if (mvpView != null) {
                     try {
-                        String stTime = jsonObject.getString("rspmsg");
-                        LogUtil.e("time time time--->>" + stTime);
+                        String stTime = codeMessageVO.getRspmsg();
                         if (!TextUtils.isEmpty(stTime)) {
+                            LogUtil.e("time time time ===>>>" + stTime);
                             mvpView.showSysTime(stTime);
                         } else {
                             mvpView.showSysTime(DateUtils.getSysDateTime());
                         }
-                    } catch (JSONException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                         mvpView.showSysTime(DateUtils.getSysDateTime());
                     }

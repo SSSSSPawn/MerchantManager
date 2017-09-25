@@ -8,42 +8,26 @@ public class UserParamsVO extends BaseBean{
     
     private long custId;
     private long rootId;
-    private String uuID;
+    private String uuid;
     private String mac;
-    private long userID;
+    private long userId;
     private  long roleId;
 
-    public UserParamsVO(long custId, long rootId, String uuID, String mac, long userID) {
+    public UserParamsVO(long custId, long rootId, String uuid, String mac, long userId) {
         this.custId = custId;
         this.rootId = rootId;
-        this.uuID = uuID;
+        this.uuid = uuid;
         this.mac = mac;
-        this.userID = userID;
+        this.userId = userId;
     }
 
-    public UserParamsVO(long custId, long rootId, String uuID, String mac, long userID, long roleId) {
+    public UserParamsVO(long custId, long rootId, String uuid, String mac, long userId, long roleId) {
         this.custId = custId;
         this.rootId = rootId;
-        this.uuID = uuID;
+        this.uuid = uuid;
         this.mac = mac;
-        this.userID = userID;
+        this.userId = userId;
         this.roleId = roleId;
-    }
-
-    public long getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
-
-    public long getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
     }
 
     public long getCustId() {
@@ -62,12 +46,12 @@ public class UserParamsVO extends BaseBean{
         this.rootId = rootId;
     }
 
-    public String getUuID() {
-        return uuID;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setUuID(String uuID) {
-        this.uuID = uuID;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getMac() {
@@ -78,15 +62,19 @@ public class UserParamsVO extends BaseBean{
         this.mac = mac;
     }
 
-    @Override
-    public String toString() {
-        return "QueryUserVO{" +
-                "custId=" + custId +
-                ", rootId=" + rootId +
-                ", uuID='" + uuID + '\'' +
-                ", mac='" + mac + '\'' +
-                ", userID=" + userID +
-                ", roleId=" + roleId +
-                '}';
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
     }
 }

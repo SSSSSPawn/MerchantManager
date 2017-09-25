@@ -24,6 +24,6 @@
 
     </LinearLayout>
 
-    <include layout="@layout/layout_fab_button"/>
+    <include layout="@layout/l"/>
 
 </android.support.design.widget.CoordinatorLayout>
