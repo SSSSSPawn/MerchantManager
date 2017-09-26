@@ -48,7 +48,7 @@ public class ScrollFabBehavior extends CoordinatorLayout.Behavior<FloatingAction
     }
 
     private void animateOut(final FloatingActionsMenu button) {
-        if (Build.VERSION.SDK_INT >= 15) {
+        if (Build.VERSION.SDK_INT >= 14) {
             ViewCompat.animate(button).scaleX(0.0F).scaleY(0.0F).alpha(0.0F).setInterpolator(INTERPOLATOR).withLayer()
                     .setListener(new ViewPropertyAnimatorListener() {
                         public void onAnimationStart(View view) {
@@ -88,7 +88,7 @@ public class ScrollFabBehavior extends CoordinatorLayout.Behavior<FloatingAction
 
     private void animateIn(FloatingActionsMenu button) {
         button.setVisibility(View.VISIBLE);
-        if (Build.VERSION.SDK_INT >= 15) {
+        if (Build.VERSION.SDK_INT >= 14) {
             ViewCompat.animate(button).scaleX(1.0F).scaleY(1.0F).alpha(1.0F)
                     .setInterpolator(INTERPOLATOR).withLayer().setListener(null)
                     .start();
