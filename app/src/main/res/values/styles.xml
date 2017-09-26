@@ -99,7 +99,7 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="Text_Name.Text_Content.16sp">
+    <style name="Text_Name.Text_Content.16sp" parent="Text_Name.Text_Content">
         <item name="android:textSize">16sp</item>
     </style>
 

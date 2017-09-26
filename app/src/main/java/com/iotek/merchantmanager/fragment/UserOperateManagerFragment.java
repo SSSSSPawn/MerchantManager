@@ -13,6 +13,7 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
 import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.Utils.Preference;
+import com.iotek.merchantmanager.activity.AddUserActivity;
 import com.iotek.merchantmanager.activity.UserManagerDetailActivity;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.BaseFragment;
@@ -146,6 +147,7 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
         switch (view.getId()) {
             case R.id.fab_add_user:
                 AppUtils.showToast("添加用户");
+                launch(AddUserActivity.class);
                 break;
         }
     }

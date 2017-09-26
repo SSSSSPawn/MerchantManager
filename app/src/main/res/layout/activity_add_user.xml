@@ -2,16 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical"
               android:background="@color/white"
-              android:padding="12dp">
+              android:orientation="vertical">
+
+    <com.iotek.merchantmanager.view.AppBar
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        android:background="@color/btn_bg">
+
+        <TextView
+            style="@style/Text_AppBar_title"
+            android:text="添加用户"/>
+    </com.iotek.merchantmanager.view.AppBar>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:padding="12dp">
 
         <TextView
             style="@style/Text_Name"
@@ -19,9 +29,171 @@
 
         <TextView
             style="@style/Text_Name.Text_Content.16sp"
-            android:textColor="@color/black"
-            android:hint="请选择"/>
+            android:hint="请选择"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more"/>
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            style="@style/Text_Name"
+            android:text="登录账号"/>
+
+        <EditText
+            style="@style/Text_Name.Text_Content.16sp"
+            android:background="@null"
+            android:hint="请填写"
+            android:singleLine="true"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            style="@style/Text_Name"
+            android:text="登录密码"/>
+
+        <EditText
+            style="@style/Text_Name.Text_Content.16sp"
+            android:background="@null"
+            android:hint="请填写"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            style="@style/Text_Name"
+            android:text="确认密码"/>
+
+        <EditText
+            style="@style/Text_Name.Text_Content.16sp"
+            android:background="@null"
+            android:hint="请填写"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            style="@style/Text_Name"
+            android:text="用户姓名"/>
+
+        <EditText
+            style="@style/Text_Name.Text_Content.16sp"
+            android:background="@null"
+            android:hint="请填写"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            style="@style/Text_Name"
+            android:text="身份证号码"/>
+
+        <EditText
+            style="@style/Text_Name.Text_Content.16sp"
+            android:background="@null"
+            android:hint="请填写"
+            android:singleLine="true"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor"/>
+
 
 </LinearLayout>

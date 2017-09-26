@@ -15,9 +15,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.iotek.merchantmanager.activity.LoginActivity"
-            android:windowSoftInputMode="adjustPan"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.LoginView">
+            android:theme="@style/AppTheme.LoginView"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -27,6 +27,9 @@
 
         <activity android:name="com.iotek.merchantmanager.activity.MainActivity"/>
         <activity android:name="com.iotek.merchantmanager.activity.UserManagerDetailActivity"/>
+        <activity
+            android:name="com.iotek.merchantmanager.activity.AddUserActivity"
+            android:windowSoftInputMode="adjustPan"/>
 
     </application>
 
