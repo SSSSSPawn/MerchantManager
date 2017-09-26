@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
 import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.Utils.Preference;
@@ -25,15 +26,20 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.OnClick;
 import iotek.com.merchantmanager.R;
 
 /**
  * Created by admin on 2017/8/23.
  */
 
-public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView, OnItemClickListener, View.OnClickListener {
+public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView, OnItemClickListener {
 
     public static final String TAG = "用户";
+
+    @Bind(R.id.fab_add_user)
+    FloatingActionButton mFabAddUser;
 
     private UserManagerPresenter mPresenter = new UserManagerPresenter();
 
@@ -134,8 +140,13 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
         AppUtils.showToast(msg);
     }
 
-    @Override
-    public void onClick(View v) {
 
+    @OnClick(R.id.fab_add_user)
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.fab_add_user:
+                AppUtils.showToast("添加用户");
+                break;
+        }
     }
 }

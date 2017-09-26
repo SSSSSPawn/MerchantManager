@@ -58,15 +58,13 @@ public abstract class OnResponseListener<T> implements retrofit2.Callback<T> {
                 LogUtil.w("<----->" + jsonStr);
                 if (!TextUtils.isEmpty(jsonStr)) {
                     CodeMessageVO codeMessage = new Gson().fromJson(jsonStr, CodeMessageVO.class);
-                    AppUtils.showToast(codeMessage.getRspmsg());
+                    onFailure(codeMessage.getRspcod(), codeMessage.getRspmsg());
                 } else {
-                    LogUtil.w(response.code() + "------" + jsonStr);
-                    AppUtils.showToast("数据为空  ");
+                    onFailure(response.code(),"接口返回 数据为空 ");
                 }
 
             } catch (IOException e) {
-                LogUtil.w(response.code() + "");
-                AppUtils.showToast("数据格式异常  ");
+                onFailure(response.code(),"接口返回 数据格式异常 ");
             }
         }
         mContext = null;
@@ -80,6 +78,14 @@ public abstract class OnResponseListener<T> implements retrofit2.Callback<T> {
     }
 
     public abstract void onSuccess(T t);
+
+    public void onFailure(int code, String message) {
+
+        AppUtils.showToast(message);
+
+        mContext = null;
+
+    }
 
     public void dismissDialog() {
         if (mLoadingDialog != null && mContext != null && mLoadingDialog.isShowing()) {

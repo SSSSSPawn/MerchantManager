@@ -12,6 +12,8 @@ import com.iotek.merchantmanager.net.HttpExecutor;
 
 public abstract class BasePresenter<V extends IMvpView> implements  Presenter<V>  {
 
+    protected final int CODE_SUCCESS = 200;
+
     protected V mvpView;
 
     protected ApiService mApiService = HttpExecutor.getInstance().getApiService();

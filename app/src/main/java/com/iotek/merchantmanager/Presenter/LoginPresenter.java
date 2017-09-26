@@ -48,14 +48,14 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                         dialog.dismiss();
                         if (mvpView != null) {
                             LogUtil.e("error error error ==>" + e.getMessage());
-                            mvpView.showNetError("网络错误...");
+                            mvpView.showNetError("登录失败...");
                         }
                     }
 
                     @Override
                     public void onNext(LoginVO loginVO) {
                         if (mvpView != null) {
-                            if (200 == loginVO.getRspcod()) {
+                            if (CODE_SUCCESS == loginVO.getRspcod()) {
                                 int custId = loginVO.getObj().getCustId();
                                 int rootId = loginVO.getObj().getRootId();
                                 String uuid = loginVO.getObj().getUuid();

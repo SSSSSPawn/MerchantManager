@@ -1,9 +1,9 @@
 package com.iotek.merchantmanager.Presenter;
 
-import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
+import com.iotek.merchantmanager.bean.AddUserParamsVO;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.bean.UserParamsVO;
@@ -57,20 +57,19 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
         call.enqueue(new OnResponseListener<UserManagerDetailVO>(getContext(), false) {
             @Override
             public void onSuccess(UserManagerDetailVO userManagerVO) {
+                if (mvpView != null) {
+                    if (userManagerVO == null || userManagerVO.getRows() == null) {
+                        return;
+                    }
 
-                LogUtil.e("userManagerVO---->>>" + userManagerVO.toString());
-
-                if (userManagerVO == null || userManagerVO.getRows() == null) {
-                    return;
+                    if (page == 1) {
+                        mRowsBeen.clear();
+                    }
+                    mRowsBeen.addAll(userManagerVO.getRows());
+                    mvpView.updateUserList(mRowsBeen);
+                    currentPage = page;
+                    totalPage = userManagerVO.getTotal();
                 }
-
-                if (page == 1) {
-                    mRowsBeen.clear();
-                }
-                mRowsBeen.addAll(userManagerVO.getRows());
-                mvpView.updateUserList(mRowsBeen);
-                currentPage = page;
-                totalPage = userManagerVO.getTotal();
             }
         });
     }
@@ -88,15 +87,18 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
         call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
             @Override
             public void onSuccess(CodeMessageVO codeMessageVO) {
-
-                LogUtil.e("codeMessageVO---------->>> -->>" + codeMessageVO.toString());
-
-                if (200 == codeMessageVO.getRspcod()) {
-                    mvpView.showSuccess(codeMessageVO.getRspmsg());
-                } else {
-                    mvpView.showError(codeMessageVO.getRspmsg());
+                if (mvpView != null) {
+                    if (CODE_SUCCESS == codeMessageVO.getRspcod()) {
+                        mvpView.showSuccess(codeMessageVO.getRspmsg());
+                    } else {
+                        mvpView.showError(codeMessageVO.getRspmsg());
+                    }
                 }
+            }
 
+            @Override
+            public void onFailure(int code, String message) {
+                super.onFailure(code, message);
             }
         });
     }
@@ -106,13 +108,28 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
         call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
             @Override
             public void onSuccess(CodeMessageVO codeMessageVO) {
+                if (mvpView != null) {
+                    if (CODE_SUCCESS == codeMessageVO.getRspcod()) {
+                        mvpView.showSuccess(codeMessageVO.getRspmsg());
+                    } else {
+                        mvpView.showError(codeMessageVO.getRspmsg());
+                    }
+                }
+            }
+        });
+    }
 
-                LogUtil.e("codeMessageVO---------->>>" + codeMessageVO.toString());
-
-                if (200 == codeMessageVO.getRspcod()) {
-                    mvpView.showSuccess(codeMessageVO.getRspmsg());
-                } else {
-                    mvpView.showError(codeMessageVO.getRspmsg());
+    public void userAdd(AddUserParamsVO paramsVO) {
+        Call<CodeMessageVO> call = mApiService.userAdd(paramsVO);
+        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
+            @Override
+            public void onSuccess(CodeMessageVO codeMessageVO) {
+                if (mvpView != null) {
+                    if (CODE_SUCCESS == codeMessageVO.getRspcod()) {
+                        mvpView.showError(codeMessageVO.getRspmsg());
+                    }else {
+                        mvpView.showError(codeMessageVO.getRspmsg());
+                    }
                 }
             }
         });
