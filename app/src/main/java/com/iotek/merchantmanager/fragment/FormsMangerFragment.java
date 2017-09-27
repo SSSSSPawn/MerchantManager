@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.BaseFragment;
 
@@ -31,6 +32,7 @@ public class FormsMangerFragment extends BaseFragment {
     }
 
     private void init(){
+        LogUtil.e("FormsMangerFragment FormsMangerFragment FormsMangerFragment");
         mAdapter = new UserManagerAdapter();
     }
 
