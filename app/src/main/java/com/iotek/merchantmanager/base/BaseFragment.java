@@ -29,7 +29,7 @@ import iotek.com.merchantmanager.R;
 public abstract class BaseFragment extends Fragment implements XRecyclerView.LoadingListener {
 
     @Bind(R.id.super_recycler_view)
-    XRecyclerView mSuperRecyclerView;
+    protected XRecyclerView mSuperRecyclerView;
 
     private boolean isFragmentVisible;
     private boolean isReuseView;
@@ -49,7 +49,7 @@ public abstract class BaseFragment extends Fragment implements XRecyclerView.Loa
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return LayoutInflater.from(getContext()).inflate(getLayout(), null);
+        return LayoutInflater.from(getContext()).inflate(getLayoutId(), null);
     }
 
     @Override
@@ -167,10 +167,6 @@ public abstract class BaseFragment extends Fragment implements XRecyclerView.Loa
         AppUtils.startActivity(getActivity(), clazz, bundle);
     }
 
-    protected int getLayout() {
-        return R.layout.fragment_base_list;
-    }
-
     @Override
     public void onRefresh() {
 
@@ -184,5 +180,7 @@ public abstract class BaseFragment extends Fragment implements XRecyclerView.Loa
     protected abstract RecyclerView.Adapter getAdapter();
 
     protected abstract boolean isBindEventBus();
+
+    protected abstract int getLayoutId();
 
 }

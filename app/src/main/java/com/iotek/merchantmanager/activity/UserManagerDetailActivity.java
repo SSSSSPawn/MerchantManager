@@ -49,13 +49,17 @@ public class UserManagerDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_detail);
         showUserDetail();
     }
 
     @Override
     protected boolean isBindEventBus() {
         return false;
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.activity_user_detail;
     }
 
     private void showUserDetail() {

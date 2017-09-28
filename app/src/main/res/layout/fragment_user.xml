@@ -37,16 +37,6 @@
         fab:fab_labelStyle="@style/menu_labels_style"
         fab:fab_labelsPosition="left">
 
-        <!--<com.getbase.floatingactionbutton.FloatingActionButton-->
-            <!--android:id="@+id/fab_add_manager"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--fab:fab_colorNormal="@color/becPrimaryBlue"-->
-            <!--fab:fab_icon="@drawable/ic_add_manager"-->
-            <!--fab:fab_size="mini"-->
-            <!--fab:fab_title="添加管理员"-->
-            <!--/>-->
-
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_user"
             android:layout_width="wrap_content"

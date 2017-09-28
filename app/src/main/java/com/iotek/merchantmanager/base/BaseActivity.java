@@ -29,6 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getLayoutID());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.statusBarColor));
         }
@@ -119,5 +120,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract boolean isBindEventBus();
+
+    protected abstract int getLayoutID();
 
 }

@@ -38,7 +38,6 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
         mPresenter.attachView(this);
         mPresenter.getSysTime();
     }
@@ -79,6 +78,12 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
     protected boolean isBindEventBus() {
         return false;
     }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.activity_login;
+    }
+
 
     @OnClick(R.id.btn_login)
     public void onViewClicked() {

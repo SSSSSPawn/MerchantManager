@@ -3,7 +3,6 @@ package com.iotek.merchantmanager.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +22,6 @@ import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.listener.OnConfirmListener;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 
@@ -44,20 +42,17 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     private UserManagerPresenter mPresenter = new UserManagerPresenter();
 
-    private XRecyclerView mSuperRecyclerView;
-
     private UserManagerAdapter mAdapter;
 
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_user, container, false);
-        initView(view);
-        return view;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        initView();
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    private void initView(View view) {
+
+    private void initView() {
 
         final long custID = Preference.getLong(CacheKey.CUST_ID);
         final long rootID = Preference.getLong(CacheKey.ROOT_ID);
@@ -66,11 +61,8 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
         mPresenter.attachView(this);
 
-        mSuperRecyclerView = (XRecyclerView) view.findViewById(R.id.super_recycler_view);
-
         mAdapter = new UserManagerAdapter();
 
-        mSuperRecyclerView.setLoadingListener(this);
         mAdapter.setOnItemClickListener(this);
 
         mAdapter.setOnConfirmListener(new OnConfirmListener() {
@@ -115,6 +107,11 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     }
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_user;
+    }
+
+    @Override
     public void OnItemClick(int position) {
         Intent intent = new Intent(getActivity(), UserManagerDetailActivity.class);
         intent.putExtra(Intentkey.USER_DETAIL, mAdapter.getDataList().get(position));
@@ -132,15 +129,9 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     }
 
     @Override
-    public void showSuccess(String msg) {
+    public void showMsg(String msg) {
         AppUtils.showToast(msg);
     }
-
-    @Override
-    public void showError(String msg) {
-        AppUtils.showToast(msg);
-    }
-
 
     @OnClick(R.id.fab_add_user)
     public void onViewClicked(View view) {

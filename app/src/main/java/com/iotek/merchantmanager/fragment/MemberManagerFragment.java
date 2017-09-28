@@ -42,4 +42,9 @@ public class MemberManagerFragment extends BaseFragment {
     protected boolean isBindEventBus() {
         return false;
     }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_vip;
+    }
 }

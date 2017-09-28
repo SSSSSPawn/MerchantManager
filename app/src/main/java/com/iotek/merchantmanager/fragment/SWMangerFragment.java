@@ -42,4 +42,9 @@ public class SWMangerFragment extends BaseFragment {
     protected boolean isBindEventBus() {
         return false;
     }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_sw;
+    }
 }

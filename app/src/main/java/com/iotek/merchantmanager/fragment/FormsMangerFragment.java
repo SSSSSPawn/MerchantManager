@@ -45,4 +45,9 @@ public class FormsMangerFragment extends BaseFragment {
     protected boolean isBindEventBus() {
         return false;
     }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_form;
+    }
 }

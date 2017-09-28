@@ -82,37 +82,35 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
         }
     }
 
-    public void userResetPassword(UserParamsVO userParamsVO) {
+    public void userResetPassword(final UserParamsVO userParamsVO) {
         Call<CodeMessageVO> call = mApiService.resetPasswds(userParamsVO);
         call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
             @Override
             public void onSuccess(CodeMessageVO codeMessageVO) {
                 if (mvpView != null) {
-                    if (CODE_SUCCESS == codeMessageVO.getRspcod()) {
-                        mvpView.showSuccess(codeMessageVO.getRspmsg());
-                    } else {
-                        mvpView.showError(codeMessageVO.getRspmsg());
-                    }
+                    mvpView.showMsg(codeMessageVO.getRspmsg());
                 }
-            }
-
-            @Override
-            public void onFailure(int code, String message) {
-                super.onFailure(code, message);
             }
         });
     }
 
-    public void userDelete(UserParamsVO queryUserVO) {
+    public void userDelete(final UserParamsVO queryUserVO) {
         Call<CodeMessageVO> call = mApiService.userDelete(queryUserVO);
         call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
             @Override
             public void onSuccess(CodeMessageVO codeMessageVO) {
                 if (mvpView != null) {
                     if (CODE_SUCCESS == codeMessageVO.getRspcod()) {
-                        mvpView.showSuccess(codeMessageVO.getRspmsg());
+                        long userId = queryUserVO.getUserId();
+                        for (UserManagerDetailVO.RowsBean rowsBean : mRowsBeen) {
+                            if (rowsBean.getUserId() == userId) {
+                                mRowsBeen.remove(rowsBean);
+                                mvpView.updateUserList(mRowsBeen);
+                            }
+                        }
+                        mvpView.showMsg(codeMessageVO.getRspmsg());
                     } else {
-                        mvpView.showError(codeMessageVO.getRspmsg());
+                        mvpView.showMsg(codeMessageVO.getRspmsg() + "^^^^^^^^^^^");
                     }
                 }
             }
@@ -125,11 +123,7 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
             @Override
             public void onSuccess(CodeMessageVO codeMessageVO) {
                 if (mvpView != null) {
-                    if (CODE_SUCCESS == codeMessageVO.getRspcod()) {
-                        mvpView.showError(codeMessageVO.getRspmsg());
-                    }else {
-                        mvpView.showError(codeMessageVO.getRspmsg());
-                    }
+                    mvpView.showMsg(codeMessageVO.getRspmsg());
                 }
             }
         });
@@ -142,8 +136,6 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
 
         void stopLoadMore();
 
-        void showSuccess(String msg);
-
-        void showError(String msg);
+        void showMsg(String msg);
     }
 }

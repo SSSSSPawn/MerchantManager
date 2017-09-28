@@ -33,7 +33,6 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         initMenu();
 
@@ -53,6 +52,11 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
     @Override
     protected boolean isBindEventBus() {
         return false;
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.activity_main;
     }
 
     private void initMenu() {

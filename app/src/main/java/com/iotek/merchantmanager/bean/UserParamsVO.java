@@ -77,4 +77,16 @@ public class UserParamsVO extends BaseBean{
     public void setRoleId(long roleId) {
         this.roleId = roleId;
     }
+
+    @Override
+    public String toString() {
+        return "UserParamsVO{" +
+                "custId=" + custId +
+                ", rootId=" + rootId +
+                ", uuid='" + uuid + '\'' +
+                ", mac='" + mac + '\'' +
+                ", userId=" + userId +
+                ", roleId=" + roleId +
+                '}';
+    }
 }

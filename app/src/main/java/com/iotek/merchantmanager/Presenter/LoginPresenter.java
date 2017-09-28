@@ -77,61 +77,6 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                 });
     }
 
-//    public void login(String onsiteTime, String mac, String userName, String userPassword, String appverSion, boolean showDialog) {
-//
-//        final LoadingDialog dialog = new LoadingDialog(getContext());
-//
-//        if (showDialog) {
-//            dialog.show();
-//        }
-//
-//        LoginParamsVO loginParamsVO = new LoginParamsVO(onsiteTime, mac, userName, userPassword, appverSion);
-//        Gson gson = new Gson();
-//        String paramsJson = gson.toJson(loginParamsVO);
-//        RequestBody body = RequestBody.create(HttpExecutor.MEDIA_TYPE, paramsJson);
-//
-//        mApiService.login(body)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Subscriber<LoginVO>() {
-//                    @Override
-//                    public void onCompleted() {
-//                        dialog.dismiss();
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        dialog.dismiss();
-//                        if (mvpView != null) {
-//                            mvpView.showNetError("网络错误...");
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onNext(LoginVO loginVO) {
-//                        if (mvpView != null) {
-//                            if (200 == loginVO.getRspcod()) {
-//                                int custId = loginVO.getObj().getCustId();
-//                                int rootId = loginVO.getObj().getRootId();
-//                                String uuid = loginVO.getObj().getUuid();
-//
-//                                LogUtil.e(custId + "---" + rootId + "---" + uuid);
-//
-//                                Preference.putLong(CacheKey.CUST_ID, custId);
-//                                Preference.putLong(CacheKey.ROOT_ID, rootId);
-//                                Preference.putString(CacheKey.UU_ID, uuid);
-//
-//                                mvpView.loginSuccess(loginVO.getRspmsg());
-//                                mvpView.startHomeActivity();
-//
-//                            } else {
-//                                mvpView.loginError(loginVO.getRspmsg());
-//                            }
-//                        }
-//                    }
-//                });
-//    }
-
     public void getSysTime() {
         Call<CodeMessageVO> call = mApiService.getSysTime();
         call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
