@@ -18,7 +18,6 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import iotek.com.merchantmanager.R;
 
@@ -28,7 +27,9 @@ import iotek.com.merchantmanager.R;
 
 public abstract class BaseFragment extends Fragment implements XRecyclerView.LoadingListener {
 
-    @Bind(R.id.super_recycler_view)
+//    @Bind(R.id.super_recycler_view)
+//    protected XRecyclerView mSuperRecyclerView;
+
     protected XRecyclerView mSuperRecyclerView;
 
     private boolean isFragmentVisible;
@@ -49,7 +50,9 @@ public abstract class BaseFragment extends Fragment implements XRecyclerView.Loa
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return LayoutInflater.from(getContext()).inflate(getLayoutId(), null);
+        rootView = LayoutInflater.from(getContext()).inflate(getLayoutId(), null);
+        mSuperRecyclerView = (XRecyclerView) rootView.findViewById(R.id.super_recycler_view);
+        return rootView;
     }
 
     @Override

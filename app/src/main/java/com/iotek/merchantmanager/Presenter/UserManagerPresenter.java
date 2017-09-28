@@ -110,7 +110,7 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
                         }
                         mvpView.showMsg(codeMessageVO.getRspmsg());
                     } else {
-                        mvpView.showMsg(codeMessageVO.getRspmsg() + "^^^^^^^^^^^");
+                        mvpView.showMsg(codeMessageVO.getRspmsg());
                     }
                 }
             }
