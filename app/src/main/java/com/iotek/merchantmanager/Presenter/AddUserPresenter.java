@@ -14,19 +14,21 @@ import retrofit2.Call;
 
 public class AddUserPresenter extends BasePresenter<AddUserPresenter.MvpView> {
 
-    public void addUser(AddUserParamsVO paramsVO){
+    public void userAdd(AddUserParamsVO paramsVO) {
         Call<CodeMessageVO> call = mApiService.userAdd(paramsVO);
-        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(),false) {
+        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), true) {
             @Override
             public void onSuccess(CodeMessageVO codeMessageVO) {
-
+                if (mvpView != null) {
+                    mvpView.showMsg(codeMessageVO.getRspmsg());
+                }
             }
         });
     }
 
 
     public interface MvpView extends IMvpView{
-
+        void showMsg(String msg);
     }
 
 }

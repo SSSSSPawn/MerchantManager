@@ -137,7 +137,6 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fab_add_user:
-                AppUtils.showToast("添加用户");
                 launch(AddUserActivity.class);
                 break;
         }

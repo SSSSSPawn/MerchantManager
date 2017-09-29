@@ -10,9 +10,6 @@
         style="@style/AppBar"
         android:background="@color/btn_bg">
 
-        <TextView
-            style="@style/Text_AppBar_title"
-            android:text="操作员详情"/>
     </com.iotek.merchantmanager.view.AppBar>
 
 

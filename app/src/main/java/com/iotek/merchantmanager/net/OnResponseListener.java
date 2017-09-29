@@ -45,8 +45,8 @@ public abstract class OnResponseListener<T> implements retrofit2.Callback<T> {
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
-        dismissDialog();
         LogUtil.w("<======>" + response.code());
+        dismissDialog();
         if (response.code() == 200) {
             onSuccess(response.body());
         } else if (response.code() == 404) {

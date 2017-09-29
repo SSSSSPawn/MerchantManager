@@ -64,7 +64,6 @@ public class UserManagerAdapter extends CustomRvSwipeAdapter<UserManagerDetailVO
                     public void onClick(View v) {
                         dialog.dismiss();
                         if (mListener!= null){
-                            LogUtil.e("rowsBean.getUserId()=====>>" + rowsBean.getUserId() + "=====" + rowsBean.getRoleId());
                             mListener.onConfirmReset(rowsBean.getUserId(),rowsBean.getRoleId());
                         }
                     }

@@ -16,12 +16,14 @@ public class AddUserParamsVO extends BaseBean {
     private String userIdentity;//身份证号码
     private String userPasswd;//用户密码
 
-    public AddUserParamsVO(long custId, long rootId, String uuid, String mac, long userId, long roleId, String userName, String realName, String userIdentity, String userPasswd) {
+    public AddUserParamsVO() {
+    }
+
+    public AddUserParamsVO(long custId, long rootId, String uuid, String mac, long roleId, String userName, String realName, String userIdentity, String userPasswd) {
         this.custId = custId;
         this.rootId = rootId;
         this.uuid = uuid;
         this.mac = mac;
-        this.userId = userId;
         this.roleId = roleId;
         this.userName = userName;
         this.realName = realName;
@@ -107,5 +109,21 @@ public class AddUserParamsVO extends BaseBean {
 
     public void setUserPasswd(String userPasswd) {
         this.userPasswd = userPasswd;
+    }
+
+    @Override
+    public String toString() {
+        return "AddUserParamsVO{" +
+                "custId=" + custId +
+                ", rootId=" + rootId +
+                ", uuid='" + uuid + '\'' +
+                ", mac='" + mac + '\'' +
+                ", userId=" + userId +
+                ", roleId=" + roleId +
+                ", userName='" + userName + '\'' +
+                ", realName='" + realName + '\'' +
+                ", userIdentity='" + userIdentity + '\'' +
+                ", userPasswd='" + userPasswd + '\'' +
+                '}';
     }
 }

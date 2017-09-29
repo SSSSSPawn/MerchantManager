@@ -3,7 +3,6 @@ package com.iotek.merchantmanager.Presenter;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
-import com.iotek.merchantmanager.bean.AddUserParamsVO;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.bean.UserParamsVO;
@@ -13,12 +12,11 @@ import com.iotek.merchantmanager.net.OnResponseListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
-
-import static com.iotek.merchantmanager.constant.CacheKey.CUST_ID;
 
 /**
  * Created by admin on 2017/8/29.
@@ -34,10 +32,9 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
     private ArrayList<UserManagerDetailVO.RowsBean> mRowsBeen = new ArrayList<>();
 
     public void getFirstData(final int page) {
-
         Map<String, String> paramsMap = new HashMap<>();
 
-        long custID = Preference.getLong(CUST_ID);
+        long custID = Preference.getLong(CacheKey.CUST_ID);
         long rootID = Preference.getLong(CacheKey.ROOT_ID);
         String uuID = Preference.getString(CacheKey.UU_ID);
         String mac = Preference.getString(CacheKey.MAC);
@@ -102,9 +99,10 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
                 if (mvpView != null) {
                     if (CODE_SUCCESS == codeMessageVO.getRspcod()) {
                         long userId = queryUserVO.getUserId();
-                        for (UserManagerDetailVO.RowsBean rowsBean : mRowsBeen) {
+                        for (Iterator iterator = mRowsBeen.iterator(); iterator.hasNext(); ) {
+                            UserManagerDetailVO.RowsBean rowsBean = (UserManagerDetailVO.RowsBean) iterator.next();
                             if (rowsBean.getUserId() == userId) {
-                                mRowsBeen.remove(rowsBean);
+                                iterator.remove();
                                 mvpView.updateUserList(mRowsBeen);
                             }
                         }
@@ -116,19 +114,6 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
             }
         });
     }
-
-    public void userAdd(AddUserParamsVO paramsVO) {
-        Call<CodeMessageVO> call = mApiService.userAdd(paramsVO);
-        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
-            @Override
-            public void onSuccess(CodeMessageVO codeMessageVO) {
-                if (mvpView != null) {
-                    mvpView.showMsg(codeMessageVO.getRspmsg());
-                }
-            }
-        });
-    }
-
 
     public interface MvpView extends IMvpView {
 

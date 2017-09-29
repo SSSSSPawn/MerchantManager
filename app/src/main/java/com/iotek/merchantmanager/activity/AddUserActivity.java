@@ -2,12 +2,20 @@ package com.iotek.merchantmanager.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.iotek.merchantmanager.Presenter.AddUserPresenter;
+import com.iotek.merchantmanager.Utils.AppUtils;
+import com.iotek.merchantmanager.Utils.IDCardUtil;
+import com.iotek.merchantmanager.Utils.Preference;
+import com.iotek.merchantmanager.Utils.VerUtil;
 import com.iotek.merchantmanager.base.BaseActivity;
+import com.iotek.merchantmanager.bean.AddUserParamsVO;
+import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.view.AppBar;
 import com.iotek.merchantmanager.view.BottomDialog;
 
@@ -15,11 +23,13 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import iotek.com.merchantmanager.R;
 
+import static com.iotek.merchantmanager.constant.CacheKey.CUST_ID;
+
 /**
  * Created by admin on 2017/9/26.
  */
 
-public class AddUserActivity extends BaseActivity {
+public class AddUserActivity extends BaseActivity implements AddUserPresenter.MvpView{
 
     @Bind(R.id.tv_user_role) TextView mTvUserRole;
 
@@ -37,14 +47,89 @@ public class AddUserActivity extends BaseActivity {
 
     @Bind(R.id.appBar) AppBar mAppBar;
 
+    private AddUserPresenter mPresenter = new AddUserPresenter();
+
+    private AddUserParamsVO mParamsVO;
+
+    private long roleId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mPresenter.attachView(this);
+
         mAppBar.setTitle("添加用户");
         mAppBar.setTextColor(getResources().getColor(R.color.white));
 
+    }
+
+    private void submitData(){
+
+        long custID = Preference.getLong(CUST_ID);
+        long rootID = Preference.getLong(CacheKey.ROOT_ID);
+        String uuID = Preference.getString(CacheKey.UU_ID);
+        String mac = Preference.getString(CacheKey.MAC);
+
+        String role = mTvUserRole.getText().toString();
+        String num = mEtLoginNumber.getText().toString().trim();
+        String userName = mEtUserName.getText().toString().trim();
+        String userIdentity = mEtCardId.getText().toString().trim();
+        String userPasswd = mEtLoginPassword.getText().toString().trim();
+
+        String userSubmitPassword = mEtSubmitPassword.getText().toString().trim();
+
+        if (TextUtils.isEmpty(role)) {
+            AppUtils.showToast("请选择用户角色");
+            return;
+        }
+
+        if (TextUtils.isEmpty(num)) {
+            AppUtils.showToast("登录账号不能为空");
+            return;
+        }
+
+        boolean telNumber = VerUtil.isValidTelNumber(num);
+        if (!telNumber) {
+            AppUtils.showToast("请输入正确的手机号");
+            return;
+        }
+
+        if (TextUtils.isEmpty(userPasswd)) {
+            AppUtils.showToast("登录密码不能为空");
+            return;
+        }
+
+        if (TextUtils.isEmpty(userSubmitPassword)) {
+            AppUtils.showToast("请再次输入登录密码");
+            return;
+        }
+
+        if (!userPasswd.equals(userSubmitPassword)) {
+            AppUtils.showToast("两次输入的密码不一致,请重新输入");
+            return;
+        }
+
+        if (TextUtils.isEmpty(userName)) {
+            AppUtils.showToast("用户姓名不能为空");
+            return;
+        }
+
+        if (TextUtils.isEmpty(userIdentity)) {
+            AppUtils.showToast("身份证号码不能为空");
+            return;
+        }
+
+        boolean cardValidate = IDCardUtil.iDCardValidate(userIdentity);
+        if (!cardValidate) {
+            AppUtils.showToast("请输入正确的身份证号码");
+            return;
+        }
+
+        mParamsVO = new AddUserParamsVO(custID, rootID, uuID, mac, roleId, num, userName, userIdentity, userPasswd);
+        mPresenter.userAdd(mParamsVO);
+
+        finish();
     }
 
     @Override
@@ -70,6 +155,7 @@ public class AddUserActivity extends BaseActivity {
                                     @Override
                                     public void onClick(int which) {
                                         mTvUserRole.setText("商户管理员");
+                                        roleId = 7;
                                     }
                                 })
                         .addSheetItem("商户操作员", BottomDialog.SheetItemColor.Blue,
@@ -77,6 +163,7 @@ public class AddUserActivity extends BaseActivity {
                                     @Override
                                     public void onClick(int which) {
                                         mTvUserRole.setText("商户操作员");
+                                        roleId = 8;
                                     }
                                 })
                         .addSheetItem("商户营业员", BottomDialog.SheetItemColor.Blue,
@@ -84,11 +171,24 @@ public class AddUserActivity extends BaseActivity {
                                     @Override
                                     public void onClick(int which) {
                                         mTvUserRole.setText("商户营业员");
+                                        roleId = 9;
                                     }
                                 }).show();
                 break;
             case R.id.btn_submit:
+                submitData();
                 break;
         }
+    }
+
+    @Override
+    public void showMsg(String msg) {
+        AppUtils.showToast(msg);
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
     }
 }
