@@ -22,7 +22,13 @@
                 android:text="操作员管理"/>
         </com.iotek.merchantmanager.view.AppBar>
 
-        <include layout="@layout/fragment_base_list"/>
+        <include
+            layout="@layout/fragment_base_list"
+            android:visibility="visible"/>
+
+        <include
+            layout="@layout/empty"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

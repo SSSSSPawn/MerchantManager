@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.iotek.merchantmanager.Utils.LogUtil;
+import com.iotek.merchantmanager.Presenter.FormsMangerPresenter;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.BaseFragment;
 
@@ -16,11 +16,11 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/23.
  */
 
-public class FormsMangerFragment extends BaseFragment {
+public class FormsMangerFragment extends BaseFragment implements FormsMangerPresenter.MvpView{
 
     public static final String TAG = "报表";
 
-    UserManagerAdapter mAdapter;
+    private UserManagerAdapter mAdapter;
 
 
     @Override
@@ -30,8 +30,17 @@ public class FormsMangerFragment extends BaseFragment {
     }
 
     private void init(){
-        LogUtil.e("FormsMangerFragment FormsMangerFragment FormsMangerFragment");
         mAdapter = new UserManagerAdapter();
+    }
+
+    @Override
+    public void onRefresh() {
+        mSuperRecyclerView.refreshComplete();
+    }
+
+    @Override
+    public void onLoadMore() {
+        super.onLoadMore();
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
@@ -37,8 +38,11 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     public static final String TAG = "用户";
 
-    @Bind(R.id.fab_add_user)
-    FloatingActionButton mFabAddUser;
+    @Bind(R.id.fab_add_user) FloatingActionButton mFabAddUser;
+
+    @Bind(R.id.ll_empty) LinearLayout ll_empty;
+
+    @Bind(R.id.ll_recyclerView) LinearLayout ll_recyclerView;
 
     private UserManagerPresenter mPresenter = new UserManagerPresenter();
 
@@ -120,6 +124,10 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     @Override
     public void updateUserList(ArrayList<UserManagerDetailVO.RowsBean> lists) {
+        if (lists.size() == 0) {
+            ll_recyclerView.setVisibility(View.GONE);
+            ll_empty.setVisibility(View.VISIBLE);
+        }
         mAdapter.setDataList(lists);
     }
 

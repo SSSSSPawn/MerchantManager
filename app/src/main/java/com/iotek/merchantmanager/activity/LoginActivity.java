@@ -24,12 +24,11 @@ import iotek.com.merchantmanager.R;
  */
 public class LoginActivity extends BaseActivity implements LoginPresenter.MvpView {
 
-    @Bind(R.id.et_login_name)
-    EditText mEtLoginName;
-    @Bind(R.id.et_login_password)
-    EditText mEtLoginPassword;
-    @Bind(R.id.btn_login)
-    Button mBtnLogin;
+    @Bind(R.id.et_login_name) EditText mEtLoginName;
+
+    @Bind(R.id.et_login_password) EditText mEtLoginPassword;
+
+    @Bind(R.id.btn_login) Button mBtnLogin;
 
     private LoginPresenter mPresenter = new LoginPresenter();
 

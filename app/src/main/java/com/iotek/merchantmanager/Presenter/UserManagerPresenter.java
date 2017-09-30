@@ -27,6 +27,7 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
 
     private final int LIMIT_SIZE = 20;
 
+
     private int currentPage, totalPage;
 
     private ArrayList<UserManagerDetailVO.RowsBean> mRowsBeen = new ArrayList<>();
