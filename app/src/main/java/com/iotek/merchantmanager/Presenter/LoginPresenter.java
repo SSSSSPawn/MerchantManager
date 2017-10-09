@@ -83,16 +83,11 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
             @Override
             public void onSuccess(CodeMessageVO codeMessageVO) {
                 if (mvpView != null) {
-                    try {
-                        String stTime = codeMessageVO.getRspmsg();
-                        if (!TextUtils.isEmpty(stTime)) {
-                            LogUtil.e("time time time ===>>>" + stTime);
-                            mvpView.showSysTime(stTime);
-                        } else {
-                            mvpView.showSysTime(DateUtils.getSysDateTime());
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    String stTime = codeMessageVO.getRspmsg();
+                    if (!TextUtils.isEmpty(stTime)) {
+                        LogUtil.e("time time time ===>>>" + stTime);
+                        mvpView.showSysTime(stTime);
+                    } else {
                         mvpView.showSysTime(DateUtils.getSysDateTime());
                     }
                 }
