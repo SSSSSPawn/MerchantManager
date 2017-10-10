@@ -29,10 +29,10 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
 
     private int mCurrentPosition = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         initMenu();
 
@@ -47,6 +47,16 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
         }
 
         setSelectedTab(mCurrentPosition);
+    }
+
+    @Override
+    protected boolean isBindEventBus() {
+        return false;
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.activity_main;
     }
 
     private void initMenu() {
@@ -121,4 +131,5 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
+
 }

@@ -79,4 +79,10 @@ public class AppBar extends Toolbar {
             mTittleView.setText(title);
         }
     }
+
+    public void setTextColor(int color){
+        if (mTittleView != null){
+            mTittleView.setTextColor(color);
+        }
+    }
 }

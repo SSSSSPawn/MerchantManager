@@ -16,7 +16,8 @@ import com.iotek.merchantmanager.Utils.AppUtils;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
-import butterknife.Bind;
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.ButterKnife;
 import iotek.com.merchantmanager.R;
 
@@ -26,8 +27,10 @@ import iotek.com.merchantmanager.R;
 
 public abstract class BaseFragment extends Fragment implements XRecyclerView.LoadingListener {
 
-    @Bind(R.id.super_recycler_view)
-    XRecyclerView mSuperRecyclerView;
+//    @Bind(R.id.super_recycler_view)
+//    protected XRecyclerView mSuperRecyclerView;
+
+    protected XRecyclerView mSuperRecyclerView;
 
     private boolean isFragmentVisible;
     private boolean isReuseView;
@@ -37,13 +40,19 @@ public abstract class BaseFragment extends Fragment implements XRecyclerView.Loa
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         initVariable();
+        if (isBindEventBus()) {
+            if (!EventBus.getDefault().isRegistered(this)) {
+                EventBus.getDefault().register(this);
+            }
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return LayoutInflater.from(getContext()).inflate(getLayout(), null);
+        rootView = LayoutInflater.from(getContext()).inflate(getLayoutId(), null);
+        mSuperRecyclerView = (XRecyclerView) rootView.findViewById(R.id.super_recycler_view);
+        return rootView;
     }
 
     @Override
@@ -87,6 +96,9 @@ public abstract class BaseFragment extends Fragment implements XRecyclerView.Loa
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (isBindEventBus()) {
+            EventBus.getDefault().unregister(this);
+        }
         initVariable();
     }
 
@@ -158,10 +170,6 @@ public abstract class BaseFragment extends Fragment implements XRecyclerView.Loa
         AppUtils.startActivity(getActivity(), clazz, bundle);
     }
 
-    protected int getLayout() {
-        return R.layout.fragment_base_list;
-    }
-
     @Override
     public void onRefresh() {
 
@@ -173,5 +181,9 @@ public abstract class BaseFragment extends Fragment implements XRecyclerView.Loa
     }
 
     protected abstract RecyclerView.Adapter getAdapter();
+
+    protected abstract boolean isBindEventBus();
+
+    protected abstract int getLayoutId();
 
 }

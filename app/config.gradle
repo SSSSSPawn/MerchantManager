@@ -1,0 +1,10 @@
+ext {
+
+    /**开发环境***/
+    dev_api_url = "\"http://192.168.0.150:8080/\""
+
+    /**生产环境***/
+    release_api_url = "\"https://www.jsbec.com/\""
+
+
+}

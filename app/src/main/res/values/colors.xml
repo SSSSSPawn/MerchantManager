@@ -15,7 +15,7 @@
 
     <color name="gray">#CFCFCF</color>
     <color name="gray_tr">#F1F1F1</color>
-    <color name="white">#FFF</color>
+    <color name="white">#FFFFFFFF</color>
     <color name="tr">#00000000</color>
     <color name="btn_bg">#FF3798ED</color>
     <color name="statusBarColor">#FF3798ED</color>
@@ -28,9 +28,13 @@
     <color name="lineColor">#dcdee5</color>
 
     <color name="black">#000</color>
+    <color name="text_black_87">#8a8a8a</color>
     <color name="red_normal">#FF0000</color>
     <color name="red_pressed">#FF6666</color>
     <color name="common_red">#f13f2f</color>
     <color name="gray_holly_text">#808080</color>
+
+    <color name="fb_button">#009787</color>
+    <color name="background_snackbar">#323232</color>
 
 </resources>

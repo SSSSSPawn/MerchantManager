@@ -10,6 +10,7 @@ import com.iotek.merchantmanager.listener.OnItemClickListener;
 import java.util.ArrayList;
 
 /**
+ *
  * Created by wei sun on 2017/8/28.
  */
 

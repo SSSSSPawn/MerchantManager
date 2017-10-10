@@ -3,6 +3,7 @@
           package="iotek.com.merchantmanager">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name="com.iotek.merchantmanager.app.MyApplication"
@@ -15,7 +16,8 @@
         <activity
             android:name="com.iotek.merchantmanager.activity.LoginActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.LoginView">
+            android:theme="@style/AppTheme.LoginView"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -24,6 +26,11 @@
         </activity>
 
         <activity android:name="com.iotek.merchantmanager.activity.MainActivity"/>
+        <activity android:name="com.iotek.merchantmanager.activity.UserManagerDetailActivity"/>
+        <activity
+            android:name="com.iotek.merchantmanager.activity.AddUserActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
     </application>
 
 </manifest>

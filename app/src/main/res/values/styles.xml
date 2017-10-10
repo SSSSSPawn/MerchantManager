@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -79,7 +79,7 @@
         <item name="android:id">@id/back</item>
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:paddingRight">10dp</item>
+        <item name="android:padding">12dp</item>
         <item name="android:src">@drawable/appbar_back</item>
         <item name="android:background">#00000000</item>
     </style>
@@ -89,7 +89,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:singleLine">true</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="Text_Name.Text_Content">
@@ -99,20 +99,31 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="Text_Name.Text_Content.16sp" parent="Text_Name.Text_Content">
+        <item name="android:textSize">16sp</item>
+    </style>
 
-    <declare-styleable name="SwipeLayout">
-        <attr name="drag_edge" format="enum">
-            <enum name="left" value="0"/>
-            <enum name="right" value="1"/>
-            <enum name="top" value="2"/>
-            <enum name="bottom" value="3"/>
-        </attr>
-        <attr name="horizontalSwipeOffset" format="dimension"/>
-        <attr name="verticalSwipeOffset" format="dimension"/>
-        <attr name="show_mode" format="enum">
-            <enum name="lay_down" value="0"/>
-            <enum name="pull_out" value="1"/>
-        </attr>
-    </declare-styleable>
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- 自定义仿IOS的ActionSheet底部Dialog的样式 ，有模糊效果 -->
+    <style name="ActionSheetDialogStyle" parent="@android:style/Theme.Dialog">
+
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 浮于Activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- Dialog以外的区域模糊效果 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 
 </resources>
