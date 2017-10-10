@@ -16,7 +16,7 @@ import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.activity.AddUserActivity;
 import com.iotek.merchantmanager.activity.UserManagerDetailActivity;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
-import com.iotek.merchantmanager.base.BaseFragment;
+import com.iotek.merchantmanager.base.ListFragment;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.bean.UserParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
@@ -33,7 +33,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/23.
  */
 
-public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView{
+public class UserOperateManagerFragment extends ListFragment implements UserManagerPresenter.MvpView{
 
     public static final String TAG = "用户";
 
@@ -110,13 +110,13 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     }
 
     @Override
-    protected boolean isBindEventBus() {
-        return false;
+    protected int getLayoutId() {
+        return R.layout.fragment_user;
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_user;
+    protected boolean isBindEventBus() {
+        return false;
     }
 
     @Override

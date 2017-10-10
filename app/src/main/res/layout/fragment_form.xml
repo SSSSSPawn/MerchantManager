@@ -6,15 +6,12 @@
 
     <com.iotek.merchantmanager.view.AppBar
         style="@style/AppBar"
-        android:background="@color/btn_bg">
+        android:background="@color/gray_tr">
 
-        <TextView
-            style="@style/Text_AppBar_title"
-            android:text="报表管理"/>
+
 
     </com.iotek.merchantmanager.view.AppBar>
 
-    <include layout="@layout/fragment_base_list"/>
 
 
 </LinearLayout>

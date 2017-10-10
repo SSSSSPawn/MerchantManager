@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
-import com.iotek.merchantmanager.base.BaseFragment;
+import com.iotek.merchantmanager.base.ListFragment;
 
 import iotek.com.merchantmanager.R;
 
@@ -15,7 +15,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/23.
  */
 
-public class MemberManagerFragment extends BaseFragment {
+public class MemberManagerFragment extends ListFragment {
 
     public static final String TAG = "会员";
 
