@@ -22,7 +22,6 @@ import com.iotek.merchantmanager.bean.UserParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.listener.OnConfirmListener;
-import com.iotek.merchantmanager.listener.OnItemClickListener;
 
 import java.util.ArrayList;
 
@@ -34,7 +33,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/23.
  */
 
-public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView, OnItemClickListener {
+public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView{
 
     public static final String TAG = "用户";
 
@@ -67,8 +66,6 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
         mAdapter = new UserManagerAdapter();
 
-        mAdapter.setOnItemClickListener(this);
-
         mAdapter.setOnConfirmListener(new OnConfirmListener() {
             @Override
             public void onConfirmDel(long id) {
@@ -78,6 +75,13 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
             @Override
             public void onConfirmReset(long id, long roleId) {
                 mPresenter.userResetPassword(new UserParamsVO(custID, rootID, uuID, mac, id, roleId));
+            }
+
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getActivity(), UserManagerDetailActivity.class);
+                intent.putExtra(Intentkey.USER_DETAIL, mAdapter.getDataList().get(position));
+                launch(intent);
             }
         });
     }
@@ -113,13 +117,6 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_user;
-    }
-
-    @Override
-    public void OnItemClick(int position) {
-        Intent intent = new Intent(getActivity(), UserManagerDetailActivity.class);
-        intent.putExtra(Intentkey.USER_DETAIL, mAdapter.getDataList().get(position));
-        startActivity(intent);
     }
 
     @Override

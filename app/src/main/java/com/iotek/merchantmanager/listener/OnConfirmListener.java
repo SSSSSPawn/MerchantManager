@@ -10,4 +10,6 @@ public interface OnConfirmListener {
 
     void onConfirmReset(long userId,long roleId);
 
+    void onItemClick(int position);
+
 }
