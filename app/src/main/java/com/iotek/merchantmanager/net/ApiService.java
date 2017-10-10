@@ -84,11 +84,19 @@ public interface ApiService {
     Call<CodeMessageVO> userAdd(@Body AddUserParamsVO paramsVO);
 
     /**
+     * 跳到平安页面
+     * @param params
+     * @return
+     */
+    @POST("app/redirectToPingAn.json")
+    Call<CodeMessageVO> redirectToPingAn(@Body RequestBody params);
+
+
+    /**
      * 获取系统时间
      *
      * @return
      */
     @POST("app/getSysTime.json")
     Call<CodeMessageVO> getSysTime();
-
 }
