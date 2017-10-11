@@ -5,14 +5,11 @@
               android:background="@color/gray_tr"
               android:orientation="vertical">
 
-    <com.iotek.merchantmanager.view.AppBar
-        style="@style/AppBar"
-        android:background="@color/gray_tr"/>
-
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_menu"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:gravity="center"
         android:background="@color/white"/>
 
     <FrameLayout

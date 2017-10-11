@@ -8,10 +8,27 @@
         style="@style/AppBar"
         android:background="@color/gray_tr">
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <com.iotek.merchantmanager.view.TitleTabLayout
+                android:id="@+id/tab_title"
+                android:layout_width="216dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
 
 
     </com.iotek.merchantmanager.view.AppBar>
 
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 
 </LinearLayout>

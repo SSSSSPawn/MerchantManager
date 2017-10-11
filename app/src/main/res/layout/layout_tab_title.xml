@@ -24,13 +24,13 @@
     <RadioButton
         android:id="@+id/tab_middle"
         tools:text="TAB2"
-        android:textColor="@color/sltr_white_red"
+        android:textColor="@drawable/bec_white_blue"
         android:gravity="center"
         android:textSize="16sp"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:background="@drawable/sltr_tab_title_middle"
+        android:background="@drawable/bec_tab_title_middle"
         android:button="@null"/>
 
     <RadioButton
@@ -38,10 +38,10 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/sltr_tab_title_right"
+        android:background="@drawable/bec_tab_title_right"
         android:button="@null"
         android:gravity="center"
-        android:textColor="@color/sltr_white_red"
+        android:textColor="@drawable/bec_white_blue"
         android:textSize="16sp"
         tools:text="TAB1"/>
 
