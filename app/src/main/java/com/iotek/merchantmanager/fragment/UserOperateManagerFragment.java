@@ -3,6 +3,7 @@ package com.iotek.merchantmanager.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,13 +50,18 @@ public class UserOperateManagerFragment extends ListFragment implements UserMana
 
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        init();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        initView();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
 
-    private void initView() {
+    private void init() {
 
         final long custID = Preference.getLong(CacheKey.CUST_ID);
         final long rootID = Preference.getLong(CacheKey.ROOT_ID);

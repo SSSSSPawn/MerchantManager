@@ -30,7 +30,7 @@ public class CrkGoodsListFragment extends ListFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_base_list;
+        return R.layout.fragment_form_list;
     }
 
     @Override

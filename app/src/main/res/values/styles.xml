@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -101,6 +101,24 @@
 
     <style name="Text_Name.Text_Content.16sp" parent="Text_Name.Text_Content">
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Trade_Text_Name">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Trade_Text_Content">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">24dp</item>
+        <item name="android:layout_weight">4</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="menu_labels_style">

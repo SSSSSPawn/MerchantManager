@@ -2,8 +2,10 @@ package com.iotek.merchantmanager.net;
 
 import com.iotek.merchantmanager.bean.AddUserParamsVO;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
+import com.iotek.merchantmanager.bean.DayTradeFormVO;
 import com.iotek.merchantmanager.bean.LoginParamsVO;
 import com.iotek.merchantmanager.bean.LoginVO;
+import com.iotek.merchantmanager.bean.TradeFormParamsVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.bean.UserParamsVO;
 
@@ -85,6 +87,7 @@ public interface ApiService {
 
     /**
      * 跳到平安页面
+     *
      * @param params
      * @return
      */
@@ -99,4 +102,13 @@ public interface ApiService {
      */
     @POST("app/getSysTime.json")
     Call<CodeMessageVO> getSysTime();
+
+    /**
+     * 日交易报表查询
+     *
+     * @return
+     */
+    @POST("app/inter/dayReport.json")
+    Call<DayTradeFormVO> getDayTradeForm(@Body TradeFormParamsVO paramsVO);
+
 }
