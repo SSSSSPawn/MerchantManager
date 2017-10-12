@@ -38,9 +38,8 @@ public class DayTradeListFragment extends ListFragment implements FormsMangerPre
         super.onCreate(savedInstanceState);
 
         mPresenter.attachView(this);
-
         mAdapter = new DayTradeFormAdapter();
-
+        mAdapter.setOnItemClickListener(this);
     }
 
     @Override
