@@ -4,18 +4,15 @@ import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
+import com.iotek.merchantmanager.bean.params.QueryUserParamsVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
-import com.iotek.merchantmanager.bean.UserParamsVO;
+import com.iotek.merchantmanager.bean.params.UserParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
-import com.iotek.merchantmanager.net.HttpExecutor;
 import com.iotek.merchantmanager.net.OnResponseListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
-import okhttp3.RequestBody;
 import retrofit2.Call;
 
 /**
@@ -25,7 +22,7 @@ import retrofit2.Call;
 public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.MvpView> {
 
 
-    private final int LIMIT_SIZE = 20;
+    private final int LIMIT_SIZE = 10;
 
 
     private int currentPage, totalPage;
@@ -33,51 +30,45 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
     private ArrayList<UserManagerDetailVO.RowsBean> mRowsBeen = new ArrayList<>();
 
     public void getFirstData(final int page) {
-        Map<String, String> paramsMap = new HashMap<>();
 
         long custID = Preference.getLong(CacheKey.CUST_ID);
         long rootID = Preference.getLong(CacheKey.ROOT_ID);
         String uuID = Preference.getString(CacheKey.UU_ID);
         String mac = Preference.getString(CacheKey.MAC);
 
-        paramsMap.put("custId", custID + "");
-        paramsMap.put("rootId", rootID + "");
-        paramsMap.put("uuid", uuID);
-        paramsMap.put("mac", mac);
-        paramsMap.put("limit", LIMIT_SIZE + "");
-        paramsMap.put("page", page + "");
-
-        String paramsJson = gson.toJson(paramsMap);
-
-        RequestBody body = RequestBody.create(HttpExecutor.MEDIA_TYPE, paramsJson);
-
-        Call<UserManagerDetailVO> call = mApiService.queryUser(body);
-        call.enqueue(new OnResponseListener<UserManagerDetailVO>(getContext(), false) {
+        QueryUserParamsVO paramsVO =  new QueryUserParamsVO(custID,rootID,uuID,mac,LIMIT_SIZE,page);
+        Call<UserManagerDetailVO> call = mApiService.queryUser(paramsVO);
+        call.enqueue(new OnResponseListener<UserManagerDetailVO>(getContext(),false) {
             @Override
-            public void onSuccess(UserManagerDetailVO userManagerVO) {
+            public void onSuccess(UserManagerDetailVO userManagerDetailVO) {
                 if (mvpView != null) {
-                    if (userManagerVO == null || userManagerVO.getRows() == null) {
+                    if (userManagerDetailVO == null || userManagerDetailVO.getRows() == null) {
                         return;
                     }
-
                     if (page == 1) {
                         mRowsBeen.clear();
                     }
-                    mRowsBeen.addAll(userManagerVO.getRows());
+                    mRowsBeen.addAll(userManagerDetailVO.getRows());
                     mvpView.updateUserList(mRowsBeen);
                     currentPage = page;
-                    totalPage = userManagerVO.getTotal();
+                    totalPage = (int) Math.ceil(mRowsBeen.size() * 1.0 / LIMIT_SIZE);
                 }
             }
         });
     }
 
     public void getNextData() {
-        if (currentPage < totalPage) {
-            getFirstData(++currentPage);
-        } else {
+        //TODO：存在刷新两次的问题，后台未返回总页数或总条目
+        if (currentPage > totalPage){
             mvpView.stopLoadMore();
         }
+        getFirstData(++currentPage);
+
+//        if (currentPage < totalPage) {
+//            getFirstData(++currentPage);
+//        } else {
+//            mvpView.stopLoadMore();
+//        }
     }
 
     public void userResetPassword(final UserParamsVO userParamsVO) {

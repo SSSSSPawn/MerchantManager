@@ -1,10 +1,12 @@
-package com.iotek.merchantmanager.bean;
+package com.iotek.merchantmanager.bean.params;
+
+import com.iotek.merchantmanager.bean.BaseBean;
 
 /**
  * Created by Administrator on 2017/9/21.
  */
 
-public class UserParamsVO extends BaseBean{
+public class UserParamsVO extends BaseBean {
     
     private long custId;
     private long rootId;

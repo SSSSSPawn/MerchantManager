@@ -1,10 +1,11 @@
 package com.iotek.merchantmanager.Presenter;
 
+import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
-import com.iotek.merchantmanager.bean.TradeFormParamsVO;
+import com.iotek.merchantmanager.bean.params.TradeFormParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.net.OnResponseListener;
 
@@ -19,7 +20,7 @@ import retrofit2.Call;
 public class FormsMangerPresenter extends BasePresenter<FormsMangerPresenter.MvpView> {
 
 
-    private final int LIMIT_SIZE = 20;
+    private final int LIMIT_SIZE = 10;
 
     private int currentPage, totalPage;
 
@@ -48,20 +49,19 @@ public class FormsMangerPresenter extends BasePresenter<FormsMangerPresenter.Mvp
                     mRowsBeen.addAll(vo.getRows());
                     mvpView.updateUserList(mRowsBeen);
                     currentPage = page;
-                    totalPage = vo.getTotal();
+                    totalPage = (int) Math.ceil(mRowsBeen.size() * 1.0 / LIMIT_SIZE);
                 }
-
-
             }
         });
     }
 
     public void getNextData() {
-        if (currentPage < totalPage) {
-            getDayTradeList(++currentPage);
-        } else {
+        LogUtil.e("currentPage currentPage ==>>" + currentPage + "\ntotalPage totalPage ==>> " + totalPage);
+        //TODO：存在刷新两次的问题，后台未返回总页数或总条目
+        if (currentPage > totalPage){
             mvpView.stopLoadMore();
         }
+        getDayTradeList(++currentPage);
     }
 
     public interface MvpView extends IMvpView {

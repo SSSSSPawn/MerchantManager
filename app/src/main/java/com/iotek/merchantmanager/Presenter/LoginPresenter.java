@@ -8,7 +8,7 @@ import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
-import com.iotek.merchantmanager.bean.LoginParamsVO;
+import com.iotek.merchantmanager.bean.params.LoginParamsVO;
 import com.iotek.merchantmanager.bean.LoginVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.net.OnResponseListener;

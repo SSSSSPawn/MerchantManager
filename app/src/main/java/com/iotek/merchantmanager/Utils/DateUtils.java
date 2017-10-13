@@ -16,11 +16,10 @@ public class DateUtils {
         return str;
     }
 
-    public static String dateFormat(long inTimeInMillis ){
+    public static String dateFormat(long inTimeInMillis) {
         Date date = new Date(inTimeInMillis);
-        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        String a1=dateFormat.format(date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String a1 = dateFormat.format(date);
         return a1;
     }
-
 }

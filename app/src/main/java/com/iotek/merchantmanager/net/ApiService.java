@@ -1,13 +1,14 @@
 package com.iotek.merchantmanager.net;
 
-import com.iotek.merchantmanager.bean.AddUserParamsVO;
+import com.iotek.merchantmanager.bean.params.AddUserParamsVO;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
-import com.iotek.merchantmanager.bean.LoginParamsVO;
+import com.iotek.merchantmanager.bean.params.LoginParamsVO;
 import com.iotek.merchantmanager.bean.LoginVO;
-import com.iotek.merchantmanager.bean.TradeFormParamsVO;
+import com.iotek.merchantmanager.bean.params.QueryUserParamsVO;
+import com.iotek.merchantmanager.bean.params.TradeFormParamsVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
-import com.iotek.merchantmanager.bean.UserParamsVO;
+import com.iotek.merchantmanager.bean.params.UserParamsVO;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -55,7 +56,7 @@ public interface ApiService {
      * @return
      */
     @POST("app/inter/userQuery.json")
-    Call<UserManagerDetailVO> queryUser(@Body RequestBody params);
+    Call<UserManagerDetailVO> queryUser(@Body QueryUserParamsVO params);
 
     /**
      * 重置密码

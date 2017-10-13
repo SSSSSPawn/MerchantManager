@@ -19,7 +19,7 @@ import com.iotek.merchantmanager.activity.UserManagerDetailActivity;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
-import com.iotek.merchantmanager.bean.UserParamsVO;
+import com.iotek.merchantmanager.bean.params.UserParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.listener.OnConfirmListener;
@@ -94,7 +94,6 @@ public class UserOperateManagerFragment extends ListFragment implements UserMana
 
     @Override
     public void onRefresh() {
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -106,8 +105,13 @@ public class UserOperateManagerFragment extends ListFragment implements UserMana
 
     @Override
     public void onLoadMore() {
-        mPresenter.getNextData();
-        mSuperRecyclerView.loadMoreComplete();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPresenter.getNextData();
+                mSuperRecyclerView.loadMoreComplete();
+            }
+        }, 1000);
     }
 
     @Override
@@ -136,7 +140,12 @@ public class UserOperateManagerFragment extends ListFragment implements UserMana
 
     @Override
     public void stopLoadMore() {
-        mSuperRecyclerView.setNoMore(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSuperRecyclerView.setNoMore(true);
+            }
+        }, 1000);
     }
 
     @Override

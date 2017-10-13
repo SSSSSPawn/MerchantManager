@@ -132,22 +132,6 @@
                 android:text="10"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Trade_Text_Name"
-                android:text="录入时间"/>
-
-            <TextView
-                android:id="@+id/tv_trade_form_lr_date"
-                style="@style/Trade_Text_Content"
-                android:text="2017-10-12 02:00:00"/>
-        </LinearLayout>
-
     </LinearLayout>
 
 

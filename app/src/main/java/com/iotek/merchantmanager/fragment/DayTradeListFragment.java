@@ -59,7 +59,6 @@ public class DayTradeListFragment extends ListFragment implements FormsMangerPre
 
     @Override
     public void onRefresh() {
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -71,8 +70,13 @@ public class DayTradeListFragment extends ListFragment implements FormsMangerPre
 
     @Override
     public void onLoadMore() {
-        mPresenter.getNextData();
-        mSuperRecyclerView.loadMoreComplete();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPresenter.getNextData();
+                mSuperRecyclerView.loadMoreComplete();
+            }
+        },1000);
     }
 
     @Override
@@ -86,7 +90,12 @@ public class DayTradeListFragment extends ListFragment implements FormsMangerPre
 
     @Override
     public void stopLoadMore() {
-        mSuperRecyclerView.setNoMore(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSuperRecyclerView.setNoMore(true);
+            }
+        },1000);
     }
 
     @Override

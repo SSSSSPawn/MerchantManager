@@ -1,10 +1,12 @@
-package com.iotek.merchantmanager.bean;
+package com.iotek.merchantmanager.bean.params;
+
+import com.iotek.merchantmanager.bean.BaseBean;
 
 /**
- * Created by admin on 2017/10/12.
+ * Created by admin on 2017/10/13.
  */
 
-public class TradeFormParamsVO extends BaseBean {
+public class QueryUserParamsVO extends BaseBean {
 
     private long custId;
     private long rootId;
@@ -13,22 +15,13 @@ public class TradeFormParamsVO extends BaseBean {
     private int limit;
     private int page;
 
-
-    public TradeFormParamsVO(long custId, long rootId, String uuid, String mac, int limit, int page) {
+    public QueryUserParamsVO(long custId, long rootId, String uuid, String mac, int limit, int page) {
         this.custId = custId;
         this.rootId = rootId;
         this.uuid = uuid;
         this.mac = mac;
         this.limit = limit;
         this.page = page;
-    }
-
-    public String getMac() {
-        return mac;
-    }
-
-    public void setMac(String mac) {
-        this.mac = mac;
     }
 
     public long getCustId() {
@@ -53,6 +46,14 @@ public class TradeFormParamsVO extends BaseBean {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public String getMac() {
+        return mac;
+    }
+
+    public void setMac(String mac) {
+        this.mac = mac;
     }
 
     public int getLimit() {

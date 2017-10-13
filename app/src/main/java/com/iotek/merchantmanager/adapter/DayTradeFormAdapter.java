@@ -3,6 +3,7 @@ package com.iotek.merchantmanager.adapter;
 import android.view.View;
 import android.widget.TextView;
 
+import com.iotek.merchantmanager.Utils.DateUtils;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
 
 import butterknife.Bind;
@@ -29,14 +30,20 @@ public class DayTradeFormAdapter extends CustomRvAdapter<DayTradeFormVO.RowsBean
     protected void bindData(RecyclerViewHolder holder, DayTradeFormVO.RowsBean rowsBean) {
         ViewHolder h = (ViewHolder) holder;
 
-        h.mTvTradeFormDate.setText(rowsBean.getReportDay() + "");
+        String reportDay = DateUtils.dateFormat(rowsBean.getReportDay());
+        h.mTvTradeFormDate.setText(reportDay);
+
         h.mTvTradeFormName.setText(rowsBean.getCustName());
+
         h.mTvTradeFormXsMoney.setText(rowsBean.getSaleAmount() + "");
+
         h.mTvTradeFormThMoney.setText(rowsBean.getReturnAmount() + "");
+
         h.mTvTradeFormYsMoney.setText(rowsBean.getRealAmount() + "");
-        h.mTvTradeFormXsNum.setText(rowsBean.getSaleCount() + "");
-        h.mTvTradeFormThNum.setText(rowsBean.getReturnCount() + "");
-        h.mTvTradeFormLrDate.setText(rowsBean.getShiftTime() + "");
+
+        h.mTvTradeFormXsNum.setText((int) rowsBean.getSaleCount() + "");
+
+        h.mTvTradeFormThNum.setText((int) rowsBean.getReturnCount() + "");
     }
 
     class ViewHolder extends RecyclerViewHolder {
@@ -54,9 +61,6 @@ public class DayTradeFormAdapter extends CustomRvAdapter<DayTradeFormVO.RowsBean
         @Bind(R.id.tv_trade_form_xs_num) TextView mTvTradeFormXsNum;
 
         @Bind(R.id.tv_trade_form_th_num) TextView mTvTradeFormThNum;
-
-        @Bind(R.id.tv_trade_form_lr_date) TextView mTvTradeFormLrDate;
-
 
         public ViewHolder(View itemView) {
             super(itemView);
