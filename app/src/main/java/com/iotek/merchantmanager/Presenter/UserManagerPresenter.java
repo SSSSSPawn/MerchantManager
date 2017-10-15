@@ -85,7 +85,7 @@ public class UserManagerPresenter extends BasePresenter<UserManagerPresenter.Mvp
 
     public void userDelete(final UserParamsVO queryUserVO) {
         Call<CodeMessageVO> call = mApiService.userDelete(queryUserVO);
-        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), false) {
+        call.enqueue(new OnResponseListener<CodeMessageVO>(getContext(), true) {
             @Override
             public void onSuccess(CodeMessageVO codeMessageVO) {
                 if (mvpView != null) {
