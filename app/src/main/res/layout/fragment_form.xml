@@ -6,7 +6,7 @@
 
     <com.iotek.merchantmanager.view.AppBar
         style="@style/AppBar"
-        android:background="@color/gray_tr">
+        android:background="@color/statusBarColor">
 
         <FrameLayout
             android:layout_width="match_parent"
