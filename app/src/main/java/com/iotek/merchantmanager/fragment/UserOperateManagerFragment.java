@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -34,7 +35,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/23.
  */
 
-public class UserOperateManagerFragment extends ListFragment implements UserManagerPresenter.MvpView{
+public class UserOperateManagerFragment extends ListFragment implements UserManagerPresenter.MvpView {
 
     public static final String TAG = "用户";
 
@@ -43,6 +44,8 @@ public class UserOperateManagerFragment extends ListFragment implements UserMana
     @Bind(R.id.ll_empty) LinearLayout ll_empty;
 
     @Bind(R.id.ll_recyclerView) LinearLayout ll_recyclerView;
+
+    @Bind(R.id.iv_user_center) ImageView iv_user_center;
 
     private UserManagerPresenter mPresenter = new UserManagerPresenter();
 
@@ -160,5 +163,10 @@ public class UserOperateManagerFragment extends ListFragment implements UserMana
                 launch(AddUserActivity.class);
                 break;
         }
+    }
+
+    @OnClick(R.id.iv_user_center)
+    public void onViewClicked() {
+
     }
 }
