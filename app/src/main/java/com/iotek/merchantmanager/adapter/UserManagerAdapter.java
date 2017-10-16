@@ -71,8 +71,7 @@ public class UserManagerAdapter extends CustomRvAdapter<UserManagerDetailVO.Rows
                         }
                     }
                 });
-                dialog.setMessageSize(18);
-                dialog.show("确定删除该用户?");
+                dialog.show("提示信息","确定删除该用户?");
             }
         });
 
@@ -89,8 +88,7 @@ public class UserManagerAdapter extends CustomRvAdapter<UserManagerDetailVO.Rows
                         }
                     }
                 });
-                dialog.setMessageSize(18);
-                dialog.show("确定重置密码吗?");
+                dialog.show("提示信息","确定重置密码吗?");
             }
         });
     }
