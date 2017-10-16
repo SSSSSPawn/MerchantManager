@@ -42,6 +42,10 @@ public class UserManagerAdapter extends CustomRvAdapter<UserManagerDetailVO.Rows
 
         final Context context = h.itemView.getContext();
 
+        if (rowsBean == null){
+            return;
+        }
+
         h.mTvName.setText(rowsBean.getRealName());
         h.mTvNumber.setText(rowsBean.getUserName());
         h.mTvRole.setText(rowsBean.getRolePname());

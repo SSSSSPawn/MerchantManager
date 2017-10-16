@@ -17,7 +17,7 @@ import retrofit2.Call;
  * Created by admin on 2017/9/30.
  */
 
-public class FormsMangerPresenter extends BasePresenter<FormsMangerPresenter.MvpView> {
+public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter.MvpView> {
 
 
     private final int LIMIT_SIZE = 10;

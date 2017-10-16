@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.iotek.merchantmanager.Presenter.FormsMangerPresenter;
+import com.iotek.merchantmanager.Presenter.DayTradeFormsPresenter;
 import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.adapter.DayTradeFormAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
@@ -23,7 +23,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/10/11.
  */
 
-public class DayTradeListFragment extends ListFragment implements FormsMangerPresenter.MvpView, OnItemClickListener {
+public class DayTradeListFragment extends ListFragment implements DayTradeFormsPresenter.MvpView, OnItemClickListener {
 
     @Bind(R.id.ll_empty) LinearLayout ll_empty;
 
@@ -31,7 +31,7 @@ public class DayTradeListFragment extends ListFragment implements FormsMangerPre
 
     private DayTradeFormAdapter mAdapter;
 
-    private FormsMangerPresenter mPresenter = new FormsMangerPresenter();
+    private DayTradeFormsPresenter mPresenter = new DayTradeFormsPresenter();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,6 +100,7 @@ public class DayTradeListFragment extends ListFragment implements FormsMangerPre
 
     @Override
     public void OnItemClick(int position) {
+        //TODO:跳转到报表详情页
         AppUtils.showToast("position position position -->> " + position);
     }
 }

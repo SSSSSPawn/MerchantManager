@@ -4,21 +4,20 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.iotek.merchantmanager.Utils.DateUtils;
-import com.iotek.merchantmanager.bean.DayTradeFormVO;
+import com.iotek.merchantmanager.bean.MonthTradeFormVO;
 
 import butterknife.Bind;
 import iotek.com.merchantmanager.R;
 
 /**
- * Created by admin on 2017/10/12.
+ * Created by admin on 2017/10/16.
  */
 
-public class DayTradeFormAdapter extends CustomRvAdapter<DayTradeFormVO.RowsBean> {
-
+public class MonthTradeFormAdapter extends CustomRvAdapter<MonthTradeFormVO.RowsBean> {
 
     @Override
     protected int getLayoutID() {
-        return R.layout.day_trade_from_rv_item;
+        return R.layout.month_trade_from_rv_item;
     }
 
     @Override
@@ -27,44 +26,53 @@ public class DayTradeFormAdapter extends CustomRvAdapter<DayTradeFormVO.RowsBean
     }
 
     @Override
-    protected void bindData(RecyclerViewHolder holder, DayTradeFormVO.RowsBean rowsBean) {
+    protected void bindData(RecyclerViewHolder holder, MonthTradeFormVO.RowsBean rowsBean) {
         ViewHolder h = (ViewHolder) holder;
 
         if (rowsBean == null){
             return;
         }
 
-        String reportDay = DateUtils.dateFormatDay(rowsBean.getReportDay());
-        h.mTvTradeFormDate.setText(reportDay);
-
         h.mTvTradeFormName.setText(rowsBean.getCustName());
+
+        String month = DateUtils.dateFormatMonth(rowsBean.getReportMonth());
+
+        h.mTvTradeFormMonth.setText(month);
 
         h.mTvTradeFormXsMoney.setText(DateUtils.formatMoney(rowsBean.getSaleAmount()));
 
         h.mTvTradeFormThMoney.setText(DateUtils.formatMoney(rowsBean.getReturnAmount()));
 
-        h.mTvTradeFormYsMoney.setText(DateUtils.formatMoney(rowsBean.getRealAmount()));
+        h.mTvTradeFormSsMoney.setText(DateUtils.formatMoney(rowsBean.getRealAmount()));
 
-        h.mTvTradeFormXsNum.setText((int) rowsBean.getSaleCount() + "");
+        h.mTvTradeFormXsNum.setText(rowsBean.getSaleCount() + "");
 
-        h.mTvTradeFormThNum.setText((int) rowsBean.getReturnCount() + "");
+        h.mTvTradeFormThNum.setText(rowsBean.getReturnCount() + "");
+
+        h.mTvTradeFormCb.setText(DateUtils.formatMoney(rowsBean.getCost()));
+
+        h.mTvTradeFormLr.setText(DateUtils.formatMoney(rowsBean.getCouponAmount()));
     }
 
     class ViewHolder extends RecyclerViewHolder {
 
-        @Bind(R.id.tv_trade_form_date) TextView mTvTradeFormDate;
-
         @Bind(R.id.tv_trade_form_name) TextView mTvTradeFormName;
+
+        @Bind(R.id.tv_trade_form_month) TextView mTvTradeFormMonth;
 
         @Bind(R.id.tv_trade_form_xs_money) TextView mTvTradeFormXsMoney;
 
         @Bind(R.id.tv_trade_form_th_money) TextView mTvTradeFormThMoney;
 
-        @Bind(R.id.tv_trade_form_ys_money) TextView mTvTradeFormYsMoney;
+        @Bind(R.id.tv_trade_form_ss_money) TextView mTvTradeFormSsMoney;
 
         @Bind(R.id.tv_trade_form_xs_num) TextView mTvTradeFormXsNum;
 
         @Bind(R.id.tv_trade_form_th_num) TextView mTvTradeFormThNum;
+
+        @Bind(R.id.tv_trade_form_cb) TextView mTvTradeFormCb;
+
+        @Bind(R.id.tv_trade_form_lr) TextView mTvTradeFormLr;
 
         public ViewHolder(View itemView) {
             super(itemView);

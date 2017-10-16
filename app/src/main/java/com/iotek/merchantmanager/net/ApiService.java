@@ -1,13 +1,14 @@
 package com.iotek.merchantmanager.net;
 
-import com.iotek.merchantmanager.bean.params.AddUserParamsVO;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
-import com.iotek.merchantmanager.bean.params.LoginParamsVO;
 import com.iotek.merchantmanager.bean.LoginVO;
+import com.iotek.merchantmanager.bean.MonthTradeFormVO;
+import com.iotek.merchantmanager.bean.UserManagerDetailVO;
+import com.iotek.merchantmanager.bean.params.AddUserParamsVO;
+import com.iotek.merchantmanager.bean.params.LoginParamsVO;
 import com.iotek.merchantmanager.bean.params.QueryUserParamsVO;
 import com.iotek.merchantmanager.bean.params.TradeFormParamsVO;
-import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.bean.params.UserParamsVO;
 
 import okhttp3.RequestBody;
@@ -111,5 +112,14 @@ public interface ApiService {
      */
     @POST("app/inter/dayReport.json")
     Call<DayTradeFormVO> getDayTradeForm(@Body TradeFormParamsVO paramsVO);
+
+    /**
+     * 月交易报表查询
+     *
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/monthReport.json")
+    Call<MonthTradeFormVO> getMonthTradeForm(@Body TradeFormParamsVO paramsVO);
 
 }

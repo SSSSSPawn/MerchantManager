@@ -1,5 +1,7 @@
 package com.iotek.merchantmanager.Utils;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,5 +23,26 @@ public class DateUtils {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String a1 = dateFormat.format(date);
         return a1;
+    }
+
+    public static String dateFormatDay(long inTimeInMillis) {
+        Date date = new Date(inTimeInMillis);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String a1 = dateFormat.format(date);
+        return a1;
+    }
+
+    public static String dateFormatMonth(long inTimeInMillis) {
+        Date date = new Date(inTimeInMillis);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+        String a1 = dateFormat.format(date);
+        return a1;
+    }
+
+    public static String formatMoney(double monty) {
+        NumberFormat nf = NumberFormat.getCurrencyInstance(); //建立货币格式化引用
+        String string = Double.toString(monty);
+        BigDecimal bigDecimal = new BigDecimal(string);
+        return nf.format(bigDecimal);
     }
 }
