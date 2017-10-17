@@ -16,7 +16,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
@@ -42,13 +41,12 @@
 
             <TextView
                 style="@style/Trade_Text_Name"
-                android:text="商户名称"/>
+                android:text="支付方式"/>
 
             <TextView
-                android:id="@+id/tv_trade_form_name"
+                android:id="@+id/tv_trade_form_fs"
                 style="@style/Trade_Text_Content"
-                android:text="亚青"
-                />
+                android:text="微信"/>
         </LinearLayout>
 
         <LinearLayout
@@ -59,13 +57,12 @@
 
             <TextView
                 style="@style/Trade_Text_Name"
-                android:text="销售金额"
-                />
+                android:text="支付金额"/>
 
             <TextView
-                android:id="@+id/tv_trade_form_xs_money"
+                android:id="@+id/tv_trade_form_zf"
                 style="@style/Trade_Text_Content"
-                android:text="320.2"/>
+                android:text="203.00"/>
         </LinearLayout>
 
         <LinearLayout
@@ -79,60 +76,11 @@
                 android:text="退货金额"/>
 
             <TextView
-                android:id="@+id/tv_trade_form_th_money"
+                android:id="@+id/tv_trade_form_th"
                 style="@style/Trade_Text_Content"
-                android:text="20.5"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Trade_Text_Name"
-                android:text="应收金额"/>
-
-            <TextView
-                android:id="@+id/tv_trade_form_ys_money"
-                style="@style/Trade_Text_Content"
-                android:text="158.2"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Trade_Text_Name"
-                android:text="销售单数"/>
-
-            <TextView
-                android:id="@+id/tv_trade_form_xs_num"
-                style="@style/Trade_Text_Content"
-                android:text="200"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Trade_Text_Name"
-                android:text="退货单数"/>
-
-            <TextView
-                android:id="@+id/tv_trade_form_th_num"
-                style="@style/Trade_Text_Content"
-                android:text="10"/>
+                android:text="2.00"/>
         </LinearLayout>
 
     </LinearLayout>
-
 
 </android.support.v7.widget.CardView>

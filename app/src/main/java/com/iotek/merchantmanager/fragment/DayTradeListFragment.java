@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.iotek.merchantmanager.Presenter.DayTradeFormsPresenter;
-import com.iotek.merchantmanager.Utils.AppUtils;
+import com.iotek.merchantmanager.activity.TradeFormDetailActivity;
 import com.iotek.merchantmanager.adapter.DayTradeFormAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
+import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
 
 import java.util.ArrayList;
@@ -32,6 +33,8 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     private DayTradeFormAdapter mAdapter;
 
     private DayTradeFormsPresenter mPresenter = new DayTradeFormsPresenter();
+
+    private ArrayList<DayTradeFormVO.RowsBean> listData;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,6 +84,7 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
     @Override
     public void updateUserList(ArrayList<DayTradeFormVO.RowsBean> lists) {
+        listData = lists;
         if (lists.size() == 0) {
             ll_recyclerView.setVisibility(View.GONE);
             ll_empty.setVisibility(View.VISIBLE);
@@ -100,7 +104,11 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
     @Override
     public void OnItemClick(int position) {
-        //TODO:跳转到报表详情页
-        AppUtils.showToast("position position position -->> " + position);
+        long day = listData.get(position).getReportDay();
+
+        Bundle bundle = new Bundle();
+        bundle.putLong(Intentkey.TRADE_FORM_DETAIL_DAY,day);
+
+        launch(TradeFormDetailActivity.class);
     }
 }
