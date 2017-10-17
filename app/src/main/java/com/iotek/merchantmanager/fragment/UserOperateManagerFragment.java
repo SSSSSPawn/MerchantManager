@@ -16,6 +16,7 @@ import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
 import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.activity.AddUserActivity;
+import com.iotek.merchantmanager.activity.UserCenterActivity;
 import com.iotek.merchantmanager.activity.UserManagerDetailActivity;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
@@ -167,6 +168,6 @@ public class UserOperateManagerFragment extends ListFragment implements UserMana
 
     @OnClick(R.id.iv_user_center)
     public void onViewClicked() {
-
+       launch(UserCenterActivity.class);
     }
 }

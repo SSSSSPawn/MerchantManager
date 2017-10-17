@@ -59,6 +59,7 @@ public class HttpExecutor {
 
 
         mApiService = new Retrofit.Builder().baseUrl(API_URL)
+        //mApiService = new Retrofit.Builder().baseUrl("http://192.168.0.51:8080/")
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(mClient)

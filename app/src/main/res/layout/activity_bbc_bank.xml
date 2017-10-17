@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.iotek.merchantmanager.view.AppBar
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/becPrimaryBlue">
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+           <com.iotek.merchantmanager.view.BackView
+               style="@style/backView"/>
+
+           <TextView
+               android:id="@+id/tv_app_title"
+               style="@style/Text_AppBar_title"/>
+
+           <ImageButton
+               android:id="@+id/view_refresh"
+               android:layout_width="48dp"
+               android:layout_height="match_parent"
+               android:layout_alignParentRight="true"
+               android:background="#00000000"
+               android:padding="12dp"
+               android:src="@drawable/icon_update"/>
+
+       </RelativeLayout>
+
+    </com.iotek.merchantmanager.view.AppBar>
+
+    <com.iotek.merchantmanager.view.BECWebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

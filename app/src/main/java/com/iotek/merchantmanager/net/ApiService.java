@@ -1,5 +1,6 @@
 package com.iotek.merchantmanager.net;
 
+import com.iotek.merchantmanager.bean.BBCBankVO;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
 import com.iotek.merchantmanager.bean.LoginVO;
@@ -94,7 +95,7 @@ public interface ApiService {
      * @return
      */
     @POST("app/redirectToPingAn.json")
-    Call<CodeMessageVO> redirectToPingAn(@Body RequestBody params);
+    Call<BBCBankVO> redirectToPingAn(@Body RequestBody params);
 
 
     /**
