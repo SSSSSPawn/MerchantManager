@@ -46,7 +46,7 @@ public class MonthTradeFormsPresenter extends BasePresenter<MonthTradeFormsPrese
                         mRowsBeen.clear();
                     }
                     mRowsBeen.addAll(monthTradeFormVO.getRows());
-                    mvpView.updateUserList(mRowsBeen);
+                    mvpView.updateTradeFromList(mRowsBeen);
                     currentPage = page;
                     totalPage = (int) Math.ceil(mRowsBeen.size() * 1.0 / LIMIT_SIZE);
                 }
@@ -65,7 +65,7 @@ public class MonthTradeFormsPresenter extends BasePresenter<MonthTradeFormsPrese
 
     public interface MvpView extends IMvpView {
 
-        void updateUserList(ArrayList<MonthTradeFormVO.RowsBean> lists);
+        void updateTradeFromList(ArrayList<MonthTradeFormVO.RowsBean> lists);
 
         void stopLoadMore();
     }

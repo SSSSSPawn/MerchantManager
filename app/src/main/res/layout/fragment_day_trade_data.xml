@@ -4,36 +4,37 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.iotek.merchantmanager.view.ObservableScrollView
-        android:id="@+id/obv_scroll"
+    <LinearLayout
+        android:id="@+id/ll_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="none">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/super_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"/>
 
-            <include
-                layout="@layout/day_trade_from_rv_item"
-                android:visibility="visible"/>
+        <com.iotek.merchantmanager.view.ObservableScrollView
 
-            <include
-                layout="@layout/empty"
-                android:visibility="gone"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pie_chart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="visible"/>
+                android:visibility="visible"
+                android:layout_gravity="center"/>
 
-        </LinearLayout>
+        </com.iotek.merchantmanager.view.ObservableScrollView>
+
+    </LinearLayout>
 
 
-    </com.iotek.merchantmanager.view.ObservableScrollView>
+    <include
+        layout="@layout/empty"
+        android:visibility="gone"/>
 
 
 </LinearLayout>

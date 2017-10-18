@@ -79,7 +79,7 @@ public class MonthTradeListFragment extends ListFragment implements MonthTradeFo
     }
 
     @Override
-    public void updateUserList(ArrayList<MonthTradeFormVO.RowsBean> lists) {
+    public void updateTradeFromList(ArrayList<MonthTradeFormVO.RowsBean> lists) {
         if (lists.size() == 0) {
             ll_recyclerView.setVisibility(View.GONE);
             ll_empty.setVisibility(View.VISIBLE);

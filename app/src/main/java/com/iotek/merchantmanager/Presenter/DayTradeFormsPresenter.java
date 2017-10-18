@@ -20,7 +20,7 @@ import retrofit2.Call;
 public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter.MvpView> {
 
 
-    private final int LIMIT_SIZE = 10;
+    private final int LIMIT_SIZE = 1;
 
     private int currentPage, totalPage;
 
@@ -47,7 +47,7 @@ public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter
                         mRowsBeen.clear();
                     }
                     mRowsBeen.addAll(vo.getRows());
-                    mvpView.updateUserList(mRowsBeen);
+                    mvpView.updateTradeFromList(mRowsBeen);
                     currentPage = page;
                     totalPage = (int) Math.ceil(mRowsBeen.size() * 1.0 / LIMIT_SIZE);
                 }
@@ -66,7 +66,7 @@ public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter
 
     public interface MvpView extends IMvpView {
 
-        void updateUserList(ArrayList<DayTradeFormVO.RowsBean> lists);
+        void updateTradeFromList(ArrayList<DayTradeFormVO.RowsBean> lists);
 
         void stopLoadMore();
     }
