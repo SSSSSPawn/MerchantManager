@@ -1,19 +1,16 @@
 package com.iotek.merchantmanager.fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.iotek.merchantmanager.Presenter.DayTradeFormsPresenter;
-import com.iotek.merchantmanager.activity.TradeFormDetailActivity;
-import com.iotek.merchantmanager.adapter.DayTradeFormAdapter;
-import com.iotek.merchantmanager.base.ListFragment;
+import com.iotek.merchantmanager.base.BECFragment;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
-import com.iotek.merchantmanager.constant.Intentkey;
-import com.iotek.merchantmanager.listener.OnItemClickListener;
 
 import java.util.ArrayList;
 
@@ -24,13 +21,13 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/10/11.
  */
 
-public class DayTradeListFragment extends ListFragment implements DayTradeFormsPresenter.MvpView, OnItemClickListener {
+public class DayTradeListFragment extends BECFragment implements DayTradeFormsPresenter.MvpView {
 
-    @Bind(R.id.ll_empty) LinearLayout ll_empty;
+    @Bind(R.id.ll_empty)
+    LinearLayout ll_empty;
 
-    @Bind(R.id.ll_recyclerView) LinearLayout ll_recyclerView;
-
-    private DayTradeFormAdapter mAdapter;
+    @Bind(R.id.tv_trade_form_date)
+    TextView mTvTradeFormDate;
 
     private DayTradeFormsPresenter mPresenter = new DayTradeFormsPresenter();
 
@@ -41,19 +38,15 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
         super.onCreate(savedInstanceState);
 
         mPresenter.attachView(this);
-        mAdapter = new DayTradeFormAdapter();
-        mAdapter.setOnItemClickListener(this);
     }
 
+    @Nullable
     @Override
-    protected RecyclerView.Adapter getAdapter() {
-        return mAdapter;
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_day_trade_data, null);
+        return view;
     }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_form_list;
-    }
 
     @Override
     protected boolean isBindEventBus() {
@@ -61,54 +54,13 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     }
 
     @Override
-    public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mPresenter.getDayTradeList(1);
-                mSuperRecyclerView.refreshComplete();
-            }
-        }, 1000);
-    }
-
-    @Override
-    public void onLoadMore() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mPresenter.getNextData();
-                mSuperRecyclerView.loadMoreComplete();
-            }
-        },1000);
-    }
-
-    @Override
     public void updateUserList(ArrayList<DayTradeFormVO.RowsBean> lists) {
-        listData = lists;
-        if (lists.size() == 0) {
-            ll_recyclerView.setVisibility(View.GONE);
-            ll_empty.setVisibility(View.VISIBLE);
-        }
-        mAdapter.setDataList(lists);
+
     }
 
     @Override
     public void stopLoadMore() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mSuperRecyclerView.setNoMore(true);
-            }
-        },1000);
+
     }
 
-    @Override
-    public void OnItemClick(int position) {
-        long day = listData.get(position).getReportDay();
-
-        Bundle bundle = new Bundle();
-        bundle.putLong(Intentkey.TRADE_FORM_DETAIL_DAY,day);
-
-        launch(TradeFormDetailActivity.class);
-    }
 }
