@@ -5,9 +5,14 @@ import android.content.Intent;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iotek.merchantmanager.app.MyApplication;
+
+import iotek.com.merchantmanager.R;
 
 /**
  * Created by admin on 2017/8/23.
@@ -41,4 +46,18 @@ public class AppUtils {
         drawable.addState(new int[]{}, MyApplication.getInstance().getResources().getDrawable(normal));
         return drawable;
     }
+
+    public static View getCustomTextTabView(Context context, String name) {
+        TextView view = (TextView) LayoutInflater.from(context).inflate(R.layout.view_tab_text, null);
+        view.setText(name);
+        return view;
+    }
+
+    public static View getCustomTextTabView(Context context, String name, int txtColor) {
+        TextView view = (TextView) LayoutInflater.from(context).inflate(R.layout.view_tab_text, null);
+        view.setText(name);
+        view.setTextColor(txtColor);
+        return view;
+    }
+
 }

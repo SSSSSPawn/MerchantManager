@@ -1,11 +1,18 @@
 package com.iotek.merchantmanager.net;
 
-import com.iotek.merchantmanager.bean.AddUserParamsVO;
+import com.iotek.merchantmanager.bean.BBCBankVO;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
-import com.iotek.merchantmanager.bean.LoginParamsVO;
+import com.iotek.merchantmanager.bean.DayTradeFormVO;
 import com.iotek.merchantmanager.bean.LoginVO;
+import com.iotek.merchantmanager.bean.MonthTradeFormVO;
+import com.iotek.merchantmanager.bean.TradeFormDetailVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
-import com.iotek.merchantmanager.bean.UserParamsVO;
+import com.iotek.merchantmanager.bean.params.AddUserParamsVO;
+import com.iotek.merchantmanager.bean.params.LoginParamsVO;
+import com.iotek.merchantmanager.bean.params.QueryUserParamsVO;
+import com.iotek.merchantmanager.bean.params.TradeFormDetailParamsVO;
+import com.iotek.merchantmanager.bean.params.TradeFormParamsVO;
+import com.iotek.merchantmanager.bean.params.UserParamsVO;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -53,7 +60,7 @@ public interface ApiService {
      * @return
      */
     @POST("app/inter/userQuery.json")
-    Call<UserManagerDetailVO> queryUser(@Body RequestBody params);
+    Call<UserManagerDetailVO> queryUser(@Body QueryUserParamsVO params);
 
     /**
      * 重置密码
@@ -84,11 +91,47 @@ public interface ApiService {
     Call<CodeMessageVO> userAdd(@Body AddUserParamsVO paramsVO);
 
     /**
+     * 跳到平安页面
+     *
+     * @param params
+     * @return
+     */
+    @POST("app/redirectToPingAn.json")
+    Call<BBCBankVO> redirectToPingAn(@Body RequestBody params);
+
+
+    /**
      * 获取系统时间
      *
      * @return
      */
     @POST("app/getSysTime.json")
     Call<CodeMessageVO> getSysTime();
+
+    /**
+     * 日交易报表查询
+     *
+     * @return
+     */
+    @POST("app/inter/dayReport.json")
+    Call<DayTradeFormVO> getDayTradeForm(@Body TradeFormParamsVO paramsVO);
+
+
+    /**
+     * 日交易详情报表查询
+     *
+     * @return
+     */
+    @POST("app/inter/dayDetailReport.json")
+    Call<TradeFormDetailVO> getDayTradeDetail(@Body TradeFormDetailParamsVO paramsVO);
+
+    /**
+     * 月交易报表查询
+     *
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/monthReport.json")
+    Call<MonthTradeFormVO> getMonthTradeForm(@Body TradeFormParamsVO paramsVO);
 
 }

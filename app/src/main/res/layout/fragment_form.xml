@@ -6,15 +6,29 @@
 
     <com.iotek.merchantmanager.view.AppBar
         style="@style/AppBar"
-        android:background="@color/btn_bg">
+        android:background="@color/statusBarColor">
 
-        <TextView
-            style="@style/Text_AppBar_title"
-            android:text="报表管理"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <com.iotek.merchantmanager.view.TitleTabLayout
+                android:id="@+id/tab_title"
+                android:layout_width="216dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+
 
     </com.iotek.merchantmanager.view.AppBar>
 
-    <include layout="@layout/fragment_base_list"/>
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 
 </LinearLayout>

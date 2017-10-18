@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iotek.merchantmanager.Presenter.MainPresenter;
+import com.iotek.merchantmanager.base.BECFragment;
 import com.iotek.merchantmanager.base.BaseActivity;
-import com.iotek.merchantmanager.base.BaseFragment;
 import com.iotek.merchantmanager.bean.TabMenus;
 import com.iotek.merchantmanager.fragment.FormsMangerFragment;
 import com.iotek.merchantmanager.fragment.MemberManagerFragment;
@@ -69,7 +69,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
         };
     }
 
-    private <T extends BaseFragment> T findFragment(Class<T> clazz, String tag) {
+    private <T extends BECFragment> T findFragment(Class<T> clazz, String tag) {
         T fragment = (T) getSupportFragmentManager().findFragmentByTag(tag);
         try {
             return fragment == null ? clazz.newInstance() : fragment;
@@ -90,20 +90,20 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
     }
 
     private void switchFragment(int position) {
-        BaseFragment to = TAB_MENUS[position].mFragment;
+        BECFragment to = TAB_MENUS[position].mFragment;
         if (position == mCurrentPosition) {
             if (!to.isVisible()) {
                 displayFragment(to);
             }
             return;
         }
-        BaseFragment from = TAB_MENUS[mCurrentPosition].mFragment;
+        BECFragment from = TAB_MENUS[mCurrentPosition].mFragment;
         mCurrentPosition = position;
         getSupportFragmentManager().beginTransaction().hide(from).commit();
         displayFragment(to);
     }
 
-    private void displayFragment(BaseFragment fragment) {
+    private void displayFragment(BECFragment fragment) {
         String tag = TAB_MENUS[mCurrentPosition].name;
         if (fragment.isAdded()) {
             getSupportFragmentManager().beginTransaction().show(fragment).commit();

@@ -31,6 +31,12 @@
             android:name="com.iotek.merchantmanager.activity.AddUserActivity"
             android:windowSoftInputMode="adjustPan"/>
 
+        <activity android:name="com.iotek.merchantmanager.activity.BBCBankActivity"/>
+
+        <activity android:name="com.iotek.merchantmanager.activity.UserCenterActivity"/>
+
+        <activity android:name="com.iotek.merchantmanager.activity.TradeFormDetailActivity"/>
+
     </application>
 
 </manifest>

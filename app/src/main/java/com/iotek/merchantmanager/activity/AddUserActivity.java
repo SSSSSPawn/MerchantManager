@@ -14,7 +14,7 @@ import com.iotek.merchantmanager.Utils.IDCardUtil;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.Utils.VerUtil;
 import com.iotek.merchantmanager.base.BaseActivity;
-import com.iotek.merchantmanager.bean.AddUserParamsVO;
+import com.iotek.merchantmanager.bean.params.AddUserParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.view.AppBar;
 import com.iotek.merchantmanager.view.BottomDialog;

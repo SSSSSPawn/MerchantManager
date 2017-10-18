@@ -1,4 +1,6 @@
-package com.iotek.merchantmanager.bean;
+package com.iotek.merchantmanager.bean.params;
+
+import com.iotek.merchantmanager.bean.BaseBean;
 
 /**
  * Created by admin on 2017/9/25.

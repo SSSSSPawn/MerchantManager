@@ -2,7 +2,7 @@ package com.iotek.merchantmanager.Presenter;
 
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
-import com.iotek.merchantmanager.bean.AddUserParamsVO;
+import com.iotek.merchantmanager.bean.params.AddUserParamsVO;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.net.OnResponseListener;
 

@@ -3,10 +3,12 @@ package com.iotek.merchantmanager.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -14,11 +16,12 @@ import com.iotek.merchantmanager.Presenter.UserManagerPresenter;
 import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.activity.AddUserActivity;
+import com.iotek.merchantmanager.activity.UserCenterActivity;
 import com.iotek.merchantmanager.activity.UserManagerDetailActivity;
 import com.iotek.merchantmanager.adapter.UserManagerAdapter;
-import com.iotek.merchantmanager.base.BaseFragment;
+import com.iotek.merchantmanager.base.ListFragment;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
-import com.iotek.merchantmanager.bean.UserParamsVO;
+import com.iotek.merchantmanager.bean.params.UserParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.listener.OnConfirmListener;
@@ -33,7 +36,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/23.
  */
 
-public class UserOperateManagerFragment extends BaseFragment implements UserManagerPresenter.MvpView{
+public class UserOperateManagerFragment extends ListFragment implements UserManagerPresenter.MvpView {
 
     public static final String TAG = "用户";
 
@@ -43,19 +46,26 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     @Bind(R.id.ll_recyclerView) LinearLayout ll_recyclerView;
 
+    @Bind(R.id.iv_user_center) ImageView iv_user_center;
+
     private UserManagerPresenter mPresenter = new UserManagerPresenter();
 
     private UserManagerAdapter mAdapter;
 
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        init();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        initView();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
 
-    private void initView() {
+    private void init() {
 
         final long custID = Preference.getLong(CacheKey.CUST_ID);
         final long rootID = Preference.getLong(CacheKey.ROOT_ID);
@@ -88,7 +98,6 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     @Override
     public void onRefresh() {
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -100,8 +109,13 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     @Override
     public void onLoadMore() {
-        mPresenter.getNextData();
-        mSuperRecyclerView.loadMoreComplete();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPresenter.getNextData();
+                mSuperRecyclerView.loadMoreComplete();
+            }
+        }, 1000);
     }
 
     @Override
@@ -110,13 +124,13 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
     }
 
     @Override
-    protected boolean isBindEventBus() {
-        return false;
+    protected int getLayoutId() {
+        return R.layout.fragment_user;
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_user;
+    protected boolean isBindEventBus() {
+        return false;
     }
 
     @Override
@@ -130,7 +144,12 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
 
     @Override
     public void stopLoadMore() {
-        mSuperRecyclerView.setNoMore(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSuperRecyclerView.setNoMore(true);
+            }
+        }, 1000);
     }
 
     @Override
@@ -145,5 +164,10 @@ public class UserOperateManagerFragment extends BaseFragment implements UserMana
                 launch(AddUserActivity.class);
                 break;
         }
+    }
+
+    @OnClick(R.id.iv_user_center)
+    public void onViewClicked() {
+       launch(UserCenterActivity.class);
     }
 }

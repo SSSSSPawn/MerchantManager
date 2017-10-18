@@ -28,7 +28,11 @@ public class HttpExecutor {
 
     public static final String API_URL = BuildConfig.API_URL;
 
-    private static final int DEFAULT_TIME_OUT = 5;//超时时间 5s
+    private static final int DEFAULT_TIME_OUT = 30;//超时时间
+
+    private static final int READ_TIME_OUT = 30;
+
+    private static final int WRITE_TIME_OUT = 30;
 
     private ApiService mApiService;
 
@@ -38,6 +42,8 @@ public class HttpExecutor {
         if (BuildConfig.DEBUG) {
             mClient = mClient.newBuilder()
                     .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
+                    .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
+                    .writeTimeout(WRITE_TIME_OUT, TimeUnit.SECONDS)
                     .addNetworkInterceptor(new StethoInterceptor())
                     .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     .addInterceptor(new CustomInterceptor())
@@ -45,12 +51,15 @@ public class HttpExecutor {
         } else {
             mClient = mClient.newBuilder()
                     .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
+                    .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
+                    .writeTimeout(WRITE_TIME_OUT, TimeUnit.SECONDS)
                     .addInterceptor(new CustomInterceptor())
                     .build();
         }
 
 
         mApiService = new Retrofit.Builder().baseUrl(API_URL)
+        //mApiService = new Retrofit.Builder().baseUrl("http://192.168.0.51:8080/")
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(mClient)

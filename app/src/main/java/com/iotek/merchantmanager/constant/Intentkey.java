@@ -6,6 +6,8 @@ package com.iotek.merchantmanager.constant;
 
 public interface Intentkey {
 
-    String USER_DETAIL="user_detail";
+    String USER_DETAIL = "user_detail";
+
+    String TRADE_FORM_DETAIL_DAY = "trade_form_detail_day";
 
 }

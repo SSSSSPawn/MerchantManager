@@ -12,7 +12,7 @@ import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.Utils.SysUtil;
 import com.iotek.merchantmanager.base.BaseActivity;
-import com.iotek.merchantmanager.bean.LoginParamsVO;
+import com.iotek.merchantmanager.bean.params.LoginParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 
 import butterknife.Bind;
