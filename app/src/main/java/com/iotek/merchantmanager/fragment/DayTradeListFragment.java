@@ -1,5 +1,6 @@
 package com.iotek.merchantmanager.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -106,9 +107,8 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     public void OnItemClick(int position) {
         long day = listData.get(position).getReportDay();
 
-        Bundle bundle = new Bundle();
-        bundle.putLong(Intentkey.TRADE_FORM_DETAIL_DAY,day);
-
-        launch(TradeFormDetailActivity.class);
+        Intent intent = new Intent(getActivity(),TradeFormDetailActivity.class);
+        intent.putExtra(Intentkey.TRADE_FORM_DETAIL_DAY,day);
+        launch(intent);
     }
 }
