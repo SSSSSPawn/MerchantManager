@@ -38,9 +38,9 @@ public class TradeFormDetailAdapter extends CustomRvAdapter<TradeFormDetailVO.Ro
 
         h.mTvTradeFormFs.setText(rowsBean.getTypeName());
 
-        h.mTvTradeFormZf.setText(DateUtils.formatMoney(rowsBean.getSaleAmount()));
-
-        h.mTvTradeFormTh.setText(DateUtils.formatMoney(rowsBean.getReturnAmount()));
+//        h.mTvTradeFormZf.setText(DateUtils.formatMoney(rowsBean.getSaleAmount()));
+//
+//        h.mTvTradeFormTh.setText(DateUtils.formatMoney(rowsBean.getReturnAmount()));
 
     }
 

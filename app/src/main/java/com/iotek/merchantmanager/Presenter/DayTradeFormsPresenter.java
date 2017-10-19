@@ -5,6 +5,8 @@ import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
+import com.iotek.merchantmanager.bean.TradeFormDetailVO;
+import com.iotek.merchantmanager.bean.params.TradeFormDetailParamsVO;
 import com.iotek.merchantmanager.bean.params.TradeFormParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.net.OnResponseListener;
@@ -25,6 +27,8 @@ public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter
     private int currentPage, totalPage;
 
     private ArrayList<DayTradeFormVO.RowsBean> mRowsBeen = new ArrayList<>();
+
+    private ArrayList<TradeFormDetailVO.RowsBean> mRowsBeenPay = new ArrayList<>();
 
     public void getDayTradeList(final int page) {
         long custID = Preference.getLong(CacheKey.CUST_ID);
@@ -55,6 +59,23 @@ public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter
         });
     }
 
+    public void getTradeFormDetailList(TradeFormDetailParamsVO paramsVO){
+        Call<TradeFormDetailVO> call = mApiService.getDayTradeDetail(paramsVO);
+        call.enqueue(new OnResponseListener<TradeFormDetailVO>(getContext(),false) {
+            @Override
+            public void onSuccess(TradeFormDetailVO tradeFormDetailVO) {
+                if (mvpView != null) {
+                    if (tradeFormDetailVO == null || tradeFormDetailVO.getRows() == null) {
+                        return;
+                    }
+                    mRowsBeenPay.clear();
+                    mRowsBeenPay.addAll(tradeFormDetailVO.getRows());
+                    mvpView.showPayStyle(mRowsBeenPay);
+                }
+            }
+        });
+    }
+
     public void getNextData() {
         LogUtil.e("currentPage currentPage ==>>" + currentPage + "\ntotalPage totalPage ==>> " + totalPage);
         //TODO：存在刷新两次的问题，后台未返回总页数或总条目
@@ -67,6 +88,8 @@ public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter
     public interface MvpView extends IMvpView {
 
         void updateTradeFromList(ArrayList<DayTradeFormVO.RowsBean> lists);
+
+        void showPayStyle(ArrayList<TradeFormDetailVO.RowsBean> lists);
 
         void stopLoadMore();
     }

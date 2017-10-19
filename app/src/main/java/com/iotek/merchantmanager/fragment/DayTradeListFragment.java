@@ -17,9 +17,16 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.iotek.merchantmanager.Presenter.DayTradeFormsPresenter;
+import com.iotek.merchantmanager.Utils.LogUtil;
+import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.adapter.DayTradeFormAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
+import com.iotek.merchantmanager.bean.PayStylePieEntry;
+import com.iotek.merchantmanager.bean.TradeFormDetailVO;
+import com.iotek.merchantmanager.bean.params.TradeFormDetailParamsVO;
+import com.iotek.merchantmanager.constant.CacheKey;
+import com.iotek.merchantmanager.constant.StatusKey;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
 
 import java.util.ArrayList;
@@ -31,7 +38,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/10/11.
  */
 
-public class DayTradeListFragment extends ListFragment implements DayTradeFormsPresenter.MvpView, OnItemClickListener {
+public class DayTradeListFragment extends ListFragment implements DayTradeFormsPresenter.MvpView,OnItemClickListener {
 
     @Bind(R.id.ll_empty) LinearLayout ll_empty;
 
@@ -41,9 +48,15 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
     private DayTradeFormsPresenter mPresenter = new DayTradeFormsPresenter();
 
-    private ArrayList<DayTradeFormVO.RowsBean> listData;
+    private ArrayList<DayTradeFormVO.RowsBean> listData = new ArrayList<>();
+
+    private ArrayList<TradeFormDetailVO.RowsBean> listsType = new ArrayList<>();
+
+    private ArrayList<PayStylePieEntry> payName = new ArrayList<>();
 
     private DayTradeFormAdapter mAdapter;
+
+    //private double saleAmountAll,saleAmount_XJ,saleAmount_WX,saleAmount_ZFB,saleAmount_Other;
 
 
     @Override
@@ -54,11 +67,21 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
         mAdapter = new DayTradeFormAdapter();
         mAdapter.setOnItemClickListener(this);
 
+        long custID = Preference.getLong(CacheKey.CUST_ID);
+        long rootID = Preference.getLong(CacheKey.ROOT_ID);
+        String uuID = Preference.getString(CacheKey.UU_ID);
+        String mac = Preference.getString(CacheKey.MAC);
+
+        TradeFormDetailParamsVO  paramsVO = new TradeFormDetailParamsVO(custID,rootID,uuID,mac,10,1,"2017-10-18");
+
+        mPresenter.getTradeFormDetailList(paramsVO);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        mSuperRecyclerView.setLoadingMoreEnabled(false);
 
         showPieChart();
     }
@@ -101,6 +124,47 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     }
 
     @Override
+    public void showPayStyle(ArrayList<TradeFormDetailVO.RowsBean> lists) {
+
+        listsType = lists;
+
+        LogUtil.e("listsType listsType-->>" + listsType.size());
+
+        double saleAmount = 0;
+
+        String name = "";
+
+
+        LogUtil.e("lists lists" + lists.size());
+
+        for (int i = 0; i < lists.size(); i++) {
+
+            TradeFormDetailVO.RowsBean rowsBean = lists.get(i);
+
+            LogUtil.e("-->> rowsBean" + rowsBean.toString() + "\n");
+
+            if (rowsBean.getPayType() == StatusKey.XJ_TYPE) {
+                saleAmount = rowsBean.getSaleAmount();
+                name = rowsBean.getTypeName();
+            } else if (rowsBean.getPayType() == StatusKey.WX_TYPE) {
+                saleAmount = rowsBean.getSaleAmount();
+                name = rowsBean.getTypeName();
+            } else if (rowsBean.getPayType() == StatusKey.ZFB_TYPE) {
+                saleAmount = rowsBean.getSaleAmount();
+                name = rowsBean.getTypeName();
+            } else {
+                saleAmount = rowsBean.getSaleAmount();
+                name = rowsBean.getTypeName();
+            }
+
+            PayStylePieEntry pieEntry = new PayStylePieEntry(name,saleAmount);
+            payName.add(pieEntry);
+        }
+
+        LogUtil.e("payName ----" + payName.toString());
+    }
+
+    @Override
     public void stopLoadMore() {
 
     }
@@ -129,17 +193,17 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
         mChart.setTransparentCircleColor(Color.WHITE);
         mChart.setTransparentCircleAlpha(110);
-
         mChart.setHoleRadius(58f);
         mChart.setTransparentCircleRadius(61f);
 
         mChart.setDrawCenterText(true);
+        mChart.setCenterText("支付方式");
 
         mChart.setRotationAngle(0);
         mChart.setRotationEnabled(true);
         mChart.setHighlightPerTapEnabled(true);
 
-        setData(4, 100);
+        setData(listsType.size(), 100);
 
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
         Legend l = mChart.getLegend();
@@ -153,51 +217,40 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     private void setData(int count, float range) {
 
         String[] mParties = new String[]{
-                "Party A", "Party B", "Party C", "Party D", "Party E", "Party F", "Party G", "Party H",
-                "Party I", "Party J", "Party K", "Party L", "Party M", "Party N", "Party O", "Party P",
-                "Party Q", "Party R", "Party S", "Party T", "Party U", "Party V", "Party W", "Party X",
-                "Party Y", "Party Z"
+               "支付宝","微信","现金","其他"
         };
 
         float mult = range;
 
-        ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
+        ArrayList<PieEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             entries.add(new PieEntry((float) (Math.random() * mult) + mult / 5, mParties[i % mParties.length]));
         }
 
+//        PieEntry ConsumptionBalance = new PieEntry(30, "消费余额 768");
+//        pieEntryList.add(CashBalance);
+//        pieEntryList.add(ConsumptionBalance);
+//
+//        PieData pieData = new PieData(entries,"");
+
+        //PieEntry entry = new PieEntry();
+
         PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
-        ArrayList<Integer> colors = new ArrayList<Integer>();
-
-        for (int c : ColorTemplate.VORDIPLOM_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.JOYFUL_COLORS)
-            colors.add(c);
+        ArrayList<Integer> colors = new ArrayList<>();
 
         for (int c : ColorTemplate.COLORFUL_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.LIBERTY_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.PASTEL_COLORS)
             colors.add(c);
 
         colors.add(ColorTemplate.getHoloBlue());
 
         dataSet.setColors(colors);
-        //dataSet.setSelectionShift(0f);
-
-
         dataSet.setValueLinePart1OffsetPercentage(80.f);
         dataSet.setValueLinePart1Length(0.2f);
         dataSet.setValueLinePart2Length(0.4f);
-        //dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
 
         PieData data = new PieData(dataSet);
@@ -210,6 +263,4 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
         mChart.invalidate();
     }
-
-
 }

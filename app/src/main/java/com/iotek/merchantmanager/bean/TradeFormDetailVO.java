@@ -69,8 +69,8 @@ public class TradeFormDetailVO extends BaseBean {
         private int payType;
         private long recordTime;
         private long reportDay;
-        private int returnAmount;
-        private int saleAmount;
+        private double returnAmount;
+        private double saleAmount;
         private String typeName;
         private String uid;
 
@@ -84,6 +84,22 @@ public class TradeFormDetailVO extends BaseBean {
 
         public int getPayType() {
             return payType;
+        }
+
+        public double getReturnAmount() {
+            return returnAmount;
+        }
+
+        public void setReturnAmount(double returnAmount) {
+            this.returnAmount = returnAmount;
+        }
+
+        public double getSaleAmount() {
+            return saleAmount;
+        }
+
+        public void setSaleAmount(double saleAmount) {
+            this.saleAmount = saleAmount;
         }
 
         public void setPayType(int payType) {
@@ -106,22 +122,6 @@ public class TradeFormDetailVO extends BaseBean {
             this.reportDay = reportDay;
         }
 
-        public int getReturnAmount() {
-            return returnAmount;
-        }
-
-        public void setReturnAmount(int returnAmount) {
-            this.returnAmount = returnAmount;
-        }
-
-        public int getSaleAmount() {
-            return saleAmount;
-        }
-
-        public void setSaleAmount(int saleAmount) {
-            this.saleAmount = saleAmount;
-        }
-
         public String getTypeName() {
             return typeName;
         }
@@ -136,6 +136,20 @@ public class TradeFormDetailVO extends BaseBean {
 
         public void setUid(String uid) {
             this.uid = uid;
+        }
+
+        @Override
+        public String toString() {
+            return "RowsBean{" +
+                    "custId=" + custId +
+                    ", payType=" + payType +
+                    ", recordTime=" + recordTime +
+                    ", reportDay=" + reportDay +
+                    ", returnAmount=" + returnAmount +
+                    ", saleAmount=" + saleAmount +
+                    ", typeName='" + typeName + '\'' +
+                    ", uid='" + uid + '\'' +
+                    '}';
         }
     }
 }
