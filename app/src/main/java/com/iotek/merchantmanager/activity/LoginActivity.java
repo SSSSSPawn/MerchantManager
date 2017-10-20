@@ -99,7 +99,7 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.MvpVie
             return;
         }
 
-        String mac = SysUtil.getDeviceId(this);
+        String mac = SysUtil.getDeviceIds(this);
 
         String md5Mac = SysUtil.md5(mac);
 

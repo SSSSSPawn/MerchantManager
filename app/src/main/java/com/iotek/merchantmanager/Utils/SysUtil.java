@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
 import java.io.BufferedReader;
@@ -20,6 +22,20 @@ import java.security.NoSuchAlgorithmException;
  */
 
 public class SysUtil {
+
+
+    public static String getDeviceIds(Context context) {
+        String id;
+        //android.telephony.TelephonyManager
+        TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (mTelephony.getDeviceId() != null) {
+            id = mTelephony.getDeviceId();
+        } else {
+            //android.provider.Settings; --解决在android 7.0的情况下，有权限getDeviceId()返回null的情形
+            id = Settings.Secure.getString(context.getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        }
+        return id;
+    }
 
     public static String getDeviceId(Context context) {
         try {

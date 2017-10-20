@@ -49,8 +49,8 @@ public class MPChartUtil {
 
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
         Legend l = mChart.getLegend();
-        l.setXEntrySpace(5f);//设置距离饼图的距离，防止与饼图重合  
-        l.setYEntrySpace(5f);//设置比例块换行...  
+        l.setXEntrySpace(2f);//设置距离饼图的距离，防止与饼图重合  
+        l.setYEntrySpace(2f);//设置比例块换行...  
         l.setWordWrapEnabled(true);
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);

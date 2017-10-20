@@ -133,4 +133,10 @@ public interface ApiService {
      */
     @POST("app/inter/monthReport.json")
     Call<MonthTradeFormVO> getMonthTradeForm(@Body TradeFormParamsVO paramsVO);
+
+    /**
+     * 销售/退货数据查询
+     */
+    @POST("app/inter/selectSaleDataReport.json")
+    Call<CodeMessageVO> selectSaleDataReport();
 }
