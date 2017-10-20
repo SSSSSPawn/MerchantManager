@@ -39,7 +39,7 @@ public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter
         TradeFormParamsVO paramsVO = new TradeFormParamsVO(custID, rootID, uuID, mac, LIMIT_SIZE, page);
 
         Call<DayTradeFormVO> call = mApiService.getDayTradeForm(paramsVO);
-        call.enqueue(new OnResponseListener<DayTradeFormVO>(getContext(), false) {
+        call.enqueue(new OnResponseListener<DayTradeFormVO>(getContext(), true) {
             @Override
             public void onSuccess(DayTradeFormVO vo) {
                 if (mvpView != null) {

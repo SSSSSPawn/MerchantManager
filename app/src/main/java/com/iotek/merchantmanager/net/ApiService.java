@@ -133,5 +133,4 @@ public interface ApiService {
      */
     @POST("app/inter/monthReport.json")
     Call<MonthTradeFormVO> getMonthTradeForm(@Body TradeFormParamsVO paramsVO);
-
 }
