@@ -96,6 +96,7 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     @Override
     public void updateTradeFromList(ArrayList<DayTradeFormVO.RowsBean> lists) {
         listData = lists;
+        LogUtil.e("lists ---------------------" + lists.toString());
         if (lists.size() == 0) {
             mLayout.setVisibility(View.GONE);
             ll_empty.setVisibility(View.VISIBLE);
@@ -108,6 +109,8 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
         String mac = Preference.getString(CacheKey.MAC);
 
         TradeFormDetailParamsVO paramsVO = new TradeFormDetailParamsVO(custID, rootID, uuID, mac, 10, 1, DateUtils.dateFormatDay(lists.get(0).getReportDay()));
+
+        LogUtil.e("DateUtils.dateFormatDay(lists.get(0).getReportDay())==" + DateUtils.dateFormatDay(lists.get(0).getReportDay()));
 
         mPresenter.getTradeFormDetailList(paramsVO);
 

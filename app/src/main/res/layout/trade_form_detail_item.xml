@@ -2,6 +2,7 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_data_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
@@ -9,8 +10,8 @@
     android:layout_marginRight="12dp"
     android:layout_marginTop="4dp"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="8dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
     app:contentPadding="12dp">
 
     <LinearLayout
@@ -19,67 +20,128 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            style="@style/Data_Item_Detail_LL">
+
+            <ImageView
+                android:id="@+id/iv_data_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/wx"/>
 
             <TextView
-                style="@style/Trade_Text_Name"
-                android:text="日期"/>
+                android:id="@+id/tv_pay_style"
+                style="@style/Data_Item_Detail_Content"
+                android:text="微信支付"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line_1dp"/>
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL_Top8dp">
 
             <TextView
-                android:id="@+id/tv_trade_form_date"
-                style="@style/Trade_Text_Content"
-                android:text="2018-08-08"/>
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="商品名称:"/>
+
+            <TextView
+                android:id="@+id/tv_sp_name"
+                style="@style/Data_Item_Detail_Txt_Content"
+                android:text="养乐多"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
+            style="@style/Data_Item_Detail_LL_Top8dp">
 
             <TextView
-                style="@style/Trade_Text_Name"
-                android:text="支付方式"/>
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="商品价格:"/>
 
             <TextView
-                android:id="@+id/tv_trade_form_fs"
-                style="@style/Trade_Text_Content"
-                android:text="微信"/>
+                android:id="@+id/tv_sp_price"
+                style="@style/Data_Item_Detail_Txt_Content"
+                android:text="5.55"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
+            style="@style/Data_Item_Detail_LL_Top8dp">
 
             <TextView
-                style="@style/Trade_Text_Name"
-                android:text="支付金额"/>
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="销售数量:"/>
 
             <TextView
-                android:id="@+id/tv_trade_form_zf"
-                style="@style/Trade_Text_Content"
-                android:text="203.00"/>
+                android:id="@+id/tv_sp_number"
+                style="@style/Data_Item_Detail_Txt_Content"
+                android:text="10"/>
         </LinearLayout>
 
         <LinearLayout
+            style="@style/Data_Item_Detail_LL_Top8dp">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="商品单价:"/>
+
+            <TextView
+                android:id="@+id/tv_sp_unit_price"
+                style="@style/Data_Item_Detail_Txt_Content"
+                android:text="2.22"/>
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
+            android:layout_marginBottom="8dp">
 
             <TextView
-                style="@style/Trade_Text_Name"
-                android:text="退货金额"/>
+                android:id="@+id/tv_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="16dp"
+                android:text="支付金额:"
+                android:textSize="12dp"/>
 
             <TextView
-                android:id="@+id/tv_trade_form_th"
-                style="@style/Trade_Text_Content"
-                android:text="2.00"/>
+                android:id="@+id/tv_pay_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_pay"
+                android:layout_centerInParent="true"
+                android:text="¥100.00"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/Line_1dp"
+            android:layout_height="5dp"
+            android:background="@drawable/shape_line"/>
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL"
+            android:layout_height="32dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="查看详情"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_more"/>
+
+
         </LinearLayout>
+
 
     </LinearLayout>
 

@@ -9,10 +9,6 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -25,11 +21,12 @@ public class SysUtil {
 
 
     public static String getDeviceIds(Context context) {
-        String id;
-        //android.telephony.TelephonyManager
+        String id = null;
         TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         if (mTelephony.getDeviceId() != null) {
-            id = mTelephony.getDeviceId();
+            if (checkPermission(context, Manifest.permission.READ_PHONE_STATE)) {
+                id = mTelephony.getDeviceId();
+            }
         } else {
             //android.provider.Settings; --解决在android 7.0的情况下，有权限getDeviceId()返回null的情形
             id = Settings.Secure.getString(context.getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -45,39 +42,10 @@ public class SysUtil {
             if (checkPermission(context, Manifest.permission.READ_PHONE_STATE)) {
                 device_id = tm.getDeviceId();
             }
-            String mac = null;
-            FileReader fstream = null;
-            try {
-                fstream = new FileReader("/sys/class/net/wlan0/address");
-            } catch (FileNotFoundException e) {
-                fstream = new FileReader("/sys/class/net/eth0/address");
-            }
-            BufferedReader in = null;
-            if (fstream != null) {
-                try {
-                    in = new BufferedReader(fstream, 1024);
-                    mac = in.readLine();
-                } catch (IOException e) {
-                } finally {
-                    if (fstream != null) {
-                        try {
-                            fstream.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (in != null) {
-                        try {
-                            in.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
+
             //json.put("mac", mac);
             if (TextUtils.isEmpty(device_id)) {
-                device_id = mac;
+                device_id = Settings.Secure.getString(context.getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
             }
             if (TextUtils.isEmpty(device_id)) {
                 device_id = android.provider.Settings.Secure.getString(context.getContentResolver(),

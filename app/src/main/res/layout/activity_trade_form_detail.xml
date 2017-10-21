@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:coustom="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
@@ -8,18 +8,26 @@
     <com.iotek.merchantmanager.view.AppBar
         android:id="@+id/appBar"
         style="@style/AppBar"
-        android:background="@color/becPrimaryBlue">
-
-    </com.iotek.merchantmanager.view.AppBar>
+        android:background="@color/becPrimaryBlue"/>
 
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
-        android:id="@+id/super_recycler_view"
+    <com.iotek.merchantmanager.view.PagerSlidingTabStrip
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="48dp"
+        coustom:pstsDividerColor="@color/white"
+        coustom:pstsIndicatorColor="@color/becPrimaryBlue"
+        coustom:pstsIndicatorHeight="3dp"
+        coustom:pstsShouldExpand="true"
+        coustom:pstsUnderlineHeight="1dp"
+        coustom:zmsSelectedTabTextColor="@color/becPrimaryBlue"
+        coustom:zmsSelectedTabTextSize="17sp"
+        coustom:zmsTabTextSize="16sp"/>
 
-    <include
-        layout="@layout/empty"
-        android:visibility="gone"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 </LinearLayout>
