@@ -1,5 +1,6 @@
 package com.iotek.merchantmanager.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -19,9 +20,10 @@ import com.iotek.merchantmanager.adapter.DayTradeFormAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
 import com.iotek.merchantmanager.bean.PayStylePieEntry;
-import com.iotek.merchantmanager.bean.TradeFormDetailVO;
+import com.iotek.merchantmanager.bean.TradeFormPayDetailVO;
 import com.iotek.merchantmanager.bean.params.TradeFormDetailParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
+import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.constant.StatusKey;
 
 import java.util.ArrayList;
@@ -96,7 +98,7 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     @Override
     public void updateTradeFromList(ArrayList<DayTradeFormVO.RowsBean> lists) {
         listData = lists;
-        LogUtil.e("lists ---------------------" + lists.toString());
+        LogUtil.e("lists -->>" + lists.toString());
         if (lists.size() == 0) {
             mLayout.setVisibility(View.GONE);
             ll_empty.setVisibility(View.VISIBLE);
@@ -108,7 +110,7 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
         String uuID = Preference.getString(CacheKey.UU_ID);
         String mac = Preference.getString(CacheKey.MAC);
 
-        TradeFormDetailParamsVO paramsVO = new TradeFormDetailParamsVO(custID, rootID, uuID, mac, 10, 1, DateUtils.dateFormatDay(lists.get(0).getReportDay()));
+        TradeFormDetailParamsVO paramsVO = new TradeFormDetailParamsVO(custID, rootID, uuID, mac, Integer.MAX_VALUE, 1, DateUtils.dateFormatDay(lists.get(0).getReportDay()));
 
         LogUtil.e("DateUtils.dateFormatDay(lists.get(0).getReportDay())==" + DateUtils.dateFormatDay(lists.get(0).getReportDay()));
 
@@ -117,7 +119,7 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     }
 
     @Override
-    public void showPayStyle(ArrayList<TradeFormDetailVO.RowsBean> lists) {
+    public void showPayStyle(ArrayList<TradeFormPayDetailVO.RowsBean> lists) {
 
         double saleAmount = 0;
 
@@ -129,7 +131,7 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
         for (int i = 0; i < lists.size(); i++) {
 
-            TradeFormDetailVO.RowsBean rowsBean = lists.get(i);
+            TradeFormPayDetailVO.RowsBean rowsBean = lists.get(i);
 
             LogUtil.e("-->> rowsBean" + rowsBean.toString() + "\n");
 
@@ -157,7 +159,9 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
     @OnClick(R.id.tv_trade_detail)
     public void onViewClicked() {
-        launch(TradeFormDetailActivity.class);
+        Intent intent = new Intent(getActivity(),TradeFormDetailActivity.class);
+        intent.putExtra(Intentkey.SALES_DATA_DATE,listData.get(0).getReportDay());
+        launch(intent);
     }
 
     @Override

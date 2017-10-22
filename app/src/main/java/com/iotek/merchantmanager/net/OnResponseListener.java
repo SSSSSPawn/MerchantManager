@@ -60,11 +60,11 @@ public abstract class OnResponseListener<T> implements retrofit2.Callback<T> {
                     CodeMessageVO codeMessage = new Gson().fromJson(jsonStr, CodeMessageVO.class);
                     onFailure(codeMessage.getRspcod(), codeMessage.getRspmsg());
                 } else {
-                    onFailure(response.code(),"接口返回 数据为空 ");
+                    onFailure(response.code(), "接口返回 数据为空 ");
                 }
 
             } catch (IOException e) {
-                onFailure(response.code(),"接口返回 数据格式异常 ");
+                onFailure(response.code(), "接口返回 数据格式异常 ");
             }
         }
         mContext = null;

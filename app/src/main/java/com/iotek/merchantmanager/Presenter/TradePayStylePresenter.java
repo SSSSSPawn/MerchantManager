@@ -2,7 +2,7 @@ package com.iotek.merchantmanager.Presenter;
 
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
-import com.iotek.merchantmanager.bean.TradeFormDetailVO;
+import com.iotek.merchantmanager.bean.TradeFormPayDetailVO;
 import com.iotek.merchantmanager.bean.params.TradeFormDetailParamsVO;
 import com.iotek.merchantmanager.net.OnResponseListener;
 
@@ -16,13 +16,13 @@ import retrofit2.Call;
 
 public class TradePayStylePresenter extends BasePresenter<TradePayStylePresenter.MvpView> {
 
-    private ArrayList<TradeFormDetailVO.RowsBean> mRowsBeen = new ArrayList<>();
+    private ArrayList<TradeFormPayDetailVO.RowsBean> mRowsBeen = new ArrayList<>();
 
     public void getTradeFormDetailList(TradeFormDetailParamsVO paramsVO){
-        Call<TradeFormDetailVO> call = mApiService.getDayTradeDetail(paramsVO);
-        call.enqueue(new OnResponseListener<TradeFormDetailVO>(getContext(),false) {
+        Call<TradeFormPayDetailVO> call = mApiService.getDayTradeDetail(paramsVO);
+        call.enqueue(new OnResponseListener<TradeFormPayDetailVO>(getContext(),false) {
             @Override
-            public void onSuccess(TradeFormDetailVO tradeFormDetailVO) {
+            public void onSuccess(TradeFormPayDetailVO tradeFormDetailVO) {
                 if (mvpView != null) {
                     if (tradeFormDetailVO == null || tradeFormDetailVO.getRows() == null) {
                         return;
@@ -37,6 +37,6 @@ public class TradePayStylePresenter extends BasePresenter<TradePayStylePresenter
 
 
     public interface MvpView extends IMvpView {
-        void showPayStyle(ArrayList<TradeFormDetailVO.RowsBean> lists);
+        void showPayStyle(ArrayList<TradeFormPayDetailVO.RowsBean> lists);
     }
 }

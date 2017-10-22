@@ -10,4 +10,6 @@ public interface Intentkey {
 
     String TRADE_FORM_DETAIL_DAY = "trade_form_detail_day";
 
+    String SALES_DATA_DATE = "sales_data_date";
+
 }

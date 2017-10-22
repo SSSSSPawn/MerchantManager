@@ -56,23 +56,10 @@
 
             <TextView
                 style="@style/Data_Item_Detail_Txt_Name"
-                android:text="商品价格:"/>
-
-            <TextView
-                android:id="@+id/tv_sp_price"
-                style="@style/Data_Item_Detail_Txt_Content"
-                android:text="5.55"/>
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/Data_Item_Detail_LL_Top8dp">
-
-            <TextView
-                style="@style/Data_Item_Detail_Txt_Name"
                 android:text="销售数量:"/>
 
             <TextView
-                android:id="@+id/tv_sp_number"
+                android:id="@+id/tv_sp_num"
                 style="@style/Data_Item_Detail_Txt_Content"
                 android:text="10"/>
         </LinearLayout>

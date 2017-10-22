@@ -5,7 +5,7 @@ import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
-import com.iotek.merchantmanager.bean.TradeFormDetailVO;
+import com.iotek.merchantmanager.bean.TradeFormPayDetailVO;
 import com.iotek.merchantmanager.bean.params.TradeFormDetailParamsVO;
 import com.iotek.merchantmanager.bean.params.TradeFormParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
@@ -28,7 +28,7 @@ public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter
 
     private ArrayList<DayTradeFormVO.RowsBean> mRowsBeen = new ArrayList<>();
 
-    private ArrayList<TradeFormDetailVO.RowsBean> mRowsBeenPay = new ArrayList<>();
+    private ArrayList<TradeFormPayDetailVO.RowsBean> mRowsBeenPay = new ArrayList<>();
 
     public void getDayTradeList(final int page) {
         long custID = Preference.getLong(CacheKey.CUST_ID);
@@ -60,10 +60,10 @@ public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter
     }
 
     public void getTradeFormDetailList(TradeFormDetailParamsVO paramsVO){
-        Call<TradeFormDetailVO> call = mApiService.getDayTradeDetail(paramsVO);
-        call.enqueue(new OnResponseListener<TradeFormDetailVO>(getContext(),false) {
+        Call<TradeFormPayDetailVO> call = mApiService.getDayTradeDetail(paramsVO);
+        call.enqueue(new OnResponseListener<TradeFormPayDetailVO>(getContext(),false) {
             @Override
-            public void onSuccess(TradeFormDetailVO tradeFormDetailVO) {
+            public void onSuccess(TradeFormPayDetailVO tradeFormDetailVO) {
                 if (mvpView != null) {
                     if (tradeFormDetailVO == null || tradeFormDetailVO.getRows() == null) {
                         return;
@@ -89,7 +89,7 @@ public class DayTradeFormsPresenter extends BasePresenter<DayTradeFormsPresenter
 
         void updateTradeFromList(ArrayList<DayTradeFormVO.RowsBean> lists);
 
-        void showPayStyle(ArrayList<TradeFormDetailVO.RowsBean> lists);
+        void showPayStyle(ArrayList<TradeFormPayDetailVO.RowsBean> lists);
 
         void stopLoadMore();
     }

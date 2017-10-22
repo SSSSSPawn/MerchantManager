@@ -6,7 +6,7 @@ import java.util.List;
  * Created by admin on 2017/10/17.
  */
 
-public class TradeFormDetailVO extends BaseBean {
+public class TradeFormPayDetailVO extends BaseBean {
 
 
     /**

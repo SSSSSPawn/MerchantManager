@@ -18,5 +18,9 @@ public interface StatusKey {
     int ZFB_TYPE = 2;
 
 
+    /*** 1.销售数据  2.退货数据*/
+    int SALES_DATA = 1;
+
+    int RETURN_GOODS_DATA = 2;
 
 }

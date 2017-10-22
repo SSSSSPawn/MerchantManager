@@ -20,9 +20,10 @@
         coustom:pstsIndicatorHeight="3dp"
         coustom:pstsShouldExpand="true"
         coustom:pstsUnderlineHeight="1dp"
+        coustom:pstsTabPaddingLeftRight="8dp"
         coustom:zmsSelectedTabTextColor="@color/becPrimaryBlue"
-        coustom:zmsSelectedTabTextSize="17sp"
-        coustom:zmsTabTextSize="16sp"/>
+        coustom:zmsSelectedTabTextSize="16sp"
+        coustom:zmsTabTextSize="14sp"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
