@@ -1,135 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cv_data_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    android:layout_marginLeft="12dp"
-    android:layout_marginRight="12dp"
-    android:layout_marginTop="4dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="4dp"
-    app:contentPadding="12dp">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_gray"
+        android:paddingBottom="2dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
+        android:text="2017-12-12"
+        android:textSize="12sp"/>
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp">
+
 
         <LinearLayout
-            style="@style/Data_Item_Detail_LL">
-
-            <ImageView
-                android:id="@+id/iv_data_img"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/wx"/>
-
-            <TextView
-                android:id="@+id/tv_pay_style"
-                style="@style/Data_Item_Detail_Content"
-                android:text="微信支付"/>
-
-        </LinearLayout>
-
-        <View
-            style="@style/Line_1dp"/>
-
-        <LinearLayout
-            style="@style/Data_Item_Detail_LL_Top8dp">
-
-            <TextView
-                style="@style/Data_Item_Detail_Txt_Name"
-                android:text="商品名称:"/>
-
-            <TextView
-                android:id="@+id/tv_sp_name"
-                style="@style/Data_Item_Detail_Txt_Content"
-                android:text="养乐多"/>
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/Data_Item_Detail_LL_Top8dp">
-
-            <TextView
-                style="@style/Data_Item_Detail_Txt_Name"
-                android:text="销售数量:"/>
-
-            <TextView
-                android:id="@+id/tv_sp_num"
-                style="@style/Data_Item_Detail_Txt_Content"
-                android:text="10"/>
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/Data_Item_Detail_LL_Top8dp">
-
-            <TextView
-                style="@style/Data_Item_Detail_Txt_Name"
-                android:text="商品单价:"/>
-
-            <TextView
-                android:id="@+id/tv_sp_unit_price"
-                style="@style/Data_Item_Detail_Txt_Content"
-                android:text="2.22"/>
-        </LinearLayout>
-
-        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="8dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_pay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="16dp"
-                android:text="支付金额:"
-                android:textSize="12dp"/>
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL">
 
-            <TextView
-                android:id="@+id/tv_pay_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_pay"
-                android:layout_centerInParent="true"
-                android:text="¥100.00"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_data_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/wx"/>
 
-        <View
-            style="@style/Line_1dp"
-            android:layout_height="5dp"
-            android:background="@drawable/shape_line"/>
+                <TextView
+                    android:id="@+id/tv_pay_style"
+                    style="@style/Data_Item_Detail_Content"
+                    android:text="微信支付"/>
 
-        <LinearLayout
-            style="@style/Data_Item_Detail_LL"
-            android:layout_height="32dp">
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="0dp"
+            <View
+                style="@style/Line_1dp"/>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="订单类型:"/>
+
+                <TextView
+                    android:id="@+id/tv_pay_type"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="正常销售"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="收银员:"/>
+
+                <TextView
+                    android:id="@+id/tv_cashier"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="银企通大神"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="销售时间:"/>
+
+                <TextView
+                    android:id="@+id/tv_sales_time"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="2017-14-5"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="原价金额:"/>
+
+                <TextView
+                    android:id="@+id/tv_oriAmount"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="¥100.00"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="bottom"
-                android:text="查看详情"/>
+                android:layout_marginBottom="8dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_more"/>
+                <TextView
+                    android:id="@+id/tv_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="16dp"
+                    android:text="支付总金额:"
+                    android:textSize="12dp"/>
+
+                <TextView
+                    android:id="@+id/tv_pay_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_pay"
+                    android:layout_centerInParent="true"
+                    android:text="¥100.00"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/Line_1dp"
+                android:layout_height="5dp"
+                android:background="@drawable/shape_line"/>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL"
+                android:layout_height="32dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="查看详情"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_more"/>
+
+            </LinearLayout>
 
 
         </LinearLayout>
 
+    </android.support.v7.widget.CardView>
 
-    </LinearLayout>
-
-</android.support.v7.widget.CardView>
+</LinearLayout>

@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
 
+import com.iotek.merchantmanager.view.AppBar;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -18,11 +20,17 @@ public abstract class ListBaseActivity extends BaseActivity implements XRecycler
 
     protected XRecyclerView mSuperRecyclerView;
 
+    protected LinearLayout mLinearLayout;
+
+    protected AppBar mAppBar;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mSuperRecyclerView = (XRecyclerView) findViewById(R.id.super_recycler_view);
+        mLinearLayout = (LinearLayout) findViewById(R.id.ll_empty);
+        mAppBar = (AppBar) findViewById(R.id.appBar);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

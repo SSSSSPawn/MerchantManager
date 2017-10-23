@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginTop="8dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:contentPadding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL_Top8dp">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="订单编号:"/>
+
+            <TextView
+                android:id="@+id/tv_order_id"
+                style="@style/Data_Item_Detail_Txt_Content"
+                android:text="2017101917075800006022"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL_Top8dp">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="商品编号:"/>
+
+            <TextView
+                android:id="@+id/tv_goods_id"
+                style="@style/Data_Item_Detail_Txt_Content"
+                android:text="2017101917075800006022"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL_Top8dp">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="商品名称:"/>
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                style="@style/Data_Item_Detail_Txt_Content"
+                android:text="小苏烟"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL_Top8dp">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="商品单价:"/>
+
+            <TextView
+                android:id="@+id/tv_goods_dj"
+                style="@style/Data_Item_Detail_Txt_Content"
+                android:text="¥22"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL_Top8dp">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="销售数量:"/>
+
+            <TextView
+                android:id="@+id/tv_goods_num"
+                style="@style/Data_Item_Detail_Txt_Content"
+                android:text="10"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL_Top8dp">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="金额:"/>
+
+            <TextView
+                android:id="@+id/tv_goods_money"
+                style="@style/Data_Item_Detail_Txt_Content"
+                android:text="¥220"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

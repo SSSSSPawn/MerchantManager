@@ -39,7 +39,7 @@ public class TradeFormDetailActivity extends BaseActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAppBar.setTitle("交易详情");
+        mAppBar.setTitle("数据明细");
         mAppBar.setTextColor(getResources().getColor(R.color.white));
 
         initView();

@@ -12,4 +12,6 @@ public interface Intentkey {
 
     String SALES_DATA_DATE = "sales_data_date";
 
+    String ORDER_ID = "order_id";
+
 }

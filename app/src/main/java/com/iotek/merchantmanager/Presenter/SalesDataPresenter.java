@@ -4,7 +4,7 @@ import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
-import com.iotek.merchantmanager.bean.TradeDataVO;
+import com.iotek.merchantmanager.bean.SalesDataDetailVO;
 import com.iotek.merchantmanager.bean.params.SalesDataParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.net.OnResponseListener;
@@ -23,7 +23,7 @@ public class SalesDataPresenter extends BasePresenter<SalesDataPresenter.MvpView
 
     private int currentPage, totalPage;
 
-    private ArrayList<TradeDataVO> mDataVOs = new ArrayList<>();
+    private ArrayList<SalesDataDetailVO.RowsBean> mDataVOs = new ArrayList<>();
 
     public void getDaySalesDataList(final int page, int orderType, String sTime, String eTime) {
         long custID = Preference.getLong(CacheKey.CUST_ID);
@@ -32,10 +32,11 @@ public class SalesDataPresenter extends BasePresenter<SalesDataPresenter.MvpView
         String mac = Preference.getString(CacheKey.MAC);
 
         SalesDataParamsVO paramsVO = new SalesDataParamsVO(custID, rootID, uuID, mac, LIMIT_SIZE, page, orderType, sTime, eTime);
-        Call<TradeDataVO> call = mApiService.saleDataList(paramsVO);
-        call.enqueue(new OnResponseListener<TradeDataVO>(getContext(), false) {
+        Call<SalesDataDetailVO> call = mApiService.saleDataList(paramsVO);
+        call.enqueue(new OnResponseListener<SalesDataDetailVO>(getContext(), false) {
             @Override
-            public void onSuccess(TradeDataVO dataVO) {
+            public void onSuccess(SalesDataDetailVO dataVO) {
+                LogUtil.e("dataVO dataVO ==>>" + dataVO);
                 if (mvpView != null) {
                     if (dataVO == null) {
                         return;
@@ -44,7 +45,7 @@ public class SalesDataPresenter extends BasePresenter<SalesDataPresenter.MvpView
                     if (page == 1) {
                         mDataVOs.clear();
                     }
-                    mDataVOs.add(dataVO);
+                    mDataVOs.addAll(dataVO.getRows());
                     mvpView.updateSalesDataList(mDataVOs);
 
                     currentPage = page;
@@ -66,7 +67,7 @@ public class SalesDataPresenter extends BasePresenter<SalesDataPresenter.MvpView
 
     public interface MvpView extends IMvpView {
 
-        void updateSalesDataList(ArrayList<TradeDataVO> lists);
+        void updateSalesDataList(ArrayList<SalesDataDetailVO.RowsBean> lists);
 
         void stopLoadMore();
     }

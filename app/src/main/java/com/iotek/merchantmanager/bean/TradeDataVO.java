@@ -8,20 +8,23 @@ public class TradeDataVO extends BaseBean {
 
     private int payType1; //支付方式
 
-    private String goodsName;//商品名称
+    private int orderType;//订单类型
 
-    private int goodsNum;//销售数量
+    private double receiveAmount;// 实收金额
 
-    private double goodsPrice;//商品单价
+    private double oriAmount;//原价金额
 
-    private double goodsAmount;//支付总金额
+    private String cashier;//收银员
 
-    public TradeDataVO(int payType1, String goodsName, int goodsNum, double goodsPrice, double goodsAmount) {
+    private long saleTime;//销售时间
+
+    public TradeDataVO(int payType1, int orderType, double receiveAmount, double oriAmount, String cashier, long saleTime) {
         this.payType1 = payType1;
-        this.goodsName = goodsName;
-        this.goodsNum = goodsNum;
-        this.goodsPrice = goodsPrice;
-        this.goodsAmount = goodsAmount;
+        this.orderType = orderType;
+        this.receiveAmount = receiveAmount;
+        this.oriAmount = oriAmount;
+        this.cashier = cashier;
+        this.saleTime = saleTime;
     }
 
     public int getPayType1() {
@@ -32,35 +35,43 @@ public class TradeDataVO extends BaseBean {
         this.payType1 = payType1;
     }
 
-    public String getGoodsName() {
-        return goodsName;
+    public int getOrderType() {
+        return orderType;
     }
 
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
+    public void setOrderType(int orderType) {
+        this.orderType = orderType;
     }
 
-    public int getGoodsNum() {
-        return goodsNum;
+    public double getReceiveAmount() {
+        return receiveAmount;
     }
 
-    public void setGoodsNum(int goodsNum) {
-        this.goodsNum = goodsNum;
+    public void setReceiveAmount(double receiveAmount) {
+        this.receiveAmount = receiveAmount;
     }
 
-    public double getGoodsPrice() {
-        return goodsPrice;
+    public double getOriAmount() {
+        return oriAmount;
     }
 
-    public void setGoodsPrice(double goodsPrice) {
-        this.goodsPrice = goodsPrice;
+    public void setOriAmount(double oriAmount) {
+        this.oriAmount = oriAmount;
     }
 
-    public double getGoodsAmount() {
-        return goodsAmount;
+    public String getCashier() {
+        return cashier;
     }
 
-    public void setGoodsAmount(double goodsAmount) {
-        this.goodsAmount = goodsAmount;
+    public void setCashier(String cashier) {
+        this.cashier = cashier;
+    }
+
+    public long getSaleTime() {
+        return saleTime;
+    }
+
+    public void setSaleTime(long saleTime) {
+        this.saleTime = saleTime;
     }
 }
