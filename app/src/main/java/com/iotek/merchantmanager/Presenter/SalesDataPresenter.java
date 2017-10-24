@@ -26,6 +26,7 @@ public class SalesDataPresenter extends BasePresenter<SalesDataPresenter.MvpView
     private ArrayList<SalesDataDetailVO.RowsBean> mDataVOs = new ArrayList<>();
 
     public void getDaySalesDataList(final int page, int orderType, String sTime, String eTime) {
+
         long custID = Preference.getLong(CacheKey.CUST_ID);
         long rootID = Preference.getLong(CacheKey.ROOT_ID);
         String uuID = Preference.getString(CacheKey.UU_ID);

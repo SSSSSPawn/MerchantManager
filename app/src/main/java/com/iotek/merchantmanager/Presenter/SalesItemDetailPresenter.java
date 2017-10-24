@@ -1,5 +1,6 @@
 package com.iotek.merchantmanager.Presenter;
 
+import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
@@ -36,6 +37,7 @@ public class SalesItemDetailPresenter extends BasePresenter<SalesItemDetailPrese
         call.enqueue(new OnResponseListener<SalesDataItemDetailVO>(getContext(), false) {
             @Override
             public void onSuccess(SalesDataItemDetailVO salesDataItemDetailVO) {
+                LogUtil.e(" salesDataItemDetailVO==>>"  + salesDataItemDetailVO.toString());
                 if (mvpView != null) {
                     if (salesDataItemDetailVO == null) {
                         return;

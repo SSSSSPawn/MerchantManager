@@ -54,7 +54,11 @@ public class DataDetailAdapter extends CustomRvAdapter<SalesDataDetailVO.RowsBea
 
         h.tv_time.setText(DateUtils.dateFormat(dataVO.getSaleTime()));
 
-        h.tv_pay_type.setText("正常销售");
+        if (dataVO.getOrderType() == StatusKey.SALES_DATA){
+            h.tv_pay_type.setText("正常销售");
+        }else {
+            h.tv_pay_type.setText("退货");
+        }
 
         h.tv_cashier.setText(dataVO.getCashier());
 

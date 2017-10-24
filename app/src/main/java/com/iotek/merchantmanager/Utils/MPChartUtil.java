@@ -30,7 +30,6 @@ public class MPChartUtil {
 
         mChart.setExtraOffsets(20.f, 0.f, 20.f, 0.f);
 
-        mChart.setDrawHoleEnabled(true);
         mChart.setHoleColor(Color.WHITE);
 
         mChart.setTransparentCircleColor(Color.WHITE);

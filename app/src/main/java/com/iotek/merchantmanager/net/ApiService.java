@@ -5,6 +5,7 @@ import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
 import com.iotek.merchantmanager.bean.LoginVO;
 import com.iotek.merchantmanager.bean.MonthTradeFormVO;
+import com.iotek.merchantmanager.bean.ReturnGoodsItemDataVO;
 import com.iotek.merchantmanager.bean.SalesDataDetailVO;
 import com.iotek.merchantmanager.bean.SalesDataItemDetailVO;
 import com.iotek.merchantmanager.bean.TradeFormPayDetailVO;
@@ -143,6 +144,12 @@ public interface ApiService {
      */
     @POST("app/inter/selectSaleDataReport.json")
     Call<SalesDataDetailVO> saleDataList(@Body SalesDataParamsVO paramsVO);
+
+    /**
+     * 退货数据查询
+     */
+    @POST("app/inter/selectSaleDataReport.json")
+    Call<ReturnGoodsItemDataVO> saleReturnDataList(@Body SalesDataParamsVO paramsVO);
 
     /**
      * 销售数据明细查询接口

@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.iotek.merchantmanager.Presenter.SalesDataPresenter;
 import com.iotek.merchantmanager.Utils.DateUtils;
+import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.activity.SalesItemDataDetailActivity;
 import com.iotek.merchantmanager.adapter.DataDetailAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
@@ -113,12 +114,13 @@ public class SalesDataFragment extends ListFragment implements SalesDataPresente
     @Override
     public void OnItemClick(int position) {
         String orderId = mList.get(position).getOrderId();
+        LogUtil.e("sales data orderId ==>>" + orderId);
         Intent intent = new Intent(getActivity(), SalesItemDataDetailActivity.class);
         intent.putExtra(Intentkey.ORDER_ID,orderId);
         launch(intent);
     }
 
-    /*@Override
+    @Override
     protected void onFragmentFirstVisible() {
         super.onFragmentFirstVisible();
     }
@@ -126,5 +128,5 @@ public class SalesDataFragment extends ListFragment implements SalesDataPresente
     @Override
     protected void onFragmentVisibleChange(boolean isVisible) {
         super.onFragmentVisibleChange(isVisible);
-    }*/
+    }
 }

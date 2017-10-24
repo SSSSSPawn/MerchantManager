@@ -147,5 +147,30 @@ public class SalesDataItemDetailVO extends BaseBean {
         public void setUid(String uid) {
             this.uid = uid;
         }
+
+        @Override
+        public String toString() {
+            return "RowsBean{" +
+                    "goodsAmount=" + goodsAmount +
+                    ", goodsId='" + goodsId + '\'' +
+                    ", goodsName='" + goodsName + '\'' +
+                    ", goodsNum=" + goodsNum +
+                    ", goodsPrice=" + goodsPrice +
+                    ", goodsStandard='" + goodsStandard + '\'' +
+                    ", goodsUnit='" + goodsUnit + '\'' +
+                    ", orderId='" + orderId + '\'' +
+                    ", uid='" + uid + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "SalesDataItemDetailVO{" +
+                "page=" + page +
+                ", records=" + records +
+                ", total=" + total +
+                ", rows=" + rows +
+                '}';
     }
 }

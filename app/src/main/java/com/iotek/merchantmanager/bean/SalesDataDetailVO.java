@@ -11,8 +11,8 @@ public class SalesDataDetailVO extends BaseBean {
 
     /**
      * page : 1
-     * records : 3
-     * rows : [{"cashier":"13605154259","custId":21,"custPname":"亚青","custPphone":"13605154259","custStatus":"1","deviceType":2,"erpSaleDetails":[{"goodsAmount":1,"goodsId":"2121150423196605044570","goodsName":"合生元奶粉","goodsNum":1,"goodsPrice":1,"goodsStandard":"500g","goodsUnit":"罐","uid":"cde9b714-a864-4ccf-b529-c5bef0274740"}],"flagDiscount":0,"invStatus":"0","membFlag":5,"myStatus":"1","orderId":"2017101917075800006022","orderType":1,"oriAmount":1,"payType1":0,"receiveAmount":1,"saleTime":1508404078864,"type1Amount":1,"typeName1":"现金"},{"cashier":"15952056387","custId":21,"custPname":"亚青","custPphone":"13605154259","custStatus":"1","deviceType":2,"erpSaleDetails":[{"goodsAmount":1,"goodsId":"212115040840681673611","goodsName":"榴莲酸奶","goodsNum":1,"goodsPrice":1,"goodsStandard":"150g","goodsUnit":"个","uid":"caa6af5e-4434-4808-abfb-852dec9e6041"}],"flagDiscount":0,"invStatus":"0","membFlag":5,"myStatus":"1","orderId":"2017101913574400006021","orderType":1,"oriAmount":1,"payType1":1,"receiveAmount":1,"saleTime":1508392667244,"type1Amount":1,"typeName1":"微信支付"},{"cashier":"15952056387","custId":21,"custPname":"亚青","custPphone":"13605154259","custStatus":"1","deviceType":2,"erpSaleDetails":[{"goodsAmount":1,"goodsId":"2121150423196605044570","goodsName":"合生元奶粉","goodsNum":1,"goodsPrice":1,"goodsStandard":"500g","goodsUnit":"罐","uid":"711ae38f-9f4b-4f32-91cd-154ce2e48e8a"}],"flagDiscount":0,"invStatus":"0","membFlag":5,"myStatus":"1","orderId":"2017101910582500006016","orderType":1,"oriAmount":1,"payType1":1,"receiveAmount":1,"saleTime":1508381908095,"type1Amount":1,"typeName1":"微信支付"}]
+     * records : 2
+     * rows : [{"cashier":"13605154259","custId":21,"custPname":"亚青","custPphone":"13605154259","custStatus":"1","deviceType":2,"erpSaleDetails":[],"flagDiscount":0,"invStatus":"0","membFlag":5,"myStatus":"1","orderId":"2017102315414800006177","orderType":2,"oriAmount":100,"oriOrderId":"2017102315373100006175","payType1":1,"receiveAmount":100,"returnReason":"默认原因","saleTime":1508744255125,"type1Amount":100,"typeName1":"微信支付"},{"cashier":"13605154259","custId":21,"custPname":"亚青","custPphone":"13605154259","custStatus":"1","deviceType":2,"erpSaleDetails":[],"flagDiscount":0,"invCode":"032001500111","invNumber":"43507565","invStatus":"1","membFlag":5,"myStatus":"1","orderId":"2017102318005400006187","orderType":2,"oriAmount":1,"oriOrderId":"2017102315172900006174","payType1":2,"receiveAmount":1,"returnReason":"默认原因","saleTime":1508743051138,"type1Amount":1,"typeName1":"支付宝"}]
      * total : 1
      */
 
@@ -61,19 +61,23 @@ public class SalesDataDetailVO extends BaseBean {
          * custPphone : 13605154259
          * custStatus : 1
          * deviceType : 2
-         * erpSaleDetails : [{"goodsAmount":1,"goodsId":"2121150423196605044570","goodsName":"合生元奶粉","goodsNum":1,"goodsPrice":1,"goodsStandard":"500g","goodsUnit":"罐","uid":"cde9b714-a864-4ccf-b529-c5bef0274740"}]
+         * erpSaleDetails : []
          * flagDiscount : 0
          * invStatus : 0
          * membFlag : 5
          * myStatus : 1
-         * orderId : 2017101917075800006022
-         * orderType : 1
-         * oriAmount : 1
-         * payType1 : 0
-         * receiveAmount : 1
-         * saleTime : 1508404078864
-         * type1Amount : 1
-         * typeName1 : 现金
+         * orderId : 2017102315414800006177
+         * orderType : 2
+         * oriAmount : 100
+         * oriOrderId : 2017102315373100006175
+         * payType1 : 1
+         * receiveAmount : 100
+         * returnReason : 默认原因
+         * saleTime : 1508744255125
+         * type1Amount : 100
+         * typeName1 : 微信支付
+         * invCode : 032001500111
+         * invNumber : 43507565
          */
 
         private String cashier;
@@ -89,12 +93,16 @@ public class SalesDataDetailVO extends BaseBean {
         private String orderId;
         private int orderType;
         private int oriAmount;
+        private String oriOrderId;
         private int payType1;
         private int receiveAmount;
+        private String returnReason;
         private long saleTime;
         private int type1Amount;
         private String typeName1;
-        private List<ErpSaleDetailsBean> erpSaleDetails;
+        private String invCode;
+        private String invNumber;
+        private List<?> erpSaleDetails;
 
         public String getCashier() {
             return cashier;
@@ -200,6 +208,14 @@ public class SalesDataDetailVO extends BaseBean {
             this.oriAmount = oriAmount;
         }
 
+        public String getOriOrderId() {
+            return oriOrderId;
+        }
+
+        public void setOriOrderId(String oriOrderId) {
+            this.oriOrderId = oriOrderId;
+        }
+
         public int getPayType1() {
             return payType1;
         }
@@ -214,6 +230,14 @@ public class SalesDataDetailVO extends BaseBean {
 
         public void setReceiveAmount(int receiveAmount) {
             this.receiveAmount = receiveAmount;
+        }
+
+        public String getReturnReason() {
+            return returnReason;
+        }
+
+        public void setReturnReason(String returnReason) {
+            this.returnReason = returnReason;
         }
 
         public long getSaleTime() {
@@ -240,99 +264,28 @@ public class SalesDataDetailVO extends BaseBean {
             this.typeName1 = typeName1;
         }
 
-        public List<ErpSaleDetailsBean> getErpSaleDetails() {
+        public String getInvCode() {
+            return invCode;
+        }
+
+        public void setInvCode(String invCode) {
+            this.invCode = invCode;
+        }
+
+        public String getInvNumber() {
+            return invNumber;
+        }
+
+        public void setInvNumber(String invNumber) {
+            this.invNumber = invNumber;
+        }
+
+        public List<?> getErpSaleDetails() {
             return erpSaleDetails;
         }
 
-        public void setErpSaleDetails(List<ErpSaleDetailsBean> erpSaleDetails) {
+        public void setErpSaleDetails(List<?> erpSaleDetails) {
             this.erpSaleDetails = erpSaleDetails;
         }
-
-        public static class ErpSaleDetailsBean {
-            /**
-             * goodsAmount : 1
-             * goodsId : 2121150423196605044570
-             * goodsName : 合生元奶粉
-             * goodsNum : 1
-             * goodsPrice : 1
-             * goodsStandard : 500g
-             * goodsUnit : 罐
-             * uid : cde9b714-a864-4ccf-b529-c5bef0274740
-             */
-
-            private int goodsAmount;
-            private String goodsId;
-            private String goodsName;
-            private int goodsNum;
-            private int goodsPrice;
-            private String goodsStandard;
-            private String goodsUnit;
-            private String uid;
-
-            public int getGoodsAmount() {
-                return goodsAmount;
-            }
-
-            public void setGoodsAmount(int goodsAmount) {
-                this.goodsAmount = goodsAmount;
-            }
-
-            public String getGoodsId() {
-                return goodsId;
-            }
-
-            public void setGoodsId(String goodsId) {
-                this.goodsId = goodsId;
-            }
-
-            public String getGoodsName() {
-                return goodsName;
-            }
-
-            public void setGoodsName(String goodsName) {
-                this.goodsName = goodsName;
-            }
-
-            public int getGoodsNum() {
-                return goodsNum;
-            }
-
-            public void setGoodsNum(int goodsNum) {
-                this.goodsNum = goodsNum;
-            }
-
-            public int getGoodsPrice() {
-                return goodsPrice;
-            }
-
-            public void setGoodsPrice(int goodsPrice) {
-                this.goodsPrice = goodsPrice;
-            }
-
-            public String getGoodsStandard() {
-                return goodsStandard;
-            }
-
-            public void setGoodsStandard(String goodsStandard) {
-                this.goodsStandard = goodsStandard;
-            }
-
-            public String getGoodsUnit() {
-                return goodsUnit;
-            }
-
-            public void setGoodsUnit(String goodsUnit) {
-                this.goodsUnit = goodsUnit;
-            }
-
-            public String getUid() {
-                return uid;
-            }
-
-            public void setUid(String uid) {
-                this.uid = uid;
-            }
-        }
-
     }
 }

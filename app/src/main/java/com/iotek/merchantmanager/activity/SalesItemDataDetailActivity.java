@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.iotek.merchantmanager.Presenter.SalesItemDetailPresenter;
+import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.adapter.SalesDataItemDetailAdapter;
 import com.iotek.merchantmanager.base.ListBaseActivity;
 import com.iotek.merchantmanager.bean.SalesDataItemDetailVO;
@@ -51,6 +52,7 @@ public class SalesItemDataDetailActivity extends ListBaseActivity implements Sal
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                LogUtil.e("orderId orderId ==>>" + orderId);
                 mPresenter.getSalesItemDataList(1, orderId);
                 mSuperRecyclerView.refreshComplete();
             }

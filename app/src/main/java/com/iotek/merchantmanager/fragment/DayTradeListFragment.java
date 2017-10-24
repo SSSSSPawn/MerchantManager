@@ -98,7 +98,6 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     @Override
     public void updateTradeFromList(ArrayList<DayTradeFormVO.RowsBean> lists) {
         listData = lists;
-        LogUtil.e("lists -->>" + lists.toString());
         if (lists.size() == 0) {
             mLayout.setVisibility(View.GONE);
             ll_empty.setVisibility(View.VISIBLE);
@@ -112,8 +111,6 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
         TradeFormDetailParamsVO paramsVO = new TradeFormDetailParamsVO(custID, rootID, uuID, mac, Integer.MAX_VALUE, 1, DateUtils.dateFormatDay(lists.get(0).getReportDay()));
 
-        LogUtil.e("DateUtils.dateFormatDay(lists.get(0).getReportDay())==" + DateUtils.dateFormatDay(lists.get(0).getReportDay()));
-
         mPresenter.getTradeFormDetailList(paramsVO);
 
     }
@@ -124,8 +121,6 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
         double saleAmount = 0;
 
         String name = "";
-
-        LogUtil.e("lists lists" + lists.size());
 
         payName.clear();
 
@@ -151,8 +146,6 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
             PayStylePieEntry pieEntry = new PayStylePieEntry(name, saleAmount);
             payName.add(pieEntry);
         }
-
-        LogUtil.e("payName ----" + payName.toString());
 
         MPChartUtil.showPieChart(mChart, payName, "支付方式", "支付比例");
     }
