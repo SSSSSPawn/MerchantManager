@@ -36,7 +36,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/10/11.
  */
 
-public class DayTradeListFragment extends ListFragment implements DayTradeFormsPresenter.MvpView {
+public class DayTradeListFragment extends ListFragment implements DayTradeFormsPresenter.MvpView{
 
     @Bind(R.id.ll_empty) LinearLayout ll_empty;
 
