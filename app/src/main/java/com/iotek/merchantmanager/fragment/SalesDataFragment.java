@@ -73,7 +73,6 @@ public class SalesDataFragment extends ListFragment implements SalesDataPresente
             @Override
             public void run() {
                 mPresenter.getDaySalesDataList(1, StatusKey.SALES_DATA, formatDay + " 00:00:00", formatDay + " 23:59:59");
-                //mPresenter.getDaySalesDataList(1, StatusKey.SALES_DATA, "2017-10-11 00:00:00", "2017-10-11 23:59:59");
                 mSuperRecyclerView.refreshComplete();
             }
         }, 1000);
@@ -85,7 +84,6 @@ public class SalesDataFragment extends ListFragment implements SalesDataPresente
             @Override
             public void run() {
                 mPresenter.getNextData(StatusKey.SALES_DATA, formatDay + " 00:00:00", formatDay + " 23:59:59");
-                //mPresenter.getNextData(StatusKey.SALES_DATA, "2017-10-11 00:00:00", "2017-10-11 23:59:59");
                 mSuperRecyclerView.refreshComplete();
             }
         }, 1000);

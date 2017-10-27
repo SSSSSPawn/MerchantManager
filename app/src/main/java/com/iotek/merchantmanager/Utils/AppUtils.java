@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -58,6 +59,22 @@ public class AppUtils {
         view.setText(name);
         view.setTextColor(txtColor);
         return view;
+    }
+
+    public static int dp2px(Context c, float dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, c.getResources().getDisplayMetrics());
+    }
+
+    public static int sp2px(Context c, float sp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, c.getResources().getDisplayMetrics());
+    }
+
+    public static float dp2pxF(Context c, float dp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, c.getResources().getDisplayMetrics());
+    }
+
+    public static float sp2pxF(Context c, float sp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, c.getResources().getDisplayMetrics());
     }
 
 }

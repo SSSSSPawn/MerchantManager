@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.base.BECFragment;
 import com.iotek.merchantmanager.bean.TabMenus;
@@ -27,15 +26,12 @@ public abstract class BECTabFragment extends BECFragment implements TabLayout.On
 
     protected int mCurrentPosition = 0;
 
-    private FloatingActionButton mFloatingActionButton;
-
     private View rootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_bec_tab, container, false);
-        mFloatingActionButton = (FloatingActionButton) rootView.findViewById(R.id.fab_add_user);
         return rootView;
     }
 

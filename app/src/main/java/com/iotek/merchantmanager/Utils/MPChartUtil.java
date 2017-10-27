@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class MPChartUtil {
 
-    public static void showPieChart(PieChart mChart, ArrayList<PayStylePieEntry> datas, String label,String conterText) {
+    public static void showPieChart(PieChart mChart, ArrayList<PayStylePieEntry> datas, String label, String conterText) {
 
         mChart.setUsePercentValues(true);
         mChart.getDescription().setEnabled(false);
@@ -65,7 +65,7 @@ public class MPChartUtil {
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < datas.size(); i++) {
-            entries.add(new PieEntry((float) datas.get(i).getMoney(), datas.get(i).getPayName() + "\n\n¥" + datas.get(i).getMoney()));
+            entries.add(new PieEntry((float) datas.get(i).getMoney(),datas.get(i).getPayName() + "\n\n¥" + datas.get(i).getMoney()));
         }
 
         PieDataSet dataSet = new PieDataSet(entries, label);

@@ -9,12 +9,15 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.mikephil.charting.charts.PieChart;
 import com.iotek.merchantmanager.Presenter.DayTradeFormsPresenter;
 import com.iotek.merchantmanager.Utils.DateUtils;
 import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.MPChartUtil;
 import com.iotek.merchantmanager.Utils.Preference;
+import com.iotek.merchantmanager.activity.HistoryDataActivity;
 import com.iotek.merchantmanager.activity.TradeFormDetailActivity;
 import com.iotek.merchantmanager.adapter.DayTradeFormAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
@@ -36,7 +39,7 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/10/11.
  */
 
-public class DayTradeListFragment extends ListFragment implements DayTradeFormsPresenter.MvpView{
+public class DayTradeListFragment extends ListFragment implements DayTradeFormsPresenter.MvpView {
 
     @Bind(R.id.ll_empty) LinearLayout ll_empty;
 
@@ -45,6 +48,10 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     @Bind(R.id.pie_chart) PieChart mChart;
 
     @Bind(R.id.tv_trade_detail) TextView tv_trade_detail;
+
+    @Bind(R.id.fab_menu) FloatingActionsMenu mFloatingActionsMenu;
+
+    @Bind(R.id.fab_search) FloatingActionButton mFloatingActionButton;
 
     private DayTradeFormsPresenter mPresenter = new DayTradeFormsPresenter();
 
@@ -100,7 +107,9 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
         listData = lists;
         if (lists.size() == 0) {
             mLayout.setVisibility(View.GONE);
+            mFloatingActionsMenu.setVisibility(View.GONE);
             ll_empty.setVisibility(View.VISIBLE);
+            return;
         }
         mAdapter.setDataList(lists);
 
@@ -150,11 +159,19 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
         MPChartUtil.showPieChart(mChart, payName, "支付方式", "支付比例");
     }
 
-    @OnClick(R.id.tv_trade_detail)
-    public void onViewClicked() {
-        Intent intent = new Intent(getActivity(),TradeFormDetailActivity.class);
-        intent.putExtra(Intentkey.SALES_DATA_DATE,listData.get(0).getReportDay());
-        launch(intent);
+    @OnClick({R.id.tv_trade_detail,R.id.fab_search})
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.tv_trade_detail:
+                Intent intent = new Intent(getActivity(), TradeFormDetailActivity.class);
+                intent.putExtra(Intentkey.SALES_DATA_DATE, listData.get(0).getReportDay());
+                launch(intent);
+                break;
+            case R.id.fab_search:
+                launch(HistoryDataActivity.class);
+                break;
+        }
+
     }
 
     @Override

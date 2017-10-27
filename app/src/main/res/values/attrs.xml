@@ -42,4 +42,11 @@
         <attr name="zmsSelectedTabTextColor" format="color" />
     </declare-styleable>
 
+
+    <declare-styleable name="LineChartView">
+        <attr name="line_interval" format="dimension"/>
+        <attr name="min_point_height" format="dimension"/>
+        <attr name="background_color" format="color"/>
+    </declare-styleable>
+
 </resources>

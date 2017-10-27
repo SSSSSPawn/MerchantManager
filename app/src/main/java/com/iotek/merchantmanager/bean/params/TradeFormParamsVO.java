@@ -14,6 +14,8 @@ public class TradeFormParamsVO extends BaseBean {
     private String mac;
     private int limit;
     private int page;
+    private String sTime;
+    private String eTime;
 
 
     public TradeFormParamsVO(long custId, long rootId, String uuid, String mac, int limit, int page) {
@@ -23,6 +25,33 @@ public class TradeFormParamsVO extends BaseBean {
         this.mac = mac;
         this.limit = limit;
         this.page = page;
+    }
+
+    public TradeFormParamsVO(long custId, long rootId, String uuid, String mac, int limit, int page, String sTime, String eTime) {
+        this.custId = custId;
+        this.rootId = rootId;
+        this.uuid = uuid;
+        this.mac = mac;
+        this.limit = limit;
+        this.page = page;
+        this.sTime = sTime;
+        this.eTime = eTime;
+    }
+
+    public String getsTime() {
+        return sTime;
+    }
+
+    public void setsTime(String sTime) {
+        this.sTime = sTime;
+    }
+
+    public String geteTime() {
+        return eTime;
+    }
+
+    public void seteTime(String eTime) {
+        this.eTime = eTime;
     }
 
     public String getMac() {

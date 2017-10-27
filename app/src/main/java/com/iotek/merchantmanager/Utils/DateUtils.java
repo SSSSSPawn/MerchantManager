@@ -25,6 +25,13 @@ public class DateUtils {
         return a1;
     }
 
+    public static String dateFormat(long inTimeInMillis,String format){
+        Date date = new Date(inTimeInMillis);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+        String a1 = dateFormat.format(date);
+        return a1;
+    }
+
     public static String dateFormatDay(long inTimeInMillis) {
         Date date = new Date(inTimeInMillis);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

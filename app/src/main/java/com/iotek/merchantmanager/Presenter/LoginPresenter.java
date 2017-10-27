@@ -48,7 +48,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.MvpView> {
                         dialog.dismiss();
                         if (mvpView != null) {
                             LogUtil.e("error error error ==>" + e.getMessage());
-                            mvpView.showNetError("登录失败...");
+                            mvpView.showNetError("登录失败");
                         }
                     }
 

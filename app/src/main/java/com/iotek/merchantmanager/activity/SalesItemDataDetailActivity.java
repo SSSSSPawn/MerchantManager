@@ -52,7 +52,6 @@ public class SalesItemDataDetailActivity extends ListBaseActivity implements Sal
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                LogUtil.e("orderId orderId ==>>" + orderId);
                 mPresenter.getSalesItemDataList(1, orderId);
                 mSuperRecyclerView.refreshComplete();
             }

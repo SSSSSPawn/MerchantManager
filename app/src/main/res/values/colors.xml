@@ -38,4 +38,8 @@
     <color name="fb_button">#009787</color>
     <color name="background_snackbar">#323232</color>
 
+    <color name="yellow_hot">#f9c000</color>
+    <color name="blue_ice">#72abf8</color>
+    <color name="white_trans90">#e6ffffff</color>
+
 </resources>
