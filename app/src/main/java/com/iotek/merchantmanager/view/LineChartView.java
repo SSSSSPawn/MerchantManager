@@ -9,7 +9,9 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathEffect;
 import android.graphics.PointF;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.util.Pair;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -75,6 +77,7 @@ public class LineChartView extends View {
         this(context, attrs, 0);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public LineChartView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
@@ -87,7 +90,7 @@ public class LineChartView extends View {
         backgroundColor = ta.getColor(R.styleable.LineChartView_background_color, Color.WHITE);
         ta.recycle();
 
-        setBackgroundColor(backgroundColor);
+//        setBackground(getResources().getDrawable(R.drawable.bg_line_chart));
 
         initSize(context);
 
@@ -132,7 +135,7 @@ public class LineChartView extends View {
 
         textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setTextSize(textSize);
-        textPaint.setColor(Color.BLACK);
+        textPaint.setColor(Color.WHITE);
         textPaint.setTextAlign(Paint.Align.CENTER);
 
         circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -399,6 +402,7 @@ public class LineChartView extends View {
      * @param canvas
      */
     private void drawDash(Canvas canvas) {
+
         canvas.save();
         linePaint.setColor(DEFAULT_GRAY);
         linePaint.setStrokeWidth(dp2pxF(getContext(), 0.5f));

@@ -121,8 +121,8 @@ public interface ApiService {
     @POST("app/inter/dayReport.json")
     Call<DayTradeFormVO> getDayTradeForm(@Body TradeFormParamsVO paramsVO);
 
-    @POST("app/inter/dayReport.json")
-    Observable<DayTradeFormVO> getDayTradeForms(@Body TradeFormParamsVO paramsVO);
+//    @POST("app/inter/dayReport.json")
+//    Observable<DayTradeFormVO> getDayTradeForms(@Body TradeFormParamsVO paramsVO);
 
 
     /**

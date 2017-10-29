@@ -127,9 +127,9 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     @Override
     public void showPayStyle(ArrayList<TradeFormPayDetailVO.RowsBean> lists) {
 
-        double saleAmount = 0;
+        double saleAmount;
 
-        String name = "";
+        String name;
 
         payName.clear();
 

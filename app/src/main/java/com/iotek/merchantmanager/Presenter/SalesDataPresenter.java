@@ -37,9 +37,8 @@ public class SalesDataPresenter extends BasePresenter<SalesDataPresenter.MvpView
         call.enqueue(new OnResponseListener<SalesDataDetailVO>(getContext(), false) {
             @Override
             public void onSuccess(SalesDataDetailVO dataVO) {
-                LogUtil.e("dataVO dataVO ==>>" + dataVO);
                 if (mvpView != null) {
-                    if (dataVO == null) {
+                    if (dataVO == null || dataVO.getRows() == null) {
                         return;
                     }
 

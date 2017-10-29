@@ -23,4 +23,10 @@ public interface StatusKey {
 
     int RETURN_GOODS_DATA = 2;
 
+
+    /** 3.本周数据  4.本月数据 */
+    int WEEK_DAY_DATA = 3;
+
+    int MONTH_DAY_DATA = 4;
+
 }
