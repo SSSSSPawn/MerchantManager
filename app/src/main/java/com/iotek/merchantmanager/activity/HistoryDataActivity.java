@@ -3,6 +3,7 @@ package com.iotek.merchantmanager.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,9 +14,10 @@ import com.iotek.merchantmanager.Utils.TimeUtils;
 import com.iotek.merchantmanager.base.BaseActivity;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
 import com.iotek.merchantmanager.bean.LineChartBeanVO;
-import com.iotek.merchantmanager.view.AppBar;
 import com.iotek.merchantmanager.view.LineChartView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,27 +33,24 @@ import static com.iotek.merchantmanager.Utils.TimeUtils.getCurrentMonday;
 
 public class HistoryDataActivity extends BaseActivity implements HistoryDataPresenter.MvpView{
 
-    private String daySalesXs = "本周销售趋势";
-
-    private String daySalesTh = "本周退货趋势";
-
-    @Bind(R.id.appBar) AppBar mAppBar;
-
     @Bind(R.id.ll_content) LinearLayout ll_content;
 
     @Bind(R.id.ll_empty) LinearLayout ll_empty;
 
     @Bind(R.id.line_chart_view) LineChartView mLineChartView;
 
-    @Bind(R.id.tv_sales) TextView tvSales;
+    @Bind(R.id.line_chart_view_month) LineChartView mLineChartViewMonth;
 
-    @Bind(R.id.tv_sales_date) TextView tvSalesDate;
+    @Bind(R.id.tv_week_empty) TextView tv_week_empty;
+
+    @Bind(R.id.tv_month_empty) TextView tv_month_empty;
+
+    @Bind(R.id.iv_history_switch) ImageView iv_history_switch;
 
     private HistoryDataPresenter mPresenter = new HistoryDataPresenter();
 
     private List<LineChartBeanVO> mChartBeanVOs = new ArrayList<>();
 
-    private ArrayList<DayTradeFormVO.RowsBean> mWeekList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,21 +58,12 @@ public class HistoryDataActivity extends BaseActivity implements HistoryDataPres
 
         mPresenter.attachView(this);
 
-        //本周的数据
-        mPresenter.getDayTradeLists(1, getCurrentMonday() + " 00:00:00", TimeUtils.getPreviousSunday() + " 23:59:59");
+//        //本周的数据
+//        mPresenter.getDayTradeLists(1, getCurrentMonday() + " 00:00:00", TimeUtils.getPreviousSunday() + " 23:59:59");
 
         //本月所有的数据
-        // mPresenter.getDayTradeLists(1, TimeUtils.getMinMonthDate(getCurrentMonday()) + " 00:00:00", TimeUtils.getMaxMonthDate(getCurrentMonday()) + " 23:59:59");
-
-        mAppBar.setTitle("历史数据");
-        mAppBar.setTextColor(getResources().getColor(R.color.white));
-
-    }
-
-    private void initData(int dataType) {
-
-        //本月的数据
-       // mPresenter.getDayTradeList(1, TimeUtils.getMinMonthDate(getCurrentMonday()) + " 00:00:00", TimeUtils.getMaxMonthDate(getCurrentMonday()) + " 23:59:59");
+        mPresenter.getDayTradeLists(1, TimeUtils.getMinMonthDate(getCurrentMonday()) + " 00:00:00",
+                TimeUtils.getMaxMonthDate(getCurrentMonday()) + " 23:59:59");
 
     }
 
@@ -88,17 +78,13 @@ public class HistoryDataActivity extends BaseActivity implements HistoryDataPres
     }
 
 
-    @OnClick({R.id.tv_sales, R.id.tv_sales_date})
+    @OnClick({R.id.iv_history_switch})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_sales:
-                mChartBeanVOs.clear();
-                setLineChartData();
+            case R.id.iv_history_switch:
+                launch(HistoryListDataActivity.class);
                 break;
         }
-
-
-
     }
 
     @Override
@@ -106,7 +92,7 @@ public class HistoryDataActivity extends BaseActivity implements HistoryDataPres
 
         LogUtil.e(" lists lists lists ===>>" + lists.size());
 
-        mWeekList = lists;
+        ArrayList<DayTradeFormVO.RowsBean> mWeekList = new ArrayList<>();
 
         if (lists.size() == 0) {
             ll_content.setVisibility(View.GONE);
@@ -114,7 +100,22 @@ public class HistoryDataActivity extends BaseActivity implements HistoryDataPres
             return;
         }
 
-        for (int i = lists.size()-1; i >= 0; i--) {
+        for (int i = 0; i < lists.size(); i++) {
+
+            DayTradeFormVO.RowsBean bean = lists.get(i);
+
+            long reportDay = bean.getReportDay();
+
+            long startSeconds = getMillionSeconds(TimeUtils.getMinMonthDate(getCurrentMonday()) + " 00:00:00");
+
+            long endSeconds = getMillionSeconds(TimeUtils.getMinMonthDate(getCurrentMonday()) + " 23:59:59");
+
+            if (reportDay >= startSeconds && reportDay <= endSeconds) {
+                mWeekList.add(bean);
+            }
+        }
+
+        for (int i = mWeekList.size() - 1; i >= 0; i--) {
             DayTradeFormVO.RowsBean bean = lists.get(i);
 
             long reportDay = bean.getReportDay();
@@ -128,47 +129,46 @@ public class HistoryDataActivity extends BaseActivity implements HistoryDataPres
             mChartBeanVOs.add(vo);
         }
 
-        mLineChartView.setData(mChartBeanVOs);
+        if (mChartBeanVOs.size() == 0) {
+            tv_week_empty.setVisibility(View.VISIBLE);
+        } else {
+            mLineChartView.setData(mChartBeanVOs);
+        }
+
+        mChartBeanVOs.clear();
+
+        for (int i = lists.size() - 1; i >= 0; i--) {
+            DayTradeFormVO.RowsBean bean = lists.get(i);
+
+            long reportDay = bean.getReportDay();
+            double saleAmount = bean.getSaleAmount();
+
+            String money = DateUtils.formatMoney(saleAmount);
+            String format = DateUtils.dateFormat(reportDay, "MM-dd");
+
+            LineChartBeanVO vo = new LineChartBeanVO(format, saleAmount, money);
+
+            mChartBeanVOs.add(vo);
+        }
+
+        if (mChartBeanVOs.size() == 0) {
+            tv_month_empty.setVisibility(View.VISIBLE);
+        } else {
+            mLineChartViewMonth.setData(mChartBeanVOs);
+        }
     }
 
+    public long getMillionSeconds(String time) {
 
-    private void setLineChartData() {
-        if (daySalesTh.equals(tvSalesDate.getText().toString())) {
-            tvSales.setText("退货趋势");
-            tvSalesDate.setText("本周销售趋势");
-            for (int i = mWeekList.size() - 1; i >= 0; i--) {
-                DayTradeFormVO.RowsBean bean = mWeekList.get(i);
-
-                long reportDay = bean.getReportDay();
-                double saleAmount = bean.getSaleAmount();
-
-                String money = DateUtils.formatMoney(saleAmount);
-                String format = DateUtils.dateFormat(reportDay, "EE");
-
-                LineChartBeanVO vo = new LineChartBeanVO(format, saleAmount, money);
-
-                mChartBeanVOs.add(vo);
-            }
-            mLineChartView.setData(mChartBeanVOs);
-        } else if (daySalesXs.equals(tvSalesDate.getText().toString())) {
-            tvSales.setText("销售趋势");
-            tvSalesDate.setText("本周退货趋势");
-            for (int i = mWeekList.size() - 1; i >= 0; i--) {
-                DayTradeFormVO.RowsBean bean = mWeekList.get(i);
-
-                long reportDay = bean.getReportDay();
-                double returnAmount = bean.getReturnAmount();
-
-                String money = DateUtils.formatMoney(returnAmount);
-                String format = DateUtils.dateFormat(reportDay, "EE");
-
-                LineChartBeanVO vo = new LineChartBeanVO(format, returnAmount, money);
-
-                mChartBeanVOs.add(vo);
-            }
-            mLineChartView.setData(mChartBeanVOs);
-
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            long timeStart = sdf.parse(time).getTime();
+            return timeStart;
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
+
+        return -1;
     }
 
 

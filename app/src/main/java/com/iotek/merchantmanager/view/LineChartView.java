@@ -243,7 +243,7 @@ public class LineChartView extends View {
      */
     private void drawLinesAndPoints(Canvas canvas) {
         canvas.save();
-        linePaint.setColor(DEFAULT_BULE);
+        linePaint.setColor(getResources().getColor(R.color.white));
         linePaint.setStrokeWidth(dp2pxF(getContext(), 1));
         linePaint.setStyle(Paint.Style.STROKE);
 

@@ -19,8 +19,8 @@
         coustom:pstsIndicatorColor="@color/becPrimaryBlue"
         coustom:pstsIndicatorHeight="3dp"
         coustom:pstsShouldExpand="true"
-        coustom:pstsUnderlineHeight="1dp"
         coustom:pstsTabPaddingLeftRight="8dp"
+        coustom:pstsUnderlineHeight="1dp"
         coustom:zmsSelectedTabTextColor="@color/becPrimaryBlue"
         coustom:zmsSelectedTabTextSize="16sp"
         coustom:zmsTabTextSize="14sp"/>
