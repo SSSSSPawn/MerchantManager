@@ -7,11 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.iotek.merchantmanager.Presenter.MonthTradeFormsPresenter;
-import com.iotek.merchantmanager.activity.MonthPayTypeActivity;
-import com.iotek.merchantmanager.adapter.MonthTradeFormAdapter;
+import com.iotek.merchantmanager.Presenter.WeekMonthDataPresenter;
+import com.iotek.merchantmanager.Utils.TimeUtils;
+import com.iotek.merchantmanager.adapter.WeekDataFormAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
-import com.iotek.merchantmanager.bean.MonthTradeFormVO;
+import com.iotek.merchantmanager.bean.DayTradeFormVO;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
 
 import java.util.ArrayList;
@@ -19,26 +19,30 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import iotek.com.merchantmanager.R;
 
+import static com.iotek.merchantmanager.Utils.TimeUtils.getCurrentMonday;
+import static iotek.com.merchantmanager.R.id.ll_empty;
+
 /**
- * Created by admin on 2017/10/11.
+ * Created by admin on 2017/10/31.
  */
 
-public class MonthTradeListFragment extends ListFragment implements MonthTradeFormsPresenter.MvpView, OnItemClickListener {
+public class WeekDataListFragment extends ListFragment implements WeekMonthDataPresenter.MvpView, OnItemClickListener {
 
-    @Bind(R.id.ll_empty) LinearLayout ll_empty;
 
-    @Bind(R.id.ll_recyclerView) LinearLayout ll_recyclerView;
+    @Bind(ll_empty)
+    LinearLayout mLlEmpty;
 
-    private MonthTradeFormAdapter mAdapter;
-    private MonthTradeFormsPresenter mPresenter = new MonthTradeFormsPresenter();
+    private WeekMonthDataPresenter mPresenter = new WeekMonthDataPresenter();
+
+    private WeekDataFormAdapter mAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mPresenter.attachView(this);
-        mAdapter = new MonthTradeFormAdapter();
-        mAdapter.setOnItemClickListener(this);
+
+        mAdapter = new WeekDataFormAdapter();
     }
 
     @Override
@@ -48,7 +52,7 @@ public class MonthTradeListFragment extends ListFragment implements MonthTradeFo
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_form_list;
+        return R.layout.fragment_week_month_data;
     }
 
     @Override
@@ -61,7 +65,8 @@ public class MonthTradeListFragment extends ListFragment implements MonthTradeFo
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mPresenter.getMonthTradeList(1);
+                //本周数据
+                mPresenter.getWeekMonthDataLists(1, getCurrentMonday() + " 00:00:00", TimeUtils.getPreviousSunday() + " 23:59:59");
                 mSuperRecyclerView.refreshComplete();
             }
         }, 1000);
@@ -72,18 +77,20 @@ public class MonthTradeListFragment extends ListFragment implements MonthTradeFo
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mPresenter.getNextData();
+                mPresenter.getNextData(getCurrentMonday() + " 00:00:00",
+                        TimeUtils.getPreviousSunday() + " 23:59:59");
                 mSuperRecyclerView.loadMoreComplete();
             }
         }, 1000);
     }
 
     @Override
-    public void updateTradeFromList(ArrayList<MonthTradeFormVO.RowsBean> lists) {
+    public void updateTradeFromList(ArrayList<DayTradeFormVO.RowsBean> lists) {
         if (lists.size() == 0) {
-            ll_recyclerView.setVisibility(View.GONE);
-            ll_empty.setVisibility(View.VISIBLE);
+            mSuperRecyclerView.setVisibility(View.GONE);
+            mLlEmpty.setVisibility(View.VISIBLE);
         }
+
         mAdapter.setDataList(lists);
     }
 
@@ -98,7 +105,13 @@ public class MonthTradeListFragment extends ListFragment implements MonthTradeFo
     }
 
     @Override
+    public void emptyData() {
+        mSuperRecyclerView.setVisibility(View.GONE);
+        mLlEmpty.setVisibility(View.VISIBLE);
+    }
+
+    @Override
     public void OnItemClick(int position) {
-       launch(MonthPayTypeActivity.class);
+
     }
 }

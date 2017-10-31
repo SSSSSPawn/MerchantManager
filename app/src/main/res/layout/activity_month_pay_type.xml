@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/gray_tr"
+              android:orientation="vertical">
+
+    <com.iotek.merchantmanager.view.AppBar
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        android:background="@color/becPrimaryBlue">
+
+    </com.iotek.merchantmanager.view.AppBar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center"
+            android:background="#ec5554"
+            android:gravity="center_vertical"
+            android:padding="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:gravity="center_vertical"
+            android:text="月交易支付方式占比"
+            android:textColor="#ec5554"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:background="@color/gray">
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pie_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.github.mikephil.charting.charts.PieChart>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

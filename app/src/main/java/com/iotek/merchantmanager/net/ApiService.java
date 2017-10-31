@@ -4,6 +4,7 @@ import com.iotek.merchantmanager.bean.BBCBankVO;
 import com.iotek.merchantmanager.bean.CodeMessageVO;
 import com.iotek.merchantmanager.bean.DayTradeFormVO;
 import com.iotek.merchantmanager.bean.LoginVO;
+import com.iotek.merchantmanager.bean.MonthTradeDetailVO;
 import com.iotek.merchantmanager.bean.MonthTradeFormVO;
 import com.iotek.merchantmanager.bean.ReturnGoodsItemDataVO;
 import com.iotek.merchantmanager.bean.SalesDataDetailVO;
@@ -141,6 +142,14 @@ public interface ApiService {
      */
     @POST("app/inter/monthReport.json")
     Call<MonthTradeFormVO> getMonthTradeForm(@Body TradeFormParamsVO paramsVO);
+
+    /**
+     * 月交易详情
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/monthDetailReport.json")
+    Call<MonthTradeDetailVO> getMonthTradeDetail(@Body TradeFormDetailParamsVO paramsVO);
 
     /**
      * 销售/退货数据查询

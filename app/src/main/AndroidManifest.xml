@@ -44,6 +44,8 @@
 
         <activity android:name="com.iotek.merchantmanager.activity.HistoryListDataActivity"/>
 
+        <activity android:name="com.iotek.merchantmanager.activity.MonthPayTypeActivity"/>
+
     </application>
 
 </manifest>

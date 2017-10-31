@@ -101,7 +101,7 @@ public class ReturnGoodsDataFragment extends ListFragment implements SalesDataPr
             @Override
             public void run() {
                 mPresenter.getNextData(StatusKey.SALES_DATA, formatDay + " 00:00:00", formatDay + " 23:59:59");
-                mSuperRecyclerView.refreshComplete();
+                mSuperRecyclerView.loadMoreComplete();
             }
         }, 1000);
     }
@@ -114,6 +114,12 @@ public class ReturnGoodsDataFragment extends ListFragment implements SalesDataPr
                 mSuperRecyclerView.setNoMore(true);
             }
         }, 1000);
+    }
+
+    @Override
+    public void emptyData() {
+        mSuperRecyclerView.setVisibility(View.GONE);
+        ll_empty.setVisibility(View.VISIBLE);
     }
 
     @Override
