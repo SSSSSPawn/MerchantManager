@@ -41,23 +41,17 @@ import iotek.com.merchantmanager.R;
 
 public class DayTradeListFragment extends ListFragment implements DayTradeFormsPresenter.MvpView {
 
-    @Bind(R.id.ll_empty)
-    LinearLayout ll_empty;
+    @Bind(R.id.ll_empty) LinearLayout ll_empty;
 
-    @Bind(R.id.ll_content)
-    LinearLayout mLayout;
+    @Bind(R.id.ll_content) LinearLayout mLayout;
 
-    @Bind(R.id.pie_chart)
-    PieChart mChart;
+    @Bind(R.id.pie_chart) PieChart mChart;
 
-    @Bind(R.id.tv_trade_detail)
-    TextView tv_trade_detail;
+    @Bind(R.id.tv_trade_detail) TextView tv_trade_detail;
 
-    @Bind(R.id.fab_menu)
-    FloatingActionsMenu mFloatingActionsMenu;
+    @Bind(R.id.fab_menu) FloatingActionsMenu mFloatingActionsMenu;
 
-    @Bind(R.id.fab_search)
-    FloatingActionButton mFloatingActionButton;
+    @Bind(R.id.fab_search) FloatingActionButton mFloatingActionButton;
 
     private DayTradeFormsPresenter mPresenter = new DayTradeFormsPresenter();
 

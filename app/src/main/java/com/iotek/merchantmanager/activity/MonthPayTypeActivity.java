@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.iotek.merchantmanager.Presenter.MonthPayTypePresenter;
+import com.iotek.merchantmanager.Utils.DateUtils;
 import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.MPChartUtil;
 import com.iotek.merchantmanager.Utils.Preference;
@@ -30,14 +31,11 @@ import iotek.com.merchantmanager.R;
 
 public class MonthPayTypeActivity extends BaseActivity implements MonthPayTypePresenter.MvpView {
 
-    @Bind(R.id.appBar)
-    AppBar mAppBar;
+    @Bind(R.id.appBar) AppBar mAppBar;
 
-    @Bind(R.id.ll_empty)
-    LinearLayout ll_empty;
+    @Bind(R.id.ll_empty) LinearLayout ll_empty;
 
-    @Bind(R.id.pie_chart)
-    PieChart mPieChart;
+    @Bind(R.id.pie_chart) PieChart mPieChart;
 
     private MonthPayTypePresenter mPresenter = new MonthPayTypePresenter();
 
@@ -77,6 +75,8 @@ public class MonthPayTypeActivity extends BaseActivity implements MonthPayTypePr
 
         double saleAmount;
 
+        String formatMoney;
+
         String name;
 
         payName.clear();
@@ -89,18 +89,22 @@ public class MonthPayTypeActivity extends BaseActivity implements MonthPayTypePr
 
             if (rowsBean.getPayType() == StatusKey.XJ_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
+                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else if (rowsBean.getPayType() == StatusKey.WX_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
+                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else if (rowsBean.getPayType() == StatusKey.ZFB_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
+                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else {
                 saleAmount = rowsBean.getSaleAmount();
+                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             }
-            PayStylePieEntry pieEntry = new PayStylePieEntry(name, saleAmount);
+            PayStylePieEntry pieEntry = new PayStylePieEntry(name, formatMoney);
             payName.add(pieEntry);
         }
 
