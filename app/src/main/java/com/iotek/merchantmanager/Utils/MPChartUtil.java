@@ -30,20 +30,25 @@ public class MPChartUtil {
 
         mChart.setExtraOffsets(20.f, 0.f, 20.f, 0.f);
 
+        mChart.setDrawHoleEnabled(true);
         mChart.setHoleColor(Color.WHITE);
 
         mChart.setTransparentCircleColor(Color.WHITE);
         mChart.setTransparentCircleAlpha(110);
+
         mChart.setHoleRadius(58f);
         mChart.setTransparentCircleRadius(61f);
 
         mChart.setDrawCenterText(true);
+
         mChart.setCenterText(conterText);
+
+        mChart.setDrawEntryLabels(!mChart.isDrawEntryLabelsEnabled());
 
         mChart.setRotationAngle(0);
         mChart.setRotationEnabled(true);
         mChart.setHighlightPerTapEnabled(true);
-        mChart.setDrawHoleEnabled(true);
+
         setPieChartData(mChart, datas, label);
 
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
@@ -52,12 +57,10 @@ public class MPChartUtil {
         l.setYEntrySpace(2f);//设置比例块换行...  
         l.setWordWrapEnabled(true);
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
-        l.setDrawInside(false);
-        l.setEnabled(true);
-
-
+        l.setDrawInside(true);
+        l.setEnabled(true);//图例不显示
     }
 
     public static void setPieChartData(PieChart mChart, ArrayList<PayStylePieEntry> datas, String label) {
@@ -65,7 +68,8 @@ public class MPChartUtil {
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < datas.size(); i++) {
-            entries.add(new PieEntry((float) datas.get(i).getMoney(),datas.get(i).getPayName() + "\n\n¥" + datas.get(i).getMoney()));
+            entries.add(new PieEntry((float) datas.get(i).getMoney(), datas.get(i).getPayName() + "\n\n¥" + datas.get(i).getMoney()));
+            //datas.get(i).getPayName() + "\n\n¥" + datas.get(i).getMoney();
         }
 
         PieDataSet dataSet = new PieDataSet(entries, label);
@@ -87,7 +91,7 @@ public class MPChartUtil {
 
         PieData data = new PieData(dataSet);
         data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(11f);
+        data.setValueTextSize(12f);
         data.setValueTextColor(Color.BLACK);
         mChart.setData(data);
         mChart.highlightValues(null);

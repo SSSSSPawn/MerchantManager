@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/gray_tr"
               android:orientation="vertical">
 
     <com.iotek.merchantmanager.view.AppBar
@@ -39,21 +38,26 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:background="@color/gray">
+        android:background="@color/gray_tr"
+        android:orientation="vertical">
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pie_chart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical">
 
         </com.github.mikephil.charting.charts.PieChart>
 
+        <include
+            layout="@layout/empty"
+            android:visibility="gone"/>
 
     </LinearLayout>
-
 
 </LinearLayout>

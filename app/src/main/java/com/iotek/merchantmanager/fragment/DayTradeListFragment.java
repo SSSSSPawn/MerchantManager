@@ -41,17 +41,23 @@ import iotek.com.merchantmanager.R;
 
 public class DayTradeListFragment extends ListFragment implements DayTradeFormsPresenter.MvpView {
 
-    @Bind(R.id.ll_empty) LinearLayout ll_empty;
+    @Bind(R.id.ll_empty)
+    LinearLayout ll_empty;
 
-    @Bind(R.id.ll_content) LinearLayout mLayout;
+    @Bind(R.id.ll_content)
+    LinearLayout mLayout;
 
-    @Bind(R.id.pie_chart) PieChart mChart;
+    @Bind(R.id.pie_chart)
+    PieChart mChart;
 
-    @Bind(R.id.tv_trade_detail) TextView tv_trade_detail;
+    @Bind(R.id.tv_trade_detail)
+    TextView tv_trade_detail;
 
-    @Bind(R.id.fab_menu) FloatingActionsMenu mFloatingActionsMenu;
+    @Bind(R.id.fab_menu)
+    FloatingActionsMenu mFloatingActionsMenu;
 
-    @Bind(R.id.fab_search) FloatingActionButton mFloatingActionButton;
+    @Bind(R.id.fab_search)
+    FloatingActionButton mFloatingActionButton;
 
     private DayTradeFormsPresenter mPresenter = new DayTradeFormsPresenter();
 
@@ -129,6 +135,8 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
         double saleAmount;
 
+        String formatMoney;
+
         String name;
 
         payName.clear();
@@ -141,27 +149,31 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
             if (rowsBean.getPayType() == StatusKey.XJ_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
+                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else if (rowsBean.getPayType() == StatusKey.WX_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
+                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else if (rowsBean.getPayType() == StatusKey.ZFB_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
+                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else {
                 saleAmount = rowsBean.getSaleAmount();
+                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             }
-            PayStylePieEntry pieEntry = new PayStylePieEntry(name, saleAmount);
+            PayStylePieEntry pieEntry = new PayStylePieEntry(name, formatMoney);
             payName.add(pieEntry);
         }
 
         MPChartUtil.showPieChart(mChart, payName, "支付方式", "支付比例");
     }
 
-    @OnClick({R.id.tv_trade_detail,R.id.fab_search})
+    @OnClick({R.id.tv_trade_detail, R.id.fab_search})
     public void onViewClicked(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tv_trade_detail:
                 Intent intent = new Intent(getActivity(), TradeFormDetailActivity.class);
                 intent.putExtra(Intentkey.SALES_DATA_DATE, listData.get(0).getReportDay());

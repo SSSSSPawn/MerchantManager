@@ -1,5 +1,6 @@
 package com.iotek.merchantmanager.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import com.iotek.merchantmanager.activity.MonthPayTypeActivity;
 import com.iotek.merchantmanager.adapter.MonthTradeFormAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
 import com.iotek.merchantmanager.bean.MonthTradeFormVO;
+import com.iotek.merchantmanager.constant.Intentkey;
 import com.iotek.merchantmanager.listener.OnItemClickListener;
 
 import java.util.ArrayList;
@@ -31,6 +33,8 @@ public class MonthTradeListFragment extends ListFragment implements MonthTradeFo
 
     private MonthTradeFormAdapter mAdapter;
     private MonthTradeFormsPresenter mPresenter = new MonthTradeFormsPresenter();
+
+    private ArrayList<MonthTradeFormVO.RowsBean> mList = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,6 +84,7 @@ public class MonthTradeListFragment extends ListFragment implements MonthTradeFo
 
     @Override
     public void updateTradeFromList(ArrayList<MonthTradeFormVO.RowsBean> lists) {
+        mList = lists;
         if (lists.size() == 0) {
             ll_recyclerView.setVisibility(View.GONE);
             ll_empty.setVisibility(View.VISIBLE);
@@ -99,6 +104,8 @@ public class MonthTradeListFragment extends ListFragment implements MonthTradeFo
 
     @Override
     public void OnItemClick(int position) {
-       launch(MonthPayTypeActivity.class);
+        Intent intent = new Intent(getActivity(),MonthPayTypeActivity.class);
+        intent.putExtra(Intentkey.MONTH_DATA,mList.get(position).getReportMonth());
+        launch(intent);
     }
 }

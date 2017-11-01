@@ -114,13 +114,20 @@
                 android:layout_marginTop="4dp"
                 android:background="@color/lineColor"/>
 
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/pie_chart"
+            <LinearLayout
+                android:id="@+id/ll_legend"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:background="@color/gray_tr"
-                android:visibility="visible"/>
+                android:orientation="horizontal">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pie_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/gray_tr"
+                    android:visibility="visible"/>
+            </LinearLayout>
 
         </LinearLayout>
 

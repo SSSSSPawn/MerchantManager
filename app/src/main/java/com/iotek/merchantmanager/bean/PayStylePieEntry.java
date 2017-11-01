@@ -8,9 +8,9 @@ public class PayStylePieEntry{
 
     private String payName;
 
-    private double money;
+    private String money;
 
-    public PayStylePieEntry(String payName, double money) {
+    public PayStylePieEntry(String payName, String money) {
         this.payName = payName;
         this.money = money;
     }
@@ -23,11 +23,11 @@ public class PayStylePieEntry{
         this.payName = payName;
     }
 
-    public double getMoney() {
+    public String getMoney() {
         return money;
     }
 
-    public void setMoney(double money) {
+    public void setMoney(String money) {
         this.money = money;
     }
 

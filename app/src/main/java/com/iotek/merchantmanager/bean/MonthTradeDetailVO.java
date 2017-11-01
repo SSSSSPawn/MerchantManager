@@ -69,8 +69,8 @@ public class MonthTradeDetailVO extends BaseBean{
         private int payType;
         private long recordTime;
         private long reportMonth;
-        private int returnAmount;
-        private int saleAmount;
+        private double returnAmount;
+        private double saleAmount;
         private String uid;
         private String typeName;
 
@@ -106,19 +106,19 @@ public class MonthTradeDetailVO extends BaseBean{
             this.reportMonth = reportMonth;
         }
 
-        public int getReturnAmount() {
+        public double getReturnAmount() {
             return returnAmount;
         }
 
-        public void setReturnAmount(int returnAmount) {
+        public void setReturnAmount(double returnAmount) {
             this.returnAmount = returnAmount;
         }
 
-        public int getSaleAmount() {
+        public double getSaleAmount() {
             return saleAmount;
         }
 
-        public void setSaleAmount(int saleAmount) {
+        public void setSaleAmount(double saleAmount) {
             this.saleAmount = saleAmount;
         }
 
