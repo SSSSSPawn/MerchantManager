@@ -129,8 +129,6 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
         double saleAmount;
 
-        String formatMoney;
-
         String name;
 
         payName.clear();
@@ -143,22 +141,18 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
             if (rowsBean.getPayType() == StatusKey.XJ_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
-                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else if (rowsBean.getPayType() == StatusKey.WX_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
-                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else if (rowsBean.getPayType() == StatusKey.ZFB_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
-                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else {
                 saleAmount = rowsBean.getSaleAmount();
-                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             }
-            PayStylePieEntry pieEntry = new PayStylePieEntry(name, formatMoney);
+            PayStylePieEntry pieEntry = new PayStylePieEntry(name, saleAmount);
             payName.add(pieEntry);
         }
 

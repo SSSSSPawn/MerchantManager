@@ -9,6 +9,7 @@ import com.iotek.merchantmanager.bean.MonthTradeFormVO;
 import com.iotek.merchantmanager.bean.ReturnGoodsItemDataVO;
 import com.iotek.merchantmanager.bean.SalesDataDetailVO;
 import com.iotek.merchantmanager.bean.SalesDataItemDetailVO;
+import com.iotek.merchantmanager.bean.SelectShiftReportVO;
 import com.iotek.merchantmanager.bean.TradeFormPayDetailVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.bean.params.AddUserParamsVO;
@@ -16,6 +17,7 @@ import com.iotek.merchantmanager.bean.params.LoginParamsVO;
 import com.iotek.merchantmanager.bean.params.QueryUserParamsVO;
 import com.iotek.merchantmanager.bean.params.SalesDataDetailParamsVO;
 import com.iotek.merchantmanager.bean.params.SalesDataParamsVO;
+import com.iotek.merchantmanager.bean.params.SelectShiftReportParamsVO;
 import com.iotek.merchantmanager.bean.params.TradeFormDetailParamsVO;
 import com.iotek.merchantmanager.bean.params.TradeFormParamsVO;
 import com.iotek.merchantmanager.bean.params.UserParamsVO;
@@ -170,4 +172,13 @@ public interface ApiService {
      */
     @POST("app/inter/selectSaleDetailReport.json")
     Call<SalesDataItemDetailVO> saleItemDataList(@Body SalesDataDetailParamsVO paramsVO);
+
+    /**
+     * 交接班报表查询
+     */
+    @POST("app/inter/selectShiftReport.json")
+    Call<SelectShiftReportVO> selectShiftReport(@Body SelectShiftReportParamsVO paramsVO);
+
+    @POST("app/inter/selectShiftReportDetail.json")
+    Call<CodeMessageVO> selectShiftReportDetail();
 }

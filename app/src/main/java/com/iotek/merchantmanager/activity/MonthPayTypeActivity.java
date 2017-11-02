@@ -7,7 +7,6 @@ import android.widget.LinearLayout;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.iotek.merchantmanager.Presenter.MonthPayTypePresenter;
-import com.iotek.merchantmanager.Utils.DateUtils;
 import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.Utils.MPChartUtil;
 import com.iotek.merchantmanager.Utils.Preference;
@@ -75,8 +74,6 @@ public class MonthPayTypeActivity extends BaseActivity implements MonthPayTypePr
 
         double saleAmount;
 
-        String formatMoney;
-
         String name;
 
         payName.clear();
@@ -89,22 +86,18 @@ public class MonthPayTypeActivity extends BaseActivity implements MonthPayTypePr
 
             if (rowsBean.getPayType() == StatusKey.XJ_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
-                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else if (rowsBean.getPayType() == StatusKey.WX_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
-                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else if (rowsBean.getPayType() == StatusKey.ZFB_TYPE) {
                 saleAmount = rowsBean.getSaleAmount();
-                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             } else {
                 saleAmount = rowsBean.getSaleAmount();
-                formatMoney = DateUtils.formatMoney(saleAmount);
                 name = rowsBean.getTypeName();
             }
-            PayStylePieEntry pieEntry = new PayStylePieEntry(name, formatMoney);
+            PayStylePieEntry pieEntry = new PayStylePieEntry(name, saleAmount);
             payName.add(pieEntry);
         }
 

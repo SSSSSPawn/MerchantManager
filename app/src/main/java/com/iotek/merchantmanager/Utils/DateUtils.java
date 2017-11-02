@@ -1,6 +1,7 @@
 package com.iotek.merchantmanager.Utils;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,6 +49,12 @@ public class DateUtils {
 
     public static String formatMoney(double monty) {
         NumberFormat nf = NumberFormat.getCurrencyInstance(); //建立货币格式化引用
+        String string = Double.toString(monty);
+        BigDecimal bigDecimal = new BigDecimal(string);
+        return nf.format(bigDecimal);
+    }
+    public static String formatMoney(double monty,String format) {
+        NumberFormat nf = new DecimalFormat(format); //建立货币格式化引用  "#,###.####"
         String string = Double.toString(monty);
         BigDecimal bigDecimal = new BigDecimal(string);
         return nf.format(bigDecimal);
