@@ -46,6 +46,8 @@
 
         <activity android:name="com.iotek.merchantmanager.activity.MonthPayTypeActivity"/>
 
+        <activity android:name="com.iotek.merchantmanager.activity.SalesItemDataDetailActivity"/>
+
     </application>
 
 </manifest>

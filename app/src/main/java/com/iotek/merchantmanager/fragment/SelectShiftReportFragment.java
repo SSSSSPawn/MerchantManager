@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.iotek.merchantmanager.Presenter.SelectShiftReportPresenter;
-import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.adapter.SelectShiftReportAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
 import com.iotek.merchantmanager.bean.SelectShiftReportVO;
