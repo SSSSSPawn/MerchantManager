@@ -6,21 +6,28 @@ import com.iotek.merchantmanager.bean.DayTradeFormVO;
 import com.iotek.merchantmanager.bean.LoginVO;
 import com.iotek.merchantmanager.bean.MonthTradeDetailVO;
 import com.iotek.merchantmanager.bean.MonthTradeFormVO;
+import com.iotek.merchantmanager.bean.QueryMembLevelVO;
 import com.iotek.merchantmanager.bean.ReturnGoodsItemDataVO;
 import com.iotek.merchantmanager.bean.SalesDataDetailVO;
 import com.iotek.merchantmanager.bean.SalesDataItemDetailVO;
 import com.iotek.merchantmanager.bean.SelectShiftReportVO;
+import com.iotek.merchantmanager.bean.SelectTaxInvDataVO;
 import com.iotek.merchantmanager.bean.TradeFormPayDetailVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
+import com.iotek.merchantmanager.bean.YYYShiftReportVO;
 import com.iotek.merchantmanager.bean.params.AddUserParamsVO;
 import com.iotek.merchantmanager.bean.params.LoginParamsVO;
+import com.iotek.merchantmanager.bean.params.QueryMembLevelParamsVO;
 import com.iotek.merchantmanager.bean.params.QueryUserParamsVO;
 import com.iotek.merchantmanager.bean.params.SalesDataDetailParamsVO;
 import com.iotek.merchantmanager.bean.params.SalesDataParamsVO;
+import com.iotek.merchantmanager.bean.params.SelectShiftReportDetailParamsVO;
 import com.iotek.merchantmanager.bean.params.SelectShiftReportParamsVO;
+import com.iotek.merchantmanager.bean.params.SelectTaxInvDataParamsVO;
 import com.iotek.merchantmanager.bean.params.TradeFormDetailParamsVO;
 import com.iotek.merchantmanager.bean.params.TradeFormParamsVO;
 import com.iotek.merchantmanager.bean.params.UserParamsVO;
+import com.iotek.merchantmanager.bean.params.YYYShiftRefortParamsVO;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -147,6 +154,7 @@ public interface ApiService {
 
     /**
      * 月交易详情
+     *
      * @param paramsVO
      * @return
      */
@@ -179,6 +187,40 @@ public interface ApiService {
     @POST("app/inter/selectShiftReport.json")
     Call<SelectShiftReportVO> selectShiftReport(@Body SelectShiftReportParamsVO paramsVO);
 
+
+    /**
+     * 交接班明细查询
+     *
+     * @param paramsVO
+     * @return
+     */
     @POST("app/inter/selectShiftReportDetail.json")
-    Call<CodeMessageVO> selectShiftReportDetail();
+    Call<CodeMessageVO> selectShiftReportDetail(@Body SelectShiftReportDetailParamsVO paramsVO);
+
+    /**
+     * 营业员报表查询
+     *
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/yyyShiftReport.json")
+    Call<YYYShiftReportVO> yyyShiftReport(@Body YYYShiftRefortParamsVO paramsVO);
+
+
+    /**
+     * 发票数据查询
+     *
+     * @return
+     */
+    @POST("app/inter/selectTaxInvData.json")
+    Call<SelectTaxInvDataVO> selectTaxInvData(@Body SelectTaxInvDataParamsVO paramsVO);
+
+
+    /**
+     * 会员等级查询
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/queryMembLevel.json")
+    Call<QueryMembLevelVO> queryMembLevel(@Body QueryMembLevelParamsVO paramsVO);
 }

@@ -17,7 +17,8 @@ public class TradeFormFragment extends BECTabFragment {
     private TabMenus[] TAB_MENUS = {
             new TabMenus("日交易报表", new DayTradeListFragment()),
             new TabMenus("月交易报表", new MonthTradeListFragment()),
-            new TabMenus("交接班报表",new SelectShiftReportFragment())
+            new TabMenus("交接班报表", new SelectShiftReportFragment()),
+            new TabMenus("营业员报表", new YYYShiftReportFragment())
     };
 
     @Nullable

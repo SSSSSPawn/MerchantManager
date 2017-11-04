@@ -39,12 +39,17 @@ public abstract class BECTabFragment extends BECFragment implements TabLayout.On
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mTabMenu.setTabMode(TabLayout.MODE_FIXED);
         mTabMenu.setOnTabSelectedListener(this);
         mTabMenu.setSelectedTabIndicatorColor(getIndicatorColor());
 
         for (int i = 0; i < getTabMenu().length; i++) {
             mTabMenu.addTab(mTabMenu.newTab().setCustomView(getTabView(i)));
+        }
+
+        if (mTabMenu.getTabCount() > 3){
+            mTabMenu.setTabMode(TabLayout.MODE_SCROLLABLE);
+        }else {
+            mTabMenu.setTabMode(TabLayout.MODE_FIXED);
         }
 
         setSelectedTab(mCurrentPosition);

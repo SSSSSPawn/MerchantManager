@@ -3,10 +3,10 @@ package com.iotek.merchantmanager.bean.params;
 import com.iotek.merchantmanager.bean.BaseBean;
 
 /**
- * Created by admin on 2017/11/2.
+ * Created by admin on 2017/11/3.
  */
 
-public class SelectShiftReportParamsVO extends BaseBean {
+public class QueryMembLevelParamsVO extends BaseBean {
 
     private long custId;
     private long rootId;
@@ -14,27 +14,15 @@ public class SelectShiftReportParamsVO extends BaseBean {
     private String mac;
     private int limit;
     private int page;
-    private String sTime;
-    private String eTime;
 
-    public SelectShiftReportParamsVO(long custId, long rootId, String uuid, String mac, int limit, int page) {
+
+    public QueryMembLevelParamsVO(long custId, long rootId, String uuid, String mac, int limit, int page) {
         this.custId = custId;
         this.rootId = rootId;
         this.uuid = uuid;
         this.mac = mac;
         this.limit = limit;
         this.page = page;
-    }
-
-    public SelectShiftReportParamsVO(long custId, long rootId, String uuid, String mac, int limit, int page, String sTime, String eTime) {
-        this.custId = custId;
-        this.rootId = rootId;
-        this.uuid = uuid;
-        this.mac = mac;
-        this.limit = limit;
-        this.page = page;
-        this.sTime = sTime;
-        this.eTime = eTime;
     }
 
     public long getCustId() {

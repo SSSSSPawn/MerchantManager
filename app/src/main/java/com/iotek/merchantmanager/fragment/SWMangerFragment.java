@@ -1,13 +1,12 @@
 package com.iotek.merchantmanager.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.iotek.merchantmanager.adapter.UserManagerAdapter;
-import com.iotek.merchantmanager.base.ListFragment;
+import com.iotek.merchantmanager.bean.TabMenus;
 
 import iotek.com.merchantmanager.R;
 
@@ -15,34 +14,24 @@ import iotek.com.merchantmanager.R;
  * Created by admin on 2017/8/23.
  */
 
-public class SWMangerFragment extends ListFragment {
+public class SWMangerFragment extends BECTabFragment {
 
     public static final String TAG = "税务";
 
-    UserManagerAdapter mAdapter;
+    private TabMenus[] TAB_MENU = {
+            new TabMenus("发票数据管理", new SelectTaxInvDataFragment()),
+    };
 
+
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        init();
-        return super.onCreateView(inflater, container, savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_sw, container, false);
     }
 
-    private void init(){
-        mAdapter = new UserManagerAdapter();
-    }
 
     @Override
-    protected RecyclerView.Adapter getAdapter() {
-        return mAdapter;
-    }
-
-    @Override
-    protected boolean isBindEventBus() {
-        return false;
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_sw;
+    protected TabMenus[] getTabMenu() {
+        return TAB_MENU;
     }
 }

@@ -38,4 +38,16 @@ public interface StatusKey {
 
     int MONTH_DAY_DATA = 4;
 
+    /**0.开票成功  1.开票失败  2.开票中 */
+    int INV_STATTS_SUCCESS = 0;
+
+    int INV_STATTS_FAIL= 1;
+
+    int INV_STATTS_ING = 2;
+
+    /**0.蓝票 1.红票*/
+    int INV_TYPE_BLUE = 0;
+
+    int INV_TYPE_RED = 1;
+
 }

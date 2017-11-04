@@ -7,12 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.iotek.merchantmanager.Presenter.SelectShiftReportPresenter;
-import com.iotek.merchantmanager.activity.SelectShiftReportDetailActivity;
-import com.iotek.merchantmanager.adapter.SelectShiftReportAdapter;
+import com.iotek.merchantmanager.Presenter.SelectTaxInvDataPresenter;
+import com.iotek.merchantmanager.adapter.SelectTaxInvDataAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
-import com.iotek.merchantmanager.bean.SelectShiftReportVO;
-import com.iotek.merchantmanager.listener.OnItemClickListener;
+import com.iotek.merchantmanager.bean.SelectTaxInvDataVO;
 
 import java.util.ArrayList;
 
@@ -20,16 +18,16 @@ import butterknife.Bind;
 import iotek.com.merchantmanager.R;
 
 /**
- * Created by admin on 2017/11/2.
+ * Created by admin on 2017/11/4.
  */
 
-public class SelectShiftReportFragment extends ListFragment implements SelectShiftReportPresenter.MvpView ,OnItemClickListener{
+public class SelectTaxInvDataFragment extends ListFragment implements SelectTaxInvDataPresenter.MvpView {
 
     @Bind(R.id.ll_empty) LinearLayout ll_empty;
 
-    private SelectShiftReportPresenter mPresenter = new SelectShiftReportPresenter();
+    private SelectTaxInvDataAdapter mAdapter;
 
-    private SelectShiftReportAdapter mAdapter;
+    private SelectTaxInvDataPresenter mPresenter = new SelectTaxInvDataPresenter();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,9 +35,7 @@ public class SelectShiftReportFragment extends ListFragment implements SelectShi
 
         mPresenter.attachView(this);
 
-        mAdapter = new SelectShiftReportAdapter();
-
-        mAdapter.setOnItemClickListener(this);
+        mAdapter = new SelectTaxInvDataAdapter();
     }
 
     @Override
@@ -49,7 +45,7 @@ public class SelectShiftReportFragment extends ListFragment implements SelectShi
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_sel_shift_report;
+        return R.layout.fragment_select_tax_inv_data;
     }
 
     @Override
@@ -58,11 +54,21 @@ public class SelectShiftReportFragment extends ListFragment implements SelectShi
     }
 
     @Override
+    public void updateSelectTaxInvData(ArrayList<SelectTaxInvDataVO.RowsBean> lists) {
+        if (lists.size() == 0) {
+            mSuperRecyclerView.setVisibility(View.GONE);
+            ll_empty.setVisibility(View.VISIBLE);
+        }
+        mAdapter.setDataList(lists);
+    }
+
+    @Override
     public void onRefresh() {
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mPresenter.getSelectShiftReportList(1);
+                mPresenter.getSelectTaxInvData(1);
                 mSuperRecyclerView.refreshComplete();
             }
         }, 1000);
@@ -70,6 +76,7 @@ public class SelectShiftReportFragment extends ListFragment implements SelectShi
 
     @Override
     public void onLoadMore() {
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -77,15 +84,6 @@ public class SelectShiftReportFragment extends ListFragment implements SelectShi
                 mSuperRecyclerView.loadMoreComplete();
             }
         }, 1000);
-    }
-
-    @Override
-    public void updateSelectShiftReport(ArrayList<SelectShiftReportVO.RowsBean> lists) {
-        if (lists.size() == 0) {
-            mSuperRecyclerView.setVisibility(View.GONE);
-            ll_empty.setVisibility(View.VISIBLE);
-        }
-        mAdapter.setDataList(lists);
     }
 
     @Override
@@ -102,10 +100,5 @@ public class SelectShiftReportFragment extends ListFragment implements SelectShi
     public void emptyData() {
         mSuperRecyclerView.setVisibility(View.GONE);
         ll_empty.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void OnItemClick(int position) {
-        launch(SelectShiftReportDetailActivity.class);
     }
 }
