@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <com.iotek.merchantmanager.view.AppBar
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        android:background="@color/btn_bg">
+
+    </com.iotek.merchantmanager.view.AppBar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                style="@style/Text_Name"
+                android:text="会员等级编号"/>
+
+            <TextView
+                android:id="@+id/tv_vip_rank_code"
+                style="@style/Text_Name.Text_Content.16sp"
+                android:drawableRight="@drawable/ic_more"
+                android:gravity="center|right"
+                android:hint="请选择"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                style="@style/Text_Name"
+                android:text="等级名称"/>
+
+            <EditText
+                android:id="@+id/et_vip_rank_level"
+                style="@style/Text_Name.Text_Content.16sp"
+                android:background="@null"
+                android:gravity="center|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                style="@style/Text_Name"
+                android:text="优惠折扣"/>
+
+            <EditText
+                android:id="@+id/et_vip_rank_discount"
+                style="@style/Text_Name.Text_Content.16sp"
+                android:background="@null"
+                android:gravity="center|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineColor"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/becPrimaryBlue"
+        android:text="确定"
+        android:textColor="@drawable/selector_btn_white2gray"
+        android:textSize="18sp"/>
+
+</LinearLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.iotek.merchantmanager.view.SwipeMenuLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:background="@color/white"
+    android:clickable="true"
+    app:ios="false"
+    app:leftSwipe="true"
+    app:swipeEnable="true">
+
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:text="录入时间:"/>
+
+            <TextView
+                android:id="@+id/tv_vip_rank_item_time"
+                style="@style/Data_Item_Detail_Content"
+                android:text="2017-08-24 10:20:02"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line_1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员等级编号:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_rank_item_bh"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="等级名称:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_rank_item_name"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="一级"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="优惠折扣(%):"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_rank_item_zk"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="100"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/item_right_update"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="@color/common_red">
+
+        <TextView
+            android:id="@+id/item_right_txt_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/update_password_icon"
+            android:gravity="center"
+            android:text="修改 "
+            android:textColor="#FFFAF0"/>
+    </RelativeLayout>
+
+</com.iotek.merchantmanager.view.SwipeMenuLayout>

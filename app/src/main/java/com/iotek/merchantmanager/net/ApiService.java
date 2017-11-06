@@ -16,6 +16,7 @@ import com.iotek.merchantmanager.bean.TradeFormPayDetailVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
 import com.iotek.merchantmanager.bean.YYYShiftReportVO;
 import com.iotek.merchantmanager.bean.params.AddUserParamsVO;
+import com.iotek.merchantmanager.bean.params.AddVipRankParamsVO;
 import com.iotek.merchantmanager.bean.params.LoginParamsVO;
 import com.iotek.merchantmanager.bean.params.QueryMembLevelParamsVO;
 import com.iotek.merchantmanager.bean.params.QueryUserParamsVO;
@@ -218,9 +219,18 @@ public interface ApiService {
 
     /**
      * 会员等级查询
+     *
      * @param paramsVO
      * @return
      */
     @POST("app/inter/queryMembLevel.json")
     Call<QueryMembLevelVO> queryMembLevel(@Body QueryMembLevelParamsVO paramsVO);
+
+    /**
+     * 新增会员等级
+     *
+     * @return
+     */
+    @POST("app/inter/membLevelAdd.json")
+    Call<CodeMessageVO> AddVipRank(@Body AddVipRankParamsVO paramsVO);
 }

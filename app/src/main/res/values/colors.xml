@@ -23,6 +23,8 @@
     <color name="becPrimaryBlue">#FF3798ED</color>
 
 
+    <color name="transparent">#00000000</color>
+
     <color name="tab_txt">#8a8a8a</color>
 
     <color name="line">#eaeaea</color>

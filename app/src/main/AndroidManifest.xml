@@ -46,7 +46,11 @@
 
         <activity android:name="com.iotek.merchantmanager.activity.MonthPayTypeActivity"/>
 
-      <activity android:name="com.iotek.merchantmanager.activity.SelectShiftReportDetailActivity"/>
+        <activity android:name="com.iotek.merchantmanager.activity.SelectShiftReportDetailActivity"/>
+
+        <activity
+            android:name="com.iotek.merchantmanager.activity.AddVipRankActivity"
+            android:windowSoftInputMode="adjustPan"/>
 
     </application>
 
