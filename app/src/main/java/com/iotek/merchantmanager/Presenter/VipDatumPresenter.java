@@ -3,8 +3,8 @@ package com.iotek.merchantmanager.Presenter;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BasePresenter;
 import com.iotek.merchantmanager.base.IMvpView;
-import com.iotek.merchantmanager.bean.QueryMembLevelVO;
-import com.iotek.merchantmanager.bean.params.QueryMembLevelParamsVO;
+import com.iotek.merchantmanager.bean.VipDatumDataVO;
+import com.iotek.merchantmanager.bean.params.QueryAllMembParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.net.OnResponseListener;
 
@@ -13,34 +13,34 @@ import java.util.ArrayList;
 import retrofit2.Call;
 
 /**
- * Created by admin on 2017/11/6.
+ * Created by admin on 2017/11/7.
  */
 
-public class VipRankPresenter extends BasePresenter<VipRankPresenter.MvpView> {
-
+public class VipDatumPresenter extends BasePresenter<VipDatumPresenter.MvpView> {
 
     private final int LIMIT_SIZE = 10;
 
     private int currentPage, totalPage;
 
-    private ArrayList<QueryMembLevelVO.RowsBean> mRowsBeen = new ArrayList<>();
+    private ArrayList<VipDatumDataVO.ObjBean> mRowsBeen = new ArrayList<>();
 
     private boolean tag = false;
 
 
-    public void getVipRankData(final int page) {
+    public void getVipDatumData(final int page) {
+
         long custID = Preference.getLong(CacheKey.CUST_ID);
         long rootID = Preference.getLong(CacheKey.ROOT_ID);
         String uuID = Preference.getString(CacheKey.UU_ID);
         String mac = Preference.getString(CacheKey.MAC);
 
-        QueryMembLevelParamsVO paramsVO = new QueryMembLevelParamsVO(custID, rootID, uuID, mac, LIMIT_SIZE, page);
-        Call<QueryMembLevelVO> call = mApiService.queryMembLevel(paramsVO);
-        call.enqueue(new OnResponseListener<QueryMembLevelVO>(getContext(), true) {
+        QueryAllMembParamsVO paramsVO = new QueryAllMembParamsVO(custID, rootID, uuID, mac, LIMIT_SIZE, page);
+        Call<VipDatumDataVO> call = mApiService.queryAllMemb(paramsVO);
+        call.enqueue(new OnResponseListener<VipDatumDataVO>(getContext(), true) {
             @Override
-            public void onSuccess(QueryMembLevelVO vo) {
+            public void onSuccess(VipDatumDataVO vo) {
                 if (mvpView != null) {
-                    if (vo == null || vo.getRows() == null) {
+                    if (vo == null || vo.getObj() == null) {
                         if (tag) {
                             return;
                         }
@@ -50,8 +50,8 @@ public class VipRankPresenter extends BasePresenter<VipRankPresenter.MvpView> {
                     if (page == 1) {
                         mRowsBeen.clear();
                     }
-                    mRowsBeen.addAll(vo.getRows());
-                    mvpView.updateVipRankList(mRowsBeen);
+                    mRowsBeen.addAll(vo.getObj());
+                    mvpView.updateVipDatumDataList(mRowsBeen);
                     currentPage = page;
                     totalPage = (int) Math.ceil(mRowsBeen.size() * 1.0 / LIMIT_SIZE);
                 }
@@ -66,16 +66,17 @@ public class VipRankPresenter extends BasePresenter<VipRankPresenter.MvpView> {
         if (currentPage > totalPage) {
             mvpView.stopLoadMore();
         }
-        getVipRankData(++currentPage);
+
+        getVipDatumData(++currentPage);
     }
 
 
     public interface MvpView extends IMvpView {
 
-        void updateVipRankList(ArrayList<QueryMembLevelVO.RowsBean> lists);
-
-        void stopLoadMore();
+        void updateVipDatumDataList(ArrayList<VipDatumDataVO.ObjBean> lists);
 
         void emptyData();
+
+        void stopLoadMore();
     }
 }

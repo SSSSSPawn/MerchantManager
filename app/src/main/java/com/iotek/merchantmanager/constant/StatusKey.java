@@ -50,4 +50,14 @@ public interface StatusKey {
 
     int INV_TYPE_RED = 1;
 
+    /** 会员资料管理 0.禁用   1.启用*/
+    int STATE_NO = 0;
+
+    int STATE_YES = 1;
+
+    /** 0.女  1.男*/
+    int FEMALE = 0;
+
+    int MALE = 1;
+
 }

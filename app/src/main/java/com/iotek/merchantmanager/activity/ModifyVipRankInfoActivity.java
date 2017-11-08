@@ -9,11 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.iotek.merchantmanager.Presenter.AddVipRankPresenter;
+import com.iotek.merchantmanager.Presenter.ModifyVipRankInfoPresenter;
 import com.iotek.merchantmanager.Utils.AppUtils;
 import com.iotek.merchantmanager.Utils.Preference;
 import com.iotek.merchantmanager.base.BaseActivity;
-import com.iotek.merchantmanager.bean.params.AddVipRankParamsVO;
+import com.iotek.merchantmanager.bean.params.MembLevelEditParamsVO;
 import com.iotek.merchantmanager.constant.CacheKey;
 import com.iotek.merchantmanager.view.AppBar;
 import com.iotek.merchantmanager.view.BaseWheelFragment;
@@ -26,10 +26,10 @@ import iotek.com.merchantmanager.R;
 import static com.iotek.merchantmanager.constant.CacheKey.CUST_ID;
 
 /**
- * Created by admin on 2017/11/6.
+ * Created by admin on 2017/11/7.
  */
 
-public class AddVipRankActivity extends BaseActivity implements AddVipRankPresenter.MvpView{
+public class ModifyVipRankInfoActivity extends BaseActivity implements ModifyVipRankInfoPresenter.MvpView{
 
     @Bind(R.id.appBar) AppBar mAppBar;
 
@@ -41,14 +41,27 @@ public class AddVipRankActivity extends BaseActivity implements AddVipRankPresen
 
     @Bind(R.id.btn_submit) Button mBtnSubmit;
 
-    private AddVipRankPresenter mPresenter = new AddVipRankPresenter();
+    private ModifyVipRankInfoPresenter mPresenter = new ModifyVipRankInfoPresenter();
+
+    private String uid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter.attachView(this);
-        mAppBar.setTitle("新增会员等级");
+        mAppBar.setTitle("修改会员信息");
         mAppBar.setTextColor(getResources().getColor(R.color.white));
+
+        mPresenter.attachView(this);
+
+        int membLevel = getIntent().getIntExtra("membLevel", -1);
+        String levelName = getIntent().getStringExtra("levelName");
+        String discount = getIntent().getStringExtra("discount");
+        uid = getIntent().getStringExtra("uid");
+
+
+        mTvVipRankCode.setText(membLevel + "");
+        mEtVipRankLevel.setText(levelName);
+        mEtVipRankDiscount.setText(discount);
     }
 
     @Override
@@ -58,30 +71,25 @@ public class AddVipRankActivity extends BaseActivity implements AddVipRankPresen
 
     @Override
     protected int getLayoutID() {
-        return R.layout.activity_vip_rank;
+        return R.layout.activity_modify_vip_rank_info;
     }
 
-    @OnClick({R.id.tv_vip_rank_code, R.id.btn_submit})
+    @OnClick({R.id.btn_submit,R.id.tv_vip_rank_code})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.tv_vip_rank_code:
-                numberSelected();
-                break;
+        switch (view.getId()){
             case R.id.btn_submit:
                 submitData();
                 break;
+            case R.id.tv_vip_rank_code:
+               // numberSelected();
+                break;
         }
-    }
-
-    @Override
-    public void showMsg(String msg) {
-        AppUtils.showToast(msg);
     }
 
     private void numberSelected() {
         CommonWheelSelectedDialog dialog = CommonWheelSelectedDialog.newInstance(this, null,
                 ViewGroup.LayoutParams.WRAP_CONTENT, CommonWheelSelectedDialog.Type.Number);
-        dialog.show(getSupportFragmentManager(), "CommonWheelSelectedDialog");
+        dialog.show(getSupportFragmentManager(), "CommonWheelSelectedDialog_age");
         dialog.setOnSureListener(new BaseWheelFragment.OnSureListener() {
             @Override
             public void doSure(String item) {
@@ -118,9 +126,14 @@ public class AddVipRankActivity extends BaseActivity implements AddVipRankPresen
             return;
         }
 
-        AddVipRankParamsVO paramsVO = new AddVipRankParamsVO(custID,rootID,uuID,mac,code,rankLevel,rankDiscount);
-        mPresenter.addVipRank(paramsVO);
+        MembLevelEditParamsVO paramsVO = new MembLevelEditParamsVO(custID,rootID,uuID,mac,code,rankLevel,rankDiscount,uid);
+        mPresenter.modifyVipRankInfo(paramsVO);
 
+    }
+
+    @Override
+    public void showMsg(String msg) {
+        AppUtils.showToast(msg);
     }
 
     @Override

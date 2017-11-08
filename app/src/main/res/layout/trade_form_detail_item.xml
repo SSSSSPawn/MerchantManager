@@ -137,9 +137,7 @@
             </RelativeLayout>
 
             <View
-                style="@style/Line_1dp"
-                android:layout_height="5dp"
-                android:background="@drawable/shape_line"/>
+                style="@style/Line_1dp.Software"/>
 
             <LinearLayout
                 style="@style/Data_Item_Detail_LL"

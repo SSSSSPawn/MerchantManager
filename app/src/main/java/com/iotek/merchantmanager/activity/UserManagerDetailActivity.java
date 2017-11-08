@@ -87,27 +87,4 @@ public class UserManagerDetailActivity extends BaseActivity {
             mTvLastLoginIp.setText(rowsBean.getLastLoginIp());
         }
     }
-
-    /**
-     *
-     "custId": 21,
-     "custName": "亚青",
-     "custPhone": "13605154259",
-     "lastLoginIp": "222.95.167.98",
-     "lastLoginTime": 1505871339959,
-     "loginIp": "222.95.167.98",
-     "loginTime": 1505872208510,
-     "mystatus": 1,
-     "realName": "张月仙",
-     "recordTime": 1504163353038,
-     "roleId": 7,
-     "rolePname": "商户管理员",
-     "sysId": 3,
-     "userId": 83,
-     "userIdentity": "320589636987541210",
-     "userName": "13814689521",
-     "userStatus": 1
-     */
-
-
 }

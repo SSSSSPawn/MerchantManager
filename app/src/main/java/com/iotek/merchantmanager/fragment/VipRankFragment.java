@@ -1,5 +1,6 @@
 package com.iotek.merchantmanager.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -10,9 +11,11 @@ import android.widget.LinearLayout;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.iotek.merchantmanager.Presenter.VipRankPresenter;
 import com.iotek.merchantmanager.activity.AddVipRankActivity;
+import com.iotek.merchantmanager.activity.ModifyVipRankInfoActivity;
 import com.iotek.merchantmanager.adapter.VipRankAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
 import com.iotek.merchantmanager.bean.QueryMembLevelVO;
+import com.iotek.merchantmanager.listener.OnItemClickListener;
 
 import java.util.ArrayList;
 
@@ -36,11 +39,29 @@ public class VipRankFragment extends ListFragment implements VipRankPresenter.Mv
 
     private VipRankPresenter mPresenter = new VipRankPresenter();
 
+    private ArrayList<QueryMembLevelVO.RowsBean> mList = new ArrayList<>();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter.attachView(this);
         mAdapter = new VipRankAdapter();
+        mAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void OnItemClick(int position) {
+                Intent intent = new Intent(getActivity(),ModifyVipRankInfoActivity.class);
+                QueryMembLevelVO.RowsBean bean = mList.get(position);
+                int level = bean.getMembLevel();
+                String levelName = bean.getLevelName();
+                String discount = bean.getDiscount();
+                String uid = bean.getUid();
+                intent.putExtra("membLevel",level);
+                intent.putExtra("levelName",levelName);
+                intent.putExtra("discount",discount);
+                intent.putExtra("uid",uid);
+                launch(intent);
+            }
+        });
     }
 
     @Override
@@ -60,6 +81,7 @@ public class VipRankFragment extends ListFragment implements VipRankPresenter.Mv
 
     @Override
     public void updateVipRankList(ArrayList<QueryMembLevelVO.RowsBean> lists) {
+        mList = lists;
         if (lists.size() == 0) {
             mSuperRecyclerView.setVisibility(View.GONE);
             mLayout.setVisibility(View.VISIBLE);

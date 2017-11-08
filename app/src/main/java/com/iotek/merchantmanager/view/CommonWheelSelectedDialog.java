@@ -22,13 +22,14 @@ public class CommonWheelSelectedDialog extends BaseWheelFragment {
     private static final int TYPE_AGE = 1;
     private static final int TYPE_TALL = 2;
     private static final int TYPE_NUMBER = 3;
+    private static final int TYPE_PASSWORD = 4;
 
     private static final String UNIT_TALL = "cm";
     private String currentItem;
     private WheelView wheelView;
 
     public enum Type {
-        Gender(TYPE_GENDER), Age(TYPE_AGE), Tall(TYPE_TALL),Number(TYPE_NUMBER);
+        Gender(TYPE_GENDER), Age(TYPE_AGE), Tall(TYPE_TALL), Number(TYPE_NUMBER), Password(TYPE_PASSWORD);
 
         Type(int type) {
 
@@ -44,6 +45,8 @@ public class CommonWheelSelectedDialog extends BaseWheelFragment {
                     return TYPE_TALL;
                 case Number:
                     return TYPE_NUMBER;
+                case Password:
+                    return TYPE_PASSWORD;
                 default:
                     return TYPE_GENDER;
             }
@@ -54,17 +57,20 @@ public class CommonWheelSelectedDialog extends BaseWheelFragment {
     private static final String[] mGenderArray;
     private static final String[] mTallArray;
     private static final String[] mNumberArray;
+    private static final String[] mPasswordArray;
 
     static {
         mAgeArray = new String[91];
-        for (int i = 0; i <= 90 ; i++) {
+        for (int i = 0; i <= 90; i++) {
             mAgeArray[i] = String.valueOf(i + 10);
         }
 
-        mGenderArray = new String[]{"男","女"};
+        mGenderArray = new String[]{"男", "女"};
+
+        mPasswordArray = new String[]{"免密", "启用"};
 
         mTallArray = new String[171];
-        for (int i = 0; i <= 170 ; i++) {
+        for (int i = 0; i <= 170; i++) {
             mTallArray[i] = String.valueOf(i + 50);
         }
 
@@ -105,11 +111,10 @@ public class CommonWheelSelectedDialog extends BaseWheelFragment {
         wheelView = (WheelView) view.findViewById(R.id.wheel_view);
         wheelView.setOffset(1);
 
-        // mSelectioned带有单位
         if (!TextUtils.isEmpty(mSelectioned)) {
             setSelectioned(mSelectioned);
             if (mType == TYPE_TALL) {
-                currentItem = mSelectioned.replace(UNIT_TALL, "").trim(); // currentItem不带单位
+                currentItem = mSelectioned.replace(UNIT_TALL, "").trim();
             } else {
                 currentItem = mSelectioned;
             }
@@ -121,17 +126,22 @@ public class CommonWheelSelectedDialog extends BaseWheelFragment {
             if (TextUtils.isEmpty(mSelectioned)) {
                 currentItem = mGenderArray[1];
             }
+        } else if (mType == TYPE_PASSWORD) {
+            wheelView.setItems(Arrays.asList(getPasswordDatas()));
+            if (TextUtils.isEmpty(mSelectioned)) {
+                currentItem = mPasswordArray[1];
+            }
         } else if (mType == TYPE_AGE) {
             wheelView.setItems(Arrays.asList(getAgeDatas()));
             if (TextUtils.isEmpty(mSelectioned)) {
                 currentItem = mAgeArray[1];
             }
-        }else if(mType == TYPE_NUMBER){
+        } else if (mType == TYPE_NUMBER) {
             wheelView.setItems(Arrays.asList(getNumberDatas()));
             if (TextUtils.isEmpty(mSelectioned)) {
                 currentItem = mNumberArray[1];
             }
-        }else if (mType == TYPE_TALL) {
+        } else if (mType == TYPE_TALL) {
             wheelView.setItems(Arrays.asList(getTallDatas()));
             if (TextUtils.isEmpty(mSelectioned)) {
                 currentItem = mTallArray[1];
@@ -191,17 +201,22 @@ public class CommonWheelSelectedDialog extends BaseWheelFragment {
             if (index != -1) {
                 wheelView.setSeletion(index);
             }
+        } else if (mType == TYPE_PASSWORD) {
+            int index = Arrays.asList(mPasswordArray).indexOf(item);
+            if (index != -1) {
+                wheelView.setSeletion(index);
+            }
         } else if (mType == TYPE_AGE) {
             int index = Arrays.asList(mAgeArray).indexOf(item);
             if (index != -1) {
                 wheelView.setSeletion(index);
             }
-        }else if (mType == TYPE_NUMBER){
+        } else if (mType == TYPE_NUMBER) {
             int index = Arrays.asList(mNumberArray).indexOf(item);
             if (index != -1) {
                 wheelView.setSeletion(index);
             }
-        }else if (mType == TYPE_TALL) {
+        } else if (mType == TYPE_TALL) {
             if (!item.endsWith(UNIT_TALL)) {
                 return;
             }
@@ -225,8 +240,13 @@ public class CommonWheelSelectedDialog extends BaseWheelFragment {
     public static String[] getTallDatas() {
         return mTallArray;
     }
+
     public static String[] getNumberDatas() {
         return mNumberArray;
+    }
+
+    public static String[] getPasswordDatas() {
+        return mPasswordArray;
     }
 
 }

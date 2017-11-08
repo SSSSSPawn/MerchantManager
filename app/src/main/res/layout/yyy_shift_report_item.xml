@@ -30,9 +30,6 @@
 
                 <TextView
                     style="@style/Data_Item_Detail_Txt_Name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0"
                     android:text="商户编号:"/>
 
                 <TextView
@@ -150,9 +147,7 @@
             </RelativeLayout>
 
             <View
-                style="@style/Line_1dp"
-                android:layout_height="5dp"
-                android:background="@drawable/shape_line"/>
+                style="@style/Line_1dp.Software"/>
 
 
         </LinearLayout>

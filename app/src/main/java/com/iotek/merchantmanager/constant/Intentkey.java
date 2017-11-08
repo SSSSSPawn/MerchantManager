@@ -16,4 +16,6 @@ public interface Intentkey {
 
     String MONTH_DATA = "month_data";
 
+    String VIP_DATUM_DETAIL = "vip_datum_detail";
+
 }

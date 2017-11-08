@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.iotek.merchantmanager.view.AppBar
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        android:background="@color/becPrimaryBlue"/>
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="会员姓名:"/>
+
+            <TextView
+                android:id="@+id/tv_vip_datum_detail_name"
+                style="@style/Data_Item_Detail_Content"
+                android:text="阿三"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line_1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员编号:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_bh"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="15250882365"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员实体卡号:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_kh"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="123456789"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员等级:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_dj"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="一级"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员折扣(%):"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_zk"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="75"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="密码开启状态:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_password"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="未开启"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员余额:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_ye"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="¥100.00"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员积分:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_jf"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="1000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="身份证号:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_code"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="320106199310202222"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="状态:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_zt"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="启用"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员性别:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_sex"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="男"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="注册时间:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_detail_time"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="2017-08-24 10:21:50"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

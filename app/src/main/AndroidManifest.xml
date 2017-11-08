@@ -52,6 +52,14 @@
             android:name="com.iotek.merchantmanager.activity.AddVipRankActivity"
             android:windowSoftInputMode="adjustPan"/>
 
+        <activity android:name="com.iotek.merchantmanager.activity.ModifyVipRankInfoActivity"/>
+
+        <activity android:name="com.iotek.merchantmanager.activity.VipDatumDetailActivity"/>
+
+        <activity
+            android:name="com.iotek.merchantmanager.activity.AddVipDatumActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
     </application>
 
 </manifest>

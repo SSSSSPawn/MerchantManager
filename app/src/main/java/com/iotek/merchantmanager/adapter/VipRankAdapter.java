@@ -5,8 +5,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.iotek.merchantmanager.Utils.DateUtils;
-import com.iotek.merchantmanager.Utils.LogUtil;
 import com.iotek.merchantmanager.bean.QueryMembLevelVO;
+import com.iotek.merchantmanager.listener.OnItemClickListener;
 
 import butterknife.Bind;
 import iotek.com.merchantmanager.R;
@@ -17,6 +17,12 @@ import iotek.com.merchantmanager.R;
 
 public class VipRankAdapter extends CustomRvAdapter<QueryMembLevelVO.RowsBean> {
 
+
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        mOnItemClickListener = onItemClickListener;
+    }
 
     @Override
     protected int getLayoutID() {
@@ -29,7 +35,7 @@ public class VipRankAdapter extends CustomRvAdapter<QueryMembLevelVO.RowsBean> {
     }
 
     @Override
-    protected void bindData(RecyclerViewHolder holder, QueryMembLevelVO.RowsBean rowsBean) {
+    protected void bindData(final RecyclerViewHolder holder, QueryMembLevelVO.RowsBean rowsBean) {
 
         ViewHolder h = (ViewHolder) holder;
 
@@ -45,7 +51,9 @@ public class VipRankAdapter extends CustomRvAdapter<QueryMembLevelVO.RowsBean> {
         h.mItemRightUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.e("HH HH HHH H");
+                if (mOnItemClickListener != null){
+                    mOnItemClickListener.OnItemClick(holder.getAdapterPosition() - 1);
+                }
             }
         });
     }

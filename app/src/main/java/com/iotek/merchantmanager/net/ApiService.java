@@ -14,10 +14,14 @@ import com.iotek.merchantmanager.bean.SelectShiftReportVO;
 import com.iotek.merchantmanager.bean.SelectTaxInvDataVO;
 import com.iotek.merchantmanager.bean.TradeFormPayDetailVO;
 import com.iotek.merchantmanager.bean.UserManagerDetailVO;
+import com.iotek.merchantmanager.bean.VipDatumDataVO;
 import com.iotek.merchantmanager.bean.YYYShiftReportVO;
 import com.iotek.merchantmanager.bean.params.AddUserParamsVO;
+import com.iotek.merchantmanager.bean.params.AddVipDatumParamsVO;
 import com.iotek.merchantmanager.bean.params.AddVipRankParamsVO;
 import com.iotek.merchantmanager.bean.params.LoginParamsVO;
+import com.iotek.merchantmanager.bean.params.MembLevelEditParamsVO;
+import com.iotek.merchantmanager.bean.params.QueryAllMembParamsVO;
 import com.iotek.merchantmanager.bean.params.QueryMembLevelParamsVO;
 import com.iotek.merchantmanager.bean.params.QueryUserParamsVO;
 import com.iotek.merchantmanager.bean.params.SalesDataDetailParamsVO;
@@ -232,5 +236,34 @@ public interface ApiService {
      * @return
      */
     @POST("app/inter/membLevelAdd.json")
-    Call<CodeMessageVO> AddVipRank(@Body AddVipRankParamsVO paramsVO);
+    Call<CodeMessageVO> addVipRank(@Body AddVipRankParamsVO paramsVO);
+
+    /**
+     * 会员等级修改
+     *
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/membLevelEdit.json")
+    Call<CodeMessageVO> membLevelEdit(@Body MembLevelEditParamsVO paramsVO);
+
+    /**
+     * 会员查询接口
+     *
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/queryAllMemb.json")
+    Call<VipDatumDataVO> queryAllMemb(@Body QueryAllMembParamsVO paramsVO);
+
+
+    /**
+     * 新增会员
+     *
+     * @return
+     */
+    @POST("app/inter/membAdd.json")
+    Call<CodeMessageVO> membAdd(@Body AddVipDatumParamsVO paramsVO);
+
+
 }

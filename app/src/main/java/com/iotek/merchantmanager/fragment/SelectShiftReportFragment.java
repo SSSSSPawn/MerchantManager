@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.iotek.merchantmanager.Presenter.SelectShiftReportPresenter;
-import com.iotek.merchantmanager.activity.SelectShiftReportDetailActivity;
 import com.iotek.merchantmanager.adapter.SelectShiftReportAdapter;
 import com.iotek.merchantmanager.base.ListFragment;
 import com.iotek.merchantmanager.bean.SelectShiftReportVO;
@@ -106,6 +105,7 @@ public class SelectShiftReportFragment extends ListFragment implements SelectShi
 
     @Override
     public void OnItemClick(int position) {
-        launch(SelectShiftReportDetailActivity.class);
+        //TODO:交接班明细数据
+       // launch(SelectShiftReportDetailActivity.class);
     }
 }

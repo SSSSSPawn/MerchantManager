@@ -23,6 +23,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import iotek.com.merchantmanager.R;
+
 /**
  * Created by admin on 2017/11/4.
  */
@@ -281,9 +283,11 @@ public class WheelView extends ScrollView {
                 return;
             }
             if (position == i) {
-                itemView.setTextColor(Color.parseColor("#434343"));
+                //itemView.setTextColor(Color.parseColor("#434343"));
+               itemView.setTextColor(getResources().getColor(R.color.becPrimaryBlue));
             } else {
                 itemView.setTextColor(Color.parseColor("#bbbbbb"));
+                //itemView.setTextColor(getResources().getColor(R.color.blue_ice));
             }
         }
     }

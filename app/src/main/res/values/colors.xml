@@ -21,7 +21,7 @@
     <color name="btn_bg">#FF3798ED</color>
     <color name="statusBarColor">#FF3798ED</color>
     <color name="becPrimaryBlue">#FF3798ED</color>
-
+    <color name="split_line">#11112233</color>
 
     <color name="transparent">#00000000</color>
 
