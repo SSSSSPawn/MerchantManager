@@ -4,7 +4,7 @@
              android:layout_height="48dp"
              android:orientation="vertical">
 
-    <com.iotek.merchantmanager.view.BackView
+    <com.bec.merchantmanager.view.BackView
         style="@style/backView"/>
 
     <TextView

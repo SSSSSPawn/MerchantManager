@@ -21,7 +21,9 @@
     <color name="btn_bg">#FF3798ED</color>
     <color name="statusBarColor">#FF3798ED</color>
     <color name="becPrimaryBlue">#FF3798ED</color>
+    <color name="split_line">#11112233</color>
 
+    <color name="transparent">#00000000</color>
 
     <color name="tab_txt">#8a8a8a</color>
 
@@ -37,5 +39,9 @@
 
     <color name="fb_button">#009787</color>
     <color name="background_snackbar">#323232</color>
+
+    <color name="yellow_hot">#f9c000</color>
+    <color name="blue_ice">#72abf8</color>
+    <color name="white_trans90">#e6ffffff</color>
 
 </resources>

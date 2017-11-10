@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.iotek.merchantmanager.view.AppBar
+    <com.bec.merchantmanager.view.AppBar
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -14,7 +14,7 @@
            android:layout_width="match_parent"
            android:layout_height="match_parent">
 
-           <com.iotek.merchantmanager.view.BackView
+           <com.bec.merchantmanager.view.BackView
                style="@style/backView"/>
 
            <TextView
@@ -32,9 +32,9 @@
 
        </RelativeLayout>
 
-    </com.iotek.merchantmanager.view.AppBar>
+    </com.bec.merchantmanager.view.AppBar>
 
-    <com.iotek.merchantmanager.view.BECWebView
+    <com.bec.merchantmanager.view.BECWebView
         android:id="@+id/web_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

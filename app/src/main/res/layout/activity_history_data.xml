@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.bec.merchantmanager.view.AppBar
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        android:background="@color/becPrimaryBlue">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.bec.merchantmanager.view.BackView
+               style="@style/backView"/>
+
+            <TextView
+                style="@style/Text_AppBar_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="历史数据折线图"/>
+
+            <ImageView
+                android:id="@+id/iv_history_switch"
+                style="@style/backView"
+                android:src="@drawable/icon_switch"/>
+
+
+        </LinearLayout>
+
+    </com.bec.merchantmanager.view.AppBar>
+
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="5dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:background="#ec5554"
+                    android:gravity="center_vertical"
+                    android:padding="4dp"/>
+
+                <TextView
+                    android:id="@+id/tv_sales_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center_vertical"
+                    android:text="本周销售趋势"
+                    android:textColor="#ec5554"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_chart"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_week_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="本周暂无数据"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    android:textSize="20dp"/>
+
+                <com.bec.merchantmanager.view.LineChartView
+                    android:id="@+id/line_chart_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="5dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:background="#ec5554"
+                    android:gravity="center_vertical"
+                    android:padding="4dp"/>
+
+                <TextView
+                    android:id="@+id/tv_sales_month_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center_vertical"
+                    android:text="本月销售趋势"
+                    android:textColor="#ec5554"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_chart"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_month_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="本月暂无数据"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:visibility="gone"/>
+
+                <com.bec.merchantmanager.view.LineChartView
+                    android:id="@+id/line_chart_view_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/empty"
+        android:visibility="gone"/>
+
+</LinearLayout>

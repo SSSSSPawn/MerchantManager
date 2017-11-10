@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.bec.merchantmanager.view.SwipeMenuLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:background="@color/white"
+    android:clickable="true"
+    app:ios="false"
+    app:leftSwipe="true"
+    app:swipeEnable="true">
+
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="会员姓名:"/>
+
+            <TextView
+                android:id="@+id/tv_vip_datum_name"
+                style="@style/Data_Item_Detail_Content"
+                android:text="阿三"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line_1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员编号:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_bh"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员等级:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_dj"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="一级"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员余额:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_datum_ye"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="¥100.00"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <View
+            style="@style/Line_1dp.Software"/>
+
+        <LinearLayout
+            android:id="@+id/ll_vip_datum_detail"
+            style="@style/Data_Item_Detail_LL"
+            android:layout_height="32dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="查看详情"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_more"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/item_right_update"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="@color/common_red">
+
+        <TextView
+            android:id="@+id/item_right_txt_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/update_password_icon"
+            android:gravity="center"
+            android:text="修改 "
+            android:textColor="#FFFAF0"/>
+    </RelativeLayout>
+
+</com.bec.merchantmanager.view.SwipeMenuLayout>
