@@ -14,7 +14,7 @@ public class AddVipDatumParamsVO extends BaseBean {
     private String uuid;
 
     private String membTel;
-    private int membLevel;
+    private String membLevel;
     private String membName;
     private int pswFlag;
     private String password;
@@ -22,11 +22,11 @@ public class AddVipDatumParamsVO extends BaseBean {
 
     private String cardId;
     private String birthday;
-    private String Email;
-    private String Address;
+    private String email;
+    private String address;
 
 
-    public AddVipDatumParamsVO(long custId, long rootId, String uuid, String mac, String membTel, int membLevel,
+    public AddVipDatumParamsVO(long custId, long rootId, String uuid, String mac, String membTel, String membLevel,
                                String membName, int pswFlag, String password, int gender) {
         this.custId = custId;
         this.rootId = rootId;
@@ -40,7 +40,7 @@ public class AddVipDatumParamsVO extends BaseBean {
         this.gender = gender;
     }
 
-    public AddVipDatumParamsVO(long custId, long rootId, String uuid, String mac, String membTel, int membLevel,
+    public AddVipDatumParamsVO(long custId, long rootId, String uuid, String mac, String membTel, String membLevel,
                                String membName, int pswFlag, int gender) {
         this.custId = custId;
         this.rootId = rootId;
@@ -53,20 +53,16 @@ public class AddVipDatumParamsVO extends BaseBean {
         this.gender = gender;
     }
 
-    @Override
-    public String toString() {
-        return "AddVipDatumParamsVO{" +
-                "custId=" + custId +
-                ", rootId=" + rootId +
-                ", uuid='" + uuid + '\'' +
-                ", mac='" + mac + '\'' +
-                ", membTel='" + membTel + '\'' +
-                ", membLevel=" + membLevel +
-                ", levelName='" + membName + '\'' +
-                ", pswFlag=" + pswFlag +
-                ", password='" + password + '\'' +
-                ", gender=" + gender +
-                '}';
+    public AddVipDatumParamsVO(long custId, long rootId, String uuid, String mac, String membTel, String membLevel,
+                               String membName, int gender) {
+        this.custId = custId;
+        this.rootId = rootId;
+        this.uuid = uuid;
+        this.mac = mac;
+        this.membTel = membTel;
+        this.membLevel = membLevel;
+        this.membName = membName;
+        this.gender = gender;
     }
 
     public long getCustId() {
@@ -109,11 +105,11 @@ public class AddVipDatumParamsVO extends BaseBean {
         this.membTel = membTel;
     }
 
-    public int getMembLevel() {
+    public String getMembLevel() {
         return membLevel;
     }
 
-    public void setMembLevel(int membLevel) {
+    public void setMembLevel(String membLevel) {
         this.membLevel = membLevel;
     }
 
@@ -166,18 +162,18 @@ public class AddVipDatumParamsVO extends BaseBean {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 }

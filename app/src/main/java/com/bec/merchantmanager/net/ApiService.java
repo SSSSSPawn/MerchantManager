@@ -21,6 +21,7 @@ import com.bec.merchantmanager.bean.params.AddVipDatumParamsVO;
 import com.bec.merchantmanager.bean.params.AddVipRankParamsVO;
 import com.bec.merchantmanager.bean.params.LoginParamsVO;
 import com.bec.merchantmanager.bean.params.MembLevelEditParamsVO;
+import com.bec.merchantmanager.bean.params.MembMoneyResetParamsVO;
 import com.bec.merchantmanager.bean.params.QueryAllMembParamsVO;
 import com.bec.merchantmanager.bean.params.QueryMembLevelParamsVO;
 import com.bec.merchantmanager.bean.params.QueryUserParamsVO;
@@ -264,6 +265,26 @@ public interface ApiService {
      */
     @POST("app/inter/membAdd.json")
     Call<CodeMessageVO> membAdd(@Body AddVipDatumParamsVO paramsVO);
+
+
+    /**
+     * 修改会员信息
+     *
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/membEdit.json")
+    Call<CodeMessageVO> membEdit(@Body AddVipDatumParamsVO paramsVO);
+
+
+    /**
+     * 会员积分清零
+     *
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/membMoneyReset.json")
+    Call<CodeMessageVO> membMoneyReset(@Body MembMoneyResetParamsVO paramsVO);
 
 
 }

@@ -60,6 +60,10 @@
             android:name="com.bec.merchantmanager.activity.AddVipDatumActivity"
             android:windowSoftInputMode="adjustPan"/>
 
+        <activity
+            android:name=".activity.EditVipDatumActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
     </application>
 
 </manifest>

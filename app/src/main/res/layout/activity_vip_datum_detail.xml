@@ -12,7 +12,8 @@
     <LinearLayout
         android:id="@+id/ll_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:padding="8dp">
 
@@ -187,6 +188,15 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_membMoneyReset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/becPrimaryBlue"
+        android:text="余额积分归零"
+        android:textColor="@drawable/selector_btn_white2gray"
+        android:textSize="18sp"/>
 
 
 </LinearLayout>

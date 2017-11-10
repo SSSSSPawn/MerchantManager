@@ -5,11 +5,11 @@ import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
 
-import com.google.gson.Gson;
 import com.bec.merchantmanager.Utils.AppUtils;
 import com.bec.merchantmanager.Utils.LogUtil;
 import com.bec.merchantmanager.bean.CodeMessageVO;
 import com.bec.merchantmanager.view.LoadingDialog;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 

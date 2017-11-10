@@ -2,23 +2,33 @@ package com.bec.merchantmanager.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.bec.merchantmanager.Presenter.VipDatumDetailPresenter;
 import com.bec.merchantmanager.R;
+import com.bec.merchantmanager.Utils.AppUtils;
 import com.bec.merchantmanager.Utils.DateUtils;
+import com.bec.merchantmanager.Utils.Preference;
 import com.bec.merchantmanager.base.BaseActivity;
+import com.bec.merchantmanager.bean.CodeMessageVO;
 import com.bec.merchantmanager.bean.VipDatumDataVO;
+import com.bec.merchantmanager.bean.params.MembMoneyResetParamsVO;
+import com.bec.merchantmanager.constant.CacheKey;
 import com.bec.merchantmanager.constant.Intentkey;
 import com.bec.merchantmanager.constant.StatusKey;
 import com.bec.merchantmanager.view.AppBar;
+import com.bec.merchantmanager.view.CustomDialog;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by admin on 2017/11/8.
  */
 
-public class VipDatumDetailActivity extends BaseActivity {
+public class VipDatumDetailActivity extends BaseActivity implements VipDatumDetailPresenter.MvpView{
 
     @Bind(R.id.appBar) AppBar mAppBar;
 
@@ -46,18 +56,27 @@ public class VipDatumDetailActivity extends BaseActivity {
 
     @Bind(R.id.tv_vip_datum_detail_time) TextView mTvVipDatumDetailTime;
 
+    @Bind(R.id.btn_membMoneyReset) Button BtnMembMoneyReset;
+
+    private VipDatumDetailPresenter mPresenter = new VipDatumDetailPresenter();
+
+    private VipDatumDataVO.ObjBean objBean;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mPresenter.attachView(this);
+
         mAppBar.setTitle("会员资料详情");
         mAppBar.setTextColor(getResources().getColor(R.color.white));
+
+        objBean = (VipDatumDataVO.ObjBean) getIntent().getSerializableExtra(Intentkey.VIP_DATUM_DETAIL);
 
         showVipDatumDetail();
     }
 
     private void showVipDatumDetail() {
-        VipDatumDataVO.ObjBean objBean = (VipDatumDataVO.ObjBean) getIntent().getSerializableExtra(Intentkey.VIP_DATUM_DETAIL);
         mTvVipDatumDetailName.setText(objBean.getMembName());
         mTvVipDatumDetailBh.setText(objBean.getMembTel());
         mTvVipDatumDetailKh.setText(objBean.getMembNum());
@@ -90,6 +109,29 @@ public class VipDatumDetailActivity extends BaseActivity {
 
     }
 
+    @OnClick(R.id.btn_membMoneyReset)
+    public void onViewClicked() {
+        final CustomDialog dialog = new CustomDialog(this);
+        dialog.setOkButton(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+                String uid = objBean.getUid();
+
+                long custID = Preference.getLong(CacheKey.CUST_ID);
+                long rootID = Preference.getLong(CacheKey.ROOT_ID);
+                String uuID = Preference.getString(CacheKey.UU_ID);
+                String mac = Preference.getString(CacheKey.MAC);
+
+                MembMoneyResetParamsVO paramsVO = new MembMoneyResetParamsVO(custID,rootID,mac,uuID,uid);
+
+                mPresenter.membMoneyResetData(paramsVO);
+            }
+        });
+        dialog.show("提示信息","确定将会员的余额和积分归零吗?");
+    }
+
     @Override
     protected boolean isBindEventBus() {
         return false;
@@ -98,5 +140,20 @@ public class VipDatumDetailActivity extends BaseActivity {
     @Override
     protected int getLayoutID() {
         return R.layout.activity_vip_datum_detail;
+    }
+
+    @Override
+    public void showMsg(CodeMessageVO msg) {
+        if (msg.getRspcod() == 200) {
+            mTvVipDatumDetailYe.setText(DateUtils.formatMoney(0));
+            mTvVipDatumDetailJf.setText("0");
+        }
+        AppUtils.showToast(msg.getRspmsg());
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
     }
 }

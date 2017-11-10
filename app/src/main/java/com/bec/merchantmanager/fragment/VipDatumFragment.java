@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 
 import com.bec.merchantmanager.Presenter.VipDatumPresenter;
 import com.bec.merchantmanager.R;
-import com.bec.merchantmanager.Utils.AppUtils;
 import com.bec.merchantmanager.activity.AddVipDatumActivity;
+import com.bec.merchantmanager.activity.EditVipDatumActivity;
 import com.bec.merchantmanager.activity.VipDatumDetailActivity;
 import com.bec.merchantmanager.adapter.VipDatumAdapter;
 import com.bec.merchantmanager.base.ListFragment;
@@ -47,8 +47,9 @@ public class VipDatumFragment extends ListFragment implements VipDatumPresenter.
         mAdapter.setDeleteOnItemClickListener(new VipDatumAdapter.OnDeleteItemClickListener() {
             @Override
             public void onDeleteItemClick(int position) {
-                //TODO:后续完成
-                AppUtils.showToast("000000---" + position);
+                Intent intent = new Intent(getActivity(), EditVipDatumActivity.class);
+                intent.putExtra(Intentkey.VIP_DATUM_DETAIL, mAdapter.getDataList().get(position));
+                launch(intent);
             }
 
             @Override

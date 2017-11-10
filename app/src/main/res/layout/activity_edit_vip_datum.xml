@@ -28,12 +28,11 @@
                 android:layout_weight="2"
                 android:text="会员帐号(手机号)"/>
 
-            <EditText
-                android:id="@+id/et_vip_datum_membTel"
+            <TextView
+                android:id="@+id/tv_vip_datum_membTel"
                 style="@style/Text_Name.Text_Content.16sp"
                 android:background="@null"
                 android:gravity="center|right"
-                android:hint="请输入"
                 android:textColor="@color/black"/>
 
         </LinearLayout>
