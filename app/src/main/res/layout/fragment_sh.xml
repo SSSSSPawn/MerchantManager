@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.iotek.merchantmanager.view.AppBar
+    <com.bec.merchantmanager.view.AppBar
         style="@style/AppBar"
         android:background="@color/btn_bg">
 
@@ -12,7 +12,7 @@
             style="@style/Text_AppBar_title"
             android:text="商户管理"/>
 
-    </com.iotek.merchantmanager.view.AppBar>
+    </com.bec.merchantmanager.view.AppBar>
 
     <include layout="@layout/fragment_base_list"/>
 

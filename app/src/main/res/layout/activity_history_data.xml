@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.iotek.merchantmanager.view.AppBar
+    <com.bec.merchantmanager.view.AppBar
         android:id="@+id/appBar"
         style="@style/AppBar"
         android:background="@color/becPrimaryBlue">
@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <com.iotek.merchantmanager.view.BackView
+            <com.bec.merchantmanager.view.BackView
                style="@style/backView"/>
 
             <TextView
@@ -32,7 +32,7 @@
 
         </LinearLayout>
 
-    </com.iotek.merchantmanager.view.AppBar>
+    </com.bec.merchantmanager.view.AppBar>
 
 
     <LinearLayout
@@ -93,7 +93,7 @@
                     android:visibility="gone"
                     android:textSize="20dp"/>
 
-                <com.iotek.merchantmanager.view.LineChartView
+                <com.bec.merchantmanager.view.LineChartView
                     android:id="@+id/line_chart_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
@@ -156,7 +156,7 @@
                     android:textSize="20dp"
                     android:visibility="gone"/>
 
-                <com.iotek.merchantmanager.view.LineChartView
+                <com.bec.merchantmanager.view.LineChartView
                     android:id="@+id/line_chart_view_month"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>

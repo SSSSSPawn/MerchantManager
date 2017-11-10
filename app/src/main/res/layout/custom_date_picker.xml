@@ -24,10 +24,10 @@
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="2"
             android:gravity="center"
-            android:text="请选择日期"
+            android:text="请选择"
             android:textColor="@color/becPrimaryBlue"
             android:textSize="20sp"/>
 
@@ -66,7 +66,7 @@
             android:paddingTop="15dp">
 
 
-            <com.iotek.merchantmanager.view.DatePickerView
+            <com.bec.merchantmanager.view.DatePickerView
                 android:id="@+id/year_pv"
                 android:layout_width="0dp"
                 android:layout_height="160dp"
@@ -81,7 +81,7 @@
                 android:textColor="@color/gray"
                 android:textSize="18sp"/>
 
-            <com.iotek.merchantmanager.view.DatePickerView
+            <com.bec.merchantmanager.view.DatePickerView
                 android:id="@+id/month_pv"
                 android:layout_width="0dp"
                 android:layout_height="160dp"
@@ -96,7 +96,7 @@
                 android:textColor="@color/gray"
                 android:textSize="18sp"/>
 
-            <com.iotek.merchantmanager.view.DatePickerView
+            <com.bec.merchantmanager.view.DatePickerView
                 android:id="@+id/day_pv"
                 android:layout_width="0dp"
                 android:layout_height="160dp"
@@ -111,7 +111,7 @@
                 android:textColor="@color/gray"
                 android:textSize="18sp"/>
 
-            <com.iotek.merchantmanager.view.DatePickerView
+            <com.bec.merchantmanager.view.DatePickerView
                 android:id="@+id/hour_pv"
                 android:layout_width="0dp"
                 android:layout_height="160dp"
@@ -127,7 +127,7 @@
                 android:textColor="@color/gray"
                 android:textSize="18sp"/>
 
-            <com.iotek.merchantmanager.view.DatePickerView
+            <com.bec.merchantmanager.view.DatePickerView
                 android:id="@+id/minute_pv"
                 android:layout_width="0dp"
                 android:layout_height="160dp"

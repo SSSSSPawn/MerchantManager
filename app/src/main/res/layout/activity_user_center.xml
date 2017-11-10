@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.iotek.merchantmanager.view.AppBar
+    <com.bec.merchantmanager.view.AppBar
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="48dp"

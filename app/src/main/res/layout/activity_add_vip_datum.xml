@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.iotek.merchantmanager.view.AppBar
+    <com.bec.merchantmanager.view.AppBar
         android:id="@+id/appBar"
         style="@style/AppBar"
         android:background="@color/becPrimaryBlue"/>
@@ -155,6 +155,7 @@
             android:background="@color/lineColor"/>
 
         <LinearLayout
+            android:id="@+id/ll_password"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -173,7 +174,9 @@
                 style="@style/Text_Name.Text_Content.16sp"
                 android:background="@null"
                 android:gravity="center|right"
-                android:hint="请输入"
+                android:hint="请输入六位数字密码"
+                android:maxLength="6"
+                android:inputType="number"
                 android:textColor="@color/black"/>
 
         </LinearLayout>
@@ -286,6 +289,7 @@
                 android:background="@null"
                 android:gravity="center|right"
                 android:hint="请输入"
+                android:maxLines="2"
                 android:textColor="@color/black"/>
 
         </LinearLayout>

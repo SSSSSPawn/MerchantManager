@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="iotek.com.merchantmanager">
+          package="com.bec.merchantmanager">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
-        android:name="com.iotek.merchantmanager.app.MyApplication"
+        android:name="com.bec.merchantmanager.app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.iotek.merchantmanager.activity.LoginActivity"
+            android:name="com.bec.merchantmanager.activity.LoginActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.LoginView"
             android:windowSoftInputMode="adjustPan">
@@ -26,38 +26,38 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.iotek.merchantmanager.activity.MainActivity"/>
-        <activity android:name="com.iotek.merchantmanager.activity.UserManagerDetailActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.MainActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.UserManagerDetailActivity"/>
         <activity
-            android:name="com.iotek.merchantmanager.activity.AddUserActivity"
+            android:name="com.bec.merchantmanager.activity.AddUserActivity"
             android:windowSoftInputMode="adjustPan"/>
 
-        <activity android:name="com.iotek.merchantmanager.activity.BBCBankActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.BBCBankActivity"/>
 
-        <activity android:name="com.iotek.merchantmanager.activity.UserCenterActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.UserCenterActivity"/>
 
-        <activity android:name="com.iotek.merchantmanager.activity.TradeFormDetailActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.TradeFormDetailActivity"/>
 
-        <activity android:name="com.iotek.merchantmanager.activity.SalesItemDataDetailActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.SalesItemDataDetailActivity"/>
 
-        <activity android:name="com.iotek.merchantmanager.activity.HistoryDataActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.HistoryDataActivity"/>
 
-        <activity android:name="com.iotek.merchantmanager.activity.HistoryListDataActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.HistoryListDataActivity"/>
 
-        <activity android:name="com.iotek.merchantmanager.activity.MonthPayTypeActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.MonthPayTypeActivity"/>
 
-        <activity android:name="com.iotek.merchantmanager.activity.SelectShiftReportDetailActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.SelectShiftReportDetailActivity"/>
 
         <activity
-            android:name="com.iotek.merchantmanager.activity.AddVipRankActivity"
+            android:name="com.bec.merchantmanager.activity.AddVipRankActivity"
             android:windowSoftInputMode="adjustPan"/>
 
-        <activity android:name="com.iotek.merchantmanager.activity.ModifyVipRankInfoActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.ModifyVipRankInfoActivity"/>
 
-        <activity android:name="com.iotek.merchantmanager.activity.VipDatumDetailActivity"/>
+        <activity android:name="com.bec.merchantmanager.activity.VipDatumDetailActivity"/>
 
         <activity
-            android:name="com.iotek.merchantmanager.activity.AddVipDatumActivity"
+            android:name="com.bec.merchantmanager.activity.AddVipDatumActivity"
             android:windowSoftInputMode="adjustPan"/>
 
     </application>

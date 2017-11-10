@@ -139,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="8dp"
-        app:layout_behavior="com.iotek.merchantmanager.view.ScrollFabBehavior"
+        app:layout_behavior="com.bec.merchantmanager.view.ScrollFabBehavior"
         fab:fab_addButtonColorNormal="@color/becPrimaryBlue"
         fab:fab_labelStyle="@style/menu_labels_style"
         fab:fab_labelsPosition="left">
