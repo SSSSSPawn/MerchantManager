@@ -287,4 +287,12 @@ public interface ApiService {
     Call<CodeMessageVO> membMoneyReset(@Body MembMoneyResetParamsVO paramsVO);
 
 
+    /**
+     * 会员日志查询
+     * @return
+     */
+    @POST("app/inter/membDetailQuery.json")
+    Call<CodeMessageVO> membDetailQuery();
+
+
 }
