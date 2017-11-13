@@ -38,29 +38,39 @@ public interface StatusKey {
 
     int MONTH_DAY_DATA = 4;
 
-    /**0.开票成功  1.开票失败  2.开票中 */
+    /**
+     * 0.开票成功  1.开票失败  2.开票中
+     */
     int INV_STATTS_SUCCESS = 0;
 
-    int INV_STATTS_FAIL= 1;
+    int INV_STATTS_FAIL = 1;
 
     int INV_STATTS_ING = 2;
 
-    /**0.蓝票 1.红票*/
+    /**
+     * 0.蓝票 1.红票
+     */
     int INV_TYPE_BLUE = 0;
 
     int INV_TYPE_RED = 1;
 
-    /** 会员资料管理 0.禁用   1.启用*/
+    /**
+     * 会员资料管理 0.禁用   1.启用
+     */
     int STATE_NO = 0;
 
     int STATE_YES = 1;
 
-    /** 0.女  1.男*/
+    /**
+     * 0.女  1.男
+     */
     int FEMALE = 0;
 
     int MALE = 1;
 
-    /** 1.注册  2.充值  3.消费  4.停用  5.启用   6.注销  7.充次  8.消费次  9.会员卡打折消费  10.退货  11.积分归零  */
+    /**
+     * 1.注册  2.充值  3.消费  4.停用  5.启用   6.注销  7.充次  8.消费次  9.会员卡打折消费  10.退货  11.积分归零
+     */
     int REGISTRE = 1;
 
     int RECHARGING = 2;
@@ -82,5 +92,13 @@ public interface StatusKey {
     int RETURNED_GOODS = 10;
 
     int INTERGRAL_NULLING = 11;
+
+    /**
+     * 1.礼品券    2.现金券
+     */
+
+    int GIFT_CARD = 1;
+
+    int CASH_TICKET = 2;
 
 }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="规则编号:"/>
+
+            <TextView
+                android:id="@+id/tv_vip_score_rule_bh"
+                style="@style/Data_Item_Detail_Content"
+                android:text="1001"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line_1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="积分兑换方式:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_score_rule_fs"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="兑换礼品券"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="使用积分数量:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_score_rule_sl"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="1000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="课兑换商品名称:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_score_rule_name"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="毛绒娃娃"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <View
+            style="@style/Line_1dp.Software"/>
+
+        <LinearLayout
+            android:id="@+id/ll_vip_score_rule_detail"
+            style="@style/Data_Item_Detail_LL"
+            android:layout_height="32dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="查看详情"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_more"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -75,7 +75,7 @@ public class ScoreExchangeQueryVO extends BaseBean {
         private int exchangeMode;
         private String goodsId;
         private long recordTime;
-        private int ruleNum;
+        private String ruleNum;
         private int scoreNum;
         private String uid;
         private int voucher;
@@ -136,11 +136,11 @@ public class ScoreExchangeQueryVO extends BaseBean {
             this.recordTime = recordTime;
         }
 
-        public int getRuleNum() {
+        public String getRuleNum() {
             return ruleNum;
         }
 
-        public void setRuleNum(int ruleNum) {
+        public void setRuleNum(String ruleNum) {
             this.ruleNum = ruleNum;
         }
 
