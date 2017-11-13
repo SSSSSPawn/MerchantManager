@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bec.merchantmanager.R;
+import com.bec.merchantmanager.Utils.LogUtil;
 import com.bec.merchantmanager.bean.ScoreExchangeQueryVO;
 import com.bec.merchantmanager.constant.StatusKey;
 
@@ -28,6 +29,8 @@ public class VipScoreRuleAdapter extends CustomRvAdapter<ScoreExchangeQueryVO.Ro
 
     @Override
     protected void bindData(RecyclerViewHolder holder, ScoreExchangeQueryVO.RowsBean rowsBean) {
+
+        LogUtil.e("rowsBean  rowsBean --" + rowsBean);
 
         ViewHolder h = (ViewHolder) holder;
 

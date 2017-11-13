@@ -167,5 +167,22 @@ public class ScoreExchangeQueryVO extends BaseBean {
         public void setVoucher(int voucher) {
             this.voucher = voucher;
         }
+
+        @Override
+        public String toString() {
+            return "RowsBean{" +
+                    "beginDate=" + beginDate +
+                    ", custCompanyName='" + custCompanyName + '\'' +
+                    ", custId=" + custId +
+                    ", endDate=" + endDate +
+                    ", exchangeMode=" + exchangeMode +
+                    ", goodsId='" + goodsId + '\'' +
+                    ", recordTime=" + recordTime +
+                    ", ruleNum='" + ruleNum + '\'' +
+                    ", scoreNum=" + scoreNum +
+                    ", uid='" + uid + '\'' +
+                    ", voucher=" + voucher +
+                    '}';
+        }
     }
 }
