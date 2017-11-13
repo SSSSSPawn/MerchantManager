@@ -60,4 +60,27 @@ public interface StatusKey {
 
     int MALE = 1;
 
+    /** 1.注册  2.充值  3.消费  4.停用  5.启用   6.注销  7.充次  8.消费次  9.会员卡打折消费  10.退货  11.积分归零  */
+    int REGISTRE = 1;
+
+    int RECHARGING = 2;
+
+    int EXPENSE = 3;
+
+    int NON_USE = 4;
+
+    int INVOCATION = 5;
+
+    int CANCELING = 6;
+
+    int SUFFICIENT_TIME = 7;
+
+    int SPENDS_THE_TIME = 8;
+
+    int MEMBERS_DISCOUNT = 9;
+
+    int RETURNED_GOODS = 10;
+
+    int INTERGRAL_NULLING = 11;
+
 }

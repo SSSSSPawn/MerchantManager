@@ -18,4 +18,6 @@ public interface Intentkey {
 
     String VIP_DATUM_DETAIL = "vip_datum_detail";
 
+    String VIP_LOG_DETAIL = "vip_log_detail";
+
 }

@@ -10,11 +10,13 @@ import com.bec.merchantmanager.bean.QueryMembLevelVO;
 import com.bec.merchantmanager.bean.ReturnGoodsItemDataVO;
 import com.bec.merchantmanager.bean.SalesDataDetailVO;
 import com.bec.merchantmanager.bean.SalesDataItemDetailVO;
+import com.bec.merchantmanager.bean.ScoreExchangeQueryVO;
 import com.bec.merchantmanager.bean.SelectShiftReportVO;
 import com.bec.merchantmanager.bean.SelectTaxInvDataVO;
 import com.bec.merchantmanager.bean.TradeFormPayDetailVO;
 import com.bec.merchantmanager.bean.UserManagerDetailVO;
 import com.bec.merchantmanager.bean.VipDatumDataVO;
+import com.bec.merchantmanager.bean.VipLogVO;
 import com.bec.merchantmanager.bean.YYYShiftReportVO;
 import com.bec.merchantmanager.bean.params.AddUserParamsVO;
 import com.bec.merchantmanager.bean.params.AddVipDatumParamsVO;
@@ -27,12 +29,14 @@ import com.bec.merchantmanager.bean.params.QueryMembLevelParamsVO;
 import com.bec.merchantmanager.bean.params.QueryUserParamsVO;
 import com.bec.merchantmanager.bean.params.SalesDataDetailParamsVO;
 import com.bec.merchantmanager.bean.params.SalesDataParamsVO;
+import com.bec.merchantmanager.bean.params.ScoreExchangeParamsVO;
 import com.bec.merchantmanager.bean.params.SelectShiftReportDetailParamsVO;
 import com.bec.merchantmanager.bean.params.SelectShiftReportParamsVO;
 import com.bec.merchantmanager.bean.params.SelectTaxInvDataParamsVO;
 import com.bec.merchantmanager.bean.params.TradeFormDetailParamsVO;
 import com.bec.merchantmanager.bean.params.TradeFormParamsVO;
 import com.bec.merchantmanager.bean.params.UserParamsVO;
+import com.bec.merchantmanager.bean.params.VipLogParamsVO;
 import com.bec.merchantmanager.bean.params.YYYShiftRefortParamsVO;
 
 import okhttp3.RequestBody;
@@ -289,10 +293,19 @@ public interface ApiService {
 
     /**
      * 会员日志查询
+     *
      * @return
      */
     @POST("app/inter/membDetailQuery.json")
-    Call<CodeMessageVO> membDetailQuery();
+    Call<VipLogVO> membDetailQuery(@Body VipLogParamsVO paramsVO);
 
+
+    /**
+     * 积分兑换规则查询接口
+     *
+     * @return
+     */
+    @POST("app/inter/scoreExchangeQuery.json")
+    Call<ScoreExchangeQueryVO> scoreExchangeQuery(@Body ScoreExchangeParamsVO paramsVO);
 
 }

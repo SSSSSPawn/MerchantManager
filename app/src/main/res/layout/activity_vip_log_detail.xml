@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.bec.merchantmanager.view.AppBar
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        android:background="@color/becPrimaryBlue"/>
+
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="会员姓名:"/>
+
+            <TextView
+                android:id="@+id/tv_vip_log_name"
+                style="@style/Data_Item_Detail_Content"
+                android:text="孙伟"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line_1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员编号:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_log_bh"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="15950467254"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="操作类型:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_log_lx"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="消费"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="充值商品:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_log_sp"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text=""/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="充值次数:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_log_time"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="操作金额:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_log_je"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="¥200.00"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="当前金额:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_log_dq"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="¥100.00"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="附加金额:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_log_fj"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="¥100.00"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="支付方式:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_log_type"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="现金"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="操作员工:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_log_yg"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="孙伟"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="录入时间:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_log_date"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="2017-11-13 11:39:05"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

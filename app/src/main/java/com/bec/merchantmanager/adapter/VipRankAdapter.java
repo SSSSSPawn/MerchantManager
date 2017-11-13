@@ -4,12 +4,12 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bec.merchantmanager.R;
 import com.bec.merchantmanager.Utils.DateUtils;
 import com.bec.merchantmanager.bean.QueryMembLevelVO;
 import com.bec.merchantmanager.listener.OnItemClickListener;
 
 import butterknife.Bind;
-import com.bec.merchantmanager.R;
 
 /**
  * Created by admin on 2017/11/6.

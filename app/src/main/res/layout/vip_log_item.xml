@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.bec.merchantmanager.view.SwipeMenuLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="4dp"
-    android:background="@color/white"
-    android:clickable="true"
-    app:ios="false"
-    app:leftSwipe="true"
-    app:swipeEnable="true">
+    android:background="@color/white">
 
 
     <LinearLayout
@@ -24,12 +19,12 @@
 
             <TextView
                 style="@style/Data_Item_Detail_Txt_Name"
-                android:text="录入时间:"/>
+                android:text="会员姓名:"/>
 
             <TextView
-                android:id="@+id/tv_vip_rank_item_time"
+                android:id="@+id/tv_vip_log_name"
                 style="@style/Data_Item_Detail_Content"
-                android:text="2017-08-24 10:20:02"/>
+                android:text="孙伟"/>
 
         </LinearLayout>
 
@@ -39,6 +34,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -46,12 +42,12 @@
 
                 <TextView
                     style="@style/Data_Item_Detail_Txt_Name"
-                    android:text="会员等级编号:"/>
+                    android:text="会员编号:"/>
 
                 <TextView
-                    android:id="@+id/tv_vip_rank_item_bh"
+                    android:id="@+id/tv_vip_log_bh"
                     style="@style/Data_Item_Detail_Txt_Content"
-                    android:text="1"/>
+                    android:text="15950467254"/>
             </LinearLayout>
 
             <LinearLayout
@@ -59,12 +55,12 @@
 
                 <TextView
                     style="@style/Data_Item_Detail_Txt_Name"
-                    android:text="等级名称:"/>
+                    android:text="操作类型:"/>
 
                 <TextView
-                    android:id="@+id/tv_vip_rank_item_name"
+                    android:id="@+id/tv_vip_log_lx"
                     style="@style/Data_Item_Detail_Txt_Content"
-                    android:text="一级"/>
+                    android:text="消费"/>
             </LinearLayout>
 
             <LinearLayout
@@ -72,33 +68,40 @@
 
                 <TextView
                     style="@style/Data_Item_Detail_Txt_Name"
-                    android:text="优惠折扣(%):"/>
+                    android:text="操作员工:"/>
 
                 <TextView
-                    android:id="@+id/tv_vip_rank_item_zk"
+                    android:id="@+id/tv_vip_log_yg"
                     style="@style/Data_Item_Detail_Txt_Content"
-                    android:text="100"/>
+                    android:text="孙伟"/>
             </LinearLayout>
+        </LinearLayout>
+
+
+        <View
+            style="@style/Line_1dp.Software"/>
+
+        <LinearLayout
+            android:id="@+id/ll_vip_log_detail"
+            style="@style/Data_Item_Detail_LL"
+            android:layout_height="32dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="查看详情"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_more"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/item_right_update"
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        android:background="@color/common_red">
-
-        <TextView
-            android:id="@+id/item_right_txt_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:drawableLeft="@drawable/update_password_icon"
-            android:gravity="center"
-            android:text="修改 "
-            android:textColor="#FFFAF0"/>
-    </RelativeLayout>
-
-</com.bec.merchantmanager.view.SwipeMenuLayout>
+</LinearLayout>
