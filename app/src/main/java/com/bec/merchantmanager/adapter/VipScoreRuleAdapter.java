@@ -2,12 +2,13 @@ package com.bec.merchantmanager.adapter;
 
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bec.merchantmanager.R;
-import com.bec.merchantmanager.Utils.LogUtil;
 import com.bec.merchantmanager.bean.ScoreExchangeQueryVO;
 import com.bec.merchantmanager.constant.StatusKey;
+import com.bec.merchantmanager.listener.OnDeleteItemClickListener;
 
 import butterknife.Bind;
 
@@ -16,6 +17,12 @@ import butterknife.Bind;
  */
 
 public class VipScoreRuleAdapter extends CustomRvAdapter<ScoreExchangeQueryVO.RowsBean> {
+
+    private OnDeleteItemClickListener mOnItemClickListener;
+
+    public void setDeleteOnItemClickListener(OnDeleteItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
 
     @Override
     protected int getLayoutID() {
@@ -28,9 +35,7 @@ public class VipScoreRuleAdapter extends CustomRvAdapter<ScoreExchangeQueryVO.Ro
     }
 
     @Override
-    protected void bindData(RecyclerViewHolder holder, ScoreExchangeQueryVO.RowsBean rowsBean) {
-
-        LogUtil.e("rowsBean  rowsBean --" + rowsBean);
+    protected void bindData(final RecyclerViewHolder holder, ScoreExchangeQueryVO.RowsBean rowsBean) {
 
         ViewHolder h = (ViewHolder) holder;
 
@@ -48,6 +53,24 @@ public class VipScoreRuleAdapter extends CustomRvAdapter<ScoreExchangeQueryVO.Ro
         h.mTvVipScoreRuleSl.setText(rowsBean.getScoreNum() + "");
         h.mTvVipScoreRuleName.setText(rowsBean.getGoodsId());
 
+        h.mLlVipScoreRuleDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnItemClickListener != null){
+                    mOnItemClickListener.onItemClick(holder.getAdapterPosition() - 1);
+                }
+            }
+        });
+
+        h.rl_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnItemClickListener != null){
+                    mOnItemClickListener.onDeleteItemClick(holder.getAdapterPosition() - 1);
+                }
+            }
+        });
+
     }
 
 
@@ -62,6 +85,8 @@ public class VipScoreRuleAdapter extends CustomRvAdapter<ScoreExchangeQueryVO.Ro
         @Bind(R.id.tv_vip_score_rule_name) TextView mTvVipScoreRuleName;
 
         @Bind(R.id.ll_vip_score_rule_detail) LinearLayout mLlVipScoreRuleDetail;
+
+        @Bind(R.id.item_right_delete) RelativeLayout rl_delete;
 
         public ViewHolder(View itemView) {
             super(itemView);

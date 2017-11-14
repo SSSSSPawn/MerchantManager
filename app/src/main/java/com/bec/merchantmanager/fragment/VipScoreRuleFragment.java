@@ -9,9 +9,11 @@ import android.widget.LinearLayout;
 
 import com.bec.merchantmanager.Presenter.VipScoreRulePresenter;
 import com.bec.merchantmanager.R;
+import com.bec.merchantmanager.Utils.AppUtils;
 import com.bec.merchantmanager.adapter.VipScoreRuleAdapter;
 import com.bec.merchantmanager.base.ListFragment;
 import com.bec.merchantmanager.bean.ScoreExchangeQueryVO;
+import com.bec.merchantmanager.listener.OnDeleteItemClickListener;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -39,6 +41,18 @@ public class VipScoreRuleFragment extends ListFragment implements VipScoreRulePr
         super.onCreate(savedInstanceState);
         mPresenter.attachView(this);
         mAdapter = new VipScoreRuleAdapter();
+
+        mAdapter.setDeleteOnItemClickListener(new OnDeleteItemClickListener() {
+            @Override
+            public void onDeleteItemClick(int position) {
+                AppUtils.showToast("1");
+            }
+
+            @Override
+            public void onItemClick(int position) {
+                AppUtils.showToast("2");
+            }
+        });
     }
 
     @Override

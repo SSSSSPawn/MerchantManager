@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.bec.merchantmanager.view.SwipeMenuLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,6 +8,7 @@
     android:background="@color/white">
 
     <LinearLayout
+        android:id="@+id/ll_vip_score_rule_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -81,7 +82,6 @@
             style="@style/Line_1dp.Software"/>
 
         <LinearLayout
-            android:id="@+id/ll_vip_score_rule_detail"
             style="@style/Data_Item_Detail_LL"
             android:layout_height="32dp">
 
@@ -103,4 +103,22 @@
 
     </LinearLayout>
 
-</LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/item_right_delete"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="@color/common_red">
+
+        <TextView
+            android:id="@+id/item_right_txt_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/del_icon_normal"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="#FFFAF0"/>
+    </RelativeLayout>
+
+</com.bec.merchantmanager.view.SwipeMenuLayout>

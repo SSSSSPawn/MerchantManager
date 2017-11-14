@@ -18,7 +18,6 @@ import retrofit2.Call;
 
 public class VipScoreRulePresenter extends BasePresenter<VipScoreRulePresenter.MvpView> {
 
-
     private final int LIMIT_SIZE = 10;
 
     private int currentPage, totalPage;
@@ -27,30 +26,28 @@ public class VipScoreRulePresenter extends BasePresenter<VipScoreRulePresenter.M
 
     private boolean tag = false;
 
-
     public void getVipScoreRuleData(final int page) {
+
         long custID = Preference.getLong(CacheKey.CUST_ID);
         long rootID = Preference.getLong(CacheKey.ROOT_ID);
         String uuID = Preference.getString(CacheKey.UU_ID);
         String mac = Preference.getString(CacheKey.MAC);
 
-        ScoreExchangeParamsVO paramsVO = new ScoreExchangeParamsVO(custID, rootID, uuID, mac, LIMIT_SIZE, page);
+        ScoreExchangeParamsVO paramsVO = new ScoreExchangeParamsVO(custID, rootID, mac, uuID, LIMIT_SIZE, 1);
         Call<ScoreExchangeQueryVO> call = mApiService.scoreExchangeQuery(paramsVO);
         call.enqueue(new OnResponseListener<ScoreExchangeQueryVO>(getContext(), true) {
             @Override
-            public void onSuccess(ScoreExchangeQueryVO vo) {
+            public void onSuccess(ScoreExchangeQueryVO scoreExchangeQueryVO) {
                 if (mvpView != null) {
-                    if (vo == null || vo.getRows() == null) {
-                        if (tag) {
-                            return;
-                        }
+                    if (scoreExchangeQueryVO == null || scoreExchangeQueryVO.getRows() == null) {
                         mvpView.emptyData();
                         return;
                     }
+
                     if (page == 1) {
                         mRowsBeen.clear();
                     }
-                    mRowsBeen.addAll(vo.getRows());
+                    mRowsBeen.addAll(scoreExchangeQueryVO.getRows());
                     mvpView.updateVipScoreRuleList(mRowsBeen);
                     currentPage = page;
                     totalPage = (int) Math.ceil(mRowsBeen.size() * 1.0 / LIMIT_SIZE);
@@ -59,15 +56,12 @@ public class VipScoreRulePresenter extends BasePresenter<VipScoreRulePresenter.M
         });
     }
 
+
     public void getNextData() {
-
-        tag = true;
-
-        if (currentPage > totalPage) {
+        if (currentPage >= totalPage) {
             mvpView.stopLoadMore();
         }
-        getVipScoreRuleData(++currentPage);
-
+        getVipScoreRuleData(currentPage++);
     }
 
 
@@ -79,6 +73,5 @@ public class VipScoreRulePresenter extends BasePresenter<VipScoreRulePresenter.M
 
         void emptyData();
     }
-
 
 }
