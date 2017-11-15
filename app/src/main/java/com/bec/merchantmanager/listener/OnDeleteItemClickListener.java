@@ -9,4 +9,6 @@ public interface OnDeleteItemClickListener {
     void onDeleteItemClick(int position);
 
     void onItemClick(int position);
+
+    void onUpdate(int position);
 }

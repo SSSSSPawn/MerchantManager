@@ -20,4 +20,6 @@ public interface Intentkey {
 
     String VIP_LOG_DETAIL = "vip_log_detail";
 
+    String VIP_SCORE_RULE_DETAIL = "vip_score_rule_detail";
+
 }

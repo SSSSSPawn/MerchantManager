@@ -29,7 +29,10 @@ import com.bec.merchantmanager.bean.params.QueryMembLevelParamsVO;
 import com.bec.merchantmanager.bean.params.QueryUserParamsVO;
 import com.bec.merchantmanager.bean.params.SalesDataDetailParamsVO;
 import com.bec.merchantmanager.bean.params.SalesDataParamsVO;
+import com.bec.merchantmanager.bean.params.ScoreExchangeAddParamsVO;
+import com.bec.merchantmanager.bean.params.ScoreExchangeDeleteParamsVO;
 import com.bec.merchantmanager.bean.params.ScoreExchangeParamsVO;
+import com.bec.merchantmanager.bean.params.ScoreExchangeUpdateParamsVO;
 import com.bec.merchantmanager.bean.params.SelectShiftReportDetailParamsVO;
 import com.bec.merchantmanager.bean.params.SelectShiftReportParamsVO;
 import com.bec.merchantmanager.bean.params.SelectTaxInvDataParamsVO;
@@ -307,5 +310,33 @@ public interface ApiService {
      */
     @POST("app/inter/scoreExchangeQuery.json")
     Call<ScoreExchangeQueryVO> scoreExchangeQuery(@Body ScoreExchangeParamsVO paramsVO);
+
+
+    /**
+     * 删除积分兑换规则
+     *
+     * @return
+     */
+    @POST("app/inter/scoreExchangeDelete.json")
+    Call<CodeMessageVO> scoreExchangeDelete(@Body ScoreExchangeDeleteParamsVO paramsVO);
+
+
+    /**
+     * 新增积分兑换规则
+     *
+     * @return
+     */
+    @POST("app/inter/scoreExchangeAdd.json")
+    Call<CodeMessageVO> scoreExchangeAdd(@Body ScoreExchangeAddParamsVO paramsVO);
+
+
+    /**
+     * 修改积分兑换规则
+     *
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/scoreExchangeEdit.json")
+    Call<CodeMessageVO> scoreExchangeEdit(@Body ScoreExchangeUpdateParamsVO paramsVO);
 
 }

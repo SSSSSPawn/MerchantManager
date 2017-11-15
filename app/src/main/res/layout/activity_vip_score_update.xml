@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.bec.merchantmanager.view.AppBar
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        android:background="@color/becPrimaryBlue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                style="@style/Text_Name"
+                android:layout_weight="2"
+                android:text="规则编号"/>
+
+            <TextView
+                android:id="@+id/tv_vip_score_bh"
+                style="@style/Text_Name.Text_Content.16sp"
+                android:gravity="center|right"
+                android:hint="请输入"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                style="@style/Text_Name"
+                android:text="所需积分"/>
+
+            <EditText
+                android:id="@+id/et_vip_score_jf"
+                style="@style/Text_Name.Text_Content.16sp"
+                android:background="@null"
+                android:gravity="center|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                style="@style/Text_Name"
+                android:gravity="center_vertical"
+                android:text="兑换方式"/>
+
+            <TextView
+                android:id="@+id/et_vip_score_fs"
+                style="@style/Text_Name.Text_Content.16sp"
+                android:drawableRight="@drawable/ic_more"
+                android:gravity="center|right"
+                android:hint="请选择"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineColor"/>
+
+        <LinearLayout
+            android:id="@+id/ll_vip_score_name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tv_vip_score_name"
+                style="@style/Text_Name"
+                android:gravity="center_vertical"
+                android:text="现金券金额"
+                android:visibility="visible"/>
+
+            <EditText
+                android:id="@+id/et_vip_score_name"
+                style="@style/Text_Name.Text_Content.16sp"
+                android:background="@null"
+                android:gravity="center|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                style="@style/Text_Name"
+                android:gravity="center_vertical"
+                android:text="规则生效日期"/>
+
+            <TextView
+                android:id="@+id/et_vip_score_start_time"
+                style="@style/Text_Name.Text_Content.16sp"
+                android:drawableRight="@drawable/ic_more"
+                android:gravity="center|right"
+                android:hint="请选择"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineColor"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                style="@style/Text_Name"
+                android:gravity="center_vertical"
+                android:text="规则失效日期"/>
+
+            <TextView
+                android:id="@+id/et_vip_score_end_time"
+                style="@style/Text_Name.Text_Content.16sp"
+                android:drawableRight="@drawable/ic_more"
+                android:gravity="center|right"
+                android:hint="请选择"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineColor"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/becPrimaryBlue"
+        android:text="确定"
+        android:textColor="@drawable/selector_btn_white2gray"
+        android:textSize="18sp"/>
+
+
+</LinearLayout>

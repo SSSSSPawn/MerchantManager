@@ -23,8 +23,8 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_URL", project.ext.release_api_url
-           // buildConfigField "String","API_URL" ,project.ext.dev_api_url
+            //buildConfigField "String", "API_URL", project.ext.release_api_url
+            buildConfigField "String","API_URL" ,project.ext.dev_api_url
         }
     }
 }

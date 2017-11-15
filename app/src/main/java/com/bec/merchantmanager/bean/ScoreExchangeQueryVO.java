@@ -53,7 +53,7 @@ public class ScoreExchangeQueryVO extends BaseBean {
         this.rows = rows;
     }
 
-    public static class RowsBean {
+    public static class RowsBean extends BaseBean{
         /**
          * beginDate : 1503504000000
          * custCompanyName : 南京亚青体育产业发展有限公司
@@ -78,7 +78,7 @@ public class ScoreExchangeQueryVO extends BaseBean {
         private String ruleNum;
         private int scoreNum;
         private String uid;
-        private int voucher;
+        private double voucher;
 
         public long getBeginDate() {
             return beginDate;
@@ -160,11 +160,11 @@ public class ScoreExchangeQueryVO extends BaseBean {
             this.uid = uid;
         }
 
-        public int getVoucher() {
+        public double getVoucher() {
             return voucher;
         }
 
-        public void setVoucher(int voucher) {
+        public void setVoucher(double voucher) {
             this.voucher = voucher;
         }
 

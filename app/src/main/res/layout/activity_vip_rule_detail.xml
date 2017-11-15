@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.bec.merchantmanager.view.AppBar
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        android:background="@color/becPrimaryBlue"/>
+
+    <LinearLayout
+        android:id="@+id/ll_vip_score_rule_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="规则编号:"/>
+
+            <TextView
+                android:id="@+id/tv_vip_score_rule_bh"
+                style="@style/Data_Item_Detail_Content"
+                android:text="1001"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line_1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="积分兑换方式:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_score_rule_fs"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="兑换礼品券"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="使用积分数量:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_score_rule_sl"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="1000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="可兑换商品名称:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_score_rule_name"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="毛绒娃娃"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="现金券金额:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_score_rule_je"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="100.00"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="规则起始时间:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_score_rule_start_time"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="2017-08-24 00:00:00"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="规则截止时间:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_score_rule_end_time"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="2017-08-29 00:00:00"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="录入时间:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_score_rule_lr_time"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="2017-08-24 00:00:00"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line_1dp.Software"/>
+
+    </LinearLayout>
+
+</LinearLayout>

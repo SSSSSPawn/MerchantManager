@@ -71,6 +71,15 @@ public class VipScoreRuleAdapter extends CustomRvAdapter<ScoreExchangeQueryVO.Ro
             }
         });
 
+        h.rl_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnItemClickListener != null){
+                    mOnItemClickListener.onUpdate(holder.getAdapterPosition() - 1);
+                }
+            }
+        });
+
     }
 
 
@@ -87,6 +96,8 @@ public class VipScoreRuleAdapter extends CustomRvAdapter<ScoreExchangeQueryVO.Ro
         @Bind(R.id.ll_vip_score_rule_detail) LinearLayout mLlVipScoreRuleDetail;
 
         @Bind(R.id.item_right_delete) RelativeLayout rl_delete;
+
+        @Bind(R.id.item_right_update) RelativeLayout rl_update;
 
         public ViewHolder(View itemView) {
             super(itemView);
