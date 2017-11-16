@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.bec.merchantmanager.view.AppBar
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        android:background="@color/becPrimaryBlue"/>
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="会员姓名:"/>
+
+            <TextView
+                android:id="@+id/tv_vip_exchange_name"
+                style="@style/Data_Item_Detail_Content"
+                android:text="孙伟"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line_1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="积分兑换券号码:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_exchange_hm"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="15950"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员编号:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_exchange_bh"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="15950467254"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="兑换规则编号:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_exchange_gz"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="1001"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="兑换方式:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_exchange_fs"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="使用积分数量:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_exchange_sl"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="1000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="商品名称:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_exchange_good_name"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="相册"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="现金券金额:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_exchange_je"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="¥100.00"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="兑换前积分:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_exchange_qjf"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="兑换后剩余积分:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_exchange_hjf"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="2000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="生成时间:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_exchange_date"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="2017-11-13 11:39:05"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

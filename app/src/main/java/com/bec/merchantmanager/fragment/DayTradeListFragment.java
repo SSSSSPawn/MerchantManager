@@ -9,10 +9,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
-import com.github.mikephil.charting.charts.PieChart;
 import com.bec.merchantmanager.Presenter.DayTradeFormsPresenter;
+import com.bec.merchantmanager.R;
 import com.bec.merchantmanager.Utils.DateUtils;
 import com.bec.merchantmanager.Utils.LogUtil;
 import com.bec.merchantmanager.Utils.MPChartUtil;
@@ -28,12 +26,14 @@ import com.bec.merchantmanager.bean.params.TradeFormDetailParamsVO;
 import com.bec.merchantmanager.constant.CacheKey;
 import com.bec.merchantmanager.constant.Intentkey;
 import com.bec.merchantmanager.constant.StatusKey;
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.github.mikephil.charting.charts.PieChart;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import com.bec.merchantmanager.R;
 
 /**
  * Created by admin on 2017/10/11.
@@ -67,6 +67,7 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
 
         mPresenter.attachView(this);
         mAdapter = new DayTradeFormAdapter();
+
     }
 
     @Override
@@ -183,4 +184,5 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     protected boolean isBindEventBus() {
         return false;
     }
+
 }

@@ -4,6 +4,7 @@ import com.bec.merchantmanager.bean.BBCBankVO;
 import com.bec.merchantmanager.bean.CodeMessageVO;
 import com.bec.merchantmanager.bean.DayTradeFormVO;
 import com.bec.merchantmanager.bean.LoginVO;
+import com.bec.merchantmanager.bean.MemberTimeVO;
 import com.bec.merchantmanager.bean.MonthTradeDetailVO;
 import com.bec.merchantmanager.bean.MonthTradeFormVO;
 import com.bec.merchantmanager.bean.QueryMembLevelVO;
@@ -11,6 +12,7 @@ import com.bec.merchantmanager.bean.ReturnGoodsItemDataVO;
 import com.bec.merchantmanager.bean.SalesDataDetailVO;
 import com.bec.merchantmanager.bean.SalesDataItemDetailVO;
 import com.bec.merchantmanager.bean.ScoreExchangeQueryVO;
+import com.bec.merchantmanager.bean.ScoreUseQueryVO;
 import com.bec.merchantmanager.bean.SelectShiftReportVO;
 import com.bec.merchantmanager.bean.SelectTaxInvDataVO;
 import com.bec.merchantmanager.bean.TradeFormPayDetailVO;
@@ -24,6 +26,7 @@ import com.bec.merchantmanager.bean.params.AddVipRankParamsVO;
 import com.bec.merchantmanager.bean.params.LoginParamsVO;
 import com.bec.merchantmanager.bean.params.MembLevelEditParamsVO;
 import com.bec.merchantmanager.bean.params.MembMoneyResetParamsVO;
+import com.bec.merchantmanager.bean.params.MemberTimeParamesVO;
 import com.bec.merchantmanager.bean.params.QueryAllMembParamsVO;
 import com.bec.merchantmanager.bean.params.QueryMembLevelParamsVO;
 import com.bec.merchantmanager.bean.params.QueryUserParamsVO;
@@ -33,6 +36,7 @@ import com.bec.merchantmanager.bean.params.ScoreExchangeAddParamsVO;
 import com.bec.merchantmanager.bean.params.ScoreExchangeDeleteParamsVO;
 import com.bec.merchantmanager.bean.params.ScoreExchangeParamsVO;
 import com.bec.merchantmanager.bean.params.ScoreExchangeUpdateParamsVO;
+import com.bec.merchantmanager.bean.params.ScoreUseQueryParamsVO;
 import com.bec.merchantmanager.bean.params.SelectShiftReportDetailParamsVO;
 import com.bec.merchantmanager.bean.params.SelectShiftReportParamsVO;
 import com.bec.merchantmanager.bean.params.SelectTaxInvDataParamsVO;
@@ -338,5 +342,26 @@ public interface ApiService {
      */
     @POST("app/inter/scoreExchangeEdit.json")
     Call<CodeMessageVO> scoreExchangeEdit(@Body ScoreExchangeUpdateParamsVO paramsVO);
+
+
+    /**
+     * 会员积分兑换记录查询接口
+     *
+     * @param paramsVO
+     * @return
+     */
+    @POST("app/inter/scoreUseQuery.json")
+    Call<ScoreUseQueryVO> scoreUseQuery(@Body ScoreUseQueryParamsVO paramsVO);
+
+
+    /**
+     * 会员余次查询接口
+     *
+     * @param paramesVO
+     * @return
+     */
+    @POST("app/inter/membTimesQuery.json")
+    Call<MemberTimeVO> membTimesQuery(@Body MemberTimeParamesVO paramesVO);
+
 
 }

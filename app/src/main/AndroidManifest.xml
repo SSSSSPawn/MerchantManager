@@ -78,6 +78,8 @@
             android:name=".activity.VipScoreUpdateActivity"
             android:windowSoftInputMode="adjustPan"/>
 
+        <activity android:name=".activity.VipExchangeDetailActivity"/>
+
     </application>
 
 </manifest>

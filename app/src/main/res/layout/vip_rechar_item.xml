@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            style="@style/Data_Item_Detail_LL">
+
+            <TextView
+                style="@style/Data_Item_Detail_Txt_Name"
+                android:text="会员姓名:"/>
+
+            <TextView
+                android:id="@+id/tv_vip_rechar_name"
+                style="@style/Data_Item_Detail_Content"
+                android:text="孙伟"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line_1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="会员编号:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_rechar_bh"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="159502584"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="充值商品:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_rechar_sp"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="牙膏"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="充值次数:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_rechar_time"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Data_Item_Detail_LL_Top8dp">
+
+                <TextView
+                    style="@style/Data_Item_Detail_Txt_Name"
+                    android:text="录入时间:"/>
+
+                <TextView
+                    android:id="@+id/tv_vip_rechar_date"
+                    style="@style/Data_Item_Detail_Txt_Content"
+                    android:text="2017-11-13 11:39:05"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

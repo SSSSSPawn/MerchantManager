@@ -22,4 +22,7 @@ public interface Intentkey {
 
     String VIP_SCORE_RULE_DETAIL = "vip_score_rule_detail";
 
+    String VIP_SCORE_EXCHANGE_DETAIL = "vip_score_exchange_detail";
+
+
 }

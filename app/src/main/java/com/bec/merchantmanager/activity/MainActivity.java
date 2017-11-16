@@ -131,5 +131,4 @@ public class MainActivity extends BaseActivity implements MainPresenter.MvpView,
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
-
 }
