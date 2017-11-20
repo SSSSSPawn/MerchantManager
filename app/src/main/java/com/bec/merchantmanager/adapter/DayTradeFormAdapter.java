@@ -3,11 +3,11 @@ package com.bec.merchantmanager.adapter;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bec.merchantmanager.R;
 import com.bec.merchantmanager.Utils.DateUtils;
 import com.bec.merchantmanager.bean.DayTradeFormVO;
 
 import butterknife.Bind;
-import com.bec.merchantmanager.R;
 
 /**
  * Created by admin on 2017/10/12.
@@ -37,8 +37,6 @@ public class DayTradeFormAdapter extends CustomRvAdapter<DayTradeFormVO.RowsBean
         String reportDay = DateUtils.dateFormatDay(rowsBean.getReportDay());
         h.mTvTradeFormDate.setText(reportDay);
 
-        h.mTvTradeFormName.setText(rowsBean.getCustName());
-
         h.mTvTradeFormXsMoney.setText(DateUtils.formatMoney(rowsBean.getSaleAmount()));
 
         h.mTvTradeFormThMoney.setText(DateUtils.formatMoney(rowsBean.getReturnAmount()));
@@ -53,8 +51,6 @@ public class DayTradeFormAdapter extends CustomRvAdapter<DayTradeFormVO.RowsBean
     class ViewHolder extends RecyclerViewHolder {
 
         @Bind(R.id.tv_trade_form_date) TextView mTvTradeFormDate;
-
-        @Bind(R.id.tv_trade_form_name) TextView mTvTradeFormName;
 
         @Bind(R.id.tv_trade_form_xs_money) TextView mTvTradeFormXsMoney;
 

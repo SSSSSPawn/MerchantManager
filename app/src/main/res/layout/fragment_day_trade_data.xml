@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/gray_tr">
 
     <LinearLayout
         android:id="@+id/ll_content"
@@ -14,14 +15,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:background="@color/white"
                 android:orientation="horizontal">
@@ -32,6 +32,7 @@
                     android:layout_gravity="center"
                     android:background="#ec5554"
                     android:gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
                     android:padding="4dp"/>
 
                 <TextView
@@ -64,7 +65,6 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
-                android:layout_marginTop="4dp"
                 android:background="@color/lineColor"/>
 
             <com.jcodecraeer.xrecyclerview.XRecyclerView
