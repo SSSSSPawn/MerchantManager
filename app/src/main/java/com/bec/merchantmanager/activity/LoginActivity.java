@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.bec.merchantmanager.Presenter.LoginPresenter;
+import com.bec.merchantmanager.R;
 import com.bec.merchantmanager.Utils.AppUtils;
 import com.bec.merchantmanager.Utils.LogUtil;
 import com.bec.merchantmanager.Utils.Preference;
@@ -17,7 +18,6 @@ import com.bec.merchantmanager.constant.CacheKey;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import com.bec.merchantmanager.R;
 
 /**
  * Created by admin on 2017/8/23.
