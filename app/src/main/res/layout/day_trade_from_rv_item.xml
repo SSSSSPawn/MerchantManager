@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginBottom="4dp">
 
 
     <LinearLayout
@@ -152,19 +153,5 @@
     <View
         style="@style/Line_1dp"/>
 
-    <LinearLayout
-        android:id="@+id/ll_more"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="查看更多"
-            android:textSize="18sp"
-            android:gravity="center"/>
-
-    </LinearLayout>
 
 </LinearLayout>

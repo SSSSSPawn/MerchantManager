@@ -71,6 +71,22 @@
                 android:id="@+id/super_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:id="@+id/ll_more"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="查看更多"
+                    android:textSize="18sp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout

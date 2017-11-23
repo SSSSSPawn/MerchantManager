@@ -18,9 +18,9 @@ import retrofit2.Call;
 
 public class BBCBankPresenter extends BasePresenter<BBCBankPresenter.MvpView> {
 
-    public void gotoBBC() {
+    public void gotoBBC(long custid) {
         Map<String, Long> params = new HashMap<>();
-        params.put("custId", (long) 3);
+        params.put("custId", custid);
 
         String paramsJson = gson.toJson(params);
 

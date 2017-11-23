@@ -16,6 +16,7 @@ import com.bec.merchantmanager.Utils.LogUtil;
 import com.bec.merchantmanager.Utils.MPChartUtil;
 import com.bec.merchantmanager.Utils.Preference;
 import com.bec.merchantmanager.activity.HistoryDataActivity;
+import com.bec.merchantmanager.activity.MoreDayDataActivity;
 import com.bec.merchantmanager.activity.TradeFormDetailActivity;
 import com.bec.merchantmanager.adapter.DayTradeFormAdapter;
 import com.bec.merchantmanager.base.ListFragment;
@@ -52,6 +53,8 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
     @Bind(R.id.fab_menu) FloatingActionsMenu mFloatingActionsMenu;
 
     @Bind(R.id.fab_search) FloatingActionButton mFloatingActionButton;
+
+    @Bind(R.id.ll_more) LinearLayout ll_more;
 
     private DayTradeFormsPresenter mPresenter = new DayTradeFormsPresenter();
 
@@ -160,7 +163,7 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
         MPChartUtil.showPieChart(mChart, payName, "支付方式", "支付比例");
     }
 
-    @OnClick({R.id.tv_trade_detail, R.id.fab_search})
+    @OnClick({R.id.tv_trade_detail, R.id.fab_search, R.id.ll_more})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_trade_detail:
@@ -170,6 +173,9 @@ public class DayTradeListFragment extends ListFragment implements DayTradeFormsP
                 break;
             case R.id.fab_search:
                 launch(HistoryDataActivity.class);
+                break;
+            case R.id.ll_more:
+                launch(MoreDayDataActivity.class);
                 break;
         }
 

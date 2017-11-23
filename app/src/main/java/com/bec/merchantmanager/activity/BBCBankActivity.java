@@ -9,11 +9,14 @@ import android.widget.TextView;
 
 import com.bec.merchantmanager.Presenter.BBCBankPresenter;
 import com.bec.merchantmanager.R;
+import com.bec.merchantmanager.Utils.Preference;
 import com.bec.merchantmanager.base.BaseActivity;
 import com.bec.merchantmanager.view.BECWebView;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+
+import static com.bec.merchantmanager.constant.CacheKey.CUST_ID;
 
 /**
  * Created by admin on 2017/10/17.
@@ -37,8 +40,10 @@ public class BBCBankActivity extends BaseActivity implements BBCBankPresenter.Mv
 
         mTvAppTitle.setText("平安理财");
 
+        long custID = Preference.getLong(CUST_ID);
+
         mPresenter.attachView(this);
-        mPresenter.gotoBBC();
+        mPresenter.gotoBBC(custID);
     }
 
 

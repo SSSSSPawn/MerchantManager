@@ -8,7 +8,7 @@ android {
         applicationId "com.bec.merchantmanager"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 10
+        versionCode 16
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -19,7 +19,7 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "true"//是否输出LOG信息
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "API_URL", project.ext.release_api_url
-            //buildConfigField "String","API_URL", project.ext.dev_api_url
+            buildConfigField "String","API_URL", project.ext.dev_api_url
         }
 
         debug {

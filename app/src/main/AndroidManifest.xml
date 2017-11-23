@@ -80,6 +80,8 @@
 
         <activity android:name=".activity.VipExchangeDetailActivity"/>
 
+        <activity android:name=".activity.MoreDayDataActivity"/>
+
     </application>
 
 </manifest>

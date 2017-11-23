@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.bec.merchantmanager.Presenter.SalesDataPresenter;
+import com.bec.merchantmanager.R;
 import com.bec.merchantmanager.Utils.DateUtils;
 import com.bec.merchantmanager.activity.SalesItemDataDetailActivity;
 import com.bec.merchantmanager.adapter.DataDetailAdapter;
@@ -21,7 +22,6 @@ import com.bec.merchantmanager.listener.OnItemClickListener;
 import java.util.ArrayList;
 
 import butterknife.Bind;
-import com.bec.merchantmanager.R;
 
 /**
  * Created by admin on 2017/10/21.
@@ -124,11 +124,11 @@ public class ReturnGoodsDataFragment extends ListFragment implements SalesDataPr
 
     @Override
     protected void onFragmentFirstVisible() {
-        super.onFragmentFirstVisible();
+
     }
 
     @Override
     protected void onFragmentVisibleChange(boolean isVisible) {
-        super.onFragmentVisibleChange(isVisible);
+
     }
 }

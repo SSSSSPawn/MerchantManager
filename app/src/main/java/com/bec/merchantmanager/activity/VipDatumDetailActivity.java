@@ -130,6 +130,7 @@ public class VipDatumDetailActivity extends BaseActivity implements VipDatumDeta
             }
         });
         dialog.show("提示信息","确定将会员的余额和积分归零吗?");
+        dialog.setMessageSize(16);
     }
 
     @Override
