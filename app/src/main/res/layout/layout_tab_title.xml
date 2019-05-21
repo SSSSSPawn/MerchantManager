@@ -10,16 +10,16 @@
 
     <RadioButton
         android:id="@+id/tab_left"
-        tools:text="TAB1"
-        android:textColor="@drawable/bec_white_blue"
-        android:gravity="center"
-        android:textSize="16sp"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:background="@drawable/bec_tab_title_left"
+        android:button="@null"
         android:checked="true"
-        android:button="@null"/>
+        android:gravity="center"
+        android:textColor="@drawable/bec_white_blue"
+        android:textSize="16sp"
+        tools:text="TAB1"/>
 
     <RadioButton
         android:id="@+id/tab_middle"
