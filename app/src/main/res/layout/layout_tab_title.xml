@@ -10,16 +10,16 @@
 
     <RadioButton
         android:id="@+id/tab_left"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/bec_tab_title_left"
-        android:button="@null"
-        android:checked="true"
-        android:gravity="center"
+        tools:text="TAB1"
         android:textColor="@drawable/bec_white_blue"
+        android:gravity="center"
         android:textSize="16sp"
-        tools:text="TAB1"/>
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:background="@drawable/bec_tab_title_left"
+        android:checked="true"
+        android:button="@null"/>
 
     <RadioButton
         android:id="@+id/tab_middle"
